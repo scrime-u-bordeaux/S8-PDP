@@ -40,8 +40,31 @@
     de calcul de corrélation. Il suffit de respecter une signature de méthode,
     et de placer les fichiers sources dans le dossier prévu à cet effet.\\
   \section{Description des besoins}
-    \subsection{Besoins focntionnels}
+    \subsection{Besoins fonctionnels}
+    \paragraph{}
+    \begin{itemize}
+      \item L'utilisateur pourra avoir un retour sonore qui dépendra de la
+      matrice de corrélation et d'une configuration,
+      \item L'utilisateur pourra avoir une représentation graphique des niveaux
+      sonores sous la forme d'une matrice, de la même manière que la matrice de
+      corrélation.
+      \item L'utilisateur aura à sa disposition une liste de configurations
+      pré-établies, dont les suivantes :
+      \begin{itemize}
+        \item Les entrées les plus corrélées sont plus fortes,
+        \item Les entrées les moins corrélées sont plus fortes.
+      \end{itemize}
+      \item L'utilisateur pourra ajouter une nouvelle configuration, suivant
+      une signature donnée.
+      \item L'utilisateur pourra changer la fenêtre temporelle de calcul de
+      corrélation.
+    \end{itemize}
     \subsection{Besoins non-fonctionnels}
+    \begin{itemize}
+      \item Les signatures des méthodes calculant les niveaux sonores des
+      entrées devront être génériques de façon à permettre aux utilisateurs d'en
+      ajouter de nouvelles.
+    \end{itemize}
     \subsection{Scénarios, prototypes, diagrammes, etc.}
   \section{Diagramme de Gantt}
   \section{Bibliographie}
