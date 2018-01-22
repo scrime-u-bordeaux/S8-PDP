@@ -1,0 +1,46 @@
+# Configuration file for ./VisualImpro
+# use '#' at beginning of line for comments
+
+# Do not change these 2 settings
+
+PORT 12345
+ADDRESS 192.168.7.1
+
+# Number of samples of the buffer use to compute the matrix. Display frequency is PROCESSLEN/SAMPLE_RATE
+
+PROCESSLEN 32768
+
+# Y,YES,O or OUI to enable effects.
+# It is advised to disable them, as they cause a loss of performance and there is only one effect avaible (a simple echo)
+
+EFFECTS N
+EFFECT_BUFFER_LEN 32
+
+# Number of analog inputs (from 0 to 8). Analog inputs are actually overriden by the 8 audio inputs at the top of the bela.
+# The program automatically adapts the sample rate to the number of channels. If analog <= 4, the sample rate will be 44100 hz, else it will be 22050
+# If you choose x channels, then you must plug your devices on channels 0 to x-1 .
+
+ANALOG 2
+
+# Number of audio inputs (0,1 or 2). 
+
+AUDIO 2
+
+# Add a file
+# Enter the relative path of the file
+
+FILE tracks/marseillaise1.wav
+FILE tracks/marseillaise2.wav
+FILE tracks/marseillaise3.wav
+# FILE tracks/Drums1.wav
+# FILE tracks/Effects1.wav
+# FILE tracks/Guitars1.wav
+# FILE tracks/Keyboards1.wav
+# FILE tracks/Vocals1.wav
+
+# Choice of processing methods in libprocess.so
+
+COLOR ColorGreenToRed
+COEFF CoeffScalar
+PREPROC PreprocEnergy
+

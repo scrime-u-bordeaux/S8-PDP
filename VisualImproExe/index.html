@@ -1,0 +1,148 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+
+<html>
+
+    <head>
+
+        <meta charset="utf-8" />
+
+        <title>VisualImpro</title>
+
+	<style>
+	  .highlighted {
+	  background: red;
+	  }
+	  table{
+	  width:500px;
+	  height:500px;
+	  }
+	  table td{
+	  padding:10px;
+	  margin:10px;
+	  border:1px solid #ccc;
+	  }
+	  table tr{
+	  height:50px;
+	  }
+	</style>
+	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+	<script src="/socket.io/socket.io.js"></script>
+	<script>
+
+	  
+function createTable(){    
+    mytable = $("<table></table>").attr({ id: "basicTable" });
+    var rows = $("#rows").val();
+    var cols = $("#columns").val();
+    //alert("rows " + rows + "  cols " + cols);
+    var tr = [];
+    for (var i = 0; i < rows; i++) {
+	var row = $("<tr></tr>").appendTo(mytable);
+	for (var j = 0; j < cols; j++) {
+	    $("<td></td>").attr({class :"element"}).text("").appendTo(row); 
+	}		 			    
+    }
+    console.log("TTTTT:"+mytable.html());
+    mytable.appendTo("#matrixTableId");      					      
+}
+
+function empty(){
+    $("#matrixTableId").empty();
+}
+
+function getRandomSocket(){
+    var color = "";
+    var cur_rows = Math.floor(Math.random() * 7)+1;
+    var cur_cols = Math.floor(Math.random() * 7)+1;
+    
+    color += cur_rows.toString();
+    color += cur_cols.toString();
+    
+    for (var i = 0; i < cur_cols; i++){
+	for (var j = 0; j < cur_rows; j++){
+	    color+=getRandomColor();
+	}
+    }
+    return color;
+}
+
+
+function updateMatrixFromSocket(values){
+    //alert(values);
+    var pos = 0;
+    var int1 = "";
+    var int2 = "";
+    while ( pos < values.length && values[pos] != "-"){
+	int1+=values[pos];
+	pos++;
+    }
+    pos++;
+    while (pos < values.length && values[pos] != "#"){
+	int2+=values[pos];
+	pos++;
+    }
+    var rows = parseInt(int1);
+    var columns = parseInt(int2);
+	//alert(int1 + int2);
+	//alert(rows + " " + columns + " " + values.length);
+    if (values.length == int1.length + 1 + int2.length + rows*columns*7){
+	var cur_rows = $("#rows").val();
+	var cur_cols = $("#columns").val();
+	//alert(cur_rows + "  " + cur_cols);
+	if (rows != cur_rows || columns != cur_cols){
+	    $("#rows").val(rows);
+	    $("#columns").val(columns);
+	    //alert($("#rows").val() + " " +  $("#columns").val());
+	    empty();
+	    createTable(); //with valid rows and column
+	}
+	var i = int1.length+int2.length+1;
+	$("td.element").each(function(index){
+	    var color = "";
+	    for (var tmp = 0; tmp < 7; tmp++){
+		color+=values[i];
+		i++;
+	    }
+	    $(this).css("background-color", color);
+    	});
+    }
+    //else
+    //alert("Wrong values received from server");
+}
+
+function getRandomColor() {
+    var letters = "0123456789ABCDEF";
+    var color = "#";
+    for (var i = 0; i < 6; i++ ) {
+        color += letters[Math.floor(Math.random() * 16)];
+    }
+    return color;
+}
+
+	</script>
+	
+    </head>
+
+    <body>
+
+        <h1>VisualImpro : outil d'improvisation musicale</h1>
+
+	Lignes <input type='text' id='rows'><br>
+	Colonnes <input type='text' id='columns'><br>
+	
+	<script>	    
+	  var socket = io.connect('http://192.168.7.1:8080');
+	  
+	  socket.on('message', function(message) {
+	  updateMatrixFromSocket(message);	
+	  })	  
+	</script>
+	
+	<div id="matrixTableId">
+	  
+	</div>
+
+    </body>
+
+</html>
