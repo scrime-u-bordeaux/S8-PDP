@@ -6,6 +6,8 @@
 \usepackage[francais]{babel}  % langue
 \usepackage{graphicx}         % images
 \usepackage{verbatim}
+\usepackage{url}
+\bibliographystyle{alpha}
 
 \title{Document d'analyse des besoins}
 \author{Alexandre Casanova-Franger\\
@@ -26,8 +28,8 @@
     qui jouent le mieux ensemble. De plus, cet outil aura une portée
     scientifique, dans le sens où il sera possible d'étudier l'adaptation des
     musiciens grâce au retours fournis par l'outil. \\
-    Cet outil est basé sur une plateforme externe appelée Bela, qui est un
-    système embarqué de traitement audio en temps réel.
+    Cet outil est basé sur une plateforme externe appelée Bela \cite{BELA}, qui
+    est un système embarqué de traitement audio en temps réel.
   \section{Description et analyse de l'existant}
     \paragraph{}
     À ce jour, l'outil est capable de fournir une représentation graphique de la
@@ -70,6 +72,20 @@
       soit au maximum de 1 seconde.
     \end{itemize}
     \subsection{Scénarios, prototypes, diagrammes, etc.}
+      \paragraph{}
+      Nous allons décrire ci-après un scénario que nos clients ont imaginé :\\
+      L'utilisateur utilisa l'outil sur un groupe de musiciens. Des micros sont
+      branchés sur les différents entrées analogiques et chaque musicien dispose
+      d'un retour son. L'utilisateur configure le fichier de confguration afin
+      que les paramètres décrits ci-dessus soient correctement pris en compte
+      par l'outil. Les musiciens se mettent à improviser comme bon leur semble,
+      et l'on peut observer en temps réel les corrélations entre les différents
+      musiciens. On pourra aussi observer une matrice dite de "mixage" qui
+      affiche les différents poids des paires de musiciens en fonction d'une
+      configuration par défaut. À tout moment, l'utilisateur peut choisir une
+      configuration de mixage différente pour que le retour sonore change.\\
+      L'intérêt est d'étudier comment les musiciens s'adaptent en fonction du
+      retour sonore, donc en fonction de la configuration de mixage choisie.
   \section{Diagramme de Gantt}
-  \section{Bibliographie}
+  \bibliography{analyse-besoins}
 \end{document}
