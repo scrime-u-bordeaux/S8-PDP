@@ -45,8 +45,13 @@
     \subsection{Besoins fonctionnels}
     \paragraph{}
     \begin{itemize}
-      \item L'utilisateur pourra avoir un retour sonore qui dépendra de la
-      matrice de corrélation et d'une configuration,
+      \item Présenter un retour sonore à l'utilisateur à partir de la matrice de 
+      corrélation. Il pourra dépendre d'une configuration choisie par l'utilisateur.
+      \item On pourra présenter un retour sonore en temps réel à l'utilisateur sous
+      forme d'un métronome destiné aux artistes et qui s'adapte dynamiquement au son
+      en entrée ; en prenant par exemple pour référence le tempo joué par le musicien
+      dont la somme des indices de corrélation avec tous les autres musiciens du groupe
+      est la plus haute.
       \item L'utilisateur pourra avoir une représentation graphique des niveaux
       sonores sous la forme d'une matrice, de la même manière que la matrice de
       corrélation.
@@ -55,8 +60,8 @@
       \begin{itemize}
         \item Augmenter le volume des paires d'entrées les plus corrélées
         \item Augmenter le volume des paires d'entrées les moins corrélées
-        \item Augmenter le volumes des entrées dont la somme des indices de
-        corrélation avec toutes les autres entrées est la plus élevée.
+        \item Augmenter le volume des entrées dont la somme des indices de
+        corrélation avec toutes les autres entrées est la plus élevée...
       \end{itemize}
       \item L'utilisateur pourra ajouter une nouvelle configuration, suivant
       une signature donnée.
@@ -76,9 +81,9 @@
     \subsection{Scénarios, prototypes, diagrammes, etc.}
       \paragraph{}
       Nous allons décrire ci-après un scénario que nos clients ont imaginé :\\
-      L'utilisateur utilisa l'outil sur un groupe de musiciens. Des micros sont
-      branchés sur les différents entrées analogiques et chaque musicien dispose
-      d'un retour son. L'utilisateur configure le fichier de confguration afin
+      L'utilisateur utilise l'outil sur un groupe de musiciens. Des micros sont
+      branchés sur les différentes entrées analogiques et chaque musicien dispose
+      d'un retour son. L'utilisateur configure le fichier de configuration afin
       que les paramètres décrits ci-dessus soient correctement pris en compte
       par l'outil. Les musiciens se mettent à improviser comme bon leur semble,
       et l'on peut observer en temps réel les corrélations entre les différents
