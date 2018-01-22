@@ -34,8 +34,8 @@
     \paragraph{}
     À ce jour, l'outil est capable de fournir une représentation graphique de la
     corrélation des entrées audio. Ces entrées sont représentées par des
-    tableaux, et ensuite il existe une fonction prenant ces tableaux en entrée
-    et qui retourne un nombre flottant compris entre 0 et 1, qui représente la
+    tableaux. Une fonction prenant ces tableaux en entrée
+    retourne un nombre flottant compris entre 0 et 1, et qui représente la
     corrélation entre les deux entrées. Pour n entrées, la représentation sera
     donc une matrice carrée de taille n.\\
     Dans un souci d'évolution, il est possible d'ajouter de nouvelles fonctions
@@ -53,8 +53,9 @@
       \item L'utilisateur aura à sa disposition une liste de configurations
       pré-établies, dont les suivantes :
       \begin{itemize}
-        \item Les entrées les plus corrélées sont plus fortes,
-        \item Les entrées les moins corrélées sont plus fortes.
+        \item Augmenter le volume des paires d'entrées les plus corrélées
+        \item Augmenter le volume des paires d'entrées les moins corrélées
+        \item Augmenter le volumes des entrées dont la somme des indices de corrélation avec toutes les autres entrées est la plus élevée
       \end{itemize}
       \item L'utilisateur pourra ajouter une nouvelle configuration, suivant
       une signature donnée.
