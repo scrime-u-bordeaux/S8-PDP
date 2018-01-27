@@ -22,30 +22,49 @@
   \maketitle
   \section{Introduction}
     \paragraph{}
-    Ce projet consiste à réaliser un outil informatique d'analyse musicale dans
+    Ce projet consiste à améliorer un outil informatique d'analyse musicale dans
     l'optique de faciliter l'improvisation. À terme, cet outil aura pour
-    objectif de permettre à des musiciens de pouvoir se calibrer sur les membres
-    qui jouent le mieux ensemble. De plus, cet outil aura une portée
-    scientifique, dans le sens où il sera possible d'étudier l'adaptation des
-    musiciens grâce au retours fournis par l'outil. \\
+    objectif de permettre à des musiciens de pouvoir améliorer leur
+    improvisation. De plus, cet outil aura une portée scientifique, dans le sens
+    où il sera possible d'étudier l'adaptation des musiciens grâce au retours
+    fournis par l'outil. \\
     Cet outil est basé sur une plateforme externe appelée Bela \cite{BELA},
     qui est un système embarqué de traitement audio en temps réel.
   \section{Description et analyse de l'existant}
     \paragraph{}
     À ce jour, l'outil est capable de fournir une représentation graphique de la
-    corrélation des entrées audio. Ces entrées sont représentées par des
-    tableaux. Une fonction prenant ces tableaux en entrée
-    retourne un nombre flottant compris entre 0 et 1, et qui représente la
-    corrélation entre les deux entrées. Pour n entrées, la représentation sera
-    donc une matrice carrée de taille n.\\
-    Dans un souci d'évolution, il est possible d'ajouter de nouvelles fonctions
-    de calcul de corrélation. Il suffit de respecter une signature de méthode,
-    et de placer les fichiers sources dans le dossier prévu à cet effet.\\
+    corrélation des entrées audio. La corrélation est une notion centrale
+    concernant cet outil. La corrélation est en fait une relation statistique
+    entre deux ou plusieurs variables, et dans notre cas, il s'agit de la
+    relation entre deux échantillons audio.
+    \paragraph{}
+    Les entrées audio sont gérées par le système embarqué Bela, qui peut
+    recevoir 8 entrées analogiques (par l'intermédiaire de micros), 2 entrées
+    audio (par l'intermédiaire de prises Jack) et enfin la possibilité d'inclure
+    des fichiers audio (de type wav).\\
+    La mécanique principale du programme consiste à récupérer des échantillons
+    provenant des entrées audio, de les stocker dans des buffers, et d'appliquer
+    une fonction de calcul de corrélation sur chaque paire d'échantillons
+    (\'{E}chantillons correspondant à des entrées distinctes). Ces échantillons
+    sonores sont représentés sous la forme de vecteurs de nombres flottants.\\
+    De ce fait, le calcul de la corrélation prend en entrée deux vecteurs de
+    nombres flottants et renvoie un nombre flottant compris entre 0 et 1.
+    Dans l'état actuel de l'outil, la calcul de la corrélation correspond au
+    produit scalaire des deux vecteurs de flottants passés en entrée. Cependant,
+    grâce au fichier de configuration de l'outil, il est possible de modifier la
+    méthode de calcul de cette corrélation.
+    \paragraph{}
+    Enfin, une fois les coefficients de corrélation sont calculés, ceux-ci sont
+    affichés suivant une matrice de corrélation, où $x_{i,j}$ correspond au
+    coefficient de corrélation entre l'entrée i et l'entrée j.\\
+    Sachant cela, la matrice de corrélation obtenue est donc une matrice
+    symétrique (où $x_{i,j} = x_{j,i}$) et la diagonale de celle-ci est égale à
+    1 ($x_{i,i} = 1$).
   \section{Description des besoins}
     \subsection{Besoins fonctionnels}
     \paragraph{}
     \begin{itemize}
-      \item Présenter un retour sonore à l'utilisateur à partir de la matrice de 
+      \item Présenter un retour sonore à l'utilisateur à partir de la matrice de
       corrélation. Il pourra dépendre d'une configuration choisie par l'utilisateur.
       \item On pourra présenter un retour sonore en temps réel à l'utilisateur sous
       forme d'un métronome destiné aux artistes et qui s'adapte dynamiquement au son
