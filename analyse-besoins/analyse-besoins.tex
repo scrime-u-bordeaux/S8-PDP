@@ -22,11 +22,11 @@
   \maketitle
   \section{Introduction}
     \paragraph{}
-    Ce projet consiste à améliorer un outil informatique d'analyse musicale dans
-    l'optique de faciliter l'improvisation. À terme, cet outil aura pour
+    Ce projet consiste à améliorer un outil informatique d'analyse sonore dans
+    l'optique de faciliter l'improvisation musicale. À terme, cet outil aura pour
     objectif de permettre à des musiciens de pouvoir améliorer leur
     improvisation. De plus, cet outil aura une portée scientifique, dans le sens
-    où il sera possible d'étudier l'adaptation des musiciens grâce au retours
+    où il sera possible d'étudier l'adaptation des musiciens grâce aux retours
     fournis par l'outil. \\
     Cet outil est basé sur une plateforme externe appelée Bela \cite{BELA},
     qui est un système embarqué de traitement audio en temps réel.
@@ -45,11 +45,11 @@
     La mécanique principale du programme consiste à récupérer des échantillons
     provenant des entrées audio, de les stocker dans des buffers, et d'appliquer
     une fonction de calcul de corrélation sur chaque paire d'échantillons
-    (\'{E}chantillons correspondant à des entrées distinctes). Ces échantillons
+    (échantillons correspondant à des entrées distinctes). Ces échantillons
     sonores sont représentés sous la forme de vecteurs de nombres flottants.\\
     De ce fait, le calcul de la corrélation prend en entrée deux vecteurs de
     nombres flottants et renvoie un nombre flottant compris entre 0 et 1.
-    Dans l'état actuel de l'outil, la calcul de la corrélation correspond au
+    Dans l'état actuel de l'outil, le calcul de la corrélation correspond au
     produit scalaire des deux vecteurs de flottants passés en entrée. Cependant,
     grâce au fichier de configuration de l'outil, il est possible de modifier la
     méthode de calcul de cette corrélation.
