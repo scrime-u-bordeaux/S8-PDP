@@ -148,21 +148,60 @@ paramètres à renseigner ou à modifier sont les suivants:
 	      visibles. Actuellement, le rafraîchissement de la matrice est de l'ordre
 	      de la demi-seconde dans son fonctionnement normal.
 \end{itemize}
-\subsection{Scénarios, prototypes, diagrammes, etc.}
+\section{Scénario d'utilisation}
 \paragraph{}
-Nous allons décrire ci-après un scénario que nos clients ont imaginé :\\
-L'utilisateur utilise l'outil sur un groupe de musiciens. Des micros sont
-branchés sur les différentes entrées analogiques et chaque musicien dispose
-d'un retour son. L'utilisateur configure le fichier de configuration afin
-que les paramètres décrits ci-dessus soient correctement pris en compte
-par l'outil. Les musiciens se mettent à improviser comme bon leur semble,
-et l'on peut observer en temps réel les corrélations entre les différents
-musiciens. On pourra aussi observer une matrice dite de "mixage" qui
-affiche les différents poids des paires de musiciens en fonction d'une
-configuration par défaut. À tout moment, l'utilisateur peut choisir une
-configuration de mixage différente pour que le retour sonore change.\\
-L'intérêt est d'étudier comment les musiciens s'adaptent en fonction du
-retour sonore, donc en fonction de la configuration de mixage choisie.
+Nous allons décrire ci-après un scénario d'utilisation. Nous imaginons une
+configuration simple pour un scénario réalisable avec une version du projet où
+les besoins les plus essentiels aux yeux des clients ont été remplis.
+\begin{itemize}
+	\item Trois musiciens jouent et s'enregistrent ensemble
+	\item Ils veulent obtenir un retour sonore particulier : une version de leur
+	      morceau où la paire de musiciens la plus corrélée s'entend plus fort que le
+	      troisième musicien
+	\item Ils utilisent une version basique du logiciel et l'on suppose donc que
+	      les paramètres tels que la fonction de pré-traitement des entrées, la fonction
+	      de calcul du coefficient de corrélation et celle calculant sa conversion en
+	      triplet RGB auront été choisis par les développeurs
+\end{itemize}
+Les musiciens improvisent ensemble en tentant de s'accorder les uns avec les
+autres. Grâce au dispositif BELA, chaque instrument est enregistré sur une
+piste mono-instrumentale isolée. Le logiciel existant traite les données de
+leur enregistrement pour fournir la matrice de corrélation ; grâce à ce retour
+visuel, le groupe sait déjà quelle paire de musiciens est la plus corrélée à
+un instant t donné.
+\begin{figure}
+	\centering
+	\includegraphics[scale=0.10]{Matricecorrélation.png}
+\end{figure}
+\paragraph{}
+Plus la couleur aux indices de deux musiciens est proche du vert clair,
+meilleure est la corrélation de leur jeu au moment où cette matrice s'affiche.
+On peut voir par exemple qu'à l'instant \textit{t}, les musiciens M1 et M2
+sont plus corrélés que les autres couples de musiciens ; ils forment la paire
+de musiciens et de pistes mono-instrumentales la plus corrélée.
+\paragraph{}
+Pour "construire" le retour sonore, notre programme mixe l'enregistrement
+grâce aux données de cette matrice. À chaque instant \textit{t}, une valeur
+est attribuée à chaque paire de musiciens à partir de son indice de
+corrélation. La valeur la plus élevée, celle attribuée à la paire la plus
+corrélée, sert à produire un retour sonore sous la forme d'une copie de
+l'enregistrement initial où les deux pistes mono-instrumentales constituant
+cette paire sont augmentées en volume sonore. Cette paire est donc susceptible
+de varier tout au long du morceau : à chaque instant \textit{t}, la paire de
+musiciens augmentés en volume sonore peut changer.
+\paragraph{}
+Les musiciens peuvent alors étudier le retour sonore produit par notre logiciel
+et le comparer avec l'enregistrement non modifié par le logiciel. On peut
+alors imaginer diverses utilités à ce retour sonore :
+\begin{itemize}
+	\item Les musiciens pourront préférer conserver l'enregistrement modifié plutôt
+	      que l'original
+	\item Si deux musiciens sont plus régulièrement augmentés en volume sonore que
+	      leur partenaire tout au long du morceau modifié, ce troisième musicien pourra
+	      corriger son jeu en conséquence
+\end{itemize}
+
+\includegraphics[scale=0.10]{proto_2.png}
 \section{Diagramme de Gantt}
 \includegraphics[scale=0.35]{DiagrammeAnalyseBesoins.jpg}
 \bibliography{analyse-besoins}
