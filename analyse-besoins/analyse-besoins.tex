@@ -43,11 +43,17 @@ recevoir 8 entrées analogiques (par l'intermédiaire de micros), 2 entrées
 audio (par l'intermédiaire de prises Jack) et enfin la possibilité d'inclure
 des fichiers audio (de type wav).\\
 La mécanique principale du programme consiste à récupérer des échantillons
-provenant des entrées audio, de les stocker dans des buffers, et d'appliquer
-une fonction de calcul de corrélation sur chaque paire d'échantillons
-(échantillons correspondant à des entrées distinctes). Ces échantillons
-sonores sont représentés sous la forme de vecteurs de nombres flottants.\\
-De ce fait, le calcul de la corrélation prend en entrée deux vecteurs de
+provenant des entrées audio sur un temps donné ($\Delta t$), de les stocker dans
+un tableau de vecteur où chaque vecteur (de flottants) représente le signal d'une des entrées.
+Ensuite, le programme appliquera sur ces signaux un pré-traitement qui permettra
+de modifier les vecteurs afin de pouvoir baser le calcul de corrélation sur différentes
+caractéristiques de l'onde. Par exemple, le programme est capable de calculer
+l'enveloppe d’énergie d'une onde afin que le calcul de corrélation se fasse en fonction
+de cette enveloppe qui permettrais de comparer par exemple les timbres des instruments.
+Ensuite il applique une fonction de calcul de corrélation sur chaque paire d'échantillons.
+Cette fonction peut changer et permettra de comparer les vecteurs de différentes manière.
+\\
+Le calcul de la corrélation prend en entrée deux vecteurs de
 nombres flottants et renvoie un nombre flottant compris entre 0 et 1.
 Dans l'état actuel de l'outil, le calcul de la corrélation correspond au
 produit scalaire des deux vecteurs de flottants passés en entrée. Cependant,
@@ -65,88 +71,88 @@ Un autre élément central de cet outil est le fichier de configuration
 contenant les paramètres nécéssaires au bon fonctionnement du programme. Les
 paramètres à renseigner ou à modifier sont les suivants:
 \begin{itemize}
-	\item L'activation des effets et la taille des buffers correspondants
-	      (toutefois, l'ajout d'effets semble diminuer les performances du
-	      programme),
-	\item Le nombre d'entrées analogiques que l'on souhaite activer (de 0 à 8),
-	\item Le nombre d'entrées audio que l'on souhaite activer (de 0 à 2),
-	\item Les chemins relatifs vers des fichiers .wav que l'on souhaiterait
-	      ajouter en entrée,
-	\item Le nom du fichier (sans l'extension \verb!.cpp!) contenant la
-	      fonction de conversion du coefficient de corrélation en triplet RGB,
-	\item Le nom du fichier (sans l'extension \verb!.cpp!) contenant la
-	      fonction de calcul du coefficient de corrélation,
-	\item Le nom du fichier (sans l'extension \verb!.cpp!) contenant la
-	      fonction de pré-traitement des entrées.
+ \item L'activation des effets et la taille des buffers correspondants
+       (toutefois, l'ajout d'effets semble diminuer les performances du
+       programme),
+ \item Le nombre d'entrées analogiques que l'on souhaite activer (de 0 à 8),
+ \item Le nombre d'entrées audio que l'on souhaite activer (de 0 à 2),
+ \item Les chemins relatifs vers des fichiers .wav que l'on souhaiterait
+       ajouter en entrée,
+ \item Le nom du fichier (sans l'extension \verb!.cpp!) contenant la
+       fonction de conversion du coefficient de corrélation en triplet RGB,
+ \item Le nom du fichier (sans l'extension \verb!.cpp!) contenant la
+       fonction de calcul du coefficient de corrélation,
+ \item Le nom du fichier (sans l'extension \verb!.cpp!) contenant la
+       fonction de pré-traitement des entrées.
 \end{itemize}
 \section{Description des besoins}
 \subsection{Besoins fonctionnels}
 \paragraph{}
 \begin{itemize}
-	\item L'utilisateur pourra avoir un retour sonore, où les volumes des
-	      entrées seront modifiés selon un certain mixage (qui dépendra de la
-	      corrélation des entrées),
-	      \paragraph{}
-	      Il s'agit là de l'objectif principal de ce projet. L'utilisateur pourra
-	      obtenir un retour audio sur la sortie correspondante du système embarqué.
-	      Cependant, les volumes des différentes entrées seront modifiés, il y
-	      aura une étape de mixage pour modifier ces volumes, elle sera explicitée
-	      lors des prochains points.\\
-
-	\item L'utilisateur pourra choisir une configuration selon laquelle un
-	      vecteur de mixage sera créé,
-	      \paragraph{}
-	      Le mixage sera implémenté comme une fonction qui prendra en entrée la
-	      matrice contenant les coefficients de corrélation, et renverra en sortie
-	      un vecteur contenant les volumes attribués à chaque entrée.\\
-
-	\item L'utilisateur pourra ajouter une fonction de mixage, qu'il précisera
-	      dans le fichier de configuration,
-	      \paragraph{}
-	      Comme pour les étapes de pré-traitement, de calcul de corrélation, et de
-	      conversion vers un triplet RGB, il sera possible pour l'utilisateur de
-	      préciser dans le fichier de configuration quel fichier contient la
-	      fonction permettant d'obtenir le mixage souhaité. Nous avons évoqué avec
-	      les clients différents exemples de mixage, dont les suivants :
-	      \begin{itemize}
-	      	\item Augmenter le volume des paires d'entrées les plus corrélées,
-	      	\item Augmenter le volume des paires d'entrées les moins corrélées,
-	      	\item Augmenter le volume des entrées dont la somme des coefficients de
-	      	      corrélation avec toutes les autres entrées est la plus élevée.
-	      \end{itemize}
-	      \paragraph{}
-
-	\item L'utilisateur pourra observer ce vecteur de mixage sur la même page
-	      web où figure la matrice contenant les coefficients de corrélation,
-	      \paragraph{}
-	      Sachant que les utilisateurs de l'outil ne sont pas des développeurs de
-	      métier, un affichage graphique reste le meilleur moyen de représenter les
-	      informations importantes. La matrice contenant les coefficients de
-	      corrélation est représentée par une matrice de carrés colorés, et le
-	      code couleur est fourni par une fonction située dans un fichier dont le
-	      nom est précisé dans le fichier de configuration. De la même façon, le
-	      vecteur de mixage sera représenté par des carrés colorés, et le
-	      pourcentage du volume sera indiqué sous ces carrés.\\
-
-	\item L'utilisateur pourra changer la fenêtre temporelle de calcul de
-	      corrélation.
+ \item L'utilisateur pourra avoir un retour sonore, où les volumes des
+       entrées seront modifiés selon un certain mixage (qui dépendra de la
+       corrélation des entrées),
+       \paragraph{}
+       Il s'agit là de l'objectif principal de ce projet. L'utilisateur pourra
+       obtenir un retour audio sur la sortie correspondante du système embarqué.
+       Cependant, les volumes des différentes entrées seront modifiés, il y
+       aura une étape de mixage pour modifier ces volumes, elle sera explicitée
+       lors des prochains points.\\
+       
+ \item L'utilisateur pourra choisir une configuration selon laquelle un
+       vecteur de mixage sera créé,
+       \paragraph{}
+       Le mixage sera implémenté comme une fonction qui prendra en entrée la
+       matrice contenant les coefficients de corrélation, et renverra en sortie
+       un vecteur contenant les volumes attribués à chaque entrée.\\
+       
+ \item L'utilisateur pourra ajouter une fonction de mixage, qu'il précisera
+       dans le fichier de configuration,
+       \paragraph{}
+       Comme pour les étapes de pré-traitement, de calcul de corrélation, et de
+       conversion vers un triplet RGB, il sera possible pour l'utilisateur de
+       préciser dans le fichier de configuration quel fichier contient la
+       fonction permettant d'obtenir le mixage souhaité. Nous avons évoqué avec
+       les clients différents exemples de mixage, dont les suivants :
+       \begin{itemize}
+        \item Augmenter le volume des paires d'entrées les plus corrélées,
+        \item Augmenter le volume des paires d'entrées les moins corrélées,
+        \item Augmenter le volume des entrées dont la somme des coefficients de
+              corrélation avec toutes les autres entrées est la plus élevée.
+       \end{itemize}
+       \paragraph{}
+       
+ \item L'utilisateur pourra observer ce vecteur de mixage sur la même page
+       web où figure la matrice contenant les coefficients de corrélation,
+       \paragraph{}
+       Sachant que les utilisateurs de l'outil ne sont pas des développeurs de
+       métier, un affichage graphique reste le meilleur moyen de représenter les
+       informations importantes. La matrice contenant les coefficients de
+       corrélation est représentée par une matrice de carrés colorés, et le
+       code couleur est fourni par une fonction située dans un fichier dont le
+       nom est précisé dans le fichier de configuration. De la même façon, le
+       vecteur de mixage sera représenté par des carrés colorés, et le
+       pourcentage du volume sera indiqué sous ces carrés.\\
+       
+ \item L'utilisateur pourra changer la fenêtre temporelle de calcul de
+       corrélation.
 \end{itemize}
 \subsection{Besoins non-fonctionnels}
 \begin{itemize}
-	\item La fonction réalisant le mixage devra être générique.
-	      \paragraph{}
-	      Comme dit plus haut, il existe déjà trois étapes du programme qui
-	      nécessitent des fonctions génériques, et ces fonctions (et leur fichier
-	      correspondant) sont précisées dans le fichier de configuration (à
-	      modifier avant l'éxécution du programme). De la même manière, la
-	      fonction réalisant le mixage des entrées devra respecter les mêmes
-	      conditions.
-	\item L'ajout d'un mixage ne devra pas perturber le déroulement du programme.
-	      \paragraph{}
-	      Dans le rapport émis par le précédent développeur, il est indiqué qu'à
-	      partir de 15 entrées, ou avec l'ajout d'effets, des latences sont
-	      visibles. Actuellement, le rafraîchissement de la matrice est de l'ordre
-	      de la demi-seconde dans son fonctionnement normal.
+ \item La fonction réalisant le mixage devra être générique.
+       \paragraph{}
+       Comme dit plus haut, il existe déjà trois étapes du programme qui
+       nécessitent des fonctions génériques, et ces fonctions (et leur fichier
+       correspondant) sont précisées dans le fichier de configuration (à
+       modifier avant l'éxécution du programme). De la même manière, la
+       fonction réalisant le mixage des entrées devra respecter les mêmes
+       conditions.
+ \item L'ajout d'un mixage ne devra pas perturber le déroulement du programme.
+       \paragraph{}
+       Dans le rapport émis par le précédent développeur, il est indiqué qu'à
+       partir de 15 entrées, ou avec l'ajout d'effets, des latences sont
+       visibles. Actuellement, le rafraîchissement de la matrice est de l'ordre
+       de la demi-seconde dans son fonctionnement normal.
 \end{itemize}
 \section{Scénario d'utilisation}
 \paragraph{}
@@ -154,14 +160,14 @@ Nous allons décrire ci-après un scénario d'utilisation. Nous imaginons une
 configuration simple pour un scénario réalisable avec une version du projet où
 les besoins les plus essentiels aux yeux des clients ont été remplis.
 \begin{itemize}
-	\item Trois musiciens jouent et s'enregistrent ensemble
-	\item Ils veulent obtenir un retour sonore particulier : une version de leur
-	      morceau où la paire de musiciens la plus corrélée s'entend plus fort que le
-	      troisième musicien
-	\item Ils utilisent une version basique du logiciel et l'on suppose donc que
-	      les paramètres tels que la fonction de pré-traitement des entrées, la fonction
-	      de calcul du coefficient de corrélation et celle calculant sa conversion en
-	      triplet RGB auront été choisis par les développeurs
+ \item Trois musiciens jouent et s'enregistrent ensemble
+ \item Ils veulent obtenir un retour sonore particulier : une version de leur
+       morceau où la paire de musiciens la plus corrélée s'entend plus fort que le
+       troisième musicien
+ \item Ils utilisent une version basique du logiciel et l'on suppose donc que
+       les paramètres tels que la fonction de pré-traitement des entrées, la fonction
+       de calcul du coefficient de corrélation et celle calculant sa conversion en
+       triplet RGB auront été choisis par les développeurs
 \end{itemize}
 Les musiciens improvisent ensemble en tentant de s'accorder les uns avec les
 autres. Grâce au dispositif BELA, chaque instrument est enregistré sur une
@@ -171,8 +177,8 @@ visuel, le groupe sait déjà quelle paire de musiciens est la plus corrélée �
 un instant t donné.
 \newpage
 \begin{figure}
-	\centering
-	\includegraphics[scale=0.50]{matrice_correlation.png}
+ \centering
+ \includegraphics[scale=0.50]{matrice_correlation.png}
 \end{figure}
 \paragraph{}
 Plus la couleur aux indices de deux musiciens est proche du vert clair,
@@ -195,11 +201,11 @@ Les musiciens peuvent alors étudier le retour sonore produit par notre logiciel
 et le comparer avec l'enregistrement non modifié par le logiciel. On peut
 alors imaginer diverses utilités à ce retour sonore :
 \begin{itemize}
-	\item Les musiciens pourront préférer conserver l'enregistrement modifié plutôt
-	      que l'original
-	\item Si deux musiciens sont plus régulièrement augmentés en volume sonore que
-	      leur partenaire tout au long du morceau modifié, ce troisième musicien pourra
-	      corriger son jeu en conséquence
+ \item Les musiciens pourront préférer conserver l'enregistrement modifié plutôt
+       que l'original
+ \item Si deux musiciens sont plus régulièrement augmentés en volume sonore que
+       leur partenaire tout au long du morceau modifié, ce troisième musicien pourra
+       corriger son jeu en conséquence
 \end{itemize}
 
 
