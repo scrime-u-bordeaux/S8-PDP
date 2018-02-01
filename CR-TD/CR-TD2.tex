@@ -1,0 +1,77 @@
+\documentclass[a4paper]{article}
+\usepackage[english]{babel}
+\usepackage[utf8x]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[a4paper,top=3cm,bottom=2cm,left=3cm,right=3cm,marginparwidth=1.75cm]{geometry}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage[colorinlistoftodos]{todonotes}
+\usepackage[colorlinks=true, allcolors=blue]{hyperref}
+
+\title{Projet de Programmation : Compte-rendu de TD n°2}
+\author{Lucas Vivas, Paul Simorre, Gautier Lamarque et Alexandre Casanova--Franger}
+
+\begin{document}
+\maketitle
+
+\section*{Introduction}
+
+\paragraph{}
+Durant cette deuxième séance de TD, nous avons fait le point sur le compte-rendu de la semaine précedente, sur notre vision globale et sur des notions centrales du projet. Comme l'a noté M. Narbel, notre version du cahier des besoins s'est précisée par rapport à la version initiale. Cependant, il reste de nombreux points qui méritent d'être éclaircis.
+Ce cahier des besoins devrait être pensé comme une documentation, qui doit être suffisamment claire et précise pour que des personnes extérieures au projet puissent s'en servir de support pour continuer à améliorer cet outil.
+
+\section*{Des précisions qu'il faut apporter}
+
+\begin{itemize}
+
+\item Pour que la compréhension de notre projet soit plus complète, nous devons éviter les mots ou expressions floues dans notre introduction pour que les lecteurs se fassent une idée précise du travail à effectuer.
+
+\item La notion de corrélation est la notion centrale de ce projet. De ce fait, il faudrait qu'une définition claire et précise de celle-ci soit mise en évidence dans le cahier des besoins. De plus, il faudrait obtenir des clients une explication quant à l'implémentation déjà existante de la fonction de calcul de la corrélation. Enfin, nous allons ajouter des détails techniques (mathématiques en l'occurence) sur le focntionnement de cette fonction de calcul.
+
+\item Il est important de rappeler l'historique de l'outil pour situer le projet en citant les documents de nos prédécesseurs (rapports de stage, mémoire, etc.) et les mettre dans les références de l'existant.
+
+\item Dans l'optique où les tests de l'outil prendront une part importante de notre travail, il faut absolument comprendre les tenants et les aboutissants du pré-traitement et du calcul de corrélation de nos entrées audio. De cette façon, nous pourrons établir des tests avec des éléments audio pertinents (par exemple, trouver des sons complètement décorrélés, ou très fortement corrélés et montrer de quelle caractéristique physique dépend leur corrélation, ou non).
+
+\item Une des composantes principales de notre projet est le système embarqué Bela, et dans un souci de précision, nous allons décrire davantage cet outil à l'intention des lecteurs.
+
+\end{itemize}
+
+\section*{Une partie du projet consacrée aux tests}
+
+\begin{itemize}
+
+\item Comme indiqué plus haut, les tests vont être une partie importante de ce projet ; en effet, l'outil que nous développons trouve un intérêt majeur dans la compréhension de l'improvisation musicale. Des tests vont nous aider à évaluer et à comprendre cette notion subjective d'improvisation.
+
+\item Ces tests devront être effectués avec des cas élémentaires comme des sinusoïdes, des notes simples, ou des morceaux de musique très basiques, afin d'établir une correspondance entre les caractéristiques physiques de ces éléments de test et leurs coefficients de corrélation calculés par le programme.
+
+\item Nous testerons également le retour audio que nous souhaitons mettre en œuvre, avec des cas limites, extrêmes et standards. De manière générale, chaque élément que nous souhaiterons implémenter devra au préalable être le sujet de tests.
+
+\item Enfin, nous testerons le système embarqué, pour le placer dans des situations critiques, notamment en augmentant le nombre d'entrées (grâce aux nombre élevé de fichiers numériques pouvant être ajoutés) et établir les limites du dispositif matériel.
+
+\item La description de ces tests pourra figurer dans la liste des besoins non-fonctionnels. L'intégralité ne figurera sûrement pas dans la version à rendre le 02/02, mais plutôt dans les versions ultérieures.
+
+\end{itemize}
+
+\section*{De nouveaux objectifs pour le projet}
+
+\begin{itemize}
+
+\item Nous pourrions proposer un système qui suivrait la progression des musiciens arrivant à jouer entre eux en utilisant les données disponibles dans le fichier de logs.
+
+\item Pour que notre partie consacrée aux tests soit pertinente et étoffée, nous allons, avec l'aide de nos clients, implémenter de nouvelles fonctions de calcul de corrélation. Parmi les idées avancées, il était question de mettre en place une fonction de calcul de corrélation aléatoire, qui aurait pour but d'être testée en situation réelle afin de mesurer l'impact sur des acteurs réels, dans un environnement auditif désorienté.
+
+\end{itemize}
+
+\section*{Les éléments à ajouter au cahier des besoins}
+
+\begin{itemize}
+
+\item Nous allons ajouter un diagramme de déploiement, pertinent dans le cas de notre projet.
+
+\item Nous devons rajouter dans la liste des besoins non-fonctionnels la problématique de faisabilité. Comme nous dépendons d'éléments externes pour la réalisation de ce projet, il est important de déceler les éventuels problèmes liés à cet aspect technique.
+
+\item Afin que le déroulement du programme soit le plus clair possible, nous allons ajouter des schémas représentant le cycle de vie des données à travers les différentes étapes du programme. Notamment, le passage entre la matrice de corrélation et la variation des volumes (boîte noire de mixage) en sortie.
+
+\item Il sera mis en place des "use cases" permettant de définir quels sont les différents types d'acteurs intéragissant avec le système, quelles sont leurs intéractions et libertés permises, ainsi que leurs limites.
+\end{itemize}
+\end{document}
