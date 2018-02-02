@@ -166,12 +166,15 @@ paramètres à renseigner ou à modifier sont les suivants:
 	      modifier avant l'éxécution du programme). De la même manière, la
 	      fonction réalisant le mixage des entrées devra respecter les mêmes
 	      conditions.
-	\item L'ajout d'un mixage ne devra pas perturber le déroulement du programme.
+	\item L'ajout d'une fonction de mixage ne devra pas créer de latences.
 	      \paragraph{}
 	      Dans le rapport émis par le précédent développeur, il est indiqué qu'à
 	      partir de 15 entrées, ou avec l'ajout d'effets, des latences sont
 	      visibles. Actuellement, le rafraîchissement de la matrice est de l'ordre
-	      de la demi-seconde dans son fonctionnement normal.
+	      de la demi-seconde dans son fonctionnement normal. De ce fait, l'étape
+	      de calcul du mixage en sortie ne devra pas être trop lourde en terme de
+	      temps de calcul, sous peine d'entraîner de fortes latences à l'affichage.
+	\item 
 \end{itemize}
 \section{Scénario d'utilisation}
 \paragraph{}
