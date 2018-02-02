@@ -153,10 +153,21 @@ paramètres à renseigner ou à modifier sont les suivants:
        vecteur de mixage sera représenté par des carrés colorés, et le
        pourcentage du volume sera indiqué sous ces carrés.\\
        
- \item L'utilisateur pourra changer la fenêtre temporelle de calcul de
-       corrélation.
+ \item L'utilisateur pourra changer les paramètres d'utilisation directement sur
+       l'interface web et non en passant par le fichier de configuration.
+       \paragraph{}
+       Soit tous les paramètres du fichier de configuration qui sont la taille des buffers
+       des échantillons, mettre des effets, et régler le nombre d'entrées analogiques.
        
-       /item L'utilisateur pourra
+ \item l'utilisateur pourra sélectionner la fonction de corrélation temporelle.
+       \paragraph{}
+       Actuellement, l'unique fonction de calcul de corrélation existante est
+       la fonction de corrélation statique qui va calculer un coefficient de corrélation
+       en fonction de tout les points de l’échantillon. Cette nouvelle fonction
+       calculera, à l'aide de transformée de Fourier, le temps ($\tau$) de latence
+       entre deux signaux.
+       
+       
 \end{itemize}
 \subsection{Besoins non-fonctionnels}
 \begin{itemize}
