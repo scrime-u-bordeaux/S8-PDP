@@ -23,13 +23,23 @@
 \section{Introduction}
 \paragraph{}
 Ce projet consiste à améliorer un outil informatique d'analyse sonore dans
-l'optique de faciliter l'improvisation musicale. À terme, cet outil aura pour
-objectif de permettre à des musiciens de pouvoir améliorer leur
-improvisation. De plus, cet outil aura une portée scientifique, dans le sens
-où il sera possible d'étudier l'adaptation des musiciens grâce aux retours
-fournis par l'outil. \\
+l'optique d'approfondir notre compréhension de l'improvisation musicale. À
+terme, cet outil aura pour objectif de permettre à des musiciens d'avoir un
+aperçu discret (donc quantifié) de leur improvisation. De plus, cet outil aura
+une portée scientifique, dans le sens où il sera possible d'étudier l'adaptation
+des musiciens grâce aux retours fournis par l'outil. \\
 Cet outil est basé sur une plateforme externe appelée Bela \cite{BELA},
 qui est un système embarqué de traitement audio en temps réel.
+\paragraph{}
+À l'origine, six étudiants de l'ENSEIRB-MATMECA ont réalisé un projet similaire
+en début d'année 2017, mais ils n'ont pas utilisé le système embarqué Bela. Ils
+ont construit un programme en Python, et ont géré les entrées/sorties audio
+grâce à des librairies externes. Dans les mois qui suivirent, un de ces six
+étudiants, Jérémy Lixandre, a réalisé un stage de deux mois au SCRIME (Studio
+de Création et de Recherche en Informatique et Musiques Expérimentales) et a
+recommencé le même projet, mais cette fois en se basant sur Bela et son langage
+de programmation, le C++. Notre projet est donc la poursuite du travail réalisé
+par Jérémy Lixandre durant son stage.
 \section{Description et analyse de l'existant}
 \paragraph{}
 À ce jour, l'outil est capable de fournir une représentation graphique de la
@@ -58,7 +68,10 @@ nombres flottants et renvoie un nombre flottant compris entre 0 et 1.
 Dans l'état actuel de l'outil, le calcul de la corrélation correspond au
 produit scalaire des deux vecteurs de flottants passés en entrée. Cependant,
 grâce au fichier de configuration de l'outil, il est possible de modifier la
-méthode de calcul de cette corrélation.
+méthode de calcul de cette corrélation.\\
+Notre prédécesseur devait reconstruire un outil intégralement, et c'est dans
+cette optique de simplicité qu'il a fait le choix d'implémenter une version
+basique du calcul de corrélation.
 \paragraph{}
 Enfin, une fois les coefficients de corrélation sont calculés, ceux-ci sont
 affichés suivant une matrice de corrélation, où $x_{i,j}$ correspond au
@@ -85,6 +98,12 @@ paramètres à renseigner ou à modifier sont les suivants:
  \item Le nom du fichier (sans l'extension \verb!.cpp!) contenant la
        fonction de pré-traitement des entrées.
 \end{itemize}
+\begin{figure}[h]
+ \caption{\label{bela_process}Déroulement du programme existant}
+ \centering
+ \includegraphics[scale=0.40]{bela_process.jpg}
+\end{figure}
+\newpage
 \section{Description des besoins}
 \subsection{Besoins fonctionnels}
 \paragraph{}
@@ -137,7 +156,7 @@ paramètres à renseigner ou à modifier sont les suivants:
  \item L'utilisateur pourra changer la fenêtre temporelle de calcul de
        corrélation.
        
-       /item L'utilisateur pourra 
+       /item L'utilisateur pourra
 \end{itemize}
 \subsection{Besoins non-fonctionnels}
 \begin{itemize}
@@ -178,7 +197,7 @@ leur enregistrement pour fournir la matrice de corrélation ; grâce à ce retou
 visuel, le groupe sait déjà quelle paire de musiciens est la plus corrélée à
 un instant t donné.
 \newpage
-\begin{figure}
+\begin{figure}[h]
  \centering
  \includegraphics[scale=0.50]{matrice_correlation.png}
 \end{figure}
