@@ -117,13 +117,23 @@ paramètres à renseigner ou à modifier sont les suivants:
        Cependant, les volumes des différentes entrées seront modifiés, il y
        aura une étape de mixage pour modifier ces volumes, elle sera explicitée
        lors des prochains points.
-       \paragraph{}
+       \\
        Afin de vérifier le bon fonctionnement ce retour audio, nous allons tester
        différents cas :
        \begin{itemize}
-        \item Le cas limite où nous prenons un signal aléatoire que nous dédoublons, avec
-              cela le coefficient de corrélation, peu importe les prétraitement ou la fonction de
-              corrélation utilisé, sera égal à 1.
+        \item Le cas limite où nous prenons un signal aléatoire (de moyenne égale à 0 mais de variance aléatoire)
+              que nous dédoublons, avec
+              cela le coefficient de corrélation, peu importe les prétraitements ou la fonction de
+              corrélation utilisée, sera égal à 1.
+        \item Le cas pour tester la cohérence serait de prendre une entrée aléatoire
+              qu'on dédouble puis à prendre le double et de le décaler au fur et à mesure dans le temps
+              afin de voir si la corrélation diminue ou non.
+        \item Un autre test positif serait, comme pour les tests précédents, de prendre deux fois la même
+              entrée aléatoire puis de rajouter un bruit sur le doublon puis d'augmenter
+              ce bruit afin d'observer la diminution de la corrélation.
+        \item Enfin un dernier test de limite serait de prendre un signal aléatoire
+              et un autre signal muet (de variance et de moyenne égale à 0) et le résultat
+              devrait être un coefficient de corrélation égale à 0.
        \end{itemize}
        
        
