@@ -123,7 +123,7 @@ paramètres à renseigner ou à modifier sont les suivants:
        \begin{itemize}
         \item Le cas limite où nous prenons un signal aléatoire que nous dédoublons, avec
               cela le coefficient de corrélation, peu importe les prétraitement ou la fonction de
-              corrélation utilisé, sera égal à 1.  
+              corrélation utilisé, sera égal à 1.
        \end{itemize}
        
        
@@ -188,13 +188,20 @@ paramètres à renseigner ou à modifier sont les suivants:
        modifier avant l'éxécution du programme). De la même manière, la
        fonction réalisant le mixage des entrées devra respecter les mêmes
        conditions.
- \item L'ajout d'un mixage ne devra pas perturber le déroulement du programme.
+ \item L'ajout d'une fonction de mixage ne devra pas créer de latences.
        \paragraph{}
        Dans le rapport émis par le précédent développeur, il est indiqué qu'à
        partir de 15 entrées, ou avec l'ajout d'effets, des latences sont
        visibles. Actuellement, le rafraîchissement de la matrice est de l'ordre
-       de la demi-seconde dans son fonctionnement normal.
+       de la demi-seconde dans son fonctionnement normal. De ce fait, l'étape
+       de calcul du mixage en sortie ne devra pas être trop lourde en terme de
+       temps de calcul, sous peine d'entraîner de fortes latences à l'affichage.
 \end{itemize}
+\begin{figure}[h]
+ \caption{\label{diag_deploiement}Diagramme de déploiement}
+ \centering
+ \includegraphics[scale=0.30]{diag_deploiement.jpg}
+\end{figure}
 \section{Scénario d'utilisation}
 \paragraph{}
 Nous allons décrire ci-après un scénario d'utilisation. Nous imaginons une
@@ -216,7 +223,6 @@ piste mono-instrumentale isolée. Le logiciel existant traite les données de
 leur enregistrement pour fournir la matrice de corrélation ; grâce à ce retour
 visuel, le groupe sait déjà quelle paire de musiciens est la plus corrélée à
 un instant t donné.
-\newpage
 \begin{figure}[h]
  \centering
  \includegraphics[scale=0.50]{matrice_correlation.png}
