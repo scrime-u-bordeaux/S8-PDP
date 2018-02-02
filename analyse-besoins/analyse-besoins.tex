@@ -117,25 +117,15 @@ paramètres à renseigner ou à modifier sont les suivants:
        Cependant, les volumes des différentes entrées seront modifiés, il y
        aura une étape de mixage pour modifier ces volumes, elle sera explicitée
        lors des prochains points.
-       \\
-       Afin de vérifier le bon fonctionnement ce retour audio, nous allons tester
+       \paragraph{}
+       Afin de vérifier le bon fonctionnement de ce retour audio, nous allons tester
        différents cas :
        \begin{itemize}
-        \item Le cas limite où nous prenons un signal aléatoire (de moyenne égale à 0 mais de variance aléatoire)
-              que nous dédoublons, avec
-              cela le coefficient de corrélation, peu importe les prétraitements ou la fonction de
-              corrélation utilisée, sera égal à 1.
-        \item Le cas pour tester la cohérence serait de prendre une entrée aléatoire
-              qu'on dédouble puis à prendre le double et de le décaler au fur et à mesure dans le temps
-              afin de voir si la corrélation diminue ou non.
-        \item Un autre test positif serait, comme pour les tests précédents, de prendre deux fois la même
-              entrée aléatoire puis de rajouter un bruit sur le doublon puis d'augmenter
-              ce bruit afin d'observer la diminution de la corrélation.
-        \item Enfin un dernier test de limite serait de prendre un signal aléatoire
-              et un autre signal muet (de variance et de moyenne égale à 0) et le résultat
-              devrait être un coefficient de corrélation égale à 0.
+        \item Le cas limite où nous prenons un signal aléatoire que nous dédoublons ; avec
+              cela, le coefficient de corrélation, peu importe les pré-traitements ou la fonction de
+              corrélation utilisée, devra être égal à 1.
        \end{itemize}
-       \\
+       
        
  \item L'utilisateur pourra choisir une configuration selon laquelle un
        vecteur de mixage sera créé,
@@ -160,8 +150,8 @@ paramètres à renseigner ou à modifier sont les suivants:
        \end{itemize}
        \paragraph{}
        
- \item L'utilisateur pourra observer ce vecteur de mixage sur la même page
-       web où figure la matrice contenant les coefficients de corrélation,
+ \item L'utilisateur pourra observer ce vecteur de mixage sur la page
+       web où figure la matrice des coefficients de corrélation.
        \paragraph{}
        Sachant que les utilisateurs de l'outil ne sont pas des développeurs de
        métier, un affichage graphique reste le meilleur moyen de représenter les
@@ -175,15 +165,15 @@ paramètres à renseigner ou à modifier sont les suivants:
  \item L'utilisateur pourra changer les paramètres d'utilisation directement sur
        l'interface web et non en passant par le fichier de configuration.
        \paragraph{}
-       Soit tous les paramètres du fichier de configuration qui sont la taille des buffers
+       Soit tous les paramètres du fichier de configuration : la taille des buffers
        des échantillons, mettre des effets, et régler le nombre d'entrées analogiques.
        
- \item l'utilisateur pourra sélectionner la fonction de corrélation temporelle.
+ \item L'utilisateur pourra sélectionner la fonction de corrélation temporelle.
        \paragraph{}
        Actuellement, l'unique fonction de calcul de corrélation existante est
        la fonction de corrélation statique qui va calculer un coefficient de corrélation
        en fonction de tout les points de l’échantillon. Cette nouvelle fonction
-       calculera, à l'aide de transformée de Fourier, le temps ($\tau$) de latence
+       calculera, à l'aide de la transformée de Fourier, le temps ($\tau$) de latence
        entre deux signaux.
        
        
