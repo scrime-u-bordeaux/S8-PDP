@@ -23,38 +23,57 @@
 \section{Introduction}
 \paragraph{}
 Ce projet consiste à améliorer un outil informatique d'analyse sonore dans
-l'optique de faciliter l'improvisation musicale. À terme, cet outil aura pour
-objectif de permettre à des musiciens de pouvoir améliorer leur
-improvisation. De plus, cet outil aura une portée scientifique, dans le sens
-où il sera possible d'étudier l'adaptation des musiciens grâce aux retours
-fournis par l'outil. \\
+l'optique d'approfondir notre compréhension de l'improvisation musicale. À
+terme, cet outil aura pour objectif de permettre à des musiciens d'avoir un
+aperçu discret (donc quantifié) de leur improvisation. De plus, cet outil aura
+une portée scientifique, dans le sens où il sera possible d'étudier l'adaptation
+des musiciens grâce aux retours fournis par l'outil. \\
 Cet outil est basé sur une plateforme externe appelée Bela \cite{BELA},
 qui est un système embarqué de traitement audio en temps réel.
+\paragraph{}
+À l'origine, six étudiants de l'ENSEIRB-MATMECA ont réalisé un projet similaire
+en début d'année 2017, mais ils n'ont pas utilisé le système embarqué Bela. Ils
+ont construit un programme en Python, et ont géré les entrées/sorties audio
+grâce à des librairies externes. Dans les mois suivants, un de ces six
+étudiants, Jérémy Lixandre, a réalisé un stage de deux mois au SCRIME (Studio
+de Création et de Recherche en Informatique et Musiques Expérimentales) et a
+recommencé le même projet, mais cette fois en se basant sur Bela et son langage
+de programmation, le C++. Notre projet est donc la poursuite du travail réalisé
+par Jérémy Lixandre durant son stage\cite{JLR}.
 \section{Description et analyse de l'existant}
 \paragraph{}
 À ce jour, l'outil est capable de fournir une représentation graphique de la
 corrélation des entrées audio. La corrélation est une notion centrale
 concernant cet outil. La corrélation est en fait une relation statistique
 entre deux ou plusieurs variables, et dans notre cas, il s'agit de la
-relation entre deux échantillons audio.
+relation entre deux échantillons audio\cite{CPR}.
 \paragraph{}
 Les entrées audio sont gérées par le système embarqué Bela, qui peut
 recevoir 8 entrées analogiques (par l'intermédiaire de micros), 2 entrées
 audio (par l'intermédiaire de prises Jack) et enfin la possibilité d'inclure
 des fichiers audio (de type wav).\\
 La mécanique principale du programme consiste à récupérer des échantillons
-provenant des entrées audio, de les stocker dans des buffers, et d'appliquer
-une fonction de calcul de corrélation sur chaque paire d'échantillons
-(échantillons correspondant à des entrées distinctes). Ces échantillons
-sonores sont représentés sous la forme de vecteurs de nombres flottants.\\
-De ce fait, le calcul de la corrélation prend en entrée deux vecteurs de
+provenant des entrées audio sur un temps donné ($\Delta t$), de les stocker dans
+un tableau de vecteurs où chaque vecteur (de flottants) représente le signal d'une des entrées.
+Ensuite, le programme appliquera sur ces signaux un pré-traitement qui permettra
+de modifier les vecteurs afin de pouvoir baser le calcul de corrélation sur différentes
+caractéristiques de l'onde. Par exemple, le programme est capable de calculer
+l'enveloppe d’énergie d'une onde afin que le calcul de corrélation se fasse en fonction
+de cette enveloppe qui permettrait de comparer par exemple les timbres des instruments.
+Ensuite il applique une fonction de calcul de corrélation sur chaque paire d'échantillons.
+Cette fonction peut changer et permettra de comparer les vecteurs de différentes manière.
+\\
+Le calcul de la corrélation prend en entrée deux vecteurs de
 nombres flottants et renvoie un nombre flottant compris entre 0 et 1.
 Dans l'état actuel de l'outil, le calcul de la corrélation correspond au
 produit scalaire des deux vecteurs de flottants passés en entrée. Cependant,
 grâce au fichier de configuration de l'outil, il est possible de modifier la
-méthode de calcul de cette corrélation.
+méthode de calcul de cette corrélation.\\
+Face à la complexité que représente la création d'un tel outil, notre
+prédécesseur a fait le choix d'implémenter une version simplifiée du calcul
+de corrélation.
 \paragraph{}
-Enfin, une fois les coefficients de corrélation sont calculés, ceux-ci sont
+Enfin, une fois que les coefficients de corrélation sont calculés, ceux-ci sont
 affichés suivant une matrice de corrélation, où $x_{i,j}$ correspond au
 coefficient de corrélation entre l'entrée i et l'entrée j.\\
 Sachant cela, la matrice de corrélation obtenue est donc une matrice
@@ -79,6 +98,12 @@ paramètres à renseigner ou à modifier sont les suivants:
 	\item Le nom du fichier (sans l'extension \verb!.cpp!) contenant la
 	      fonction de pré-traitement des entrées.
 \end{itemize}
+\begin{figure}[h]
+	\caption{\label{bela_process}Déroulement du programme existant}
+	\centering
+	\includegraphics[scale=0.40]{bela_process.jpg}
+\end{figure}
+\newpage
 \section{Description des besoins}
 \subsection{Besoins fonctionnels}
 \paragraph{}
@@ -91,7 +116,26 @@ paramètres à renseigner ou à modifier sont les suivants:
 	      obtenir un retour audio sur la sortie correspondante du système embarqué.
 	      Cependant, les volumes des différentes entrées seront modifiés, il y
 	      aura une étape de mixage pour modifier ces volumes, elle sera explicitée
-	      lors des prochains points.\\
+	      lors des prochains points.
+	      \paragraph{}
+	      Afin de vérifier le bon fonctionnement ce retour audio, nous allons tester
+	      différents cas :
+	      \begin{itemize}
+	      	\item Le cas limite où nous prenons un signal aléatoire (de moyenne égale à 0 mais de variance aléatoire)
+	      	      que nous dédoublons, avec
+	      	      cela le coefficient de corrélation, peu importe les prétraitements ou la fonction de
+	      	      corrélation utilisée, sera égal à 1.
+	      	\item Le cas pour tester la cohérence serait de prendre une entrée aléatoire
+	      	      qu'on dédouble puis de prendre le double et de le décaler au fur et à mesure dans le temps
+	      	      afin de voir si la corrélation diminue ou non.
+	      	\item Un autre test positif serait, comme pour les tests précédents, de prendre deux fois la même
+	      	      entrée aléatoire puis de rajouter un bruit sur le doublon puis d'augmenter
+	      	      ce bruit afin d'observer la diminution de la corrélation.
+	      	\item Enfin un dernier test de limite serait de prendre un signal aléatoire
+	      	      et un autre signal muet (de variance et de moyenne égale à 0) et le résultat
+	      	      devrait être un coefficient de corrélation égal à 0.
+	      \end{itemize}
+
 
 	\item L'utilisateur pourra choisir une configuration selon laquelle un
 	      vecteur de mixage sera créé,
@@ -116,8 +160,8 @@ paramètres à renseigner ou à modifier sont les suivants:
 	      \end{itemize}
 	      \paragraph{}
 
-	\item L'utilisateur pourra observer ce vecteur de mixage sur la même page
-	      web où figure la matrice contenant les coefficients de corrélation,
+	\item L'utilisateur pourra observer ce vecteur de mixage sur la page
+	      web où figure la matrice des coefficients de corrélation.
 	      \paragraph{}
 	      Sachant que les utilisateurs de l'outil ne sont pas des développeurs de
 	      métier, un affichage graphique reste le meilleur moyen de représenter les
@@ -128,8 +172,21 @@ paramètres à renseigner ou à modifier sont les suivants:
 	      vecteur de mixage sera représenté par des carrés colorés, et le
 	      pourcentage du volume sera indiqué sous ces carrés.\\
 
-	\item L'utilisateur pourra changer la fenêtre temporelle de calcul de
-	      corrélation.
+	\item L'utilisateur pourra changer les paramètres d'utilisation directement sur
+	      l'interface web et non en passant par le fichier de configuration.
+	      \paragraph{}
+	      Soit tous les paramètres du fichier de configuration : la taille des buffers
+	      des échantillons, mettre des effets, et régler le nombre d'entrées analogiques.
+
+	\item L'utilisateur pourra sélectionner la fonction de corrélation temporelle.
+	      \paragraph{}
+	      Actuellement, l'unique fonction de calcul de corrélation existante est
+	      la fonction de corrélation statique qui va calculer un coefficient de corrélation
+	      en fonction de tous les points de l’échantillon. Cette nouvelle fonction
+	      calculera, à l'aide de la transformée de Fourier, le temps ($\tau$) de latence
+	      entre deux signaux.
+
+
 \end{itemize}
 \subsection{Besoins non-fonctionnels}
 \begin{itemize}
@@ -141,13 +198,20 @@ paramètres à renseigner ou à modifier sont les suivants:
 	      modifier avant l'éxécution du programme). De la même manière, la
 	      fonction réalisant le mixage des entrées devra respecter les mêmes
 	      conditions.
-	\item L'ajout d'un mixage ne devra pas perturber le déroulement du programme.
+	\item L'ajout d'une fonction de mixage ne devra pas créer de latences.
 	      \paragraph{}
 	      Dans le rapport émis par le précédent développeur, il est indiqué qu'à
 	      partir de 15 entrées, ou avec l'ajout d'effets, des latences sont
 	      visibles. Actuellement, le rafraîchissement de la matrice est de l'ordre
-	      de la demi-seconde dans son fonctionnement normal.
+	      de la demi-seconde dans son fonctionnement normal. De ce fait, l'étape
+	      de calcul du mixage en sortie ne devra pas être trop lourde en terme de
+	      temps de calcul, sous peine d'entraîner de fortes latences à l'affichage.
 \end{itemize}
+\begin{figure}[h]
+	\caption{\label{diag_deploiement}Diagramme de déploiement}
+	\centering
+	\includegraphics[scale=0.30]{diag_deploiement.jpg}
+\end{figure}
 \section{Scénario d'utilisation}
 \paragraph{}
 Nous allons décrire ci-après un scénario d'utilisation. Nous imaginons une
@@ -169,8 +233,7 @@ piste mono-instrumentale isolée. Le logiciel existant traite les données de
 leur enregistrement pour fournir la matrice de corrélation ; grâce à ce retour
 visuel, le groupe sait déjà quelle paire de musiciens est la plus corrélée à
 un instant t donné.
-\newpage
-\begin{figure}
+\begin{figure}[h]
 	\centering
 	\includegraphics[scale=0.50]{matrice_correlation.png}
 \end{figure}
@@ -207,6 +270,11 @@ alors imaginer diverses utilités à ce retour sonore :
 \includegraphics[scale=0.30]{proto_2.png}
 
 \section{Diagramme de Gantt}
-\includegraphics[scale=0.35]{DiagrammeAnalyseBesoins.jpg}
+
+\centering
+\includegraphics[scale=0.50]{liste_task.jpg}
+\centering
+\includegraphics[scale=0.40]{diag_gantt.jpg}
+
 \bibliography{analyse-besoins}
 \end{document}
