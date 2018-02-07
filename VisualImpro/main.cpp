@@ -96,7 +96,8 @@ int main(int argc, char *argv[])
 
 	string dlcolor = "ColorGreenToRed";
 	string dlcoeff = "CoeffScalar";
-	string dlpreproc = "PreprocEnergy";	
+	string dlpreproc = "PreprocEnergy";
+	string dlmix = "MixMaxCorrelated";	
 	list<string> files;
 	Connection conn;
 
@@ -128,6 +129,8 @@ int main(int argc, char *argv[])
 	if(configcoeff != ""){dlcoeff = configcoeff;}
 	string configpreproc = config.getPreproc();
 	if(configpreproc != ""){dlpreproc = configpreproc;}
+	string configmix = config.getMix();
+	if(configmix != ""){dlmix = configmix;}
 
 	//lib must be optimized at its best
 	

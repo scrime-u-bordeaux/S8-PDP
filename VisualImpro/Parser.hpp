@@ -16,6 +16,7 @@ public :
   std::string getCoeff();
   std::string getColor();
   std::string getPreproc();
+  std::string getMix();
   std::string getAddress();
   int getAnalog();
   int getAudio();
@@ -32,6 +33,7 @@ private :
   std::string coeff;
   std::string color;
   std::string preproc;
+  std::string mix;
   std::string sessionName;
   int port;
   int analog;

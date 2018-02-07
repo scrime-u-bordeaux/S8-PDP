@@ -25,7 +25,10 @@ Parser::Parser(std::string file) : _file(file), port(0), analog(0), audio(0), us
     }
     else if (line.find("PREPROC ") == 0 && ((word = get_word(line)).find("Preproc") == 0)){
       preproc = word;
-    }    
+    }
+    else if (line.find("MIX ") == 0 && ((word = get_word(line)).find("Mix") == 0)){
+      mix = word;
+    }        
     else if (line.find("ADDRESS ") == 0 && ( is_ip(word = get_word(line)) )){
       addr = word;
     }
@@ -91,6 +94,10 @@ std::string Parser::getColor(){
 
 std::string Parser::getPreproc(){
   return preproc;
+}
+
+std::string Parser::getMix(){
+  return mix;
 }
 
 std::list<std::string> Parser::getTracks(){
