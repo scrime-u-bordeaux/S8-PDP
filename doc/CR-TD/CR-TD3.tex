@@ -16,30 +16,58 @@
 
 \section*{Remarques sur le cahier des besoins}
 \paragraph{}
-Comme nous sommes la troisième itération du projet, la partie existante est très
-importante. Donc il faut préciser celle-ci et l'étayer.
-Ensuite, il faut bien distinguer ce qui doit figurer dans l'introduction et
+Comme nous sommes à la troisième itération du projet, la partie existante est très
+importante. Donc il faut préciser celle-ci et l'étayer. Les remarques suivantes
+pourront être appliquées pour enrichir le cahier des besoins en vue de l'audit,
+mais aussi et surtout pour la rédaction du mémoire, qui doit être commencée dès à
+présent et devra se poursuivre tout au long du déroulement du projet. \\
+Il est important de parler des travaux qui ont déjà été menés par d'autres sur ce
+projet commun : par qui, dans quel cadre, quelle équipe a fait quoi quel
+lieux de stage etc. Il est important de détailler dans l'introduction la façon
+dont nous allons intervenir pour améliorer l'existant. \\
+Il faut bien distinguer ce qui doit figurer dans l'introduction et
 dans la description de l'existant.\\
-Dans l'introduction, nous devons retrouver tout ce qui a attrait au projet dans
-son ensemble (nous avons parlé de la "boucle principale").\\
+Dans l'introduction, nous devons retrouver tout ce qui a trait au projet dans
+son ensemble (nous avons parlé de la "boucle principale" : ce qui part des
+musiciens et revient aux musiciens). Il est essentiel de décrire la notion de 
+corrélation est d'expliquer en quoi elle est centrale au projet. Il faut veiller à
+bien lier les notions d'improvisation et de corrélation en justifiant sa généricité. \\
 Dans la description de l'existant par contre, on doit retrouver tous les
-éléments liés au programme.\\
+éléments liés au programme. Il faut clarifier certains points, comme le rôle du web
+dans l'implémentation de notre prédécesseur. \\
 Afin que tout cela soit bien clair, il serait bien de l'illustrer à l'aide de
-schémas simples.
-Tout ce qui concerne l'affichage de la matrice (c'est-à-dire la création du
-serveur web avec NodeJS et le code HTML pour l'affichage) a été éludé, donc il
-faut absolument en parler dans la description de l'existant. Son apparition sur
-le diagramme de déploiement a destabilisé les lecteurs.\\
-Nous devons aussi rajouter dans les références le lieu de stage de notre
-prédécesseur.
+schémas simples. Plutôt que les schémas techniques vus en cours tels que l'UML,
+on pourra utiliser un schéma simplifié du dispositif général encore dans le but
+d'être le plus clair possible. \\
+Les schémas devront également illustrer de façon claire la façon dont nous allons nous-
+mêmes participer au projet ; la construction de tels schémas aura pour avantage de faire
+surgir des besoins que nous aurions pu oubier. L'utilisation doit être clarifiée, il
+faut faire des choix : confier le programme à un opérateur qui étudie les retours
+visuels ou montrer ces retours en temps réel aux musiciens par exemple. \\
+Les besoins évoqués dans le cahier doivent être mieux décrits dans le mémoire,
+notamment vis-à-vis de la façon dont nous allons les remplir. L'extension de la 
+généricité du code doit être évoquée dans les besoins non-fonctionnels. Des détails
+techniques doivent être expliqués en priorité, et avant tout appréhendés par l'équipe
+elle-même, par exemple au sujet du stockage éventuel/enregistrement des entrées sonores.
+
 
 \section*{Pistes pour la 1e release}
 \paragraph{}
-Les tests seront effectués à partir de fichiers numériques. \\
-La rédaction du mémoire débute en même temps que le développement.\\
-Nous avons réfléchi à la pertinence de l'affichage sur navigateur, et il nous
-semble plus cohérent de créer une interface graphique dans le même langage
-que le programme (C++).
+Tout ce qui concerne l'affichage de la matrice (c'est-à-dire la création du
+serveur web avec NodeJS et le code HTML pour l'affichage) a été éludé, donc il
+faut absolument en parler dans la description de l'existant. Son apparition sur
+le diagramme de déploiement a déstabilisé les lecteurs. Le détail du rôle et du
+fonctionnement de cette matrice doit apparaître dans nos travaux écrits. \\
+L'affichage de cette matrice, quant à lui, doit être repensé car le choix de 
+NodeJS + HTML n'a pas été justifié par notre prédécesseur et semble peu rationnel.
+Nous pensons nous tourner vers une interface graphique implémentée par le langage
+C++, notre principal outil de travail pour ce projet ; il s'agirait d'un travail de
+refactoring qui pourrait demander un certain temps, tout comme l'extension de la
+généricité du code permettant les fonctions de corrélation plus complexes suggérées par
+le client qui a été évoqué. Ces nouveaux travaux d'approche objet nous contraindront à
+revoir à la baisse le diagramme de Gant. \\
+Les tests seront effectués à partir de fichiers numériques. Nous utiliserons des
+fonctions triviales pour les réaliser. \\
 Enfin, nous allons réfléchir à un refactoring du code existant afin d'élargir
 la généricité.
 \end{document}
