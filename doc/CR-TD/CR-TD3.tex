@@ -1,0 +1,45 @@
+\documentclass[a4paper]{article}
+\usepackage[english]{babel}
+\usepackage[utf8x]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[a4paper,top=3cm,bottom=2cm,left=3cm,right=3cm,marginparwidth=1.75cm]{geometry}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage[colorinlistoftodos]{todonotes}
+\usepackage[colorlinks=true, allcolors=blue]{hyperref}
+
+\title{Projet de Programmation : Compte-rendu de TD n°3}
+\author{Lucas Vivas, Paul Simorre, Gautier Lamarque et Alexandre Casanova--Franger}
+
+\begin{document}
+\maketitle
+
+\section*{Remarques sur le cahier des besoins}
+\paragraph{}
+Comme nous sommes la troisième itération du projet, la partie existante est très
+importante. Donc il faut préciser celle-ci et l'étayer.
+Ensuite, il faut bien distinguer ce qui doit figurer dans l'introduction et
+dans la description de l'existant.\\
+Dans l'introduction, nous devons retrouver tout ce qui a attrait au projet dans
+son ensemble (nous avons parlé de la "boucle principale").\\
+Dans la description de l'existant par contre, on doit retrouver tous les
+éléments liés au programme.\\
+Afin que tout cela soit bien clair, il serait bien de l'illustrer à l'aide de
+schémas simples.
+Tout ce qui concerne l'affichage de la matrice (c'est-à-dire la création du
+serveur web avec NodeJS et le code HTML pour l'affichage) a été éludé, donc il
+faut absolument en parler dans la description de l'existant. Son apparition sur
+le diagramme de déploiement a destabilisé les lecteurs.\\
+Nous devons aussi rajouter dans les références le lieu de stage de notre
+prédécesseur.
+
+\section*{Pistes pour la 1e release}
+\paragraph{}
+Les tests seront effectués à partir de fichiers numériques. \\
+La rédaction du mémoire débute en même temps que le développement.\\
+Nous avons réfléchi à la pertinence de l'affichage sur navigateur, et il nous
+semble plus cohérent de créer une interface graphique dans le même langage
+que le programme (C++).
+Enfin, nous allons réfléchir à un refactoring du code existant afin d'élargir
+la généricité.
+\end{document}
