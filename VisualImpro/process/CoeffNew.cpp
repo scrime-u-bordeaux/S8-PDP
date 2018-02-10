@@ -5,8 +5,8 @@
 #include <math.h>
 #include <stdio.h>
 
-/*using namespace std;
-
+using namespace std;
+/*
 float correlatescalar(vector<float> s1, vector<float> s2){
   if (s1.size() == s2.size()){
     float corr = 0.0;
