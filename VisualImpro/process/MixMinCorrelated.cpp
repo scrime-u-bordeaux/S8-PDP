@@ -6,6 +6,6 @@ extern "C"{
 
 void MixMinCorrelated(void){
 
-]
+}
 
 }
