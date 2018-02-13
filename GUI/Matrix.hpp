@@ -2,15 +2,16 @@
 #define DEF_MATRIX
 
 #include "RGB.hpp"
-#include <QRect>
+#include "Case.hpp"
 #include <QtGui>
 
 class Matrix : public QWidget {
 public:
-  Matrix();
+  Matrix(int size);
   void setMatrixColor(std::vector<std::vector<RGB> > colorMatrix);
   ~Matrix();
 
 private:
+  int size;
 };
 #endif // DEF_MATRIX
