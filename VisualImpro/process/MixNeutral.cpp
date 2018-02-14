@@ -4,9 +4,13 @@
 
 extern "C"{
 
-void MixNeutral(void){
+float MixNeutral(float correlValue){
 
-	int gSampleFactor = 1;
+	return 1;
+
+}
+
+/*	int gSampleFactor = 1;
 	gSampleFactor = gUserSet.sample_factor;
 	int STANDARD_SAMPLE_RATE = 22050;
 	// on a besoin de context
@@ -30,6 +34,6 @@ void MixNeutral(void){
     		}
 	}
 
-}
+}*/
 
 }
