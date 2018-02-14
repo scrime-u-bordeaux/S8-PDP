@@ -1,5 +1,6 @@
-#include "Window.hpp"
 #include "Case.hpp"
+#include "MatrixLayout.hpp"
+
 #include <QApplication>
 #include <QGraphicsScene>
 #include <QRect>
@@ -7,21 +8,24 @@
 
 int main(int argc, char *argv[]) {
   QApplication app(argc, argv);
-  // int sizeMatrix = 5;
-  // QGraphicsScene scene;
-  // for (int x = 0; x < sizeMatrix * SQUARE_SIZE; x += SQUARE_SIZE) {
-  //   for (int y = 0; y < sizeMatrix * SQUARE_SIZE; y += SQUARE_SIZE) {
-  //     scene.addRect(ORIGIN_X + x, ORIGIN_Y + y, SQUARE_SIZE, SQUARE_SIZE);
-  //   }
-  // }
-  // QGraphicsView view(&scene);
-  // int sizeWindow = (SQUARE_SIZE + 1) * sizeMatrix;
-  // view.resize(sizeWindow, sizeWindow);
-  // view.setWindowTitle("Matrice");
 
-  Case myCase(0,0);
-  myCase.show();
-  myCase.updateColor(RGB(125,125,125));
+  int sizeMatrix = 2;
+
+  QMainWindow mainWindow;
+  mainWindow.setWindowTitle("Matrice");
+  mainWindow.resize(SQUARE_SIZE * sizeMatrix, SQUARE_SIZE * sizeMatrix);
+
+  MatrixLayout *layout = new MatrixLayout;
+
+  Case* tableau [sizeMatrix][sizeMatrix];
+  for (int x = 0; x < sizeMatrix ; x++) {
+    for (int y = 0; y < sizeMatrix ; y++) {
+      tableau[x][y] = new Case(0,0, &mainWindow);
+      layout->addWidget(tableau[x][y], x, y);
+      }
+    }
+   mainWindow.setCentralWidget(layout);
+   mainWindow.show();
 
   return app.exec();
 }

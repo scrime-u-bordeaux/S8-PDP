@@ -4,7 +4,7 @@
 
 Case::Case(int x, int y, QWidget* parent) :
  QWidget(parent), rect(x,y,SQUARE_SIZE,SQUARE_SIZE), color(Qt::black) {
-
+     resize(SQUARE_SIZE,SQUARE_SIZE);
  }
 
 void Case::updateColor(RGB rgb) {

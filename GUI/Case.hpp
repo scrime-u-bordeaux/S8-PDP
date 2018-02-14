@@ -8,7 +8,7 @@
 
 #define ORIGIN_X 50
 #define ORIGIN_Y 50
-#define SQUARE_SIZE 100
+#define SQUARE_SIZE 200
 
 class Case : public QWidget {
 public:
