@@ -4,7 +4,11 @@
 
 extern "C"{
 
-void MixRandomCorrelated(void){
+/*float MixRandomCorrelated(float correlValue){
+
+}*/
+
+float generateNewVolume(float correlValue){	
 
 }
 

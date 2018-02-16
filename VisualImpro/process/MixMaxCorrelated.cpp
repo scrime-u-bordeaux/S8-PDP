@@ -4,8 +4,17 @@
 
 extern "C"{
 
-void MixMaxCorrelated(void){
+/*float MixMaxCorrelated(float correlValue){
+
+	return 1*correlValue;
+
+}*/
+
+float generateNewVolume(float correlValue){
+
+	return 1*correlValue;
 
 }
+
 
 }
