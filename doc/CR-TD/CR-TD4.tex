@@ -1,0 +1,50 @@
+\documentclass[a4paper]{article}
+\usepackage[english]{babel}
+\usepackage[utf8x]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[a4paper,top=3cm,bottom=2cm,left=3cm,right=3cm,marginparwidth=1.75cm]{geometry}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage[colorinlistoftodos]{todonotes}
+\usepackage[colorlinks=true, allcolors=blue]{hyperref}
+
+\title{Projet de Programmation : Compte-rendu de TD n°4}
+\author{Lucas Vivas, Paul Simorre, Gautier Lamarque et Alexandre Casanova--Franger}
+
+\begin{document}
+\maketitle
+
+\paragraph{}
+Nous aurions dû mieux nous renseigner sur l'existant et observer le code à l'avance
+car il possède une mauvaise architecture. Nous devrons donc nécessairement passer
+par une phase de refactoring plus ou moins importante et nous pouvons ajouter cela
+au cahier des besoins. De plus nous devons maintenant expliquer le code fourni
+pour le fonctionnement de Bela, en précisant le main, le render, et tout autre
+gros fichier important et aussi la façon dont nous allons les modifier modulairement.
+Préciser l'importance des tâches auxiliaires (propres à Bela) dans notre
+projet : il faudrait en faire un slide pour le powerpoint de l'audit. Passer rapidement
+sur l'utilité des variables globales.
+
+\paragraph{}
+Pour notre 1ère release, il est nécessaire de penser à l'interface graphique, au
+refactoring, à l'explication du code, au squelette de nos fonctions et fichiers,
+et aux premiers tests. Il ne faudra pas forcément arriver à un résultat très
+sophistiqué mais il faudra être très précis dans nos explications, notamment expliquer
+comment notre code entre en jeu et la manière dont Bela l'utilisera. Il faudrait
+que nos ajouts aient peu de dépendance avec le reste du programme pour qu'ils puissent
+être exploités par nos successeurs sans trop d'obligations techniques, notamment
+par rapport à l'ajout d'effets. Nous commenterons au maximum notre code et mettrons
+en place une architecture compréhensible et réutilisable pour que nos potentiels successeurs
+aient le moins de mal à reprendre notre code et se l'approprier.
+
+\paragraph{}
+Pour notre savoir personnel et avec possibilité de l'utiliser dans notre projet,
+il faudrait que l'on se renseigne sur les lambdas-expressions en C++ (11). Se
+renseigner également sur les "foncteurs" (surcharge des opérateurs \verb!()!,
+qui semblent avoir un lien avec les lambda-expressions. Enfin, pour la suite de
+notre projet, on pourra privilégier une programmation modulaire plutôt qu'objet,
+avec composition pour le réglage des volumes, ce qui nous permettrait par la suite
+avec l'ajout des effets, d'avoir le choix d'attacher certains modules au son selon
+le choix de l'utilisateur.
+
+\end{document}
