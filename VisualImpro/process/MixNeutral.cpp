@@ -4,9 +4,15 @@
 
 extern "C"{
 
-float MixMaxCorrelated(float correlValue){
+/*float MixNeutral(float correlValue){
 
-	return correlValue;
+	return 1;
+
+}*/
+
+float generateNewVolume(float correlValue){
+
+	return 1;
 
 }
 
