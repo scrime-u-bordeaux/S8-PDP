@@ -43,7 +43,7 @@ ProcessMultiCorrel::create_matrix(std::vector<std::vector<float>> buffer) {
   return matrix;
 }
 
-// POSSIBILITE DE RECUPERER LES COEFFICIENTS DE CORRELATION AFIN DE LES INTEGRE
+// POSSIBILITE DE RECUPERER LES COEFFICIENTS DE CORRELATION AFIN DE LES INTEGRER
 // AU RENDER.CPP ?
 
 void ProcessMultiCorrel::process(std::vector<std::vector<float>> buffer,
