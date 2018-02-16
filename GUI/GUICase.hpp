@@ -16,9 +16,8 @@ public:
   void updateColor(RGB rgb);
   ~Case();
 
-signals:
 protected:
-  void paintEvent(QPaintEvent *event);
+  void paintEvent(QPaintEvent *event = NULL);
 
 private:
   QRect *rect;

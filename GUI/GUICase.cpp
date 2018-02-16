@@ -9,14 +9,14 @@ Case::Case(int x, int y, QWidget *parent) : QWidget(parent) {
 }
 
 void Case::updateColor(RGB rgb) {
-  color->setRgb(rgb.getRed(), rgb.getGreen(), rgb.getBlue());
+  //color->setRgb(rgb.getRed(), rgb.getGreen(), rgb.getBlue());
 }
 
 void Case::paintEvent(QPaintEvent *event) {
-  QPainter *painter = new QPainter(this);
-  painter->setBrush(*color);
-  painter->drawRect(*rect);
-  delete painter;
+  QPainter painter(this);
+  painter.setBrush(*color);
+  painter.drawRect(*rect);
+  painter.end();
 }
 
 Case::~Case() {
