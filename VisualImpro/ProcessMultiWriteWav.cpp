@@ -1,10 +1,10 @@
-/* 
+/*
 This code is inspired by https://gasstationwithoutpumps.wordpress.com/2011/10/08/making-wav-files-from-c-programs/
 */
 
-
 #include "ProcessMultiWriteWav.hpp"
 #include <assert.h>
+#include <vector>
 
 void write_little_endian(unsigned int word, int num_bytes, FILE *stream)
 {
@@ -29,8 +29,8 @@ ProcessMultiWriteWav::ProcessMultiWriteWav(std::string filename, int numchannels
   fseek(stream, 44, SEEK_CUR);
 }
 
-void ProcessMultiWriteWav::process(std::vector<std::vector<float> > buffer, Connection conn){
-	
+void ProcessMultiWriteWav::process(std::vector<std::vector<float> > buffer){
+
 fseek(stream, 0, SEEK_END);
   int x = buffer.size();
   if (x != 0){
@@ -48,22 +48,22 @@ fseek(stream, 0, SEEK_END);
       write_little_endian((unsigned int) (intVal),2, stream);
       tmp = 0;
     }
-    
+
     this->numsamples+=y;
-    
+
   }
 }
 
 void ProcessMultiWriteWav::writeheader(){
-  
+
   rewind(stream);
-  
+
   int byterate = samplerate*numchannels*bytespersample;
-  
+
   fwrite("RIFF", 1, 4, stream);
   write_little_endian(36 + bytespersample* numsamples*numchannels, 4, stream);
   fwrite("WAVE", 1, 4, stream);
-  
+
   /* write fmt  subchunk */
   fwrite("fmt ", 1, 4, stream);
   write_little_endian(16, 4, stream);   /* SubChunk1Size is 16 */

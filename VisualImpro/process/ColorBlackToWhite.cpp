@@ -5,9 +5,9 @@
 extern "C"{
 	
 Triplet ColorBlackToWhite(float coeff){
-	int val = (int) 255*coeff;
+	 int val = (int) 255*coeff;
 	Triplet rgb(val,val,val);
-	return rgb;
+	return rgb; 
 }
 	
 }
