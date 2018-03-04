@@ -1,6 +1,5 @@
 /***** Connection.cpp *****/
 
-
 #include "Connection.hpp"
 
 #include <sys/types.h>
@@ -43,7 +42,7 @@ sock.setServer(ADDR);*/
   SYSCALL(this->sockfd, -1, "ERROR OPENING SOCKET");
 
   string addr(ADDR);
-  
+
   int portno = PORTNO;
   struct in_addr inp;
   SYSCALL(inet_aton(addr.c_str(), &inp), 0, "ERROR copying address");
@@ -52,7 +51,7 @@ sock.setServer(ADDR);*/
   serv_addr.sin_family = AF_INET;
   serv_addr.sin_addr = inp;
   serv_addr.sin_port = htons(portno); //recupere num port
- 
+
   return 0;*/
 
 //TCP
@@ -62,7 +61,7 @@ sock.setServer(ADDR);*/
   SYSCALL(this->sockfd, -1, "ERROR OPENING SOCKET");
 
   string addr(_addr);
-  
+
   int portno = _port;
   struct in_addr inp;
   SYSCALL(inet_aton(addr.c_str(), &inp), 0, "ERROR copying address");
@@ -90,28 +89,28 @@ int Connection::send(const string &msg){
   int n = write(this->sockfd, tosend.c_str(), tosend.length());
   SYSCALL(n, -1, "ERROR WRITE SOCKET");
   return n;
- 
+
 //UDP
 
 /*
 	socklen_t addrlen = sizeof(serv_addr);
-	 sendto(this->sockfd, msg.c_str(), msg.length()*sizeof(char), 0,(struct sockaddr * ) &(this->serv_addr), addrlen);	
+	 sendto(this->sockfd, msg.c_str(), msg.length()*sizeof(char), 0,(struct sockaddr * ) &(this->serv_addr), addrlen);
 	//printf("sent ? %d\n", sent);
 
   return 0;
- */ 
+ */
 
 }
 
 
 
 int Connection::end(){
-	
-//TCP	
+
+//TCP
   if (close(sockfd) == 0){
     this->_isConnected = false;
     return 0;
   }
-  return -1;  
+  return -1;
 return 0;
 }
