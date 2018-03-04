@@ -1,16 +1,19 @@
 CXX = g++
-CXXFLAGS = -lcppunit -Wall
+CXXFLAGS = -lcppunit -Wall -Wextra
 
-all: test.bin
+EXEC=test.bin
+SRC= $(wildcard *.cpp)
+OBJ= $(SRC:.cpp=.o)
 
-test.bin: TestMultiCorrel.o TestMain.o
-	$(CXX) -o test.bin TestMultiCorrel.o TestMain.o $(CXXFLAGS)
+all: $(EXEC)
 
-TestMultiCorrel.o: TestMultiCorrel.cpp
-	$(CXX) TestMultiCorrel.cpp -c $(CXXFLAGS) -o TestMultiCorrel.o
+test.bin: $(OBJ)
+	@$(CXX) -o $@ $^ $(CXXFLAGS)
 
-TestMain.o: TestMain.cpp
-	$(CXX) TestMain.cpp -c $(CXXFLAGS) -o TestMain.o
+%.o: %.cpp
+	@$(CXX) $< -c $(CXXFLAGS) -o $@
+
+.PHONY: clean
 
 clean:
 	rm -rf *.o test.bin

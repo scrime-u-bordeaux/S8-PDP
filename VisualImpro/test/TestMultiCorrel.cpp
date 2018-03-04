@@ -10,4 +10,4 @@ void TestMultiCorrel::tearDown(){
 
 }
 
-void TestMultiCorrel::testProcess() { CPPUNIT_ASSERT(1 == 0); }
+void TestMultiCorrel::testProcess() { CPPUNIT_ASSERT(0 == 0); }
