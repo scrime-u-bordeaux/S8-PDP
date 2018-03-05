@@ -1,7 +1,13 @@
+/**
+ * @file TestSquareMatrix.cpp
+ * @author Lucas VIVAS
+*/
+
 #include "TestSquareMatrix.hpp"
+#include "SquareMatrix.hpp"
 
 void TestSquareMatrix::setUp(){
-    //matrix(5);
+    //SquareMatrix<int> matrix(5);
 }
 
 void TestSquareMatrix::tearDown(){

@@ -1,10 +1,15 @@
+/**
+ * @file TestSquareMatrix.hpp
+ * @author Lucas VIVAS
+*/
+
 #ifndef TEST_SQUAREMATRIX
 #define TEST_SQUAREMATRIX
 
 #include <cppunit/TestFixture.h>
 #include <cppunit/extensions/HelperMacros.h>
 
-#include "../SquareMatrix.hpp"
+#include "SquareMatrix.hpp"
 
 class TestSquareMatrix : public CppUnit::TestFixture {
 
@@ -20,7 +25,7 @@ public:
   CPPUNIT_TEST_SUITE_END();
 
 private:
- //SquareMatrix<int> matrix;
+  SquareMatrix<int> matrix;
 
   void testConstructor();
   void testGetCase();

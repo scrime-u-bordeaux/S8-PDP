@@ -1,3 +1,9 @@
+/**
+ * @file TestMain.cpp
+ * @brief Main test program.
+ * @author Lucas VIVAS
+ */
+
 #include <iostream>
 
 #include <cppunit/CompilerOutputter.h>
