@@ -1,5 +1,4 @@
 /***** ProcessMultiWriteWav.hpp *****/
-
 #ifndef WRITE_WAV_HPP
 #define WRITE_WAV_HPP
 
@@ -17,7 +16,6 @@ public :
   void writeheader();
   ProcessMultiWriteWav(std::string filename, int numchannels, int samplerate = 44100, int bytespersample = 2);
   ~ProcessMultiWriteWav();
-
 private :
   std::string filename;
   FILE* stream;
@@ -25,7 +23,6 @@ private :
   int samplerate;
   int numchannels;
   int bytespersample;
-
 };
 
 #endif

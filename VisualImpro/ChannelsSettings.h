@@ -9,6 +9,7 @@
 #include "Connection.hpp"
 #define NB_AUDIO_MAX 2
 #define NB_ANALOG_MAX 8
+
 #define NB_FILES_MAX 20
 #define NB_TRACKS_MAX 20
 
@@ -45,6 +46,7 @@ int effect_len; //length of buffer for effects (the smaller the better)
 int sample_factor; //1 (22050) or 2 (44100)
 
 ProcessMultiCorrel * proc; //process to use (polymorphisme)
+
 
 Connection conn; //connection to server
 
