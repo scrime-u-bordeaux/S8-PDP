@@ -5,10 +5,10 @@
 #define CHANNELSSETTINGS_H
 
 #include "Effect.hpp"
-#include "ProcessMulti.hpp"
+#include "ProcessMultiCorrel.hpp"
 #include "Connection.hpp"
 #define NB_AUDIO_MAX 2
-#define NB_ANALOG_MAX 8	
+#define NB_ANALOG_MAX 8
 #define NB_FILES_MAX 20
 #define NB_TRACKS_MAX 20
 
@@ -39,12 +39,12 @@ std::vector<Effect*> fileproc; //idem for files
 
 std::vector<std::string> filenames;
 
-int buffer_len; //length of buffers to process 
+int buffer_len; //length of buffers to process
 int effect_len; //length of buffer for effects (the smaller the better)
 
 int sample_factor; //1 (22050) or 2 (44100)
 
-ProcessMulti * proc; //process to use (polymorphisme)
+ProcessMultiCorrel * proc; //process to use (polymorphisme)
 
 Connection conn; //connection to server
 
