@@ -9,7 +9,7 @@ class MatrixLayout : public QWidget {
 public:
   MatrixLayout(QWidget *parent = 0);
   void addWidget(QWidget *widget, int x, int y);
-  void updateColor(vector<vector<RGB> > matrixRGB);
+  void updateColor(const vector<vector<RGB> >& matrixRGB);
   ~MatrixLayout();
 
 private:

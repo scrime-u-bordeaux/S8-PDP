@@ -3,6 +3,8 @@
 #include <QApplication>
 #include <vector>
 
+#include <iostream>
+
 using namespace std;
 
 int main(int argc, char *argv[]) {
@@ -10,16 +12,18 @@ int main(int argc, char *argv[]) {
 
   int sizeMatrix = 6;
 
-vector<vector<RGB> > colorMatrix(sizeMatrix, vector<RGB>(sizeMatrix, RGB(0, 255, 0)));
-for (int i = 0; i < sizeMatrix; i++) {
-  for (int j = 0; j < sizeMatrix; j++) {
-    colorMatrix[i][j] = RGB(125,125,0);
-  }
-}
   GUIWindow mainWindow(sizeMatrix);
   mainWindow.show();
 
-  //mainWindow.updateColor(colorMatrix);
+  vector<vector<RGB> > colorMatrix(sizeMatrix,
+      vector<RGB>(sizeMatrix, RGB(0, 255, 0)));
+
+  mainWindow.updateColor(&colorMatrix);
+
+  vector<vector<RGB> >colorMatrix2(sizeMatrix,
+     vector<RGB>(sizeMatrix, RGB(255, 0, 255)));
+
+  mainWindow.updateColor(&colorMatrix2);
 
   return app.exec();
 }
