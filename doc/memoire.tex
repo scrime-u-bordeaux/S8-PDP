@@ -166,12 +166,34 @@ de corrélation/traduction en couleur de son choix.
     pour entrée et retourne un triplet RGB ; il s'agit d'un objet C++
     défini par l'une des classes du programme.
 \end{itemize}
-Ces trois fichiers sont répertoriés dans un dossier \"process\". Un fichier de configuration permet d'écrire quel fichier choisir pour chacune des trois fonctions. \\
+Ces trois fichiers sont répertoriés dans un dossier \"process\". Un
+fichier de configuration permet d'écrire quel fichier choisir pour
+chacune des trois fonctions. \\
 
-Le seul fichier imposé par l'IDE de Bela se nomme \"render.cpp\". Il contient lui-même trois fonctions :
+Le seul fichier imposé par l'IDE de Bela se nomme \"render.cpp\". Il
+contient lui-même trois fonctions :
 \begin{itemize}
-\item La fonction setup() initialise et prépare les ressources de traitement du son.
-\item La fonction render() s'appelle de manière régulière et répétée tout au long du processus audio. Elle a pour arguments des buffers contenant les échantillons à traiter.
-  \item La fonction cleanup() est appelée à la fin du processus pour libérer les ressources allouées et mettre fin à certaines tâches.
+\item La fonction setup() initialise et prépare les ressources de
+  traitement du son.
+\item La fonction render() s'appelle de manière régulière et répétée
+  tout au long du processus audio. Elle a pour arguments des buffers
+  contenant les échantillons à traiter.
+  \item La fonction cleanup() est appelée à la fin du processus pour
+    libérer les ressources allouées et mettre fin à certaines tâches.
+\end{itemize}
+
+Une structure \"AuxiliaryTask\" est mise à la disposition du
+programmeur et est destinée à répertorier des fonctions trop coûteuses
+en temps à l'exécution pour le code de render.cpp. \\
+
+Le fichier main.cpp, en plus de lancer le programme, fait office de
+fichier de configuration. L'utilisateur peut y entrer les noms des
+fonctions de \textit{pre-processing}/calcul de coefficient/calcul de
+triplet RGB de son choix. D'autres configurations purement relatives
+au traitement de l'audio peuvent être modifiées dans le fichier
+render.cpp.
+
+\subsubsection{Motivation, intérêt et avenir du programme VisualImpro}
+
 
 \end{document}
