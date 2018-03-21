@@ -16,7 +16,8 @@
 class ProcessMultiCorrel{
 
 public :
-  void process(std::vector<std::vector<float> > buffer, std::vector<float>& meanCorrelations, Connection conn);
+  void process(const std::vector<std::vector<float> >& buffer, std::vector<float>& meanCorrelations, Connection conn);
+  //ProcessMultiCorrel() : _coeffcorrel(NULL), _colorscale(NULL), _preprocess(NULL){}
   ProcessMultiCorrel(float (*coeffcorrel) (std::vector<float> s1, std::vector<float> s2) = NULL,
     Triplet (*colorscale) (float coeff) = NULL,
     std::vector<std::vector<float> >(*preproc) (std::vector<std::vector<float> >) = NULL,
@@ -32,9 +33,9 @@ private :
   Triplet (*_colorscale) (float coeff);
   std::vector<std::vector<float> > (* _preprocess) (std::vector<std::vector<float> > buff);
   std::vector<float> (*_mixLevel)(std::vector<std::vector<float> > correlMatrix);
-  std::vector<std::vector<float> > calcul_correl(std::vector<std::vector<float > > buffer);
-  void process_volume(std::vector<std::vector<float> > correlMatrix, std::vector<float>& meanCorrelations);
-  std::vector<std::vector<Triplet> > color_matrix(std::vector<std::vector<float> > correlMatrix);
+  std::vector<std::vector<float> > calcul_correl(const std::vector<std::vector<float > >& buffer);
+  void process_volume(const std::vector<std::vector<float> >& correlMatrix, std::vector<float>& meanCorrelations);
+  std::vector<std::vector<Triplet> > color_matrix(const std::vector<std::vector<float> >& correlMatrix);
   std::ofstream matrixfile;
 };
 

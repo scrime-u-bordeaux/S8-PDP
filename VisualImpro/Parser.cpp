@@ -1,5 +1,6 @@
 #include "Parser.hpp"
 
+
 Parser::Parser(std::string file) : _file(file), port(0), analog(0), audio(0), useeffects(false), efflen(DEFAULT_EFFECT_LEN), proclen(DEFAULT_PROCESS_LEN) {
 
   //PARSES A CONFIG FILE WITH FILE NAMES AND FUNCTIONS TO USE
@@ -12,7 +13,7 @@ Parser::Parser(std::string file) : _file(file), port(0), analog(0), audio(0), us
     getline(ifs, line);
     if (line.find("FILE ") == 0){
       std::string word = get_word(line);
-      if (word.find(".wav") == (word.size() - 4)){
+      if (word.find(".wav") == (word.size() - 4)){	
 	tracks.push_back(word);
       }
     }
@@ -27,7 +28,7 @@ Parser::Parser(std::string file) : _file(file), port(0), analog(0), audio(0), us
     }
     else if (line.find("MIX ") == 0 && ((word = get_word(line)).find("Mix") == 0)){
       mix = word;
-    }
+    }        
     else if (line.find("ADDRESS ") == 0 && ( is_ip(word = get_word(line)) )){
       addr = word;
     }
@@ -64,7 +65,7 @@ Parser::Parser(std::string file) : _file(file), port(0), analog(0), audio(0), us
       sessionName = get_word(line);
     }
     else if (line.find("#") == 0){
-      //Ignore commentaries
+    //rien du tout parce que c'est les commentaires lel
     }
   }
   ifs.close();
@@ -81,7 +82,7 @@ std::string Parser::get_word(std::string line){
   while(*it == ' '){
     it++;
   }
-  return get_next_word(&it);
+  return get_next_word(&it); 
 }
 
 std::string Parser::getCoeff(){

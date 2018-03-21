@@ -28,12 +28,12 @@ std::vector<float> readwav(std::string file);
 
 //Correlation examples
 
-float correlate(std::vector<float> s1, std::vector<float> s2);
-float coeffcorrel(std::vector<float> s1, std::vector<float> s2);
+float correlate(const std::vector<float>& s1, const std::vector<float>& s2);
+float coeffcorrel(const std::vector<float>& s1, const std::vector<float>& s2);
 Triplet greenredscale(float coeff);
-float energy(std::vector <float> f1, int start, int end);
-std::vector<float> energyenvelope(std::vector<float> f1, int frame); //cuts f1 in blocks of length 'frame' and applies norm to get the energy of the signal
-std::vector< std::vector <float> > energymatrix(std::vector < std::vector<float> >);
+float energy(const std::vector <float>& f1, int start, int end);
+std::vector<float> energyenvelope(const std::vector<float>& f1, int frame); //cuts f1 in blocks of length 'frame' and applies norm to get the energy of the signal
+std::vector< std::vector <float> > energymatrix(const std::vector < std::vector<float> >&);
 
 
 #endif //UTILITIES_HPP

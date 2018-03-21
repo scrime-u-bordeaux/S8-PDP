@@ -24,7 +24,7 @@ ProcessMultiCorrel::ProcessMultiCorrel(
 
 ProcessMultiCorrel::~ProcessMultiCorrel() { matrixfile.close(); }
 
-vector<vector<float> > ProcessMultiCorrel::calcul_correl(vector<vector<float> > buffer){
+vector<vector<float> > ProcessMultiCorrel::calcul_correl(const vector<vector<float> >& buffer){
   int size = buffer.size();
   vector<vector<float> > correlMatrix(size, vector<float>(size, 0.0f));
   float coeffcorrel;
@@ -39,12 +39,12 @@ vector<vector<float> > ProcessMultiCorrel::calcul_correl(vector<vector<float> > 
   return correlMatrix;
 }
 
-void ProcessMultiCorrel::process_volume(std::vector<std::vector<float> > correlMatrix, std::vector<float>& meanCorrelations) {
+void ProcessMultiCorrel::process_volume(const std::vector<std::vector<float> >& correlMatrix, std::vector<float>& meanCorrelations) {
   meanCorrelations = this->_mixLevel(correlMatrix);
 }
 
 vector<vector<Triplet> >
-ProcessMultiCorrel::color_matrix(std::vector<std::vector<float> > correlMatrix) {
+ProcessMultiCorrel::color_matrix(const std::vector<std::vector<float> >& correlMatrix) {
   int size = correlMatrix.size();
   Triplet zeros(0, 0, 0);
   Triplet color(0, 0, 0);
@@ -58,7 +58,7 @@ ProcessMultiCorrel::color_matrix(std::vector<std::vector<float> > correlMatrix) 
   return RGBmatrix;
 }
 
-void ProcessMultiCorrel::process(std::vector<std::vector<float> > buffer,
+void ProcessMultiCorrel::process(const std::vector<std::vector<float> >& buffer,
   std::vector<float>& meanCorrelations, Connection conn) {
   std::vector<std::vector<float> > copy = buffer;
   //Preprocessing
@@ -67,7 +67,7 @@ void ProcessMultiCorrel::process(std::vector<std::vector<float> > buffer,
   }
   //Calcul de corrélation
   vector<vector<float> > correlMatrix = calcul_correl(copy);
-  //Récupération des moyennes de corrélations
+  //Ajustement des volumes selon les moyennes de corrélations
   if (_mixLevel != NULL) {
     process_volume(correlMatrix, meanCorrelations);
   }
