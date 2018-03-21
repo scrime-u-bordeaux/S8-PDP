@@ -10,6 +10,7 @@
 #include <QWidget>
 #include <QGridLayout>
 #include <QPushButton>
+#include <QSlider>
 
 using namespace std;
 
@@ -22,6 +23,10 @@ private:
   QWidget *principalWidget;
   QGridLayout *mainLayout;
   QPushButton *finishButton;
+
+  QSlider *nbAudioSlider; //digital ?
+  QSlider *nbAnalogSlider;
+
 
 
 };
