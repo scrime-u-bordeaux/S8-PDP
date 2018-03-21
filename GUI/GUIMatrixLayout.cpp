@@ -13,7 +13,7 @@ void MatrixLayout::addWidget(QWidget *widget, int x, int y) {
 }
 
 
-void MatrixLayout::updateColor(vector<vector<RGB> > matrixRGB) {
+void MatrixLayout::updateColor(const vector<vector<RGB> >& matrixRGB) {
     int size = matrixRGB.size();
     for (int x = 0; x < size; x++) {
       for (int y = 0; y < size; y++) {

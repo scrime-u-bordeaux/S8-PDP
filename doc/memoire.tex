@@ -23,35 +23,155 @@
 \malketitle
 \section{Introduction}
 \paragraph{}
-Ce projet a été réalisé par quatre étudiants de première année de Master Informatique de l'Université de Bordeaux (spécialité Génie Logiciel), dans le cadre de l'UE Projet de Programmation.
+Ce projet a été réalisé par quatre étudiants de première année de
+Master Informatique de l'Université de Bordeaux (spécialité Génie
+Logiciel), dans le cadre de l'UE Projet de Programmation.
 
 \subsection{Un outil pour assister l'improvisation musicale}
-Le projet a été proposé par Myriam Desainte-Catherine, chercheur au Studio de Création et de Recherche en Informatique et Musiques Expérimentales (SCRIME) et enseignante à l'ENSEIRB-MATMECA, et Yacine Amarouchene, physicien du Laboratoire d'Onde et Matière d'Aquitaine (LOMA). Il a été pensé comme un outil d'aide à \"l'improvisation musicale\", un dispositif permettant d'aider un groupe de musiciens à improviser mais permettant aussi de mieux comprendre la nature de l'improvisation en musique.
+Le projet a été proposé par Myriam Desainte-Catherine, chercheur au
+Studio de Création et de Recherche en Informatique et Musiques
+Expérimentales (SCRIME) et enseignante à l'ENSEIRB-MATMECA, et Yacine
+Amarouchene, physicien du Laboratoire d'Onde et Matière d'Aquitaine
+(LOMA). Il a été pensé comme un outil d'aide à \"l'improvisation
+musicale\", un dispositif permettant d'aider un groupe de musiciens à
+improviser mais permettant aussi de mieux comprendre la nature de
+l'improvisation en musique.
 
 \subsection{Improvisation et corrélation}
 \paragraph{}
-Il est essentiel de comprendre ces deux notions afin de bien situer l'intérêt du projet ; elles sont le c\oe ur de notre travail. \\
-Lors d'une improvisation en groupe, des musiciens jouent sans règle établie ; ils cherchent alors à fournir à leur auditoire une production cohérente, ou du moins au sein de laquelle chaque musicien joue un rôle dans l'harmonie du morceau en s'accordant avec ses pairs. La relation qui unit le jeu de deux musiciens et évalue la qualité de leur accord porte un nom : c'est la corrélation. \\
-Au sens premier et basique du terme, la corrélation et le rapport réciproque entre deux éléments. En statistiques, on parle souvent de corrélation pour mesurer l'intensité de la liaison existant entre deux variables. Dans le cadre de l'étude de signaux sonores, les traductions graphiques de ces signaux par transformée de Fourier peuvent jouer le rôle des courbes dont on mesure la corrélation. \\
-En musique, il n'existe pas une mais un nombre indéfini de \"fonctions de corrélation\" potentiellement existantes, dont la complexité et les paramètres varient. \" Comprendre\" la corrélation et l'improvisation, dans le cadre de ce projet, c'est aussi trouver, inventer la fonction de corrélation qui répond le mieux aux besoins d'un groupe d'improvisateurs. Une bonne fonction de corrélation, dans ce cadre spécifique, est une fonction qui fait en sorte qu'un groupe de musiciens joue un morceau plus satisfaisant lorsque ses membres sont davantage corrélés. \\
+Il est essentiel de comprendre ces deux notions afin de bien situer
+l'intérêt du projet ; elles sont le c\oe ur de notre travail. \\ Lors
+d'une improvisation en groupe, des musiciens jouent sans règle établie
+; ils cherchent alors à fournir à leur auditoire une production
+cohérente, ou du moins au sein de laquelle chaque musicien joue un
+rôle dans l'harmonie du morceau en s'accordant avec ses pairs. La
+relation qui unit le jeu de deux musiciens et évalue la qualité de
+leur accord porte un nom : c'est la corrélation. \\
+Au sens premier et basique du terme, la corrélation est le rapport
+réciproque entre deux éléments. En statistiques, on parle souvent de
+corrélation pour mesurer l'intensité de la liaison existant entre deux
+variables. Dans le cadre de l'étude de signaux sonores, les
+traductions graphiques de ces signaux par transformée de Fourier
+peuvent jouer le rôle des courbes dont on mesure la corrélation. \\
+En musique, il n'existe pas une mais un nombre indéfini de \"fonctions
+de corrélation\" potentiellement existantes, dont la complexité et les
+paramètres varient. \" Comprendre\" la corrélation et l'improvisation,
+dans le cadre de ce projet, c'est aussi trouver, inventer la fonction
+de corrélation qui répond le mieux aux besoins d'un groupe
+d'improvisateurs. Une bonne fonction de corrélation, dans ce cadre
+spécifique, est une fonction qui fait en sorte qu'un groupe de
+musiciens joue un morceau plus satisfaisant lorsque ses membres sont
+davantage corrélés. \\
 
 \subsection{L'existant}
 \paragraph{}
-Ce projet a été initié par les clients précédemment cités il y a plus d'un an. Nous sommes le troisième groupe à travailler sur ce projet et développons donc sur la base des travaux réalisés successivement par nos prédécesseurs.
+Ce projet a été initié par les clients précédemment cités il y a plus
+d'un an. Nous sommes le troisième groupe à travailler sur ce projet et
+développons donc sur la base des travaux réalisés successivement par
+nos prédécesseurs.
 
 \subsubsection{Premiers travaux réalisés sur le projet}
-Les premiers travaux portant sur ce projet ont été réalisés par un groupe de six étudiants de l'ENSEIRB-MATMECA. Cette équipe est la première à réaliser un programme informatique analysant et comparant des pistes mono-instrumentales pour évaluer leurs corrélations. Ce programme, prenant en entrées des pistes sonores, retourne une matrice graphique prenant les mêmes pistes en abscisses et en ordonnées et retournant pour chaque case une couleur permettant d'évaluer la corrélation existant entre les deux pistes correspondantes grâce à un code précis. \\
+Les premiers travaux portant sur ce projet ont été réalisés par un
+groupe de six étudiants de l'ENSEIRB-MATMECA. Cette équipe est la
+première à réaliser un programme informatique analysant et comparant
+des pistes mono-instrumentales pour évaluer leurs corrélations. Ce
+programme, prenant en entrées des pistes sonores, retourne une matrice
+graphique prenant les mêmes pistes en abscisses et en ordonnées et
+retournant pour chaque case une couleur permettant d'évaluer la
+corrélation existant entre les deux pistes correspondantes grâce à un
+code précis. \\
 \\
-MATRICEENSEIRB \\
-Ci-dessus, la matrice obtenue à l'issue d'un test du programme. Plus la couleur d'une case est proche du vert, plus la corrélation entre les deux pistes correspondant au point d'abscisse et au point d'ordonnée est élevée. À l'inverse, une case dont la couleur est proche du rouge indique que les deux pistes évaluées sont décorrélées. La corrélation d'une piste mono-instrumentale avec elle-même, qui donne toujours un résultat maximal, n'est pas calculé, ce qui se traduit sur le résultat graphique ci-dessus par une diagonale de cases noires. La matrice de corrélation est donc systématiquement symétrique.
+MATRICEENSEIRB
+\\
+Ci-dessus, la matrice obtenue à l'issue d'un test du programme. Plus
+la couleur d'une case est proche du vert, plus la corrélation entre
+les deux pistes correspondant au point d'abscisse et au point
+d'ordonnée est élevée. À l'inverse, une case dont la couleur est
+proche du rouge indique que les deux pistes évaluées sont
+décorrélées. La corrélation d'une piste mono-instrumentale avec
+elle-même, qui donne toujours un résultat maximal, n'est pas calculé,
+ce qui se traduit sur le résultat graphique ci-dessus par une
+diagonale de cases noires. La matrice de corrélation est donc
+systématiquement symétrique.
 
 \subsubsection{Le système embarqué BELA}
-Avant de confier la suite du projet à d'autres étudiants, nos clients ont choisi de le rendre plus fonctionnel grâce à l'emploi d'un système embarqué particulier : BELA. \\
-PHOTOBELA \\
-L'aperçu du dispositif externe de BELA présenté ci-dessus témoigne notamment de la présence d'entrées analogiques pour connecter des instruments. On comprend alors que le rôle de BELA au sein de ce projet est l'utilisation d'un programme similaire à celui implémenté par les étudiants de l'ENSEIRB en temps réel par un groupe d'improvisateurs, dont les instruments seraient connectés à cet outil. Ce dernier dispose déjà de fonctions de traitement du son codées en C++, mais revêt surtout un intérêt pour les développeurs, qui peuvent librement modifier et enrichir son programme.
+Avant de confier la suite du projet à d'autres étudiants, nos clients
+ont choisi de le rendre plus fonctionnel grâce à l'emploi d'un système
+embarqué particulier : BELA. \\ PHOTOBELA \\ L'aperçu du dispositif
+externe de BELA présenté ci-dessus témoigne notamment de la présence
+d'entrées analogiques pour connecter des instruments électriques ou
+enregistreurs sonores. On comprend alors que le rôle de BELA au sein
+de ce projet est l'utilisation d'un programme similaire à celui
+implémenté par les étudiants de l'ENSEIRB en temps réel par un groupe
+d'improvisateurs, dont les instruments seraient connectés à cet
+outil. Ce dernier dispose déjà de fonctions de traitement du son
+codées en C++, mais revêt surtout un intérêt pour les développeurs,
+qui peuvent librement modifier et enrichir son programme.
 
 \subsubsection{Un logiciel d'aide à l'improvisation musicale}
-En juin 2017, Jérémy Lixandre, membre des six étudiants ayant amorcé le projet, poursuit seul ces travaux en s'aidant cette fois de BELA, au cours d'un stage de deux mois au laboratoire du SCRIME de Bordeaux. Il reprend le concept de \"matrice de corrélation\" mais doit reprendre l'implémentation du logiciel à zéro, puisqu'il abandonne le langage Python utilisé lors des premiers travaux pour passer à la programmation C++ exigée par le code de BELA. \\
-De plus, il relègue les travaux de recherche sur la corrélation et ses formules, des tâches relevant de la physique et des mathématiques, au second plan pour mener un projet essentiellement logiciel. En utilisant le code de BELA, il recrée un outil permettant d'analyser la corrélation de signaux sonores et d'afficher la matrice de corrélation présentée plus haut. Seulement cette fois, les signaux sonores traités proviennent de BELA et peuvent donc être produits par des instruments branchés directement sur le système. Ce nouveau programme permet donc à des musiciens d'avoir un retour visuel en temps réel de leur improvisation, et peut même comparer des pistes mono-instrumentales jouées en temps réel avec des fichiers sonores numériques déjà existant.
+En juin 2017, Jérémy Lixandre, membre des six étudiants ayant amorcé
+le projet, poursuit seul ces travaux en s'aidant cette fois de BELA,
+au cours d'un stage de deux mois au laboratoire du SCRIME de
+Bordeaux. Il reprend le concept de \"matrice de corrélation\" mais
+doit reprendre l'implémentation du logiciel à zéro, puisqu'il
+abandonne le langage Python utilisé lors des premiers travaux pour
+passer à la programmation C++ exigée par le code de BELA. \\
+De plus, il relègue les travaux de recherche sur la corrélation et ses
+formules, des tâches relevant de la physique et des mathématiques, au
+second plan pour mener un projet essentiellement logiciel. En
+utilisant le code de BELA, il recrée un outil permettant d'analyser la
+corrélation de signaux sonores et d'afficher la matrice de corrélation
+présentée plus haut. Seulement cette fois, les signaux sonores traités
+proviennent de BELA et peuvent donc être produits par des instruments
+branchés directement sur le système. Ce nouveau programme permet donc
+à des musiciens d'avoir un retour visuel en temps réel de leur
+improvisation, et peut même comparer des pistes mono-instrumentales
+jouées en temps réel avec des fichiers sonores numériques déjà
+existant. 
+
+\subsubsection{Détails sur le programme existant}
+Le programme développé par Jérémy s'intitule \"VisualImpro\". Il se
+veut \"générique\", a été implémenté de sorte à permettre à des
+développeurs de l'améliorer et de le modifier facilement, et à des
+utilisateurs renseignés de modifier certains paramètres et
+configurations liés aux calculs de la matrice. Son architecture
+logicielle constitue le socle de notre travail, c'est elle que nous
+allons devoir ré-organiser et enrichir, afin notamment d'ajouter de
+nouvelles fonctionnalités au programme. \\
+Le code du programme doit notamment contenir trois fichiers .cpp dont
+les noms sont Prepoc*.cpp, Coeff*.cpp et Color*.cpp et qui contiennent
+respectivement la fonction de \"pre-processing\" ou traitement du
+signal en amont, la fonction de calcul du coefficient de corrélation
+et la fonction associant un coefficiant à une couleur. Le programme
+est construit de sorte à ce que tout fichier respectant ce nommage
+puisse être ajouté au programme afin de permettre à un utilisateur de
+choisir la fonction de \textit{pre-processing}/calcul de coefficiant
+de corrélation/traduction en couleur de son choix.
+\begin{itemize}
+  \item La fonction \"Preproc\" prend en entrée une matrice de
+    vecteurs représentant les signaux d'entrée. Elle retourne une
+    nouvelle matrice de vecteurs, qui pourra présenter des
+    échantillons de plus petite taille que la matrice d'entrée par
+    exemple, dans un souci d'optimisation des performances du
+    programme.
+  \item La fonction \"Coeff\" prend en entrée deux vecteurs
+    (appartenant à la matrice de sortie précédemment abordée) et
+    retourne une valeur comprise entre 0 et 1 et correspondant à la
+    corrélation établie entre les deux signaux traités. On peut
+    imaginer une infinité potentielle de calculs pour donner lieu à
+    une corrélation dans le cadre de ce programme ; il s'agit de
+    calculs relativement arbitraires qui seront décrits plus en détail
+    dans la suite de ce mémoire.
+  \item La fonction \"Color\" prend le coefficient précédemment obtenu
+    pour entrée et retourne un triplet RGB ; il s'agit d'un objet C++
+    défini par l'une des classes du programme.
+\end{itemize}
+Ces trois fichiers sont répertoriés dans un dossier \"process\". Un fichier de configuration permet d'écrire quel fichier choisir pour chacune des trois fonctions. \\
+
+Le seul fichier imposé par l'IDE de Bela se nomme \"render.cpp\". Il contient lui-même trois fonctions :
+\begin{itemize}
+\item La fonction setup() initialise et prépare les ressources de traitement du son.
+\item La fonction render() s'appelle de manière régulière et répétée tout au long du processus audio. Elle a pour arguments des buffers contenant les échantillons à traiter.
+  \item La fonction cleanup() est appelée à la fin du processus pour libérer les ressources allouées et mettre fin à certaines tâches.
 
 \end{document}

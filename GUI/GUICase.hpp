@@ -2,9 +2,10 @@
 #define DEF_CASE
 
 #include "RGB.hpp"
+#include <QWidget>
 #include <QColor>
 #include <QRect>
-#include <QWidget>
+#include <QPainter>
 
 #define ORIGIN_X 50
 #define ORIGIN_Y 50
@@ -20,6 +21,7 @@ protected:
   void paintEvent(QPaintEvent *event = NULL);
 
 private:
+  QPainter painter;
   QRect *rect;
   QColor *color;
 };
