@@ -1,48 +1,37 @@
-#include "GUIWindow.hpp"
-#include "GUIImageMatrix.hpp"
+/**
+ * @file GUIWindow.cpp
+ * @author Lucas VIVAS
+*/
 
-#include <QPainter>
-#include <QPixmap>
-#include <QColor>
-#include <QGraphicsView>
+#include "GUIWindow.hpp"
 
 #include <iostream>
 
 GUIWindow::GUIWindow(int sizeMatrix, QWidget *parent) : QMainWindow(parent) {
   setWindowTitle("Matrice");
-
-  QWidget *principalWidget = new QWidget;
-  imagePix = new QPixmap(SQUARE_SIZE * sizeMatrix, SQUARE_SIZE * sizeMatrix);
-
-  scene = new QGraphicsScene(this);
-
-  scene->addPixmap(*imagePix);
-
-  QGraphicsView *view = new QGraphicsView;
-  view->setScene(scene);
-
+  view = new GUIImageMatrix(sizeMatrix, this);
   setCentralWidget(view);
   resize((SQUARE_SIZE * sizeMatrix)+2, (SQUARE_SIZE * sizeMatrix)+2);
 }
 
-
-void GUIWindow::updateColor(vector<vector<RGB> >* matrixRGB) {
-  int sizeMatrix = matrixRGB->size();
-
-  cout << matrixRGB[0][0][0].getRed() << endl;
-
-  QPainter *paint = new QPainter(imagePix);
-  paint->setPen(*(new QColor(255,255,255)));
-  for (int x = 0; x < sizeMatrix*SQUARE_SIZE; x+=SQUARE_SIZE) {
-    for (int y = 0; y < sizeMatrix*SQUARE_SIZE; y+=SQUARE_SIZE) {
-      RGB color = matrixRGB[0][0][0];
-      paint->setBrush(*(new QColor(color.getRed(), color.getGreen(), color.getBlue())));
-      paint->drawRect(x,y,SQUARE_SIZE,SQUARE_SIZE);
-    }
-  }
-  scene->addPixmap(*imagePix);
-  delete(paint);
+void GUIWindow::updateColor(const vector<vector<RGB> >& matrixRGB){
+  view->updateColor(matrixRGB);
 }
 
+vector<vector<RGB> >
+GUIWindow::color_matrix(const std::vector<std::vector<float> >& correlMatrix) {
+  int size = correlMatrix.size();
+  vector<vector<RGB> > RGBmatrix(size, vector<RGB>(size, RGB(0,0,0)));
+  for (int i = 0; i < size; i++) {
+    for (int j = 0; j < i; j++) {
+      //color = this->_colorscale(correlMatrix[i][j]);
+      //RGBmatrix[i][j] = RGBmatrix[j][i] = color;
+    }
+  }
+  return RGBmatrix;
+}
 
-GUIWindow::~GUIWindow() {}
+GUIWindow::~GUIWindow() {
+  delete view;
+  delete this;
+}
