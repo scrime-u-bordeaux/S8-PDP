@@ -20,7 +20,7 @@
   Lucas Vivas\\}
 
 \begin{document}
-\malketitle
+\maketitle
 \section{Introduction}
 \paragraph{}
 Ce projet a été réalisé par quatre étudiants de première année de
@@ -127,7 +127,7 @@ branchés directement sur le système. Ce nouveau programme permet donc
 à des musiciens d'avoir un retour visuel en temps réel de leur
 improvisation, et peut même comparer des pistes mono-instrumentales
 jouées en temps réel avec des fichiers sonores numériques déjà
-existant. 
+existant.
 
 \subsubsection{Détails sur le programme existant}
 Le programme développé par Jérémy s'intitule \"VisualImpro\". Il se
@@ -148,23 +148,23 @@ puisse être ajouté au programme afin de permettre à un utilisateur de
 choisir la fonction de \textit{pre-processing}/calcul de coefficiant
 de corrélation/traduction en couleur de son choix.
 \begin{itemize}
-  \item La fonction \"Preproc\" prend en entrée une matrice de
-    vecteurs représentant les signaux d'entrée. Elle retourne une
-    nouvelle matrice de vecteurs, qui pourra présenter des
-    échantillons de plus petite taille que la matrice d'entrée par
-    exemple, dans un souci d'optimisation des performances du
-    programme.
-  \item La fonction \"Coeff\" prend en entrée deux vecteurs
-    (appartenant à la matrice de sortie précédemment abordée) et
-    retourne une valeur comprise entre 0 et 1 et correspondant à la
-    corrélation établie entre les deux signaux traités. On peut
-    imaginer une infinité potentielle de calculs pour donner lieu à
-    une corrélation dans le cadre de ce programme ; il s'agit de
-    calculs relativement arbitraires qui seront décrits plus en détail
-    dans la suite de ce mémoire.
-  \item La fonction \"Color\" prend le coefficient précédemment obtenu
-    pour entrée et retourne un triplet RGB ; il s'agit d'un objet C++
-    défini par l'une des classes du programme.
+ \item La fonction \"Preproc\" prend en entrée une matrice de
+       vecteurs représentant les signaux d'entrée. Elle retourne une
+       nouvelle matrice de vecteurs, qui pourra présenter des
+       échantillons de plus petite taille que la matrice d'entrée par
+       exemple, dans un souci d'optimisation des performances du
+       programme.
+ \item La fonction \"Coeff\" prend en entrée deux vecteurs
+       (appartenant à la matrice de sortie précédemment abordée) et
+       retourne une valeur comprise entre 0 et 1 et correspondant à la
+       corrélation établie entre les deux signaux traités. On peut
+       imaginer une infinité potentielle de calculs pour donner lieu à
+       une corrélation dans le cadre de ce programme ; il s'agit de
+       calculs relativement arbitraires qui seront décrits plus en détail
+       dans la suite de ce mémoire.
+ \item La fonction \"Color\" prend le coefficient précédemment obtenu
+       pour entrée et retourne un triplet RGB ; il s'agit d'un objet C++
+       défini par l'une des classes du programme.
 \end{itemize}
 Ces trois fichiers sont répertoriés dans un dossier \"process\". Un
 fichier de configuration permet d'écrire quel fichier choisir pour
@@ -173,13 +173,13 @@ chacune des trois fonctions. \\
 Le seul fichier imposé par l'IDE de Bela se nomme \"render.cpp\". Il
 contient lui-même trois fonctions :
 \begin{itemize}
-\item La fonction setup() initialise et prépare les ressources de
-  traitement du son.
-\item La fonction render() s'appelle de manière régulière et répétée
-  tout au long du processus audio. Elle a pour arguments des buffers
-  contenant les échantillons à traiter.
-  \item La fonction cleanup() est appelée à la fin du processus pour
-    libérer les ressources allouées et mettre fin à certaines tâches.
+ \item La fonction setup() initialise et prépare les ressources de
+       traitement du son.
+ \item La fonction render() s'appelle de manière régulière et répétée
+       tout au long du processus audio. Elle a pour arguments des buffers
+       contenant les échantillons à traiter.
+ \item La fonction cleanup() est appelée à la fin du processus pour
+       libérer les ressources allouées et mettre fin à certaines tâches.
 \end{itemize}
 
 Une structure \"AuxiliaryTask\" est mise à la disposition du
