@@ -4,10 +4,10 @@
 
 extern "C"{
 
-std::vector< std::vector <float> > PreprocDefault(std::vector < std::vector<float> > input){
-	
+std::vector< std::vector <float> > PreprocDefault(const std::vector < std::vector<float> >& input){
+
 	return input;
-	
+
 }
 
 }

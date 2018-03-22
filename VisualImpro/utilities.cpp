@@ -66,7 +66,7 @@ string print_triplet(Triplet tr){
 }
 
 
-float energy(vector <float> f1, int start, int end){
+float energy(const vector <float>& f1, int start, int end){
   float en = 0.0;
   for (int i = start; i < end; i++){
     en+=pow(f1[i],2);
@@ -74,7 +74,7 @@ float energy(vector <float> f1, int start, int end){
   return en/(end-start);
 }
 
-vector<float> energyenvelope(vector<float> f1, int frame){ //cuts f1 in blocks of length 'frame' and applies norm to get the energy of the signal
+vector<float> energyenvelope(const vector<float>& f1, int frame){ //cuts f1 in blocks of length 'frame' and applies norm to get the energy of the signal
   int size = f1.size();
   int nbframes = 0;
   if(size%frame == 0)
@@ -92,7 +92,7 @@ vector<float> energyenvelope(vector<float> f1, int frame){ //cuts f1 in blocks o
   return energ;
 }
 
-std::vector< std::vector <float> > energymatrix(std::vector < std::vector<float> > input){
+std::vector< std::vector <float> > energymatrix(const std::vector < std::vector<float> >& input){
 	std::vector< std::vector <float> > buffer(input.size());
 	for (int i = 0 ; i < input.size(); i++){
 		buffer[i] = energyenvelope(input[i], 1024);
@@ -111,7 +111,7 @@ void print_matrix(std::vector<std::vector <Triplet> > matrix){
 }
 
 
-float correlate(vector<float> s1, vector<float> s2){
+float correlate(const vector<float>& s1, const vector<float>& s2){
   if (s1.size() == s2.size()){
     float corr = 0.0;
     for (int i = 0; i < s1.size(); i++){
@@ -127,7 +127,7 @@ float correlate(vector<float> s1, vector<float> s2){
 
 // (x|y) < sqrt((x|x)(y|y))
 
-float coeffcorrel(vector<float> s1, vector<float> s2){
+float coeffcorrel(const vector<float>& s1, const vector<float>& s2){
 	float scal = correlate(s1,s2);
 	float norm1 = correlate(s1,s1);
 	float norm2 = correlate(s2,s2);

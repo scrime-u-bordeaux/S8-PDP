@@ -29,7 +29,7 @@ ProcessMultiWriteWav::ProcessMultiWriteWav(std::string filename, int numchannels
   fseek(stream, 44, SEEK_CUR);
 }
 
-void ProcessMultiWriteWav::process(std::vector<std::vector<float> > buffer){
+void ProcessMultiWriteWav::process(const std::vector<std::vector<float> >& buffer){
 
 fseek(stream, 0, SEEK_END);
   int x = buffer.size();

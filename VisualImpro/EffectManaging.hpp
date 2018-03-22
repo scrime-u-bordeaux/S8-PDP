@@ -26,4 +26,5 @@ void genEffect(std::vector<std::vector <float> > & In, int indIn, std::vector<st
 	}
 }
 
+
 #endif //EFFECTMANAGING_HPP
