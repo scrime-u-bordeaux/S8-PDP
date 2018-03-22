@@ -13,6 +13,7 @@
 #include <QSlider>
 #include <QSpinBox>
 #include <QLabel>
+#include <QComboBox>
 
 using namespace std;
 
@@ -33,8 +34,14 @@ private:
   QSpinBox *nbAudioBox;
   QSpinBox *nbAnalogBox;
 
-
-
+  QLabel *colorLabel;
+  QLabel *coefLabel;
+  QLabel *preProcLabel;
+  QLabel *mixLabel;
+  QComboBox *colorBox;
+  QComboBox *coefBox;
+  QComboBox *preProcBox;
+  QComboBox *mixBox;
 
 };
 #endif // DEF_GUISETTINGWINDOW

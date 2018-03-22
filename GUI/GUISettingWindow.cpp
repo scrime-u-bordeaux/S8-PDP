@@ -16,6 +16,14 @@ GUISettingWindow::GUISettingWindow(QWidget *parent) : QDialog(parent){
     nbAnalogSlider = new QSlider(Qt::Horizontal, this);
     nbAudioBox = new QSpinBox(this);
     nbAnalogBox = new QSpinBox(this);
+    colorLabel = new QLabel("ColorEffect", this);
+    coefLabel = new QLabel("Coeff", this);
+    preProcLabel = new QLabel("PreProc", this);
+    mixLabel = new QLabel("Mix", this);
+    colorBox = new QComboBox(this);
+    coefBox = new QComboBox(this);
+    preProcBox = new QComboBox(this);
+    mixBox = new QComboBox(this);
 
     nbAudioBox->setMinimum(0);
     nbAudioBox->setMaximum(2);
@@ -27,14 +35,16 @@ GUISettingWindow::GUISettingWindow(QWidget *parent) : QDialog(parent){
     nbAnalogSlider->setMinimum(0);
     nbAnalogSlider->setMaximum(8);
 
+    colorBox->addItem("Red to Green");
+    colorBox->addItem("Black to White");
+
+    finishButton->setDefault(true);
+
     connect(nbAudioSlider, SIGNAL(valueChanged(int)), nbAudioBox, SLOT(setValue(int)));
     connect(nbAnalogSlider, SIGNAL(valueChanged(int)), nbAnalogBox, SLOT(setValue(int)));
     connect(nbAudioBox, SIGNAL(valueChanged(int)), nbAudioSlider, SLOT(setValue(int)));
     connect(nbAnalogBox, SIGNAL(valueChanged(int)), nbAnalogSlider, SLOT(setValue(int)));
 
-    connect(finishButton, SIGNAL(clicked()), this, SLOT(accept()));
-
-    finishButton->setDefault(true);
     connect(finishButton, SIGNAL(clicked()), this, SLOT(accept()));
 
     mainLayout->addWidget(nbAudioLabel, 0, 0);
@@ -43,7 +53,15 @@ GUISettingWindow::GUISettingWindow(QWidget *parent) : QDialog(parent){
     mainLayout->addWidget(nbAnalogLabel, 2, 0);
     mainLayout->addWidget(nbAnalogSlider, 3, 0);
     mainLayout->addWidget(nbAnalogBox, 3, 1);
-    mainLayout->addWidget(finishButton, 4, 1);
+    mainLayout->addWidget(colorLabel, 4, 0);
+    mainLayout->addWidget(colorBox, 4, 1);
+    mainLayout->addWidget(coefLabel, 5, 0);
+    mainLayout->addWidget(coefBox, 5, 1);
+    mainLayout->addWidget(preProcLabel, 6, 0);
+    mainLayout->addWidget(preProcBox, 6, 1);
+    mainLayout->addWidget(mixLabel, 7, 0);
+    mainLayout->addWidget(mixBox, 7, 1);
+    mainLayout->addWidget(finishButton, 8, 1);
     setLayout(mainLayout);
 }
 
