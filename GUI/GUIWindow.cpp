@@ -7,6 +7,12 @@
 
 #include <iostream>
 
+/**
+ * @fn GUIWindow::GUIWindow(int sizeMatrix, QWidget *parent)
+ * @brief Create a main window compose with a matrix inside itself
+ *
+ * @param sizeMatrix Size of the matrix.
+ */
 GUIWindow::GUIWindow(int sizeMatrix, QWidget *parent) : QMainWindow(parent) {
   setWindowTitle("Matrice");
   view = new GUIImageMatrix(sizeMatrix, this);

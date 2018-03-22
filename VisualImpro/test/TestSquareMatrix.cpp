@@ -4,10 +4,11 @@
 */
 
 #include "TestSquareMatrix.hpp"
-#include "SquareMatrix.hpp"
+#include <iostream>
 
 void TestSquareMatrix::setUp(){
-    //SquareMatrix<int> matrix(5);
+    matrix(5);
+    matrix.setCase(0,0,3);
 }
 
 void TestSquareMatrix::tearDown(){
@@ -19,7 +20,6 @@ void TestSquareMatrix::testConstructor(){
 }
 
 void TestSquareMatrix::testSetCase(){
-    //matrix.setCase(0,0,3);
 }
 
 

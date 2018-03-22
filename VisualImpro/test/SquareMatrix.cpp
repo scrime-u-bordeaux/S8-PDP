@@ -9,6 +9,7 @@ template<class T>
 SquareMatrix<T>::SquareMatrix(int sizeMatix): _sizeMatix(sizeMatix),
     _matrix(sizeMatix, vector<T>(sizeMatix)) {}
 
+
 template<class T>
 T SquareMatrix<T>::getCase(int x, int y){
     return _matrix[x][y];
@@ -33,3 +34,5 @@ template<class T>
 SquareMatrix<T>::~SquareMatrix(){
 
 }
+
+template class SquareMatrix<int>;

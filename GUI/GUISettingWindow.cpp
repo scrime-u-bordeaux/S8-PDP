@@ -1,14 +1,22 @@
+/**
+ * @file GUISettingWindow.cpp
+ * @author Lucas VIVAS
+*/
 #include "GUISettingWindow.hpp"
+
+#include <Qt>
 
 GUISettingWindow::GUISettingWindow(QWidget *parent) : QDialog(parent){
     finishButton = new QPushButton("FIN");
-    principalWidget = new QWidget;
-    mainLayout = new QGridLayout;
-    nbAudioSlider = new QSlider;
-    nbAnalogSlider = new QSlider;
+    principalWidget = new QWidget(this);
+    mainLayout = new QGridLayout(this);
+    nbAudioSlider = new QSlider(Qt::Horizontal, this);
+    nbAnalogSlider = new QSlider(Qt::Horizontal, this);
 
     finishButton->setDefault(true);
     connect(finishButton, SIGNAL(clicked()), this, SLOT(accept()));
+
+    nbAudioSlider->setTickInterval(2);
 
     mainLayout->addWidget(nbAudioSlider, 0, 0);
     mainLayout->addWidget(nbAnalogSlider, 1, 0);

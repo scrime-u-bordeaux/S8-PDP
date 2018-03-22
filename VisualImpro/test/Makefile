@@ -15,7 +15,7 @@ test.bin: $(OBJ)
 	$(CXX) -o $@ $^ $(CXXFLAGS)
 
 %.o: %.cpp 
-	$(CXX) -c $< $(CXXFLAGS) -o $@
+	$(CXX) -c $^ $(CXXFLAGS) -o $@
 
 
 .PHONY: clean
