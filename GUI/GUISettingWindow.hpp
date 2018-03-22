@@ -11,6 +11,8 @@
 #include <QGridLayout>
 #include <QPushButton>
 #include <QSlider>
+#include <QSpinBox>
+#include <QLabel>
 
 using namespace std;
 
@@ -24,8 +26,13 @@ private:
   QGridLayout *mainLayout;
   QPushButton *finishButton;
 
-  QSlider *nbAudioSlider; //digital ?
+  QLabel *nbAudioLabel;
+  QLabel *nbAnalogLabel;
+  QSlider *nbAudioSlider;
   QSlider *nbAnalogSlider;
+  QSpinBox *nbAudioBox;
+  QSpinBox *nbAnalogBox;
+
 
 
 
