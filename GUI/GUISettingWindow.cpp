@@ -19,14 +19,23 @@ GUISettingWindow::GUISettingWindow(QWidget *parent) : QDialog(parent){
 
     nbAudioBox->setMinimum(0);
     nbAudioBox->setMaximum(2);
-
     nbAnalogBox->setMinimum(0);
     nbAnalogBox->setMaximum(8);
 
-    finishButton->setDefault(true);
+    nbAudioSlider->setMinimum(0);
+    nbAudioSlider->setMaximum(2);
+    nbAnalogSlider->setMinimum(0);
+    nbAnalogSlider->setMaximum(8);
+
+    connect(nbAudioSlider, SIGNAL(valueChanged(int)), nbAudioBox, SLOT(setValue(int)));
+    connect(nbAnalogSlider, SIGNAL(valueChanged(int)), nbAnalogBox, SLOT(setValue(int)));
+    connect(nbAudioBox, SIGNAL(valueChanged(int)), nbAudioSlider, SLOT(setValue(int)));
+    connect(nbAnalogBox, SIGNAL(valueChanged(int)), nbAnalogSlider, SLOT(setValue(int)));
+
     connect(finishButton, SIGNAL(clicked()), this, SLOT(accept()));
 
-    nbAudioSlider->setTickInterval(2);
+    finishButton->setDefault(true);
+    connect(finishButton, SIGNAL(clicked()), this, SLOT(accept()));
 
     mainLayout->addWidget(nbAudioLabel, 0, 0);
     mainLayout->addWidget(nbAudioSlider, 1, 0);
