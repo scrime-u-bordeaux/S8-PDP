@@ -25,7 +25,7 @@ public:
   CPPUNIT_TEST_SUITE_END();
 
 private:
-//  SquareMatrix matrix;
+    SquareMatrix<int>* matrix;
 
   void testConstructor();
   void testGetCase();

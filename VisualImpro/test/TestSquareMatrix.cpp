@@ -7,8 +7,8 @@
 #include <iostream>
 
 void TestSquareMatrix::setUp(){
-    matrix(5);
-    matrix.setCase(0,0,3);
+    matrix = new SquareMatrix<int>(5);
+    matrix->setCase(0,0,3);
 }
 
 void TestSquareMatrix::tearDown(){
