@@ -3,12 +3,12 @@
  * @author Lucas VIVAS
 */
 #include "GUISettingWindow.hpp"
+#include "GUIProcessSettingLayout.hpp"
 
 #include <Qt>
 
 GUISettingWindow::GUISettingWindow(QWidget *parent) : QDialog(parent){
     finishButton = new QPushButton("FIN");
-    principalWidget = new QWidget(this);
     mainLayout = new QGridLayout(this);
     nbAudioLabel = new QLabel("Nombre Audio", this);
     nbAnalogLabel = new QLabel("Nombre Analog", this);
@@ -16,14 +16,6 @@ GUISettingWindow::GUISettingWindow(QWidget *parent) : QDialog(parent){
     nbAnalogSlider = new QSlider(Qt::Horizontal, this);
     nbAudioBox = new QSpinBox(this);
     nbAnalogBox = new QSpinBox(this);
-    colorLabel = new QLabel("ColorEffect", this);
-    coefLabel = new QLabel("Coeff", this);
-    preProcLabel = new QLabel("PreProc", this);
-    mixLabel = new QLabel("Mix", this);
-    colorBox = new QComboBox(this);
-    coefBox = new QComboBox(this);
-    preProcBox = new QComboBox(this);
-    mixBox = new QComboBox(this);
 
     nbAudioBox->setMinimum(0);
     nbAudioBox->setMaximum(2);
@@ -35,8 +27,11 @@ GUISettingWindow::GUISettingWindow(QWidget *parent) : QDialog(parent){
     nbAnalogSlider->setMinimum(0);
     nbAnalogSlider->setMaximum(8);
 
-    colorBox->addItem("Red to Green");
-    colorBox->addItem("Black to White");
+    GUIProcessSettingLayout* processSettingLayout = new GUIProcessSettingLayout();
+    processSettingLayout->addSetting("Coeff");
+    processSettingLayout->addSetting("Preproc");
+    processSettingLayout->addSetting("Color");
+    processSettingLayout->addSetting("Mix");
 
     finishButton->setDefault(true);
 
@@ -53,15 +48,8 @@ GUISettingWindow::GUISettingWindow(QWidget *parent) : QDialog(parent){
     mainLayout->addWidget(nbAnalogLabel, 2, 0);
     mainLayout->addWidget(nbAnalogSlider, 3, 0);
     mainLayout->addWidget(nbAnalogBox, 3, 1);
-    mainLayout->addWidget(colorLabel, 4, 0);
-    mainLayout->addWidget(colorBox, 4, 1);
-    mainLayout->addWidget(coefLabel, 5, 0);
-    mainLayout->addWidget(coefBox, 5, 1);
-    mainLayout->addWidget(preProcLabel, 6, 0);
-    mainLayout->addWidget(preProcBox, 6, 1);
-    mainLayout->addWidget(mixLabel, 7, 0);
-    mainLayout->addWidget(mixBox, 7, 1);
-    mainLayout->addWidget(finishButton, 8, 1);
+    mainLayout->addLayout(processSettingLayout, 4, 0);
+    mainLayout->addWidget(finishButton, 5, 1);
     setLayout(mainLayout);
 }
 
@@ -71,7 +59,6 @@ void setSpinBox(){
 
 GUISettingWindow::~GUISettingWindow(){
     delete(finishButton);
-    delete(principalWidget);
     delete(mainLayout);
     delete(nbAudioSlider);
     delete(nbAnalogSlider);

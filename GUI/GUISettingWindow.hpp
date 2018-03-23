@@ -23,7 +23,6 @@ public:
   ~GUISettingWindow();
 
 private:
-  QWidget *principalWidget;
   QGridLayout *mainLayout;
   QPushButton *finishButton;
 
@@ -33,15 +32,6 @@ private:
   QSlider *nbAnalogSlider;
   QSpinBox *nbAudioBox;
   QSpinBox *nbAnalogBox;
-
-  QLabel *colorLabel;
-  QLabel *coefLabel;
-  QLabel *preProcLabel;
-  QLabel *mixLabel;
-  QComboBox *colorBox;
-  QComboBox *coefBox;
-  QComboBox *preProcBox;
-  QComboBox *mixBox;
 
 };
 #endif // DEF_GUISETTINGWINDOW
