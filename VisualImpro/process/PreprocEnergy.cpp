@@ -34,7 +34,7 @@ extern "C"{
 
 std::vector< std::vector <float> > PreprocEnergy(const std::vector < std::vector<float> >& input){
 	std::vector< std::vector <float> > buffer(input.size());
-	for (int i = 0 ; i < input.size(); i++){
+	for (unsigned int i = 0 ; i < input.size(); i++){
 		buffer[i] = energyenvelope(input[i], 1024);
 	}
 	return buffer;

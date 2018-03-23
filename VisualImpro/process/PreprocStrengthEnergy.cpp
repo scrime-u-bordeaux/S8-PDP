@@ -32,7 +32,7 @@ extern "C"{
 
 std::vector< std::vector <float> > PreprocStrengthEnergy(const std::vector < std::vector<float> >& input){
 	std::vector< std::vector <float> > buffer(input.size());
-	for (int i = 0 ; i < input.size(); i++){
+	for (unsigned int i = 0 ; i < input.size(); i++){
 		buffer[i] = strengthenergyenvelope(input[i], 1024);
 	}
 	return buffer;

@@ -15,10 +15,10 @@ struct timeval tv14;
 struct timeval tv15;
 
 ProcessMultiCorrel::ProcessMultiCorrel(
-    float (*coeffcorrel)(std::vector<float> s1, std::vector<float> s2),
-    Triplet (*colorscale)(float coeff),
-    std::vector<std::vector<float> > (*preproc)(std::vector<std::vector<float> >),
-    std::vector<float> (*mixLevel)(std::vector<std::vector<float> >))
+    float (*coeffcorrel)(const std::vector<float>&, const std::vector<float>&),
+    Triplet (*colorscale)(float),
+    std::vector<std::vector<float> > (*preproc)(const std::vector<std::vector<float> >&),
+    std::vector<float> (*mixLevel)(const std::vector<std::vector<float> >&))
     : _coeffcorrel(coeffcorrel), _colorscale(colorscale), _preprocess(preproc),
     _mixLevel(mixLevel) { matrixfile.open(string("log/log"), std::ios::app); }
 

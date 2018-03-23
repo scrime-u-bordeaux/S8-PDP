@@ -83,9 +83,9 @@ double getCurrentTime(void) {
   }
 
 typedef Triplet (*colorScale)(float coeff);
-typedef float (*coeffCorrel)(vector<float> s1, vector<float> s2);
-typedef vector<vector<float> > (*preProcess)(vector<vector<float> >);
-typedef vector<float> (*mixLevel)(vector<vector<float> >);
+typedef float (*coeffCorrel)(const vector<float>& s1, const vector<float>& s2);
+typedef vector<vector<float> > (*preProcess)(const vector<vector<float> >&);
+typedef vector<float> (*mixLevel)(const vector<vector<float> >&);
 
 int main(int argc, char *argv[]) {
 

@@ -15,8 +15,8 @@ vector<float> MixMaxCorrelated(const vector<vector<float> >& correlMatrix) {
   vector<float> meanCorrelations(correlMatrix.size(), 0.0f);
 
   // fill the vector with the mean correlation of each instrument with others
-  for (int i = 0; i < correlMatrix.size(); i++) {
-    for (int j = 0; j < correlMatrix[i].size(); j++) {
+  for (unsigned int i = 0; i < correlMatrix.size(); i++) {
+    for (unsigned int j = 0; j < correlMatrix[i].size(); j++) {
       if (i != j)
         meanCorrelations[i] += correlMatrix[i][j];
     }
