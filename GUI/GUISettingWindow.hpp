@@ -10,10 +10,9 @@
 #include <QWidget>
 #include <QGridLayout>
 #include <QPushButton>
-#include <QSlider>
-#include <QSpinBox>
-#include <QLabel>
-#include <QComboBox>
+
+#include "GUIProcessSettingLayout.hpp"
+#include "GUIInputSettingLayout.hpp"
 
 using namespace std;
 
@@ -23,15 +22,11 @@ public:
   ~GUISettingWindow();
 
 private:
-  QGridLayout *mainLayout;
+  QVBoxLayout *mainLayout;
+  GUIProcessSettingLayout* processSettingLayout;
+  GUIInputSettingLayout* inputSettingLayout;
   QPushButton *finishButton;
 
-  QLabel *nbAudioLabel;
-  QLabel *nbAnalogLabel;
-  QSlider *nbAudioSlider;
-  QSlider *nbAnalogSlider;
-  QSpinBox *nbAudioBox;
-  QSpinBox *nbAnalogBox;
 
 };
 #endif // DEF_GUISETTINGWINDOW

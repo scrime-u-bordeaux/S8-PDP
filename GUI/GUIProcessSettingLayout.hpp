@@ -1,5 +1,5 @@
 /**
- * @file GUISettingWindow.hpp
+ * @file GUIProcessSettingLayout.hpp
  * @author Lucas VIVAS
 */
 

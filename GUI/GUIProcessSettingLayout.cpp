@@ -24,6 +24,7 @@ void GUIProcessSettingLayout::addSetting(string name) {
 }
 
 vector<string> GUIProcessSettingLayout::getFilename(string nameFile) {
+  //TODO: check extension
   vector<string> strList;
   DIR *pDIR;
   struct dirent *entry;
@@ -42,4 +43,9 @@ vector<string> GUIProcessSettingLayout::getFilename(string nameFile) {
   return strList;
 }
 
-GUIProcessSettingLayout::~GUIProcessSettingLayout() {}
+GUIProcessSettingLayout::~GUIProcessSettingLayout() {
+    for (size_t i = 0; i < allBox->size(); i++) {
+        //delete (allBox->pull_back);
+    }
+    delete allBox;
+}
