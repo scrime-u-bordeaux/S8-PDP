@@ -10,7 +10,7 @@ using namespace std;
 float correlatescalar(const vector<float>& s1, const vector<float>& s2){
   if (s1.size() == s2.size()){
     float corr = 0.0;
-    for (int i = 0; i < s1.size(); i++){
+    for (unsigned int i = 0; i < s1.size(); i++){
       corr += s1[i]*s2[i];
     }
     return corr;

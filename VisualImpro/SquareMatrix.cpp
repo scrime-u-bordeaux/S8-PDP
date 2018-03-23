@@ -17,7 +17,7 @@ T SquareMatrix<T>::getCase(int x, int y){
 
 template<class T>
 void SquareMatrix<T>::setCase(int x, int y, T val){
-
+    _matrix[x][y] = val;
 }
 
 template<class T>
@@ -27,12 +27,14 @@ int SquareMatrix<T>::getSize() {
 
 template<class T>
 string SquareMatrix<T>::toString(){
-    return NULL;
+    return "SquareMatrix";
 }
 
 template<class T>
 SquareMatrix<T>::~SquareMatrix(){
-
+  vector<vector<T> > empty;
+  empty.swap(_matrix);
 }
 
 template class SquareMatrix<int>;
+template class SquareMatrix<float>;

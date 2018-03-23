@@ -19,7 +19,7 @@ public:
     void setCase(int x, int y, T val);
     int getSize();
     string toString();
-    ~SquareMatrix();
+    virtual ~SquareMatrix();
 
 private:
     int _sizeMatix;

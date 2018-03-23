@@ -22,7 +22,7 @@ string dectohexa(int dec){
     return hexa[dec];
   }
   else
-    return (dectohexa(dec/16) + hexa[dec%16]); 
+    return (dectohexa(dec/16) + hexa[dec%16]);
 }
 
 string colortohexa(int color){
@@ -66,7 +66,7 @@ string print_triplet(Triplet tr){
 }
 
 
-float energy(const vector <float>& f1, int start, int end){
+/*float energy(const vector <float>& f1, int start, int end){
   float en = 0.0;
   for (int i = start; i < end; i++){
     en+=pow(f1[i],2);
@@ -78,7 +78,7 @@ vector<float> energyenvelope(const vector<float>& f1, int frame){ //cuts f1 in b
   int size = f1.size();
   int nbframes = 0;
   if(size%frame == 0)
-  	{	
+  	{
   	nbframes = size/frame;
  	}
   else
@@ -90,11 +90,11 @@ vector<float> energyenvelope(const vector<float>& f1, int frame){ //cuts f1 in b
     energ[i] = energy(f1, i*frame, min(i*frame + frame, size));
   }
   return energ;
-}
+}*/
 
 std::vector< std::vector <float> > energymatrix(const std::vector < std::vector<float> >& input){
 	std::vector< std::vector <float> > buffer(input.size());
-	for (int i = 0 ; i < input.size(); i++){
+	for (unsigned int i = 0 ; i < input.size(); i++){
 		buffer[i] = energyenvelope(input[i], 1024);
 	}
 	return buffer;
@@ -102,8 +102,8 @@ std::vector< std::vector <float> > energymatrix(const std::vector < std::vector<
 
 void print_matrix(std::vector<std::vector <Triplet> > matrix){
   cout << "Matrix :\n";
-  for (int i = 0; i < matrix.size(); i++){
-    for (int j = 0; j < matrix.size(); j++){
+  for (unsigned int i = 0; i < matrix.size(); i++){
+    for (unsigned int j = 0; j < matrix.size(); j++){
       cout << print_triplet(matrix[i][j]) << " ";
     }
     cout << endl;
@@ -114,7 +114,7 @@ void print_matrix(std::vector<std::vector <Triplet> > matrix){
 float correlate(const vector<float>& s1, const vector<float>& s2){
   if (s1.size() == s2.size()){
     float corr = 0.0;
-    for (int i = 0; i < s1.size(); i++){
+    for (unsigned int i = 0; i < s1.size(); i++){
       corr += s1[i]*s2[i];
       //printf("s12 %f %f", s1[i], s2[i]);
     }
@@ -137,7 +137,7 @@ float coeffcorrel(const vector<float>& s1, const vector<float>& s2){
   return coeff;
 }
 
-Triplet greenredscale(float coeff) //given a coefficient, computes an RGB triplet, where 0.01 is red (0 is black) and 1 is green 
+Triplet greenredscale(float coeff) //given a coefficient, computes an RGB triplet, where 0.01 is red (0 is black) and 1 is green
 {
   Triplet rgb(0,0,0);
   if (coeff < 0.0000001){
@@ -182,10 +182,7 @@ int getChannelNumber(string filename){
 std::vector<float> readwav(std::string file){
   SNDFILE *sf;
   SF_INFO info;
-  //int num_channels;
   int num, num_items;
-  //float *buf;
-  //int f, sr, c;
   int i,j;
   info.format = 0;
   sf = sf_open(file.c_str(), SFM_READ, &info);
@@ -199,7 +196,7 @@ std::vector<float> readwav(std::string file){
   num = sf_read_float(sf, buff, num_items);
   std::vector<float>  buffer(info.frames);
   for (i = 0; i < info.frames; i++){
-    for (j = 0 ; j < info.channels; j++){ 
+    for (j = 0 ; j < info.channels; j++){
       buffer[i]+=buff[info.channels * i + j];
     }
   }

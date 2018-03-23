@@ -14,7 +14,7 @@ vector<float> MixRandomValues(const vector<vector<float> >& correlMatrix){
   vector<float> randomValues(correlMatrix.size(), 0.0f);
 
   // fill the vector with random values;
-  for (int i = 0; i < correlMatrix.size(); i++) {
+  for (unsigned int i = 0; i < correlMatrix.size(); i++) {
     randomValues[i] = rand() % 2;
   }
 
