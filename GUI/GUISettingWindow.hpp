@@ -13,10 +13,12 @@
 
 #include "GUIProcessSettingLayout.hpp"
 #include "GUIInputSettingLayout.hpp"
+#include "GUIWavFileLayout.hpp"
 
 using namespace std;
 
 class GUISettingWindow : public QDialog {
+  Q_OBJECT
 public:
   GUISettingWindow(QWidget *parent = 0);
   ~GUISettingWindow();
@@ -25,6 +27,7 @@ private:
   QVBoxLayout *mainLayout;
   GUIProcessSettingLayout* processSettingLayout;
   GUIInputSettingLayout* inputSettingLayout;
+  GUIWavFileLayout* wavFileLayout;
   QPushButton *finishButton;
 
 

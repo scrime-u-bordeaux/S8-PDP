@@ -14,6 +14,7 @@
 using namespace std;
 
 class GUIProcessSettingLayout : public QFormLayout {
+    Q_OBJECT
 public:
   GUIProcessSettingLayout(QWidget *parent = 0);
   void addSetting(string name);

@@ -5,11 +5,11 @@
 #include "GUISettingWindow.hpp"
 
 GUISettingWindow::GUISettingWindow(QWidget *parent) : QDialog(parent){
-    //TODO: check wav
     finishButton = new QPushButton("FIN");
     mainLayout = new QVBoxLayout(this);
     processSettingLayout = new GUIProcessSettingLayout();
     inputSettingLayout = new GUIInputSettingLayout();
+    wavFileLayout = new GUIWavFileLayout();
 
     processSettingLayout->addSetting("Coeff");
     processSettingLayout->addSetting("Preproc");
@@ -24,11 +24,14 @@ GUISettingWindow::GUISettingWindow(QWidget *parent) : QDialog(parent){
 
     mainLayout->addLayout(inputSettingLayout, 0);
     mainLayout->addLayout(processSettingLayout, 1);
-    mainLayout->addWidget(finishButton, 2);
+    mainLayout->addLayout(wavFileLayout, 2);
+    mainLayout->addWidget(finishButton, 3);
     setLayout(mainLayout);
 }
 
 GUISettingWindow::~GUISettingWindow(){
     delete(finishButton);
     delete(mainLayout);
+    delete(processSettingLayout);
+    delete(inputSettingLayout);
 }

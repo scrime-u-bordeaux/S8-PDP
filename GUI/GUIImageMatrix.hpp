@@ -17,6 +17,7 @@ using namespace std;
 #define SQUARE_SIZE 200
 
 class GUIImageMatrix : public QGraphicsView {
+    Q_OBJECT
 public:
   GUIImageMatrix(int sizeMatrix, QWidget *parent = 0);
   void updateColor(const vector<vector<RGB> > &matrixRGB);

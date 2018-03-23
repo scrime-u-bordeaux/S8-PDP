@@ -17,6 +17,7 @@
 using namespace std;
 
 class GUIInputSettingLayout : public QGridLayout {
+    Q_OBJECT
 public:
   GUIInputSettingLayout(QWidget *parent = 0);
   void addSetting(string name, int min, int max);

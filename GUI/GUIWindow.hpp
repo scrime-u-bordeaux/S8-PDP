@@ -15,6 +15,7 @@
 using namespace std;
 
 class GUIWindow : public QMainWindow {
+    Q_OBJECT
 public:
   GUIWindow(int sizeMatrix, QWidget *parent = 0);
   void updateColor(const vector<vector<RGB> >& matrixRGB);
