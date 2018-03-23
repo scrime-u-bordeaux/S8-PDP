@@ -4,9 +4,6 @@
 */
 #include "GUISettingWindow.hpp"
 
-
-#include <Qt>
-
 GUISettingWindow::GUISettingWindow(QWidget *parent) : QDialog(parent){
     //TODO: check wav
     finishButton = new QPushButton("FIN");
@@ -29,10 +26,6 @@ GUISettingWindow::GUISettingWindow(QWidget *parent) : QDialog(parent){
     mainLayout->addLayout(processSettingLayout, 1);
     mainLayout->addWidget(finishButton, 2);
     setLayout(mainLayout);
-}
-
-void setSpinBox(){
-
 }
 
 GUISettingWindow::~GUISettingWindow(){
