@@ -20,6 +20,7 @@ public:
   CPPUNIT_TEST_SUITE_END();
 
 private:
+  SquareMatrix<float>* input;
   void testMix();
 };
 

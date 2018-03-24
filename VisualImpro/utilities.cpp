@@ -119,29 +119,3 @@ int getChannelNumber(string filename){
          }
       return 0;
 }
-
-
-std::vector<float> readwav(std::string file){
-  SNDFILE *sf;
-  SF_INFO info;
-  int num, num_items;
-  int i,j;
-  info.format = 0;
-  sf = sf_open(file.c_str(), SFM_READ, &info);
-  if (sf == NULL)
-    {
-      printf("Failed to open the file.\n");
-      exit(-1);
-    }
-  num_items = info.frames * info.channels;
-  float buff[num_items];
-  num = sf_read_float(sf, buff, num_items);
-  std::vector<float>  buffer(info.frames);
-  for (i = 0; i < info.frames; i++){
-    for (j = 0 ; j < info.channels; j++){
-      buffer[i]+=buff[info.channels * i + j];
-    }
-  }
-  sf_close(sf);
-  return buffer;
-}
