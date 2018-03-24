@@ -1,8 +1,10 @@
+INC_DIR = ../
+
 TEX = pdflatex
 BIB = bibtex
 
-PDF = analyse-besoins.pdf
-TEXFILE = analyse-besoins.tex
+PDF = memoire.pdf
+TEXFILE = memoire.tex
 
 all: $(PDF)
 
