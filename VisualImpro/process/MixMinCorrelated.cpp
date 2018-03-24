@@ -23,12 +23,10 @@ vector<float> MixMinCorrelated(const SquareMatrix<float>& correlMatrix) {
   for (int i = 0; i < size; i++) {
     for (int j = 0; j < size; j++) {
       if (i != j)
-        meanCorrelations[i] += correlMatrix.getCase(i, j);
+        // complementary coefficient between 0 and 1
+        meanCorrelations[i] += 1 - correlMatrix.getCase(i, j);
     }
     meanCorrelations[i] /= size;
-
-    // complementary coefficient between 0 and 1
-    meanCorrelations[i] = 1 - meanCorrelations[i];
   }
   return meanCorrelations;
 }

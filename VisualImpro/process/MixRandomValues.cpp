@@ -18,7 +18,7 @@ vector<float> MixRandomValues(const SquareMatrix<float>& correlMatrix){
 
   // fill the vector with random values;
   for (int i = 0; i < size; i++) {
-    randomValues[i] = rand() % 2;
+    randomValues[i] = 0.2f + static_cast <float> (rand()) / static_cast <float> (RAND_MAX/0.8f);
   }
 
   return randomValues;

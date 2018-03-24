@@ -52,7 +52,8 @@ ProcessMultiCorrel::color_matrix(const SquareMatrix<float>& correlMatrix) {
   for (int i = 0; i < size; i++) {
     for (int j = 0; j < i; j++) {
       RGB color = this->_colorscale(correlMatrix.getCase(i, j));
-      RGBmatrix.getCase(i, j) = RGBmatrix.getCase(j, i) = color;
+      RGBmatrix.setCase(i, j, color);
+      RGBmatrix.setCase(j, i, color);
     }
   }
   return RGBmatrix;

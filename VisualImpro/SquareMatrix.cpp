@@ -12,8 +12,6 @@ SquareMatrix<T>::SquareMatrix(int sizeMatix): _sizeMatix(sizeMatix){
     vector<vector<T> > SquareMatrix(sizeMatix, vector<T>(sizeMatix));
     _matrix = SquareMatrix;
 }
-//std::vector<std::vector<RGB, std::allocator<RGB> >, std::allocator<std::vector<RGB, std::allocator<RGB> > > >
-//std::vector<std::vector<RGB, std::allocator<RGB> >, std::allocator<std::vector<RGB, std::allocator<RGB> > > >*
 
 template<>
 SquareMatrix<RGB>::SquareMatrix(int sizeMatix): _sizeMatix(sizeMatix){
