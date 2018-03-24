@@ -1,12 +1,13 @@
 /***** process/ColorAlwaysGreen.cpp *****/
 
 #include "../utilities.hpp"
+#include "../RGB.hpp"
 
 extern "C"{
-	
+
 Triplet ColorAlwaysGreen(float coeff){
-	Triplet rgb(20,250,20);
-	return rgb;
+	RGB green(20,250,20);
+	return green;
 }
-	
+
 }

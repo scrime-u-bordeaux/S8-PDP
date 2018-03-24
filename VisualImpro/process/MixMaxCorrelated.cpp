@@ -2,6 +2,7 @@
 // correlated instruments
 
 #include "../utilities.hpp"
+#include "../SquareMatrix.hpp"
 #include <vector>
 
 using namespace std;
@@ -9,18 +10,20 @@ using namespace std;
 extern "C" {
 
 // return a vector whose elements are the mean correlations of every instruments
-vector<float> MixMaxCorrelated(const vector<vector<float> >& correlMatrix) {
+vector<float> MixMaxCorrelated(const SquareMatrix<float>& correlMatrix) {
+
+  int size = correlMatrix.getSize();
 
   // initialize the result vector with zeros
-  vector<float> meanCorrelations(correlMatrix.size(), 0.0f);
+  vector<float> meanCorrelations(size, 0.0f);
 
   // fill the vector with the mean correlation of each instrument with others
-  for (unsigned int i = 0; i < correlMatrix.size(); i++) {
-    for (unsigned int j = 0; j < correlMatrix[i].size(); j++) {
+  for (int i = 0; i < size; i++) {
+    for (int j = 0; j < size; j++) {
       if (i != j)
-        meanCorrelations[i] += correlMatrix[i][j];
+        meanCorrelations[i] += correlMatrix.getCase(i, j);
     }
-    meanCorrelations[i] /= correlMatrix.size();
+    meanCorrelations[i] /= size;
   }
 
   return meanCorrelations;

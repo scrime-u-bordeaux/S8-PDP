@@ -1,6 +1,7 @@
 // Generate a random sound volume mix on each instrument while playing
 
 #include "../utilities.hpp"
+#include "../SquareMatrix.hpp"
 #include <vector>
 #include <cstdlib>
 
@@ -8,13 +9,15 @@ using namespace std;
 
 extern "C"{
 
-vector<float> MixRandomValues(const vector<vector<float> >& correlMatrix){
+vector<float> MixRandomValues(const SquareMatrix<float>& correlMatrix){
+
+  int size = correlMatrix.getSize();
 
   // initialize the result vector with zeros
-  vector<float> randomValues(correlMatrix.size(), 0.0f);
+  vector<float> randomValues(size, 0.0f);
 
   // fill the vector with random values;
-  for (unsigned int i = 0; i < correlMatrix.size(); i++) {
+  for (int i = 0; i < size; i++) {
     randomValues[i] = rand() % 2;
   }
 

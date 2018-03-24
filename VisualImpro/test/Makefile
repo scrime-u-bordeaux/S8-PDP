@@ -4,7 +4,7 @@ CXX = g++
 CXXFLAGS = -std=c++11 -lsndfile -lcppunit -Wall -Wextra
 
 EXEC=test.bin
-SRC= $(wildcard *.cpp) ../ProcessMultiCorrel.cpp ../Connection.cpp ../utilities.cpp
+SRC= $(wildcard *.cpp) ../ProcessMultiCorrel.cpp ../Connection.cpp ../utilities.cpp ../SquareMatrix.cpp ../RGB.cpp
 OBJ= $(SRC:.cpp=.o)
 #OBJDIR= ./obj
 

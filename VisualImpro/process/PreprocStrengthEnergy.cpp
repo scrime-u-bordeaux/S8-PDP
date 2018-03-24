@@ -1,6 +1,7 @@
 /***** process/PreprocStrengthEnergy.cpp *****/
 
 #include "../utilities.hpp"
+#include "../SquareMatrix.hpp"
 
 #include <math.h>
 
@@ -30,10 +31,11 @@ vector<float> strengthenergyenvelope(const vector<float>& f1, int frame){ //cuts
 
 extern "C"{
 
-std::vector< std::vector <float> > PreprocStrengthEnergy(const std::vector < std::vector<float> >& input){
-	std::vector< std::vector <float> > buffer(input.size());
-	for (unsigned int i = 0 ; i < input.size(); i++){
-		buffer[i] = strengthenergyenvelope(input[i], 1024);
+SquareMatrix<float> PreprocStrengthEnergy(const SquareMatrix<float>& input){
+  int size = input.getSize();
+	SquareMatrix<float> buffer(size);
+	for (unsigned int i=0 ; i<size; i++){
+		buffer.setColumn(i, strengthenergyenvelope(input.getColumn(i), 1024);
 	}
 	return buffer;
 }

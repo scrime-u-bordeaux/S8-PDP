@@ -1,10 +1,11 @@
 /***** process/PreprocDefault.cpp *****/
 
 #include "../utilities.hpp"
+#include "../SquareMatrix.hpp"
 
 extern "C"{
 
-std::vector< std::vector <float> > PreprocDefault(const std::vector < std::vector<float> >& input){
+SquareMatrix<float> PreprocDefault(const SquareMatrix<float>& input){
 
 	return input;
 

@@ -10,7 +10,8 @@ CPPUNIT_TEST_SUITE_REGISTRATION(TestSquareMatrix);
 
 void TestSquareMatrix::setUp(){
   intMatrix = new SquareMatrix<int>(5);
-  floatMatrix = new SquareMatrix<float>(5.0f);
+  floatMatrix = new SquareMatrix<float>(5);
+  RGBmatrix = new SquareMatrix<RGB>(5);
 }
 
 void TestSquareMatrix::tearDown(){

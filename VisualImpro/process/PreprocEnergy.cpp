@@ -1,4 +1,5 @@
 #include "../utilities.hpp"
+#include "../SquareMatrix.hpp"
 
 #include <math.h>
 
@@ -32,10 +33,11 @@ vector<float> energyenvelope(const vector<float>& f1, int frame){ //cuts f1 in b
 
 extern "C"{
 
-std::vector< std::vector <float> > PreprocEnergy(const std::vector < std::vector<float> >& input){
-	std::vector< std::vector <float> > buffer(input.size());
-	for (unsigned int i = 0 ; i < input.size(); i++){
-		buffer[i] = energyenvelope(input[i], 1024);
+SquareMatrix<float> PreprocEnergy(const SquareMatrix<float>& input){
+  int size = input.getSize();
+	SquareMatrix<float> buffer(size);
+	for (int i = 0 ; i < size; i++){
+		buffer.setColumn(i, energyenvelope(input.getColumn(i), 1024));
 	}
 	return buffer;
 }

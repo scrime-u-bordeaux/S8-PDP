@@ -9,7 +9,8 @@
 #include <cppunit/TestFixture.h>
 #include <cppunit/extensions/HelperMacros.h>
 
-#include "../SquareMatrix.cpp"
+#include "../RGB.hpp"
+#include "../SquareMatrix.hpp"
 
 class TestSquareMatrix : public CppUnit::TestFixture {
 
@@ -26,6 +27,7 @@ public:
 private:
   SquareMatrix<int>* intMatrix;
   SquareMatrix<float>* floatMatrix;
+  SquareMatrix<RGB>* RGBmatrix;
   void testConstructor();
   void testSetCase();
   void testGetCase();

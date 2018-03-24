@@ -16,6 +16,7 @@ void TestMultiCorrel::setUp(){
     buffer->setCase(2,1,7.0f);
     buffer->setCase(2,2,8.0f);
     meanCorrelations = std::vector<float>(3, 0.0f);
+    conn = new Connection();
 }
 
 void TestMultiCorrel::tearDown(){
@@ -30,7 +31,7 @@ void TestMultiCorrel::testConstructor(){
 }
 
 void TestMultiCorrel::testProcess() {
-  CPPUNIT_ASSERT(0 == 0);
+  //p->process(*buffer, meanCorrelations, *conn);
 }
 
 void TestMultiCorrel::testCalculCorrel(){

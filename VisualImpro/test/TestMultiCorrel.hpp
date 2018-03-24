@@ -7,6 +7,7 @@
 #include <cppunit/extensions/HelperMacros.h>
 
 #include "../SquareMatrix.hpp"
+#include "../RGB.hpp"
 #include "../ProcessMultiCorrel.hpp"
 #include "../process/MixMaxCorrelated.cpp"
 #include "../process/MixMinCorrelated.cpp"
@@ -32,6 +33,7 @@ private:
   ProcessMultiCorrel *p;
   SquareMatrix<float>* buffer;
   vector<float> meanCorrelations;
+  Connection* conn;
   void testConstructor();
   void testProcess();
   void testCalculCorrel();

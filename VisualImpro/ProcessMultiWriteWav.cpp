@@ -3,8 +3,8 @@ This code is inspired by https://gasstationwithoutpumps.wordpress.com/2011/10/08
 */
 
 #include "ProcessMultiWriteWav.hpp"
+#include "SquareMatrix.hpp"
 #include <assert.h>
-#include <vector>
 
 void write_little_endian(unsigned int word, int num_bytes, FILE *stream)
 {
@@ -29,7 +29,7 @@ ProcessMultiWriteWav::ProcessMultiWriteWav(std::string filename, int numchannels
   fseek(stream, 44, SEEK_CUR);
 }
 
-void ProcessMultiWriteWav::process(const std::vector<std::vector<float> >& buffer){
+void ProcessMultiWriteWav::process(const SquareMatrix<float>& buffer){
 
 fseek(stream, 0, SEEK_END);
   int x = buffer.size();

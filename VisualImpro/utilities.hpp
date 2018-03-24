@@ -1,24 +1,19 @@
 #ifndef UTILITIES_HPP
 #define UTILITIES_HPP
 
+#include "SquareMatrix.hpp"
+#include "RGB.hpp"
 #include <iostream>
 #include <string>
 #include <vector>
 
-class Triplet{
-public:
-  int one, two, three;
-  Triplet(int _one, int _two, int _three) : one(_one), two(_two), three(_three){}
-};
-
-
 // Matrix and colors
 std::string dectohexa(int dec);
 std::string colortohexa(int color);
-std::string RGBToString(Triplet RGB);
-std::string matrixtostring(std::vector<std::vector <Triplet> > matrix);
-std::string print_triplet(Triplet t);
-void print_matrix(std::vector<std::vector <Triplet> > matrix);
+std::string RGBToString(RGB color);
+std::string matrixtostring(SquareMatrix<RGB> matrix);
+std::string print_triplet(RGB t);
+void print_matrix(std::vector<std::vector <RGB> > matrix);
 
 //Files
 
@@ -30,11 +25,9 @@ std::vector<float> readwav(std::string file);
 
 float correlate(const std::vector<float>& s1, const std::vector<float>& s2);
 float coeffcorrel(const std::vector<float>& s1, const std::vector<float>& s2);
-Triplet greenredscale(float coeff);
 float energy(const std::vector <float>& f1, int start, int end);
 std::vector<float> energyenvelope(const std::vector<float>& f1, int frame); //cuts f1 in blocks of length 'frame' and applies norm to get the energy of the signal
-std::vector< std::vector <float> > energymatrix(const std::vector < std::vector<float> >&);
+SquareMatrix<float> energymatrix(const SquareMatrix<float>&);
 
 
 #endif //UTILITIES_HPP
-
