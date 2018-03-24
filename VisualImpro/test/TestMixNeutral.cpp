@@ -2,14 +2,14 @@
 
 CPPUNIT_TEST_SUITE_REGISTRATION(TestMixNeutral);
 
-void TestSquareMatrix::setUp(){
+void TestMixNeutral::setUp(){
 
 }
 
-void TestSquareMatrix::tearDown(){
+void TestMixNeutral::tearDown(){
 
 }
 
-void  TestSquareMatrix::testMix(){
+void  TestMixNeutral::testMix(){
 
 }

@@ -2,14 +2,14 @@
 
 CPPUNIT_TEST_SUITE_REGISTRATION(TestMixMinCorrelated);
 
-void TestSquareMatrix::setUp(){
+void TestMixMinCorrelated::setUp(){
 
 }
 
-void TestSquareMatrix::tearDown(){
+void TestMixMinCorrelated::tearDown(){
 
 }
 
-void  TestSquareMatrix::testMix(){
+void  TestMixMinCorrelated::testMix(){
 
 }

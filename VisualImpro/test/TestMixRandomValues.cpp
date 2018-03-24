@@ -2,14 +2,14 @@
 
 CPPUNIT_TEST_SUITE_REGISTRATION(TestMixRandomValues);
 
-void TestSquareMatrix::setUp(){
+void TestMixRandomValues::setUp(){
 
 }
 
-void TestSquareMatrix::tearDown(){
+void TestMixRandomValues::tearDown(){
 
 }
 
-void  TestSquareMatrix::testMix(){
+void  TestMixRandomValues::testMix(){
 
 }

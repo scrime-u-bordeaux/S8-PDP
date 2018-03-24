@@ -34,8 +34,8 @@ extern "C"{
 SquareMatrix<float> PreprocStrengthEnergy(const SquareMatrix<float>& input){
   int size = input.getSize();
 	SquareMatrix<float> buffer(size);
-	for (unsigned int i=0 ; i<size; i++){
-		buffer.setColumn(i, strengthenergyenvelope(input.getColumn(i), 1024);
+	for (int i=0 ; i<size; i++){
+		buffer.setColumn(i, strengthenergyenvelope(input.getColumn(i), 1024));
 	}
 	return buffer;
 }

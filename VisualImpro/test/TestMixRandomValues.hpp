@@ -8,7 +8,7 @@
 
 #include "../SquareMatrix.hpp"
 #include "../RGB.hpp"
-#include "../process/MixRandomValues.cpp"
+#include "../process/MixRandomValues.hpp"
 
 class TestMixRandomValues : public CppUnit::TestFixture {
 

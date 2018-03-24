@@ -2,14 +2,14 @@
 
 CPPUNIT_TEST_SUITE_REGISTRATION(TestMixMaxCorrelated);
 
-void TestSquareMatrix::setUp(){
+void TestMixMaxCorrelated::setUp(){
 
 }
 
-void TestSquareMatrix::tearDown(){
+void TestMixMaxCorrelated::tearDown(){
 
 }
 
-void  TestSquareMatrix::testMix(){
+void  TestMixMaxCorrelated::testMix(){
 
 }

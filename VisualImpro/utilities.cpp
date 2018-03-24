@@ -63,14 +63,6 @@ void test_RGB(RGB color){
   cout << "RGB " << "--->" << color << endl;
 }
 
-SquareMatrix<float> energymatrix(const SquareMatrix<float>& input){
-	SquareMatrix<float> buffer(input.getSize());
-	for (int i = 0 ; i < input.getSize(); i++){
-		buffer.setColumn(i, energyenvelope(input.getColumn(i), 1024));
-	}
-	return buffer;
-}
-
 void print_matrix(SquareMatrix<RGB> matrix){
   cout << "Matrix :\n";
   for (int i = 0; i < matrix.getSize(); i++){

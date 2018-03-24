@@ -8,14 +8,14 @@
 
 #include "../SquareMatrix.hpp"
 #include "../RGB.hpp"
-#include "../process/MixMinCorrelated.cpp"
+#include "../process/MixMinCorrelated.hpp"
 
 class TestMixMinCorrelated : public CppUnit::TestFixture {
 
 public:
   void setUp();
   void tearDown();
-  CPPUNIT_TEST_SUITE(TestMixRandomValues);
+  CPPUNIT_TEST_SUITE(TestMixMinCorrelated);
   CPPUNIT_TEST(testMix);
   CPPUNIT_TEST_SUITE_END();
 

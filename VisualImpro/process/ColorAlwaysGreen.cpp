@@ -5,7 +5,7 @@
 
 extern "C"{
 
-Triplet ColorAlwaysGreen(float coeff){
+RGB ColorAlwaysGreen(float coeff){
 	RGB green(20,250,20);
 	return green;
 }

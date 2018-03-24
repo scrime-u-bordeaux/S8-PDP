@@ -9,12 +9,12 @@
 #include "../SquareMatrix.hpp"
 #include "../RGB.hpp"
 #include "../ProcessMultiCorrel.hpp"
-#include "../process/MixMaxCorrelated.cpp"
-#include "../process/MixMinCorrelated.cpp"
-#include "../process/MixRandomValues.cpp"
-#include "../process/PreprocEnergy.cpp"
-#include "../process/ColorGreenToRed.cpp"
-#include "../process/CoeffScalar.cpp"
+#include "../process/MixMaxCorrelated.hpp"
+#include "../process/MixMinCorrelated.hpp"
+#include "../process/MixRandomValues.hpp"
+#include "../process/PreprocEnergy.hpp"
+#include "../process/ColorGreenToRed.hpp"
+#include "../process/CoeffScalar.hpp"
 
 class TestMultiCorrel : public CppUnit::TestFixture {
 

@@ -8,14 +8,14 @@
 
 #include "../SquareMatrix.hpp"
 #include "../RGB.hpp"
-#include "../process/TestMixNeutral.cpp"
+#include "../process/MixNeutral.hpp"
 
 class TestMixNeutral : public CppUnit::TestFixture {
 
 public:
   void setUp();
   void tearDown();
-  CPPUNIT_TEST_SUITE(TestMixRandomValues);
+  CPPUNIT_TEST_SUITE(TestMixNeutral);
   CPPUNIT_TEST(testMix);
   CPPUNIT_TEST_SUITE_END();
 

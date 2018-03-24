@@ -15,7 +15,7 @@ extern "C"{
 */
 
 float CoeffNew(vector<float> s1, vector<float> s2){
-
+  return 0.0f;
 }
 
 }
