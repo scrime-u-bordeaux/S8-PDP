@@ -22,4 +22,4 @@ test.bin : $(OBJ)
 .PHONY: clean
 
 clean:
-	rm -rf *.o ../*.o obj/*.o test.bin
+	rm -rf obj/*.o test.bin
