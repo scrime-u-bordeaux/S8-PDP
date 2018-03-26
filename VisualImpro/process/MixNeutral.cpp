@@ -1,7 +1,6 @@
 // Generate a constant sound volume mix, not depending on correlations
 
 #include "../utilities.hpp"
-#include "../SquareMatrix.hpp"
 #include <vector>
 
 using namespace std;

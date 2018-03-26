@@ -13,6 +13,12 @@ SquareMatrix<T>::SquareMatrix(int sizeMatix): _sizeMatix(sizeMatix){
     _matrix = SquareMatrix;
 }
 
+template<class T>
+SquareMatrix<T>::SquareMatrix(int sizeMatix, vector<T> vec): _sizeMatix(sizeMatix){
+    vector<vector<T> > SquareMatrix(sizeMatix, vec);
+    _matrix = SquareMatrix;
+}
+
 template<>
 SquareMatrix<RGB>::SquareMatrix(int sizeMatix): _sizeMatix(sizeMatix){
     RGB color(0,0,0);
@@ -42,8 +48,25 @@ vector<T> SquareMatrix<T>::getColumn(int index) const{
 }
 
 template<class T>
+vector<T>& SquareMatrix<T>::getColumnRef(int index){
+  return _matrix[index];
+}
+
+template<class T>
 void SquareMatrix<T>::setColumn(int index, vector<T> column){
   _matrix[index] = column;
+}
+
+template<class T>
+void SquareMatrix<T>::swap(SquareMatrix<T>& mat){
+  SquareMatrix<T> tmp(mat.getSize());
+  for(int i=0; i<mat.getSize(); i++){
+    for(int j=0; j<mat.getSize(); j++){
+      tmp.setCase(i, j, mat.getCase(i, j));
+      mat.setCase(i, j, this->getCase(i, j));
+      this->setCase(i, j, tmp.getCase(i, j));
+    }
+  }
 }
 
 template<class T>

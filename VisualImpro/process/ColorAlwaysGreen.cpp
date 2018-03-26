@@ -1,7 +1,6 @@
 /***** process/ColorAlwaysGreen.cpp *****/
 
 #include "../utilities.hpp"
-#include "../RGB.hpp"
 
 // To delete
 extern "C"{

@@ -146,9 +146,9 @@ int main(int argc, char *argv[]) {
   /* Calling Library */
   void *handle = dlopen("/root/Bela/projects/VisualImpro/process/libprocess.so",
                         RTLD_LAZY);
-  if (handle == NULL) {
-    cout << "error lib" << endl;
-    return -1;
+  if (!handle) {
+    fprintf(stderr, "dlopen failed: %s\n", dlerror());
+    exit(EXIT_FAILURE);
   }
 
   char *dlsymerror;

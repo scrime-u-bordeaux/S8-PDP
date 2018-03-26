@@ -1,5 +1,4 @@
 #include "../utilities.hpp"
-#include "../RGB.hpp"
 
 extern "C"{
 

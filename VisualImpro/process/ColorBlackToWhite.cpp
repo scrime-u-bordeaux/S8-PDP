@@ -1,7 +1,6 @@
 /***** process/ColorBlackToWhite.cpp *****/
 
 #include "../utilities.hpp"
-#include "../RGB.hpp"
 
 extern "C"{
 

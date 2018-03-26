@@ -1,7 +1,6 @@
 // Generate a random sound volume mix on each instrument while playing
 
 #include "../utilities.hpp"
-#include "../SquareMatrix.hpp"
 #include <vector>
 #include <cstdlib>
 
