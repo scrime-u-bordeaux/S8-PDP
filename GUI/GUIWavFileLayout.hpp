@@ -8,9 +8,11 @@
 
 #include <QFileDialog>
 #include <QGridLayout>
+#include <QLabel>
 #include <QPushButton>
 #include <QTextEdit>
-#include <QLabel>
+
+#include <vector>
 
 using namespace std;
 
@@ -26,8 +28,11 @@ public slots:
 private:
   QFileDialog *fileDialog;
   QPushButton *loadButton;
+  QPushButton *removeButton;
 
   QLabel *wavFilesLabel;
   QTextEdit *wavFilesText;
+
+  vector<QString *> *filesName;
 };
 #endif // DEF_GUIWAVFILELAYOUT
