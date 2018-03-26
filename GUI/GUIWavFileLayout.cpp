@@ -54,7 +54,9 @@ void GUIWavFileLayout::loadWavFile() {
   }
 }
 
-void GUIWavFileLayout::removeWavFile() { cout << "remove" << endl; }
+void GUIWavFileLayout::removeWavFile() {
+  nameFileModel->removeRow(listView->currentIndex().row());
+}
 
 GUIWavFileLayout::~GUIWavFileLayout() {
   delete (fileDialog);
