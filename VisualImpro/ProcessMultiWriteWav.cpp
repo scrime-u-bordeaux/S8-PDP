@@ -32,16 +32,16 @@ ProcessMultiWriteWav::ProcessMultiWriteWav(std::string filename, int numchannels
 void ProcessMultiWriteWav::process(const SquareMatrix<float>& buffer){
 
 fseek(stream, 0, SEEK_END);
-  int x = buffer.size();
+  int x = buffer.getSize();
   if (x != 0){
-    int y = buffer[0].size();
+    int y = buffer.getColumn(0).size();
     float tmp = 0;
     short int intVal = 0;
     for (int sample = 0 ; sample < y ; sample ++){
     	//float j = buffer[0][sample];
       for (int channel = 0 ; channel < x ; channel++){
       	assert((buffer[channel][sample] - buffer[0][sample])*(buffer[channel][sample] - buffer[0][sample]) <= 0.001);
-		tmp += buffer[channel][sample];
+		tmp += buffer.getCase(channel,sample);
     }
       intVal = (short int)(tmp * 32768.0/x);
       //stream << intVal;

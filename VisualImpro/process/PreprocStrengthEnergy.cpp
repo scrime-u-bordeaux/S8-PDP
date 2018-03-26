@@ -1,7 +1,6 @@
 /***** process/PreprocStrengthEnergy.cpp *****/
 
 #include "../utilities.hpp"
-#include "../SquareMatrix.hpp"
 
 #include <math.h>
 

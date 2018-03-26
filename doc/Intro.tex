@@ -189,6 +189,15 @@ comprendre le fonctionnement du logiciel lui-même, et en s'adaptant
 progressivement pour améliorer ces indices de corrélation, déterminer
 si la configuration choisie leur convient et produit un résultat
 agréable à l'oreille dans leur façon de jouer. \\
+\\
+SCHEMA GLOBAL JEREM
+\\
+Ci-dessus, un schéma global du fonctionnement du dispositif. Les
+musiciens jouent un morceau traité par Bela qui, via l'intermédiaire
+d'une machine, affiche sur le navigateur web Mozilla Firefox la
+matrice graphique de corrélations censée assister le jeu des
+musiciens. \\
+
 Différentes pistes ont été proposées par Jérémy dans son rapport pour
 améliorer le logiciel produit : implémenter un retour sonore indiquant
 aux musiciens la qualité des corrélations en fonction du coefficient
@@ -196,3 +205,59 @@ calculé à la place du retour visuel, ajouter des effets audio aux
 pistes sonores en amont du calcul de corrélation...
 
 \subsection{La rédaction du cahier des besoins}
+
+Durant les premières semaines de travail sur ce projet, il nous a
+fallu établir précisément ses besoins, tâche qui a suscité débats et
+questionnements et s'est révélée plus difficile que prévu. Appréhender
+l'intérêt du projet ou le fonctionnement de l'existant exigeaient
+déjà, en soit, une certaine réflexion.
+
+\subsubsection{Les premiers besoins fonctionnels listés par nos clients}
+Après les premières entrevues avec les deux professeurs à l'origine du
+projet, l'objectif principal qui se dessine est l'implémentation d'un
+retour sonore sur la sortie audio dont dispose le système
+embarqué. Grâce à la technologie de Bela, on devrait être en mesure de
+remplacer ou compléter le retour visuel par une évaluation audio du
+jeu des musiciens. \\
+Ce qui motive ce besoin particulier est l'intérêt technologique que
+représente l'utilisation de Bela pour produire un résultat sonore
+dépendant de nos traitements de calcul mais également de fournir une
+assistance aux musiciens supposée plus efficace qu'un simple affichage
+visuel. En effet, lorsqu'un groupe tente d'improviser ensemble, il ne
+doit pas être évident pour ses membres de se focaliser sur un code
+couleur ou un affichage visuel dynamique pour adapter et réviser leurs
+jeux. Ce sur quoi se basent usuellement des musiciens tentant de
+s'accorder les uns avec les autres, c'est bien évidemment le son et
+lui seul, celui que produisent les autres. Avec l'implémentation de
+cette sortie sonore, qui serait une version modifiée en temps réel du
+morceau joué en entrée du système, on tente de dénaturer cette logique
+et d'apporter aux musiciens une nouvelle façon d'improviser qui, selon
+les configurations du logiciel choisies, pourra se révéler plus
+efficace. Ce nouvel outil mérite quelques éclaircissements quant à son
+fonctionnement et son intérêt global. \\
+Dans sa version du logiciel, Jérémy avait anticipé et prévu dans son
+implémentation la possibilité de produire un retour sonore dépendant
+directement du coefficient de corrélation. Son idée était d'émettre un
+signal dont l'amplitude varierait de manière proportionnelle et en
+temps réel à un coefficient (ou à une somme des coefficients) de
+corrélation. Ainsi, par-dessus le morceau qu'ils seraient en train de
+jouer, les musiciens entendraient ce \"signal\", ce bruit évaluant
+leur jeu tout comme ou à la place de la matrice visuelle. Nous
+avons élaboré avec nos clients un dispositif légèrement différent. \\
+Dans le dispositif exprimé dans notre cahier des besoins, le retour
+sonore dont il est question est une version modifiée du morceau joué
+en temps réel. Ce morceau est composé du même nombre de pistes
+instrumentales que celui interprété en entrée du système embarqué,
+mais chacune de ces pistes est préalablement modifié en terme de
+niveau sonore en fonction du coefficient de corrélation. Une interface
+de configuration dans le logiciel permettrait alors à l'utilisateur de
+définir une \"consigne\", une loi décrivant quelles pistes doivent
+être augmentées en niveau sonore par rapport aux autres dans le retour
+et selon quels critères. L'exemple de configuration qui nous a semblé
+le plus judicieux est le suivant : les paires de musiciens les plus
+corrélées entre elles seront plus augmentées en niveau sonore dans le
+morceau de retour. Nous avons imaginé d'autres configurations
+possibles : augmenter en niveau sonore les pistes étant les plus
+corrélées avec une \"piste de référence\" ayant pour rôle de \"mener\"
+l'improvisation, augmenter en niveau sonore les paires de pistes
+instrumentales les moins corrélées... \\

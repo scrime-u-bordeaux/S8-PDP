@@ -16,11 +16,14 @@ template <class T>
 class SquareMatrix {
 public:
     SquareMatrix(int sizeMatix);
+    SquareMatrix(int sizeMatix, vector<T> vec);
     T getCase(int x, int y) const;
     void setCase(int x, int y, T val);
     int getSize() const;
     vector<T> getColumn(int index) const;
+    vector<T>& getColumnRef(int index);
     void setColumn(int index, vector<T> column);
+    void swap(SquareMatrix<T>& mat);
     string toString();
     virtual ~SquareMatrix();
 

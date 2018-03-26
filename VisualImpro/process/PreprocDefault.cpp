@@ -1,7 +1,6 @@
 /***** process/PreprocDefault.cpp *****/
 
 #include "../utilities.hpp"
-#include "../SquareMatrix.hpp"
 
 extern "C"{
 

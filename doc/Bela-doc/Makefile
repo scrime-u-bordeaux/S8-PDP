@@ -1,8 +1,7 @@
 TEX = pdflatex
-BIB = bibtex
 
-PDF = analyse-besoins.pdf
-TEXFILE = analyse-besoins.tex
+PDF = documentation_Bela.pdf
+TEXFILE = documentation_Bela.tex
 
 all: $(PDF)
 

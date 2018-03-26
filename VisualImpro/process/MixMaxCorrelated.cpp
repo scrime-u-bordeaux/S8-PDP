@@ -2,7 +2,6 @@
 // correlated instruments
 
 #include "../utilities.hpp"
-#include "../SquareMatrix.hpp"
 #include <vector>
 
 using namespace std;
