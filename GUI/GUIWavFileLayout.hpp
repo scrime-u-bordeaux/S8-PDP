@@ -10,9 +10,10 @@
 #include <QGridLayout>
 #include <QLabel>
 #include <QPushButton>
-#include <QTextEdit>
 
-#include <vector>
+#include <QStringList>
+#include <QStringListModel>
+#include <QListView>
 
 using namespace std;
 
@@ -22,8 +23,9 @@ public:
   GUIWavFileLayout(QWidget *parent = 0);
   ~GUIWavFileLayout();
 
-public slots:
+private slots:
   void loadWavFile();
+  void removeWavFile();
 
 private:
   QFileDialog *fileDialog;
@@ -31,8 +33,9 @@ private:
   QPushButton *removeButton;
 
   QLabel *wavFilesLabel;
-  QTextEdit *wavFilesText;
 
-  vector<QString *> *filesName;
+  QStringList* nameFile;
+  QStringListModel* nameFileModel;
+  QListView * listView;
 };
 #endif // DEF_GUIWAVFILELAYOUT
