@@ -16,8 +16,8 @@ GUISettingWindow::GUISettingWindow(QWidget *parent) : QDialog(parent){
     processSettingLayout->addSetting("Color");
     processSettingLayout->addSetting("Mix");
 
-    inputSettingLayout->addSetting("Nombre d\'entrees audio", 0, 2);
-    inputSettingLayout->addSetting("Nombre d\'entrees analogique", 0, 8);
+    inputSettingLayout->addSetting("Number of audio input", 0, 2);
+    inputSettingLayout->addSetting("Number of analog input", 0, 8);
 
     finishButton->setDefault(true);
     connect(finishButton, SIGNAL(clicked()), this, SLOT(accept()));

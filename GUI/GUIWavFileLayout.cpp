@@ -10,8 +10,9 @@
 #include <iostream>
 #include <string>
 
-
 GUIWavFileLayout::GUIWavFileLayout(QWidget *parent) : QGridLayout(parent) {
+  leftLayout = new QVBoxLayout();
+
   fileDialog = new QFileDialog();
   loadButton = new QPushButton("Load");
   removeButton = new QPushButton("Remove");
@@ -28,10 +29,12 @@ GUIWavFileLayout::GUIWavFileLayout(QWidget *parent) : QGridLayout(parent) {
   connect(loadButton, SIGNAL(clicked()), this, SLOT(loadWavFile()));
   connect(removeButton, SIGNAL(clicked()), this, SLOT(removeWavFile()));
 
-  this->addWidget(wavFilesLabel, 0, 0, Qt::AlignTop);
+  leftLayout->addWidget(wavFilesLabel, 0, Qt::AlignTop);
+  leftLayout->addWidget(loadButton, 1);
+  leftLayout->addWidget(removeButton, 2);
+
+  this->addLayout(leftLayout, 0, 0);
   this->addWidget(listView, 0, 1);
-  this->addWidget(loadButton, 1, 0);
-  this->addWidget(removeButton, 1, 1);
 }
 
 void GUIWavFileLayout::loadWavFile() {
@@ -51,9 +54,7 @@ void GUIWavFileLayout::loadWavFile() {
   }
 }
 
-void GUIWavFileLayout::removeWavFile() {
-  cout << "remove" << endl;
-}
+void GUIWavFileLayout::removeWavFile() { cout << "remove" << endl; }
 
 GUIWavFileLayout::~GUIWavFileLayout() {
   delete (fileDialog);

@@ -6,6 +6,8 @@
 #ifndef DEF_GUIWAVFILELAYOUT
 #define DEF_GUIWAVFILELAYOUT
 
+#include<QVBoxLayout>
+
 #include <QFileDialog>
 #include <QGridLayout>
 #include <QLabel>
@@ -28,6 +30,8 @@ private slots:
   void removeWavFile();
 
 private:
+  QVBoxLayout *leftLayout;
+
   QFileDialog *fileDialog;
   QPushButton *loadButton;
   QPushButton *removeButton;
