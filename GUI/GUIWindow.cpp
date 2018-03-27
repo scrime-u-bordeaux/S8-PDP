@@ -38,6 +38,7 @@ GUIWindow::color_matrix(const std::vector<std::vector<float> >& correlMatrix) {
 }
 
 GUIWindow::~GUIWindow() {
-  delete view;
-  delete this;
+    cout << "GUIWindow deleting" << endl;
+   delete view;
+  
 }

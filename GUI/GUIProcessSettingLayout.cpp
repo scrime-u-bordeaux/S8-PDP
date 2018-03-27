@@ -11,20 +11,20 @@
 
 GUIProcessSettingLayout::GUIProcessSettingLayout(QWidget *parent)
     : QFormLayout(parent) {
-  allBox = new vector<QComboBox *>();
+  allBox = new QVector<QComboBox *>();
 }
 
 void GUIProcessSettingLayout::addSetting(string name) {
-  allBox->push_back(new QComboBox());
-  vector<string> str = getFilename(name);
-  for (unsigned i = 0; i < str.size(); i++) {
+  allBox->push_back(new QComboBox(this->parentWidget()));
+  QVector<string> str = getFilename(name);
+  for (int i = 0; i < str.size(); i++) {
     allBox->back()->addItem(str[i].c_str());
   }
   this->addRow(name.c_str(), allBox->back());
 }
 
-vector<string> GUIProcessSettingLayout::getFilename(string nameFile) {
-  vector<string> strList;
+QVector<string> GUIProcessSettingLayout::getFilename(string nameFile) {
+  QVector<string> strList;
   DIR *pDIR;
   struct dirent *entry;
   /*open the directory in pDIR*/
@@ -45,9 +45,14 @@ vector<string> GUIProcessSettingLayout::getFilename(string nameFile) {
   return strList;
 }
 
+#include <typeinfo>
+
 GUIProcessSettingLayout::~GUIProcessSettingLayout() {
-    for (size_t i = 0; i < allBox->size(); i++) {
-        //delete (allBox->pull_back);
+    cout << "processSettingLayout is deleting" << endl;
+    QComboBox* box;
+    while ( !allBox->isEmpty() && ( (box = allBox->first()) != 0 )) {
+        allBox->remove(0);
+        delete (box);
     }
-    delete allBox;
+    allBox->clear();
 }

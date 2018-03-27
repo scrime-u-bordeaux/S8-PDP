@@ -17,7 +17,7 @@ using namespace std;
 
 /**
   * @fn int main(int argc, char *argv[])
-  * @brief Create settingWindow and mainWindow 
+  * @brief Create settingWindow and mainWindow
   */
 
 int main(int argc, char *argv[]) {
@@ -26,9 +26,9 @@ int main(int argc, char *argv[]) {
   int res = 1;
   int sizeMatrix = 6;
 
-  GUIWindow *mainWindow = new GUIWindow(sizeMatrix);
   GUISettingWindow *settingWindow = new GUISettingWindow();
   if (settingWindow->exec() == GUISettingWindow::Accepted) {
+    GUIWindow *mainWindow = new GUIWindow(sizeMatrix);
     mainWindow->show();
 
     vector<vector<RGB> > colorMatrix(sizeMatrix,
@@ -43,7 +43,9 @@ int main(int argc, char *argv[]) {
     mainWindow->updateColor(colorMatrix2);
 
     res = app.exec();
+  //  delete(mainWindow);
   }
-
+  delete(settingWindow);
+  cout << "setting window deleted" << endl;
   return res;
 }

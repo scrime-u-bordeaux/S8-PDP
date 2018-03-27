@@ -55,10 +55,12 @@ void GUIWavFileLayout::loadWavFile() {
 }
 
 void GUIWavFileLayout::removeWavFile() {
+  //remove from the list
   nameFileModel->removeRow(listView->currentIndex().row());
 }
 
 GUIWavFileLayout::~GUIWavFileLayout() {
+  cout << "wavfileLayout is deleting" << endl;
   delete (fileDialog);
   delete (loadButton);
   delete (removeButton);

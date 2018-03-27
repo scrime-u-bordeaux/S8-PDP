@@ -11,7 +11,7 @@
 #include <QSlider>
 #include <QSpinBox>
 
-#include <vector>
+#include <QVector>
 #include <string>
 
 using namespace std;
@@ -24,9 +24,9 @@ public:
   ~GUIInputSettingLayout();
 
 private:
-  vector<QLabel *> *allLabel;
-  vector<QSlider *> *allSlider;
-  vector<QSpinBox *> *allSpinBox;
+  QVector<QLabel *> *allLabel;
+  QVector<QSlider *> *allSlider;
+  QVector<QSpinBox *> *allSpinBox;
 
 };
 #endif // DEF_GUIINPUTSETTINGLAYOUT

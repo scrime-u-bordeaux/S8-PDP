@@ -3,6 +3,7 @@
  * @author Lucas VIVAS
 */
 #include "GUISettingWindow.hpp"
+#include <iostream>
 
 GUISettingWindow::GUISettingWindow(QWidget *parent) : QDialog(parent){
     finishButton = new QPushButton("FIN");
@@ -30,8 +31,14 @@ GUISettingWindow::GUISettingWindow(QWidget *parent) : QDialog(parent){
 }
 
 GUISettingWindow::~GUISettingWindow(){
+    cout << "finishButton" << endl;
     delete(finishButton);
-    delete(mainLayout);
-    delete(processSettingLayout);
+    cout << "wavFileLayout" << endl;
+    delete(wavFileLayout);
+    cout << "inputSettingLayout" << endl;
     delete(inputSettingLayout);
+    cout << "processSettingLayout" << endl;
+    delete(processSettingLayout);
+    cout << "mainLayout" << endl;
+    delete(mainLayout);
 }

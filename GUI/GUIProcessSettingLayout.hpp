@@ -9,7 +9,7 @@
 #include <QFormLayout>
 #include <QComboBox>
 #include <string>
-#include <vector>
+#include <QVector>
 
 using namespace std;
 
@@ -21,8 +21,8 @@ public:
   ~GUIProcessSettingLayout();
 
 private:
-  vector<string> getFilename(string nameFile);
-  vector<QComboBox *> *allBox;
+  QVector<QComboBox *> *allBox;
+  QVector<string> getFilename(string nameFile);
 
 };
 #endif // DEF_GUIPROCESSSETTINGLAYOUT
