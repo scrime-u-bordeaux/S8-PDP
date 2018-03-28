@@ -29,6 +29,7 @@ public:
 private slots:
   void loadWavFile();
   void removeWavFile();
+  void clearWavFile();
 
 private:
   QVBoxLayout *leftLayout;
@@ -36,6 +37,7 @@ private:
   QFileDialog *fileDialog;
   QPushButton *loadButton;
   QPushButton *removeButton;
+  QPushButton *clearButton;
 
   QLabel *wavFilesLabel;
 

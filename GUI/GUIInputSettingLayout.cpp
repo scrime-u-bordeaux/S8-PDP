@@ -39,6 +39,14 @@ void GUIInputSettingLayout::addSetting(string name, int min, int max){
   addWidget(allSpinBox->back(), pos + pos - 1, 1);
 }
 
+QStringList GUIInputSettingLayout::getSetting(){
+    QStringList strList;
+    for (int i = 0; i < allSpinBox->size(); i++) {
+      strList << QString::number((allSpinBox->at(i))->value());
+    }
+    return strList;
+}
+
 GUIInputSettingLayout::~GUIInputSettingLayout(){
     QLabel* label;
     while ( !allLabel->isEmpty() && ( (label = allLabel->first()) != 0 )) {

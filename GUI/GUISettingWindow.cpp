@@ -34,6 +34,11 @@ GUISettingWindow::GUISettingWindow(QWidget *parent) : QDialog(parent){
 }
 
 void GUISettingWindow::getParam(){
+    QStringList inputList = inputSettingLayout->getSetting();
+    for (int i = 0; i < inputList.size(); i++) {
+        cout << inputList.at(i).toStdString() << endl;
+    }
+
     QStringList processList = processSettingLayout->getSetting();
     for (int i = 0; i < processList.size(); i++) {
         cout << processList.at(i).toStdString() << endl;
