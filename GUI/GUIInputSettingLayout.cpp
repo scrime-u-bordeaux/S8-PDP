@@ -40,7 +40,6 @@ void GUIInputSettingLayout::addSetting(string name, int min, int max){
 }
 
 GUIInputSettingLayout::~GUIInputSettingLayout(){
-    cout << "processSettingLayout is deleting" << endl;
     QLabel* label;
     while ( !allLabel->isEmpty() && ( (label = allLabel->first()) != 0 )) {
         allLabel->remove(0);

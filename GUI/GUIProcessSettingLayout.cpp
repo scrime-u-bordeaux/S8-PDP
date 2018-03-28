@@ -16,15 +16,23 @@ GUIProcessSettingLayout::GUIProcessSettingLayout(QWidget *parent)
 
 void GUIProcessSettingLayout::addSetting(string name) {
   allBox->push_back(new QComboBox(this->parentWidget()));
-  QVector<string> str = getFilename(name);
+  QStringList str = getFilename(name);
   for (int i = 0; i < str.size(); i++) {
-    allBox->back()->addItem(str[i].c_str());
+    allBox->back()->addItem(str[i]);
   }
   this->addRow(name.c_str(), allBox->back());
 }
 
-QVector<string> GUIProcessSettingLayout::getFilename(string nameFile) {
-  QVector<string> strList;
+QStringList GUIProcessSettingLayout::getSetting(){
+  QStringList str;
+  for (int i = 0; i < allBox->size(); i++) {
+    str << allBox->at(i)->currentText();
+  }
+  return str;
+}
+
+QStringList GUIProcessSettingLayout::getFilename(string nameFile) {
+  QStringList strList;
   DIR *pDIR;
   struct dirent *entry;
   /*open the directory in pDIR*/
@@ -37,7 +45,7 @@ QVector<string> GUIProcessSettingLayout::getFilename(string nameFile) {
       name.substr(name.find_last_of(".") + 1) == "cpp") {
         /*delete the extension*/
         name = name.substr(0, name.find(".cpp"));
-        strList.push_back(name);
+        strList << QString::fromStdString(name);
       }
     }
     closedir(pDIR);
@@ -45,10 +53,7 @@ QVector<string> GUIProcessSettingLayout::getFilename(string nameFile) {
   return strList;
 }
 
-#include <typeinfo>
-
 GUIProcessSettingLayout::~GUIProcessSettingLayout() {
-    cout << "processSettingLayout is deleting" << endl;
     QComboBox* box;
     while ( !allBox->isEmpty() && ( (box = allBox->first()) != 0 )) {
         allBox->remove(0);

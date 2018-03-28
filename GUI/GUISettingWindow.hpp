@@ -7,12 +7,12 @@
 #define DEF_GUISETTINGWINDOW
 
 #include <QDialog>
-#include <QWidget>
 #include <QGridLayout>
 #include <QPushButton>
+#include <QWidget>
 
-#include "GUIProcessSettingLayout.hpp"
 #include "GUIInputSettingLayout.hpp"
+#include "GUIProcessSettingLayout.hpp"
 #include "GUIWavFileLayout.hpp"
 
 using namespace std;
@@ -23,13 +23,14 @@ public:
   GUISettingWindow(QWidget *parent = 0);
   ~GUISettingWindow();
 
+private slots:
+  void getParam();
+
 private:
   QVBoxLayout *mainLayout;
-  GUIProcessSettingLayout* processSettingLayout;
-  GUIInputSettingLayout* inputSettingLayout;
-  GUIWavFileLayout* wavFileLayout;
+  GUIProcessSettingLayout *processSettingLayout;
+  GUIInputSettingLayout *inputSettingLayout;
+  GUIWavFileLayout *wavFileLayout;
   QPushButton *finishButton;
-
-
 };
 #endif // DEF_GUISETTINGWINDOW

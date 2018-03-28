@@ -10,6 +10,7 @@
 #include <QComboBox>
 #include <string>
 #include <QVector>
+#include <QStringList>
 
 using namespace std;
 
@@ -18,11 +19,12 @@ class GUIProcessSettingLayout : public QFormLayout {
 public:
   GUIProcessSettingLayout(QWidget *parent = 0);
   void addSetting(string name);
+  QStringList getSetting();
   ~GUIProcessSettingLayout();
 
 private:
   QVector<QComboBox *> *allBox;
-  QVector<string> getFilename(string nameFile);
+  QStringList getFilename(string nameFile);
 
 };
 #endif // DEF_GUIPROCESSSETTINGLAYOUT

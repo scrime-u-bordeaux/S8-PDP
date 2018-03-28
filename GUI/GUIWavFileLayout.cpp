@@ -37,6 +37,10 @@ GUIWavFileLayout::GUIWavFileLayout(QWidget *parent) : QGridLayout(parent) {
   this->addWidget(listView, 0, 1);
 }
 
+ const QStringList GUIWavFileLayout::getSetting(){
+  return *nameFile;
+}
+
 void GUIWavFileLayout::loadWavFile() {
   QString filename = fileDialog->getOpenFileName(NULL, "Choisir un fichier wav",
                                                  "/", "WAV files (*.wav*)");
@@ -56,11 +60,12 @@ void GUIWavFileLayout::loadWavFile() {
 
 void GUIWavFileLayout::removeWavFile() {
   //remove from the list
-  nameFileModel->removeRow(listView->currentIndex().row());
+  int ind = listView->currentIndex().row();
+  nameFile->removeAt(ind);
+  nameFileModel->removeRow(ind);
 }
 
 GUIWavFileLayout::~GUIWavFileLayout() {
-  cout << "wavfileLayout is deleting" << endl;
   delete (fileDialog);
   delete (loadButton);
   delete (removeButton);

@@ -8,6 +8,7 @@
 GUISettingWindow::GUISettingWindow(QWidget *parent) : QDialog(parent){
     finishButton = new QPushButton("FIN");
     mainLayout = new QVBoxLayout(this);
+
     processSettingLayout = new GUIProcessSettingLayout();
     inputSettingLayout = new GUIInputSettingLayout();
     wavFileLayout = new GUIWavFileLayout();
@@ -21,7 +22,9 @@ GUISettingWindow::GUISettingWindow(QWidget *parent) : QDialog(parent){
     inputSettingLayout->addSetting("Number of analog input", 0, 8);
 
     finishButton->setDefault(true);
+    connect(finishButton, SIGNAL(clicked()), this, SLOT(getParam()));
     connect(finishButton, SIGNAL(clicked()), this, SLOT(accept()));
+
 
     mainLayout->addLayout(inputSettingLayout, 0);
     mainLayout->addLayout(processSettingLayout, 1);
@@ -30,15 +33,22 @@ GUISettingWindow::GUISettingWindow(QWidget *parent) : QDialog(parent){
     setLayout(mainLayout);
 }
 
+void GUISettingWindow::getParam(){
+    QStringList processList = processSettingLayout->getSetting();
+    for (int i = 0; i < processList.size(); i++) {
+        cout << processList.at(i).toStdString() << endl;
+    }
+    cout << endl;
+    QStringList wavList = wavFileLayout->getSetting();
+    for (int i = 0; i < wavList.size(); i++) {
+        cout << wavList.at(i).toStdString() << endl;
+    }
+}
+
 GUISettingWindow::~GUISettingWindow(){
-    cout << "finishButton" << endl;
     delete(finishButton);
-    cout << "wavFileLayout" << endl;
     delete(wavFileLayout);
-    cout << "inputSettingLayout" << endl;
     delete(inputSettingLayout);
-    cout << "processSettingLayout" << endl;
     delete(processSettingLayout);
-    cout << "mainLayout" << endl;
     delete(mainLayout);
 }

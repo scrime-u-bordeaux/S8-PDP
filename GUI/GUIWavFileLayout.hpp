@@ -23,6 +23,7 @@ class GUIWavFileLayout : public QGridLayout {
   Q_OBJECT
 public:
   GUIWavFileLayout(QWidget *parent = 0);
+  const QStringList getSetting();
   ~GUIWavFileLayout();
 
 private slots:

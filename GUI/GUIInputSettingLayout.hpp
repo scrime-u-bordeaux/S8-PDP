@@ -13,6 +13,7 @@
 
 #include <QVector>
 #include <string>
+#include <QStringList>
 
 using namespace std;
 
@@ -21,6 +22,7 @@ class GUIInputSettingLayout : public QGridLayout {
 public:
   GUIInputSettingLayout(QWidget *parent = 0);
   void addSetting(string name, int min, int max);
+  QStringList getSetting();
   ~GUIInputSettingLayout();
 
 private:

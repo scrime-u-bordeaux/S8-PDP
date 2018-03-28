@@ -46,6 +46,5 @@ int main(int argc, char *argv[]) {
   //  delete(mainWindow);
   }
   delete(settingWindow);
-  cout << "setting window deleted" << endl;
   return res;
 }
