@@ -11,8 +11,8 @@ Le projet a été proposé par Myriam Desainte-Catherine, chercheur au
 Studio de Création et de Recherche en Informatique et Musiques
 Expérimentales (SCRIME) et enseignante à l'ENSEIRB-MATMECA, et Yacine
 Amarouchene, physicien du Laboratoire d'Onde et Matière d'Aquitaine
-(LOMA). Il a été pensé comme un outil d'aide à \"l'improvisation
-musicale\", un dispositif permettant d'aider un groupe de musiciens à
+(LOMA). Il a été pensé comme un outil d'aide à "l'improvisation
+musicale", un dispositif permettant d'aider un groupe de musiciens à
 improviser mais permettant aussi de mieux comprendre la nature de
 l'improvisation en musique.
 
@@ -33,11 +33,11 @@ réciproque entre deux éléments. En statistiques, on parle souvent de
 corrélation pour mesurer l'intensité de la liaison existant entre deux
 variables. Dans le cadre de l'étude de signaux sonores, les
 traductions graphiques de ces signaux par transformée de Fourier
-peuvent jouer le rôle des courbes dont on mesure la corrélation. \\
+peuvent jouer le rôle des courbes dont on mesure la corrélation.
 \paragraph{}
 En musique, il n'existe pas une mais un nombre indéfini de "fonctions
 de corrélation" potentiellement existantes, dont la complexité et les
-paramètres varient. " Comprendre" la corrélation et l'improvisation,
+paramètres varient. "Comprendre" la corrélation et l'improvisation,
 dans le cadre de ce projet, c'est aussi trouver, inventer la fonction
 de corrélation qui répond le mieux aux besoins d'un groupe
 d'improvisateurs. Une bonne fonction de corrélation, dans ce cadre
@@ -64,9 +64,9 @@ retournant pour chaque case une couleur permettant d'évaluer la
 corrélation existant entre les deux pistes correspondantes grâce à un
 code précis.
 
-\\
-MATRICEENSEIRB
-\\
+\includegraphics{matriceenseirb.png}
+
+\paragraph{}
 Ci-dessus, la matrice obtenue à l'issue d'un test du programme. Plus
 la couleur d'une case est proche du vert, plus la corrélation entre
 les deux pistes correspondant au point d'abscisse et au point
@@ -168,7 +168,7 @@ contient lui-même trois fonctions :
        libérer les ressources allouées et mettre fin à certaines tâches.
 \end{itemize}
 
-Une structure \"AuxiliaryTask\" est mise à la disposition du
+Une structure \verb!AuxiliaryTask! est mise à la disposition du
 programmeur et est destinée à répertorier des fonctions trop coûteuses
 en temps à l'exécution pour le code de render.cpp. \\
 
@@ -301,7 +301,7 @@ Un autre besoin fonctionnel indispensable est l'implémentation d'une
 interface permettant à l'utilisateur de sélectionner ses
 configurations ; non seulement les fichiers de
 \textit{pre-processing}/calcul de coefficient/calcul de triplet RGB,
-mais également la \"consigne\" déterminant quelles pistes doivent être
+mais également la "consigne" déterminant quelles pistes doivent être
 augmentées ou diminuées dans le retour sonore. \\
 
 \subsection{Besoins non fonctionnels}
@@ -349,11 +349,12 @@ en fonction de leurs affinités et de leurs compétences respectives.
 \end{itemize}
 
 \subsubsection{Résultats produits lors de la phase de gestion du projet}
-\\
+\paragraph{}
+
 DIAGRAMME DE GANTT
-\\
+
 LISTE TACHES PRIORITES ETC.
-\\
+
 
 \subsection{Exposé global du processus d'implémentation}
 Le projet sera donc articulé dans son déroulement autour de deux
@@ -363,11 +364,10 @@ notre démarche en exposant brièvement la manière dont nous allons
 travailler à partir du code existant.
 
 \subsubsection{Refactoring du code existant}
-\\
+
 SCHEMA : INTERVENTION SUR LE CODE + EXPLICATIONS
-\\
+
 
 \subsubsection{Ajout de fonctionnalités}
-\\
+
 SCHEMA : INTERVENTION SUR LE CODE + EXPLICATIONS
-\\
