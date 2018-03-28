@@ -5,7 +5,7 @@
 
 #include "utilities.hpp"
 #include "Connection.hpp"
-#include "SquareMatrix.hpp"
+#include "Matrix.hpp"
 #include "RGB.hpp"
 #include <stdio.h>
 #include <assert.h>
@@ -18,30 +18,30 @@
 class ProcessMultiCorrel{
 
 public :
-  void process(const SquareMatrix<float>& buffer, std::vector<float>& meanCorrelations, Connection conn);
+  void process(const Matrix<float>& buffer, std::vector<float>& meanCorrelations, Connection conn);
   //ProcessMultiCorrel() : _coeffcorrel(NULL), _colorscale(NULL), _preprocess(NULL){}
   ProcessMultiCorrel(float (*coeffcorrel) (const std::vector<float>& s1, const std::vector<float>& s2) = NULL,
     RGB (*colorscale) (float coeff) = NULL,
-    SquareMatrix<float>(*preproc) (const SquareMatrix<float>& buff) = NULL,
-    std::vector<float>(*mixLevel) (const SquareMatrix<float>& correlMatrix) = NULL);
+    Matrix<float>(*preproc) (const Matrix<float>& buff) = NULL,
+    std::vector<float>(*mixLevel) (const Matrix<float>& correlMatrix) = NULL);
   void setColor(RGB (*colorscale) (float coeff)){_colorscale = colorscale;}
-  void setPreproc(SquareMatrix<float> (* preprocess) (const SquareMatrix<float>& buff)){ _preprocess = preprocess;}
+  void setPreproc(Matrix<float> (* preprocess) (const Matrix<float>& buff)){ _preprocess = preprocess;}
   void setCoeff(float (*coeffcorrel) (const std::vector<float>& s1, const std::vector<float>& s2)){_coeffcorrel = coeffcorrel;}
-  void setMix(std::vector<float> (*mixLevel) (const SquareMatrix<float>& correlMatrix)){ _mixLevel = mixLevel;}
+  void setMix(std::vector<float> (*mixLevel) (const Matrix<float>& correlMatrix)){ _mixLevel = mixLevel;}
   RGB (*getColor()) (float){ return _colorscale;}
-  SquareMatrix<float> (* getPreproc()) (const SquareMatrix<float>& buff) { return _preprocess;}
+  Matrix<float> (* getPreproc()) (const Matrix<float>& buff) { return _preprocess;}
   float (*getCoeff()) (const std::vector<float>& s1, const std::vector<float>& s2) { return _coeffcorrel;}
-  std::vector<float> (*getMix()) (const SquareMatrix<float>& correlMatrix) { return _mixLevel;}
+  std::vector<float> (*getMix()) (const Matrix<float>& correlMatrix) { return _mixLevel;}
   virtual ~ProcessMultiCorrel();
 
 private :
   float (*_coeffcorrel) (const std::vector<float>& s1, const std::vector<float>& s2);
   RGB (*_colorscale) (float coeff);
-  SquareMatrix<float> (* _preprocess) (const SquareMatrix<float>& buff);
-  std::vector<float> (*_mixLevel)(const SquareMatrix<float>& correlMatrix);
-  SquareMatrix<float> calcul_correl(const SquareMatrix<float>& buffer);
-  void process_volume(const SquareMatrix<float>& correlMatrix, std::vector<float>& meanCorrelations);
-  SquareMatrix<RGB> color_matrix(const SquareMatrix<float>& correlMatrix);
+  Matrix<float> (* _preprocess) (const Matrix<float>& buff);
+  std::vector<float> (*_mixLevel)(const Matrix<float>& correlMatrix);
+  Matrix<float> calcul_correl(const Matrix<float>& buffer);
+  void process_volume(const Matrix<float>& correlMatrix, std::vector<float>& meanCorrelations);
+  Matrix<RGB> color_matrix(const Matrix<float>& correlMatrix);
   std::ofstream matrixfile;
 };
 

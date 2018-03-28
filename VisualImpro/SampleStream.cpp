@@ -1,4 +1,5 @@
 /***** SampleStream.cpp *****/
+
 #include <SampleStream.h>
 
 SampleStream::SampleStream(const char *filename, int numChannels,
@@ -32,7 +33,6 @@ int SampleStream::openFile(const char *filename, int numChannels,
 
   if (sndfile != NULL)
     sf_close(sndfile);
-  // printf("snd %p\n", sndfile);
   sfinfo.format = 0;
   if (!(sndfile = sf_open(string(filename).c_str(), SFM_READ, &sfinfo))) {
     cout << "Couldn't open file " << filename << ": " << sf_strerror(sndfile)
@@ -169,7 +169,6 @@ void SampleStream::fillBuffer() {
     gDoneLoadingBuffer = 1;
     gBufferToBeFilled = 0;
 
-    // printf("done loading buffer!\n");
   }
 }
 

@@ -3,7 +3,7 @@
 CPPUNIT_TEST_SUITE_REGISTRATION(TestMixNeutral);
 
 void TestMixNeutral::setUp(){
-  input = new SquareMatrix<float>(5);
+  input = new Matrix<float>(5);
 }
 
 void TestMixNeutral::tearDown(){

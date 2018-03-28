@@ -1,23 +1,23 @@
 /**
- * @file TestSquareMatrix.hpp
+ * @file TestMatrix.hpp
  * @author Lucas VIVAS
 */
 
-#ifndef TEST_SQUAREMATRIX
-#define TEST_SQUAREMATRIX
+#ifndef TEST_MATRIX
+#define TEST_MATRIX
 
 #include <cppunit/TestFixture.h>
 #include <cppunit/extensions/HelperMacros.h>
 
 #include "../RGB.hpp"
-#include "../SquareMatrix.hpp"
+#include "../Matrix.hpp"
 
-class TestSquareMatrix : public CppUnit::TestFixture {
+class TestMatrix : public CppUnit::TestFixture {
 
 public:
   void setUp();
   void tearDown();
-  CPPUNIT_TEST_SUITE(TestSquareMatrix);
+  CPPUNIT_TEST_SUITE(TestMatrix);
   CPPUNIT_TEST(testConstructor);
   CPPUNIT_TEST(testSetCase);
   CPPUNIT_TEST(testGetCase);
@@ -25,13 +25,13 @@ public:
   CPPUNIT_TEST_SUITE_END();
 
 private:
-  SquareMatrix<int>* intMatrix;
-  SquareMatrix<float>* floatMatrix;
-  SquareMatrix<RGB>* RGBmatrix;
+  Matrix<int>* intMatrix;
+  Matrix<float>* floatMatrix;
+  Matrix<RGB>* RGBmatrix;
   void testConstructor();
   void testSetCase();
   void testGetCase();
   void testToString();
 };
 
-#endif // TEST_SQUAREMATRIX
+#endif // TEST_MATRIX

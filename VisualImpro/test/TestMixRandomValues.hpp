@@ -6,7 +6,7 @@
 #include <cppunit/TestFixture.h>
 #include <cppunit/extensions/HelperMacros.h>
 
-#include "../SquareMatrix.hpp"
+#include "../Matrix.hpp"
 #include "../RGB.hpp"
 #include "../process/MixRandomValues.hpp"
 
@@ -20,7 +20,7 @@ public:
   CPPUNIT_TEST_SUITE_END();
 
 private:
-  SquareMatrix<float>* input;
+  Matrix<float>* input;
   void testMix();
 };
 

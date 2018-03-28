@@ -4,7 +4,7 @@
 
 extern "C"{
 
-SquareMatrix<float> PreprocDefault(const SquareMatrix<float>& input){
+Matrix<float> PreprocDefault(const Matrix<float>& input){
 
 	return input;
 

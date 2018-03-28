@@ -3,7 +3,7 @@
 CPPUNIT_TEST_SUITE_REGISTRATION(TestMixRandomValues);
 
 void TestMixRandomValues::setUp(){
-  input = new SquareMatrix<float>(300);
+  input = new Matrix<float>(300);
 }
 
 void TestMixRandomValues::tearDown(){
@@ -15,7 +15,7 @@ void  TestMixRandomValues::testMix(){
   output = MixRandomValues(*input);
   int size = output.size();
   for(int i=0; i<size; i++){
-    CPPUNIT_ASSERT(output[i] >= 0.2f);
+    CPPUNIT_ASSERT(output[i] >= 0.15f);
     CPPUNIT_ASSERT(output[i] <= 1.0f);
   }
 }

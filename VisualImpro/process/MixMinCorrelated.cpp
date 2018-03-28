@@ -2,7 +2,6 @@
 // correlated instruments
 
 #include "../utilities.hpp"
-#include <vector>
 
 using namespace std;
 
@@ -11,21 +10,23 @@ extern "C" {
 // return a vector whose elements are the mean correlations of every instruments
 // but it is processed as "1 - mean" to have the complementary coefficient
 // between 0 and 1
-vector<float> MixMinCorrelated(const SquareMatrix<float>& correlMatrix) {
+vector<float> MixMinCorrelated(const Matrix<float>& correlMatrix) {
 
-  int size = correlMatrix.getSize();
+  int row = correlMatrix.getSize();
+  int col = correlMatrix.getRow(0).size();
 
   // initialize the result vector with zeros
-  vector<float> meanCorrelations(size , 0.0f);
+  vector<float> meanCorrelations(row, 0.0f);
 
   // fill the vector with the mean correlation of each instrument with others
-  for (int i = 0; i < size; i++) {
-    for (int j = 0; j < size; j++) {
-      if (i != j)
-        // complementary coefficient between 0 and 1
-        meanCorrelations[i] += 1 - correlMatrix.getCase(i, j);
+  for (int i = 0; i < row; i++) {
+    for (int j = 0; j < col; j++) {
+      if (i != j){
+      	// complementary coefficient between 0 and 1
+        meanCorrelations[i] += 1.0f - correlMatrix.getCase(i, j);
+      }
     }
-    meanCorrelations[i] /= size;
+    meanCorrelations[i] /= (float)row-1;
   }
   return meanCorrelations;
 }

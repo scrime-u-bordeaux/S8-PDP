@@ -26,7 +26,7 @@ The Bela software is distributed under the GNU Lesser General Public License
 #include "EffectManaging.hpp"
 #include "ProcessMultiCorrel.hpp"
 #include "ProcessMultiWriteWav.hpp"
-#include "SquareMatrix.hpp"
+#include "Matrix.hpp"
 #include <Bela.h>
 #include <SampleStream.h>
 #include <cmath>
@@ -48,9 +48,9 @@ bool gUseEffects = false;
 
 int gEffSize = 0;
 
-SquareMatrix<float>* gEffectBufferIn; // buffer filled in real time
-SquareMatrix<float>* gEffectBufferInCopy;
-SquareMatrix<float>* gEffectBufferOut;
+Matrix<float>* gEffectBufferIn; // buffer filled in real time
+Matrix<float>* gEffectBufferInCopy;
+Matrix<float>* gEffectBufferOut;
 int gSavedSamples = 0;
 int gEffectProcessing = 0;
 
@@ -65,32 +65,32 @@ int gLastSample = 0;
 
 AuxiliaryTask gEffectTask;
 
-void effect(SquareMatrix<float> &In,
-            SquareMatrix<float> &Out) {
+void effect(Matrix<float> &In,
+            Matrix<float> &Out) {
   assert(In.getSize() == gTotalTracks);
   int i;
   for (i = 0; i < gUserSet.nb_audio; i++) { // audio
     if (gUserSet.audioproc[i] == NULL) {
-      In.getColumnRef(i).swap(Out.getColumnRef(i));
+      In.getRowRef(i).swap(Out.getRowRef(i));
     } else {
-      gUserSet.audioproc[i]->apply(In.getColumnRef(i), Out.getColumnRef(i));
+      gUserSet.audioproc[i]->apply(In.getRowRef(i), Out.getRowRef(i));
     }
   }
   for (i = gUserSet.nb_audio; i < gUserSet.nb_audio + gUserSet.nb_analog;
        i++) { // analog
     if (gUserSet.analogproc[i - gUserSet.nb_audio] == NULL) {
-      In.getColumnRef(i).swap(Out.getColumnRef(i));
+      In.getRowRef(i).swap(Out.getRowRef(i));
     } else {
-      gUserSet.analogproc[i - gUserSet.nb_audio]->apply(In.getColumnRef(i), Out.getColumnRef(i));
+      gUserSet.analogproc[i - gUserSet.nb_audio]->apply(In.getRowRef(i), Out.getRowRef(i));
     }
   }
   for (i = gUserSet.nb_audio + gUserSet.nb_analog; i < gTotalTracks;
        i++) { // files
     if (gUserSet.fileproc[i - gUserSet.nb_audio - gUserSet.nb_analog] == NULL) {
-      In.getColumnRef(i).swap(Out.getColumnRef(i));
+      In.getRowRef(i).swap(Out.getRowRef(i));
     } else {
       gUserSet.fileproc[i - gUserSet.nb_audio - gUserSet.nb_analog]->apply(
-          In.getColumnRef(i), Out.getColumnRef(i));
+          In.getRowRef(i), Out.getRowRef(i));
     }
   }
 }
@@ -121,8 +121,8 @@ int gBufferProLen = 0;
 int gNumStreams = NB_FILES_MAX;
 int gNumAnalog = 0;
 int gNumAudio = 0;
-SquareMatrix<float>* gProcessBuffer; // buffer filled in real time
-SquareMatrix<float>* gProcessBufferCopy; // buffer used to process
+Matrix<float>* gProcessBuffer; // buffer filled in real time
+Matrix<float>* gProcessBufferCopy; // buffer used to process
 
 void fillBuffers() {
   for (int i = 0; i < gUserSet.nb_files; i++) {
@@ -177,18 +177,18 @@ bool setup(BelaContext *context, void *userData) {
 
   // Initialize effect buffers
 
-  gEffectBufferOut = new SquareMatrix<float>(
+  gEffectBufferOut = new Matrix<float>(
       gTotalTracks, std::vector<float>(2 * gEffSize, 0.0f));
-  gEffectBufferIn = new SquareMatrix<float>(
+  gEffectBufferIn = new Matrix<float>(
       gTotalTracks, std::vector<float>(gEffSize, 0.0f));
-  gEffectBufferInCopy = new SquareMatrix<float>(
+  gEffectBufferInCopy = new Matrix<float>(
       gTotalTracks, std::vector<float>(gEffSize, 0.0f));
 
   // Initialize process buffers
 
-  gProcessBuffer = new SquareMatrix<float>(
+  gProcessBuffer = new Matrix<float>(
       gTotalTracks, std::vector<float>(gUserSet.buffer_len, 0.0f));
-  gProcessBufferCopy = new SquareMatrix<float>(
+  gProcessBufferCopy = new Matrix<float>(
       gTotalTracks, std::vector<float>(gUserSet.buffer_len, 0.0f));
 
   for (int i = 0; i < gNumStreams; i++) {
@@ -203,7 +203,7 @@ bool setup(BelaContext *context, void *userData) {
 
   // Initialize mix Buffer
 
-  std::vector<float> mixbuffer(gTotalTracks, 0.0f);
+  std::vector<float> mixbuffer(gTotalTracks, 1.0f);
   gMeanCorrel = mixbuffer;
 
   // Print info
@@ -257,9 +257,8 @@ void render(BelaContext *context, void *userData) {
 
   /**** Main Loop ****/
 
-  int contextanalogFrames =
-      context->analogFrames; // analogue channels are the reference
-  for (unsigned int n = 0; n < contextanalogFrames; n++) { // for each frame
+  // analog channels are the reference
+  for (unsigned int n = 0; n < context->analogFrames; n++) { // for each frame
     for (int i = 0; i < gNumStreams;
          i++) { // update pointers to next sample of file
       sampleStream[i]->processFrame();
@@ -337,21 +336,11 @@ void render(BelaContext *context, void *userData) {
     else {
 
       float outsample;
-      float out = 0.0f;
-        outsample =
-            (sampleStream[0]->getSample(0) + sampleStream[0]->getSample(1)) / 2;
-        gProcessBuffer->setCase(0, gFillPosition + 1, outsample);
-        out += outsample*gMeanCorrel[0];
-        outsample =
-            (sampleStream[1]->getSample(0) + sampleStream[1]->getSample(1)) / 2;
-        gProcessBuffer->setCase(1, gFillPosition + 1, outsample);
-        out += outsample*gMeanCorrel[1];
-        outsample =
-            (sampleStream[2]->getSample(0) + sampleStream[2]->getSample(1)) / 2;
-        gProcessBuffer->setCase(2, gFillPosition + 1, outsample);
-        out += outsample*gMeanCorrel[2];
-        audioWrite(context, n, 0, out);
-        audioWrite(context, n, 1, out);
+      for (int s = 0; s < gNumStreams; s++) {
+        outsample = (sampleStream[s]->getSample(0) + sampleStream[s]->getSample(1)) / 2;
+        gProcessBuffer->setCase(s, gFillPosition + 1, outsample);
+        out += outsample*gMeanCorrel[s];
+	  }
 
       // analog
       for (int r = 0; r < gNumAnalog; r++) {
@@ -362,7 +351,6 @@ void render(BelaContext *context, void *userData) {
 
       // audio
       for (int a = 0; a < gNumAudio; a++) {
-        float outsample;
         if (gSampleFactor == STANDARD_SAMPLE_RATE) { // if 22050Hz
           outsample = audioRead(context, 2 * n, a);
         } else {
@@ -379,7 +367,7 @@ void render(BelaContext *context, void *userData) {
 
     for(unsigned int i=0; i<context->audioOutChannels; i++){
   	    if (gSampleFactor == STANDARD_SAMPLE_RATE) {
-  	      audioWrite(context, 2 * n, i, out);
+          audioWrite(context, 2 * n, i, out);
   	      audioWrite(context, 2 * n + 1, i, out);
   	    } else {
   	      audioWrite(context, n, i, out);

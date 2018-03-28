@@ -29,7 +29,7 @@ The Bela software is distributed under the GNU Lesser General Public License
 #include "ProcessMultiCorrel.hpp"
 #include "SampleData.h"
 #include "utilities.hpp"
-#include "SquareMatrix.hpp"
+#include "Matrix.hpp"
 #include "RGB.hpp"
 #include <Bela.h>
 #include <cstdio>
@@ -86,8 +86,8 @@ double getCurrentTime(void) {
 
 typedef RGB (*colorScale)(float coeff);
 typedef float (*coeffCorrel)(const vector<float>& s1, const vector<float>& s2);
-typedef SquareMatrix<float> (*preProcess)(const SquareMatrix<float>&);
-typedef vector<float> (*mixLevel)(const SquareMatrix<float>&);
+typedef Matrix<float> (*preProcess)(const Matrix<float>&);
+typedef vector<float> (*mixLevel)(const Matrix<float>&);
 
 int main(int argc, char *argv[]) {
 
