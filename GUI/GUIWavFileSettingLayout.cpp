@@ -1,16 +1,16 @@
 /**
- * @file GUIWavFileLayout.cpp
+ * @file GUIWavFileSettingLayout.cpp
  * @author Lucas VIVAS
 */
 
-#include "GUIWavFileLayout.hpp"
+#include "GUIWavFileSettingLayout.hpp"
 
 #include <QString>
 #include <dirent.h>
 #include <iostream>
 #include <string>
 
-GUIWavFileLayout::GUIWavFileLayout(QWidget *parent) : QGridLayout(parent) {
+GUIWavFileSettingLayout::GUIWavFileSettingLayout(QWidget *parent) : QGridLayout(parent) {
   leftLayout = new QVBoxLayout();
 
   fileDialog = new QFileDialog();
@@ -40,9 +40,9 @@ GUIWavFileLayout::GUIWavFileLayout(QWidget *parent) : QGridLayout(parent) {
   this->addWidget(listView, 0, 1);
 }
 
-const QStringList GUIWavFileLayout::getSetting() { return *nameFile; }
+const QStringList GUIWavFileSettingLayout::getSetting() { return *nameFile; }
 
-void GUIWavFileLayout::loadWavFile() {
+void GUIWavFileSettingLayout::loadWavFile() {
   QString filename = fileDialog->getOpenFileName(NULL, "Choisir un fichier wav",
                                                  "/", "WAV files (*.wav*)");
   if (filename != NULL) {
@@ -59,14 +59,14 @@ void GUIWavFileLayout::loadWavFile() {
   }
 }
 
-void GUIWavFileLayout::removeWavFile() {
+void GUIWavFileSettingLayout::removeWavFile() {
   // remove from the list
   int ind = listView->currentIndex().row();
   nameFile->removeAt(ind);
   nameFileModel->removeRow(ind);
 }
 
-void GUIWavFileLayout::clearWavFile() {
+void GUIWavFileSettingLayout::clearWavFile() {
   // remove everything from the list
   // int ind = listView->currentIndex().row();
   while (!nameFile->isEmpty()){
@@ -75,7 +75,7 @@ void GUIWavFileLayout::clearWavFile() {
   }
 }
 
-GUIWavFileLayout::~GUIWavFileLayout() {
+GUIWavFileSettingLayout::~GUIWavFileSettingLayout() {
   delete (fileDialog);
   delete (loadButton);
   delete (removeButton);

@@ -3,15 +3,18 @@
  * @author Lucas VIVAS
 */
 #include "GUISettingWindow.hpp"
+
 #include <iostream>
+
+#include "GUISettingLayoutFactory.hpp"
 
 GUISettingWindow::GUISettingWindow(QWidget *parent) : QDialog(parent){
     finishButton = new QPushButton("FIN");
     mainLayout = new QVBoxLayout(this);
 
-    processSettingLayout = new GUIProcessSettingLayout();
-    inputSettingLayout = new GUIInputSettingLayout();
-    wavFileLayout = new GUIWavFileLayout();
+    processSettingLayout = GUISettingLayoutFactory::createGUIProcessSettingLayout();
+    inputSettingLayout = GUISettingLayoutFactory::createGUIInputSettingLayout();
+    wavFileLayout = GUISettingLayoutFactory::createGUIWavFileSettingLayout();
 
     processSettingLayout->addSetting("Coeff");
     processSettingLayout->addSetting("Preproc");

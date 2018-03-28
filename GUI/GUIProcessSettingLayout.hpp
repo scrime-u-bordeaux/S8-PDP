@@ -12,14 +12,16 @@
 #include <QVector>
 #include <QStringList>
 
+#include "GUISettingLayout.hpp"
+
 using namespace std;
 
-class GUIProcessSettingLayout : public QFormLayout {
+class GUIProcessSettingLayout : public QFormLayout, public GUISettingLayout {
     Q_OBJECT
 public:
   GUIProcessSettingLayout(QWidget *parent = 0);
   void addSetting(string name);
-  QStringList getSetting();
+  const QStringList getSetting();
   ~GUIProcessSettingLayout();
 
 private:

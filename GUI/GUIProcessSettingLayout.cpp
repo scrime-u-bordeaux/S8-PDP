@@ -23,7 +23,7 @@ void GUIProcessSettingLayout::addSetting(string name) {
   this->addRow(name.c_str(), allBox->back());
 }
 
-QStringList GUIProcessSettingLayout::getSetting(){
+const QStringList GUIProcessSettingLayout::getSetting(){
   QStringList str;
   for (int i = 0; i < allBox->size(); i++) {
     str << allBox->at(i)->currentText();

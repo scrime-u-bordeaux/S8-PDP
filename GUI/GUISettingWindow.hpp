@@ -13,7 +13,7 @@
 
 #include "GUIInputSettingLayout.hpp"
 #include "GUIProcessSettingLayout.hpp"
-#include "GUIWavFileLayout.hpp"
+#include "GUIWavFileSettingLayout.hpp"
 
 using namespace std;
 
@@ -30,7 +30,7 @@ private:
   QVBoxLayout *mainLayout;
   GUIProcessSettingLayout *processSettingLayout;
   GUIInputSettingLayout *inputSettingLayout;
-  GUIWavFileLayout *wavFileLayout;
+  GUIWavFileSettingLayout *wavFileLayout;
   QPushButton *finishButton;
 };
 #endif // DEF_GUISETTINGWINDOW

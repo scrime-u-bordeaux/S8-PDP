@@ -8,17 +8,14 @@
 
 using namespace std;
 
-#include "GUISettingLayout.hpp"
+#include "GUIInputSettingLayout.hpp"
+#include "GUIProcessSettingLayout.hpp"
+#include "GUIWavFileSettingLayout.hpp"
 
 class GUISettingLayoutFactory {
 public:
-  GUISettingLayoutFactory(QWidget *parent = 0);
-  GUISettingLayout createGUIInputSettingLayout();
-  GUISettingLayout createGUIProcessSettingLayout();
-  GUISettingLayout createGUIWavFileLayout();
-  ~GUISettingLayoutFactory();
-
-private:
-
+  static GUIInputSettingLayout* createGUIInputSettingLayout();
+  static GUIProcessSettingLayout* createGUIProcessSettingLayout();
+  static GUIWavFileSettingLayout* createGUIWavFileSettingLayout();
 };
 #endif // DEF_GUISETTINGLAYOUTFACTORY

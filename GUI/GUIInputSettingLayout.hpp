@@ -15,14 +15,16 @@
 #include <string>
 #include <QStringList>
 
+#include "GUISettingLayout.hpp"
+
 using namespace std;
 
-class GUIInputSettingLayout : public QGridLayout {
+class GUIInputSettingLayout : public QGridLayout, public GUISettingLayout {
     Q_OBJECT
 public:
   GUIInputSettingLayout(QWidget *parent = 0);
   void addSetting(string name, int min, int max);
-  QStringList getSetting();
+  const QStringList getSetting();
   ~GUIInputSettingLayout();
 
 private:

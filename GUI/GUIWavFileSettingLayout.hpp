@@ -1,10 +1,10 @@
 /**
- * @file GUIWavFileLayout.hpp
+ * @file GUIWavFileSettingLayout.hpp
  * @author Lucas VIVAS
 */
 
-#ifndef DEF_GUIWAVFILELAYOUT
-#define DEF_GUIWAVFILELAYOUT
+#ifndef DEF_GUIWAVFILESETTINGLAYOUT
+#define DEF_GUIWAVFILESETTINGLAYOUT
 
 #include<QVBoxLayout>
 
@@ -17,14 +17,16 @@
 #include <QStringListModel>
 #include <QListView>
 
+#include "GUISettingLayout.hpp"
+
 using namespace std;
 
-class GUIWavFileLayout : public QGridLayout {
+class GUIWavFileSettingLayout : public QGridLayout, public GUISettingLayout {
   Q_OBJECT
 public:
-  GUIWavFileLayout(QWidget *parent = 0);
+  GUIWavFileSettingLayout(QWidget *parent = 0);
   const QStringList getSetting();
-  ~GUIWavFileLayout();
+  ~GUIWavFileSettingLayout();
 
 private slots:
   void loadWavFile();
@@ -45,4 +47,4 @@ private:
   QStringListModel* nameFileModel;
   QListView * listView;
 };
-#endif // DEF_GUIWAVFILELAYOUT
+#endif // DEF_GUIWAVFILESETTINGLAYOUT
