@@ -1,0 +1,9 @@
+Steps to compile the project :
+
+1. qmake -project
+2. qmake-qt4 GUI.pro
+3. make
+
+Run the project with :
+
+./GUI

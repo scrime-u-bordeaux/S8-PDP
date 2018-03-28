@@ -2,6 +2,7 @@
 #ifndef WRITE_WAV_HPP
 #define WRITE_WAV_HPP
 
+#include "SquareMatrix.hpp"
 #include <stdio.h>
 #include <assert.h>
 #include <string>
@@ -12,7 +13,7 @@
 class ProcessMultiWriteWav{
 
 public :
-  void process(std::vector<std::vector<float> > buffer);
+  void process(const SquareMatrix<float>& buffer);
   void writeheader();
   ProcessMultiWriteWav(std::string filename, int numchannels, int samplerate = 44100, int bytespersample = 2);
   ~ProcessMultiWriteWav();
@@ -23,6 +24,7 @@ private :
   int samplerate;
   int numchannels;
   int bytespersample;
+  //std::vector<std::queue<float>> deck;;
 };
 
 #endif

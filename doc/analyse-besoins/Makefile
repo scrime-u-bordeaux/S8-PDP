@@ -1,8 +1,15 @@
-SRC = analyse-besoins
-all:
-	pdflatex $(SRC).tex
-	bibtex $(SRC)
-	pdflatex $(SRC).tex
-	pdflatex $(SRC).tex
+TEX = pdflatex
+BIB = bibtex
+
+PDF = analyse-besoins.pdf
+TEXFILE = analyse-besoins.tex
+
+all: $(PDF)
+
+%.pdf : %.tex
+	$(TEX) $^
+
+.PHONY: clean
+
 clean:
-	rm *.aux *.log *.bbl *.blg
+	rm -rf $(PDF) *.aux *.log *.toc *.out

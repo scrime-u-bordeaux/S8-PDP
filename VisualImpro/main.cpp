@@ -30,6 +30,8 @@ The Bela software is distributed under the GNU Lesser General Public License
 #include "ProcessMultiCorrel.hpp"
 #include "SampleData.h"
 #include "utilities.hpp"
+#include "SquareMatrix.hpp"
+#include "RGB.hpp"
 #include <Bela.h>
 #include <cstdio>
 #include <cstdlib>
@@ -83,10 +85,10 @@ double getCurrentTime(void) {
     cout << "Error : " << dlsymerror << endl;                                  \
   }
 
-typedef Triplet (*colorScale)(float coeff);
-typedef float (*coeffCorrel)(vector<float> s1, vector<float> s2);
-typedef vector<vector<float> > (*preProcess)(vector<vector<float> >);
-typedef vector<float> (*mixLevel)(vector<vector<float> >);
+typedef RGB (*colorScale)(float coeff);
+typedef float (*coeffCorrel)(const vector<float>& s1, const vector<float>& s2);
+typedef SquareMatrix<float> (*preProcess)(const SquareMatrix<float>&);
+typedef vector<float> (*mixLevel)(const SquareMatrix<float>&);
 
 int main(int argc, char *argv[]) {
 
@@ -145,9 +147,9 @@ int main(int argc, char *argv[]) {
   /* Calling Library */
   void *handle = dlopen("/root/Bela/projects/VisualImpro/process/libprocess.so",
                         RTLD_LAZY);
-  if (handle == NULL) {
-    cout << "error lib" << endl;
-    return -1;
+  if (!handle) {
+    fprintf(stderr, "dlopen failed: %s\n", dlerror());
+    exit(EXIT_FAILURE);
   }
 
   char *dlsymerror;

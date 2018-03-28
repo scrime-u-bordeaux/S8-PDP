@@ -1,16 +1,4 @@
-/**
- *  @file    MixMaxCorrelated.cpp
- *  @author  Alexandre Casanova--Franger
- *  @date    04/03/2018
- *
- *  @section DESCRIPTION
- *
- *  This function is used to process random values that
- *  we will use to mix the volume of each instrument.
- *  This function does not depend on the correlation it has
- *  with others instruments.
- *
- */
+// Generate a random sound volume mix on each instrument while playing
 
 #include "../utilities.hpp"
 #include <vector>
@@ -20,14 +8,16 @@ using namespace std;
 
 extern "C"{
 
-vector<float> MixRandomValues(vector<vector<float> > correlMatrix){
+vector<float> MixRandomValues(const SquareMatrix<float>& correlMatrix){
+
+  int size = correlMatrix.getSize();
 
   // initialize the result vector with zeros
-  vector<float> randomValues(correlMatrix.size(), 0.0f);
+  vector<float> randomValues(size, 0.0f);
 
   // fill the vector with random values;
-  for (int i = 0; i < correlMatrix.size(); i++) {
-    randomValues[i] = rand() % 2;
+  for (int i = 0; i < size; i++) {
+    randomValues[i] = 0.2f + static_cast <float> (rand()) / static_cast <float> (RAND_MAX/0.8f);
   }
 
   return randomValues;

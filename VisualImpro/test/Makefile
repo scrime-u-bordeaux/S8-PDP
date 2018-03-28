@@ -1,24 +1,22 @@
 INC_DIR = ../utilities
 
 CXX = g++
-CXXFLAGS = -lcppunit -Wall -Wextra
+CXXFLAGS = -std=c++11 -lsndfile -lcppunit -Wall -Wextra
 
-EXEC=test.bin
-SRC= $(wildcard *.cpp)
+EXEC= tests
+SRC= $(wildcard *.cpp) $(wildcard ../process/*.cpp) ../ProcessMultiCorrel.cpp ../Connection.cpp ../utilities.cpp ../SquareMatrix.cpp ../RGB.cpp
 OBJ= $(SRC:.cpp=.o)
-
-
 
 all: $(EXEC)
 
-test.bin: $(OBJ)
-	$(CXX) -o $@ $^ $(CXXFLAGS)
+tests : $(OBJ)
+	@$(CXX) -o $@ $^ $(CXXFLAGS)
+	@mv *.o ../*.o ../process/*.o obj/
 
-%.o: %.cpp 
+%.o: %.cpp
 	$(CXX) -c $< $(CXXFLAGS) -o $@
-
 
 .PHONY: clean
 
 clean:
-	rm -rf *.o test.bin
+	rm -rf *.o ../*.o ../process/*.o obj/*.o tests

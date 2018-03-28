@@ -1,7 +1,6 @@
 #ifndef COEFFSCALAR_HPP
 #define COEFFSCALAR_HPP
 
-#include "CoeffScalar.hpp"
 #include <assert.h>
 #include <math.h>
 #include <stdio.h>
@@ -9,7 +8,7 @@
 
 using namespace std;
 
-float correlatescalar(vector<float> s1, vector<float> s2);
-extern "C" float CoeffScalar(vector<float> s1, vector<float> s2);
+float correlatescalar(const vector<float>& s1, const vector<float>& s2);
+extern "C" float CoeffScalar(const vector<float>& s1, const vector<float>& s2);
 
 #endif // COEFFSCALAR_HPP

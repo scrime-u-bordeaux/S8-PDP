@@ -4,10 +4,10 @@
 
 extern "C"{
 
-std::vector< std::vector <float> > PreprocDefault(std::vector < std::vector<float> > input){
-	
+SquareMatrix<float> PreprocDefault(const SquareMatrix<float>& input){
+
 	return input;
-	
+
 }
 
 }

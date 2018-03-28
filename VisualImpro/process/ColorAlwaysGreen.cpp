@@ -2,11 +2,12 @@
 
 #include "../utilities.hpp"
 
+// To delete
 extern "C"{
-	
-Triplet ColorAlwaysGreen(float coeff){
-	Triplet rgb(20,250,20);
-	return rgb;
-}
-	
+
+/*RGB ColorAlwaysGreen(float coeff){
+	RGB green(20,250,20);
+	return green;
+}*/
+
 }

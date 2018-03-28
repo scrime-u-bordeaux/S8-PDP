@@ -1,17 +1,31 @@
+/**
+ * @file SquareMatrix.hpp
+ * @author Lucas VIVAS
+*/
+
 #ifndef DEF_MATRIX
 #define DEF_MATRIX
 
+#include "RGB.hpp"
+#include <vector>
+#include <string>
+
 using namespace std;
 
-template <typename T>
+template <class T>
 class SquareMatrix {
 public:
-    SquareMatrix<T>(int sizeMatix);
-    T getCase(int x, int y);
+    SquareMatrix(int sizeMatix);
+    SquareMatrix(int sizeMatix, vector<T> vec);
+    T getCase(int x, int y) const;
     void setCase(int x, int y, T val);
-    int getSize();
+    int getSize() const;
+    vector<T> getColumn(int index) const;
+    vector<T>& getColumnRef(int index);
+    void setColumn(int index, vector<T> column);
+    void swap(SquareMatrix<T>& mat);
     string toString();
-    ~SquareMatrix();
+    virtual ~SquareMatrix();
 
 private:
     int _sizeMatix;
