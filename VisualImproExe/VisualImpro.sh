@@ -12,7 +12,7 @@ trap 'echo "";' INT
 awk -F" " -v wavpath="$WAVPATH" '$1 ==  "FILE" {system("scp "$2" root@192.168.7.2:"wavpath"")}' config.cfg
 #Modify config file to match Bela path to wav files
 cp config.cfg configtmp.cfg
-awk -F" " -v wavpath="$WAVPATH" '$1 ==  "FILE" {gsub(""$2"", ""wavpath""$2""); print $0}' configtmp.cfg
+awk -F" " -v wavpath="$WAVPATH" '$1 ==  "FILE" {gsub(""$2"", ""wavpath""$2"")}' configtmp.cfg
 #Copy config file into Bela
 scp configtmp.cfg root@192.168.7.2:/root/Bela/projects/VisualImpro/config/
 #Launch server
