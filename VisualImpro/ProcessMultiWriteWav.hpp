@@ -17,7 +17,6 @@ public :
   void writeheader();
   ProcessMultiWriteWav(std::string filename, int numchannels, int samplerate = 44100, int bytespersample = 2);
   ~ProcessMultiWriteWav();
-
 private :
   std::string filename;
   FILE* stream;
@@ -26,7 +25,6 @@ private :
   int numchannels;
   int bytespersample;
   //std::vector<std::queue<float>> deck;;
-
 };
 
 #endif

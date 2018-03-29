@@ -194,6 +194,7 @@ void SampleStream::togglePlaybackWithFade(int toggle,
 void SampleStream::togglePlayback(int toggle) {
   gPlaying = toggle;
   gFadeAmount = gPlaying;
+
 }
 
 void SampleStream::togglePlaybackWithFade(float fadeLengthInSeconds) {

@@ -30,8 +30,7 @@ ProcessMultiWriteWav::ProcessMultiWriteWav(std::string filename, int numchannels
 }
 
 void ProcessMultiWriteWav::process(const Matrix<float>& buffer){
-
-fseek(stream, 0, SEEK_END);
+  fseek(stream, 0, SEEK_END);
   int x = buffer.getSize();
   if (x != 0){
     int y = buffer.getRow(0).size();
@@ -48,9 +47,7 @@ fseek(stream, 0, SEEK_END);
       write_little_endian((unsigned int) (intVal),2, stream);
       tmp = 0;
     }
-
     this->numsamples+=y;
-
   }
 }
 
@@ -63,7 +60,6 @@ void ProcessMultiWriteWav::writeheader(){
   fwrite("RIFF", 1, 4, stream);
   write_little_endian(36 + bytespersample* numsamples*numchannels, 4, stream);
   fwrite("WAVE", 1, 4, stream);
-
   /* write fmt  subchunk */
   fwrite("fmt ", 1, 4, stream);
   write_little_endian(16, 4, stream);   /* SubChunk1Size is 16 */

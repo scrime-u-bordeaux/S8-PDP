@@ -1,9 +1,11 @@
-Steps to compile the project :
+Install the project :
 
-1. qmake -project
-2. qmake-qt4 GUI.pro
-3. make
+./install.sh
 
 Run the project with :
 
 ./GUI
+
+Uninstall the project :
+
+./uninstall.sh

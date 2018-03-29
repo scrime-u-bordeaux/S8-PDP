@@ -1,0 +1,43 @@
+
+\sloppy
+\hyphenpenalty 10000000
+
+\begin{center}
+ \begin{tikzpicture}
+  
+  \umlclass[x=0,y=0]{GUISettingWindow}{
+   - mainLayout : QVBoxLayout* \\
+   - processSettingLayout : GUIProcessSettingLayout* \\
+   - inputSettingLayout : GUIInputSettingLayout* \\
+   - wavFileLayout : GUIWavFileSettingLayout* \\
+   - finishButton : QPushButton* \\
+   }{
+   + GUISettingWindow(QWidget * = 0) \\
+   + ~GUISettingWindow() \\
+  }
+  
+  \umlclass[x=-4,y=-5]{GUIInputSettingLayout}{
+   - allLabel : vector<QLabel *> * \\
+   - allSlider : vector<QSlider *> * \\
+   - allSpinBox : vector<QSpinBox *> * \\
+   }{
+   + GUIInputSettingLayout(QWidget * = 0) \\
+   + addSetting(string, int, int) : void \\
+   + ~GUIInputSettingLayout() \\
+  }
+  
+  \umlclass[x=4,y=-5]{GUIProcessSettingLayout}{
+   - allBox : vector<QComboBox *> * \\
+   }{
+   + GUIProcessSettingLayout(QWidget * = 0) \\
+   + addSetting(string) : void  \\
+   + ~GUIProcessSettingLayout() \\
+   - getFilename(string) : vector<string> \\
+  }
+  
+  \umlunicompo[geometry=|-]{GUISettingWindow}{GUIInputSettingLayout}
+  % \umlinherit[geometry=-|]{GUIInputSettingLayout}{GUISettingWindow}
+  \umlunicompo[geometry=|-]{GUISettingWindow}{GUIProcessSettingLayout}
+  
+ \end{tikzpicture}
+\end{center}

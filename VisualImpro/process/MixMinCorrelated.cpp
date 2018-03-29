@@ -1,9 +1,18 @@
-// Generate a sound volume mix on each instrument depending on the least
-// correlated instruments
+/**
+ *  @file    MixMaxCorrelated.cpp
+ *  @author  Alexandre Casanova--Franger
+ *  @date    04/03/2018
+ *
+ *  @section DESCRIPTION
+ *
+ *  This function is used to process the mean correlation
+ *  of each instrument. We will use it to mix the volume of each instrument
+ *  depending on the correlation it has with others instruments.
+ *  Here the least correlated instruments are played louder.
+ *
+ */
 
 #include "../utilities.hpp"
-
-using namespace std;
 
 extern "C" {
 
@@ -30,4 +39,5 @@ vector<float> MixMinCorrelated(const Matrix<float>& correlMatrix) {
   }
   return meanCorrelations;
 }
+
 }
