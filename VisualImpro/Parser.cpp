@@ -71,10 +71,6 @@ Parser::Parser(std::string file) : _file(file), port(0), analog(0), audio(0), us
   ifs.close();
 }
 
-int Parser::getProcessLength(){
-  return proclen;
-}
-
 std::string Parser::get_word(std::string line){
   std::string::iterator it = line.begin();
   get_next_word(&it);
@@ -85,49 +81,53 @@ std::string Parser::get_word(std::string line){
   return get_next_word(&it);
 }
 
-std::string Parser::getCoeff(){
+int Parser::getProcessLength() const{
+  return proclen;
+}
+
+std::string Parser::getCoeff() const{
   return coeff;
 }
-std::string Parser::getColor(){
+std::string Parser::getColor() const{
   return color;
 }
 
-std::string Parser::getPreproc(){
+std::string Parser::getPreproc() const{
   return preproc;
 }
 
-std::string Parser::getMix(){
+std::string Parser::getMix() const{
   return mix;
 }
 
-std::list<std::string> Parser::getTracks(){
+std::list<std::string> Parser::getTracks() const{
   return tracks;
 }
 
-std::string Parser::getAddress(){
+std::string Parser::getAddress() const{
 	return addr;
 }
 
-int Parser::getPort(){
+int Parser::getPort() const{
 	return port;
 }
 
-int Parser::getAnalog(){
+int Parser::getAnalog() const{
 	return analog;
 }
 
-int Parser::getAudio(){
+int Parser::getAudio() const{
 	return audio;
 }
 
-int Parser::getUseEffects(){
+int Parser::getUseEffects() const{
 	return useeffects;
 }
 
-int Parser::getEffectLen(){
+int Parser::getEffectLen() const{
 	return efflen;
 }
 
-std::string Parser::getSessionName(){
+std::string Parser::getSessionName() const{
 	return sessionName;
 }

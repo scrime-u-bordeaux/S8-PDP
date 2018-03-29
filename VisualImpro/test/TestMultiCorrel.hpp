@@ -11,7 +11,6 @@
 #include "../ProcessMultiCorrel.hpp"
 #include "../process/MixMaxCorrelated.hpp"
 #include "../process/MixMinCorrelated.hpp"
-#include "../process/MixRandomValues.hpp"
 #include "../process/PreprocStrengthEnergy.hpp"
 #include "../process/PreprocEnergy.hpp"
 #include "../process/ColorGreenToRed.hpp"
