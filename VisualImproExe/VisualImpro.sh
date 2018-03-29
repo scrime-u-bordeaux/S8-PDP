@@ -19,7 +19,7 @@ trap '{
         scp root@192.168.7.2:$LOGPATHlog logs/$getCurrentDateTime;
         echo "Data saved in logs/$getCurrentDateTime";
         rm $CONFIGTMPFILE;
-        $bool = false;
+        $on = false;
       }' SIGINT
 #Parse config file
 #Copy wav files into Bela
@@ -37,6 +37,6 @@ firefox 192.168.7.1:8080 &
 ssh root@192.168.7.2
 cd /root/Bela/projects/VisualImpro
 ./VisualImpro config/configtmp.cfg &
-while ["$bool" = true]; do
+while ["$on" = true]; do
   #statements
 done
