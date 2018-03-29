@@ -5,8 +5,22 @@ CONFIGPATH="/root/Bela/projects/VisualImpro/config/"
 LOGPATH="/root/Bela/projects/VisualImpro/log/"
 CONFIGFILE="./config.cfg"
 CONFIGTMPFILE="./configtmp.cfg"
+
+on=true
+
+function getCurrentDateTime() {
+  return date +"%Y-%m-%d.%X"
+}
 #Catch Ctrl-C signal to do cleanup and saves.
-trap 'echo "";' INT
+trap '{
+        ssh root@192.168.7.2 pkill VisualImpro;
+        pkill nodejs;
+        ssh root@192.168.7.2 rm $WAVPATH*.wav;
+        scp root@192.168.7.2:$LOGPATHlog logs/$getCurrentDateTime;
+        echo "Data saved in logs/$getCurrentDateTime";
+        rm $CONFIGTMPFILE;
+        $bool = false;
+      }' SIGINT
 #Parse config file
 #Copy wav files into Bela
 awk -F" " -v wavpath="$WAVPATH" '$1 ==  "FILE" {system("scp "$2" root@192.168.7.2:"wavpath"")}' config.cfg
@@ -23,3 +37,6 @@ firefox 192.168.7.1:8080 &
 ssh root@192.168.7.2
 cd /root/Bela/projects/VisualImpro
 ./VisualImpro config/configtmp.cfg &
+while ["$bool" = true]; do
+  #statements
+done
