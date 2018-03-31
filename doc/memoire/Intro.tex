@@ -133,14 +133,14 @@ existant.
 
 \subsubsection{Détails sur le programme existant}
 \paragraph{}
-Le programme développé par Jérémy s'intitule \verb!VisualImpro!. Il se
-veut "générique", a été implémenté de sorte à permettre à des
-développeurs de l'améliorer et de le modifier facilement, et à des
-utilisateurs renseignés de modifier certains paramètres et
-configurations liés aux calculs de la matrice. Son architecture
-logicielle constitue le socle de notre travail, c'est elle que nous
-allons devoir ré-organiser et enrichir, afin notamment d'ajouter de
-nouvelles fonctionnalités au programme.
+Le programme développé par Jérémy Lixandre s'intitule
+\verb!VisualImpro!. Il se veut "générique", a été implémenté de sorte
+à permettre à des développeurs de l'améliorer et de le modifier
+facilement, et à des utilisateurs renseignés de modifier certains
+paramètres et configurations liés aux calculs de la matrice. Son
+architecture logicielle constitue le socle de notre travail, c'est
+elle que nous allons devoir ré-organiser et enrichir, afin notamment
+d'ajouter de nouvelles fonctionnalités au programme.
 \paragraph{}
 Le code du programme doit notamment contenir trois fichiers .cpp dont
 les noms sont \verb!Prepoc*.cpp!, \verb!Coeff*.cpp! et
@@ -243,23 +243,15 @@ aux musiciens la qualité des corrélations en fonction du coefficient
 calculé à la place du retour visuel, ajouter des effets audio aux
 pistes sonores en amont du calcul de corrélation...
 
-\subsection{La rédaction du cahier des besoins}
+\subsection{Introduction aux besoins}
 
+\subsubsection{Besoins fonctionnels}
 \paragraph{}
-Durant les premières semaines de travail sur ce projet, il nous a
-fallu établir précisément ses besoins, tâche qui a suscité débats et
-questionnements et s'est révélée plus difficile que prévu. Appréhender
-l'intérêt du projet ou le fonctionnement de l'existant exigeaient
-déjà, en soit, une certaine réflexion.
-
-\subsubsection{Les premiers besoins fonctionnels listés par nos clients}
-\paragraph{}
-Après les premières entrevues avec les deux professeurs à l'origine du
-projet, l'objectif principal qui se dessine est l'implémentation d'un
-retour sonore sur la sortie audio dont dispose le système
-embarqué. Grâce à la technologie de Bela, on devrait être en mesure de
-remplacer ou compléter le retour visuel par une évaluation audio du
-jeu des musiciens.
+L'objectif principal de notre projet est l'implémentation d'un retour
+sonore sur la sortie audio dont dispose le système embarqué. Grâce à
+la technologie de Bela, on devrait être en mesure de remplacer ou
+compléter le retour visuel par une évaluation audio du jeu des
+musiciens.
 \paragraph{}
 Ce qui motive ce besoin particulier est l'intérêt technologique que
 représente l'utilisation de Bela pour produire un résultat sonore
@@ -278,35 +270,24 @@ façon d'improviser qui, selon les configurations du logiciel choisies,
 pourra se révéler plus efficace. Ce nouvel outil mérite quelques
 éclaircissements quant à son fonctionnement et son intérêt global.
 \paragraph{}
-Dans sa version du logiciel, Jérémy avait anticipé et prévu dans son
-implémentation la possibilité de produire un retour sonore dépendant
-directement du coefficient de corrélation. Son idée était d'émettre un
-signal dont l'amplitude varierait de manière proportionnelle et en
-temps réel à un coefficient (ou à une somme des coefficients) de
-corrélation. Ainsi, par-dessus le morceau qu'ils seraient en train de
-jouer, les musiciens entendraient ce "signal", ce bruit évaluant
-leur jeu tout comme ou à la place de la matrice visuelle. Nous
-avons élaboré avec nos clients un dispositif légèrement différent.
-\paragraph{}
-Dans le dispositif exprimé dans notre cahier des besoins, le retour
-sonore dont il est question est une version modifiée du morceau joué
-en temps réel. Ce morceau est composé du même nombre de pistes
-instrumentales que celui interprété en entrée du système embarqué,
-mais chacune de ces pistes est préalablement modifiée en terme de
-niveau sonore en fonction du coefficient de corrélation. Une interface
-de configuration dans le logiciel permettrait alors à l'utilisateur de
-définir une "consigne", une loi décrivant quelles pistes doivent
-être augmentées en niveau sonore par rapport aux autres dans le retour
-et selon quels critères. L'exemple de configuration qui nous a semblé
-le plus judicieux est le suivant : les paires de musiciens les plus
-corrélées entre elles seront plus augmentées en niveau sonore dans le
-morceau de retour. Nous avons imaginé d'autres configurations
-possibles : augmenter en niveau sonore les pistes étant les plus
-corrélées avec une "piste de référence" ayant pour rôle de "mener"
-l'improvisation, augmenter en niveau sonore les paires de pistes
-instrumentales les moins corrélées, augmenter en niveau sonore les
-pistes dont les sommes des coefficients de corrélation avec toutes les
-autres sont les plus élevées...
+Le retour sonore dont il est question est une version modifiée du
+morceau joué en temps réel. Ce morceau est composé du même nombre de
+pistes instrumentales que celui interprété en entrée du système
+embarqué, mais chacune de ces pistes est préalablement modifiée en
+terme de niveau sonore en fonction du coefficient de corrélation. Une
+interface de configuration dans le logiciel permettrait alors à
+l'utilisateur de définir une "consigne", une loi décrivant quelles
+pistes doivent être augmentées en niveau sonore par rapport aux autres
+dans le retour et selon quels critères. L'exemple de configuration qui
+nous a semblé le plus judicieux est le suivant : les paires de
+musiciens les plus corrélées entre elles seront plus augmentées en
+niveau sonore dans le morceau de retour. Nous avons imaginé d'autres
+configurations possibles : augmenter en niveau sonore les pistes étant
+les plus corrélées avec une "piste de référence" ayant pour rôle de
+"mener" l'improvisation, augmenter en niveau sonore les paires de
+pistes instrumentales les moins corrélées, augmenter en niveau sonore
+les pistes dont les sommes des coefficients de corrélation avec toutes
+les autres sont les plus élevées...
 \paragraph{}
 L'intérêt du logiciel a alors légèrement changé, et peut paraître plus
 difficile à comprendre. Ce retour sonore, qui pourra être combiné ou
@@ -331,67 +312,43 @@ musiciens, puisqu'il les désoriente en trompant leur audition et les
 force à se concentrer davantage sur la matrice pour comprendre les
 rouages du logiciel... et à force de plusieurs utilisations de
 celui-ci sous diverses configurations, pour comprendre les rouages de
-la notion même d'improvisation. \\
-
-\subsubsection{D'autres besoins fonctionnels}
+la notion même d'improvisation.
+\paragraph{}
 Un autre besoin fonctionnel indispensable est l'implémentation d'une
 interface permettant à l'utilisateur de sélectionner ses
 configurations ; non seulement les fichiers de
 \textit{pre-processing}/calcul de coefficient/calcul de triplet RGB,
 mais également la "consigne" déterminant quelles pistes doivent être
-augmentées ou diminuées dans le retour sonore. \\
+augmentées ou diminuées dans le retour sonore.
 
 \subsection{Besoins non fonctionnels}
-Au cours de son travail, Jérémy a pris soin de rendre génériques les
-trois fonctions de \textit{pre-processing}, de calcul de coefficient
-de corrélation et de calcul du triplet RGB. Afin de coller avec
-l'architecture de Bela et avec ses travaux, nous devrons tâcher de
-rendre notre fonction de mixage du retour audio générique
+Au cours de son travail, Jérémy Lixandre a pris soin de rendre
+génériques les trois fonctions de \textit{pre-processing}, de calcul
+de coefficient de corrélation et de calcul du triplet RGB. Afin de
+coller avec l'architecture de Bela et avec ses travaux, nous devrons
+tâcher de rendre notre fonction de mixage du retour audio générique
 également. De plus, il faudra veiller à ce que son calcul n'entraîne
 pas de latence, et que le retour parvienne aux musiciens sans décalage
-temporel par rapport à leur jeu. \\ C'est après le rendu du cahier des
-besoins et plusieurs séances de TD que nous découvrons un nouveau
-besoin non fonctionnel : le refactoring du code. En effet, certains
-choix effectués par notre prédécesseur sur celui-ci nous paraissent
-discutables. Notamment, le code est peu commenté, il est parfois
-impossible de distinguer le code pré-existant dans Bela de celui écrit
-par le programmeur, et le choix des outils destinés à l'affichage de
-la matrice nous paraissent discutables. En effet, Jérémy ne semble pas
-justifier l'emploi de NodeJS et d'un navigateur web pour l'affichage
-de la matrice graphique. Nous choisissons alors de modifier ce
-processus d'affichage : la matrice sera affichée via une simple
-interface graphique du framework Qt, ce qui nous permet de rassembler
-l'ensemble du projet sous le langage C++. \\ Le travail à effectuer
-sur le code existant se découpe alors en deux parties dans notre
-planning : le refactoring du code d'une part, et l'implémentation du
-retour sonore d'autre part. \\
-Les autres besoins que nous établissons lors de cette introduction au
-Projet de Programmation seront relatifs à l'organisation générale de
-son déroulement : diagramme de Gantt, planning et répartition des
-tâches, liste de priorité des besoins... Lors des premières semaines,
-les membres de l'équipe de développement s'attribuent des rôles
-essentiels pour accélérer le déroulement du projet. Même si les
-membres du groupe communiquent quotidiennement sur le projet tout au
-long de son déroulement, interviennent tous sur plusieurs facettes du
-développement du logiciel et travaillent régulièrement en groupes, des
-responsabilités individuelles sont naturellement attribuées à chacun
-en fonction de leurs affinités et de leurs compétences respectives.
-
-\subsubsection{Répartition des tâches}
-\begin{itemize}
-\item Alexandre Casanova--Franget a la charge de tout ce qui concerne l'implémentation du retour sonore et l'ajout de fonctionnalités vis-à-vis de celui-ci.
-\item Gauthier Lamarque est chargé de la communication au sein du groupe de projet et vis-à-vis des clients et du chargé de TD et de l'implémentation des tests logiciels
-\item Paul Simorre supervise la rédaction des comptes-rendus et du cahier des besoins et est chargé de la rédaction du mémoire
-\item Lucas Vivas s'occupe de la partie refactoring du projet et de l'implémentation des interfaces graphiques et des menus
-\end{itemize}
-
-\subsubsection{Résultats produits lors de la phase de gestion du projet}
+temporel par rapport à leur jeu.
 \paragraph{}
+Le refactoring du code est également nécessaire au projet. En effet,
+certains choix effectués par notre prédécesseur sur celui-ci nous
+paraissent discutables. Notamment, le code est peu commenté, il est
+parfois impossible de distinguer le code pré-existant dans Bela de
+celui écrit par le programmeur, et le choix des outils destinés à
+l'affichage de la matrice nous paraissent discutables. En effet,
+Jérémy Lixandre ne semble pas justifier l'emploi de NodeJS et d'un
+navigateur web pour l'affichage de la matrice graphique. Nous
+choisissons alors de modifier ce processus d'affichage : la matrice
+sera affichée via une simple interface graphique du framework Qt, ce
+qui nous permet de rassembler l'ensemble du projet sous le langage
+C++.
+\paragraph{}
+Le travail à effectuer sur le code existant se découpe alors en deux
+parties : le refactoring du code d'une part, et l'implémentation du
+retour sonore d'autre part.
 
-DIAGRAMME DE GANTT
-
-LISTE TACHES PRIORITES ETC.
-
+%liste des besoins a ajouter
 
 \subsection{Exposé global du processus d'implémentation}
 Le projet sera donc articulé dans son déroulement autour de deux
