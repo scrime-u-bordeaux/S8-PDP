@@ -1,6 +1,6 @@
 /***** SampleStream.cpp *****/
 
-#include <SampleStream.h>
+#include <SampleStream.hpp>
 
 SampleStream::SampleStream(const char *filename, int numChannels,
                            int bufferLength) {

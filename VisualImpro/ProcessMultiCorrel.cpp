@@ -74,6 +74,6 @@ void ProcessMultiCorrel::process(const Matrix<float>& buffer,
   //Matrix coloration
   Matrix<RGB> mat = color_matrix(correlMatrix);
   //Send data
-  string str = matrixtostring(mat);
+  string str = mat.toString();
   conn.send(str);
 }

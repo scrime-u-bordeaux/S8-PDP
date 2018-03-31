@@ -2,6 +2,7 @@
 #define DEF_RGB
 
 #include <iostream>
+#include <string>
 
 using namespace std;
 
@@ -15,6 +16,8 @@ public:
   void setGreen(int green);
   void setBlue(int blue);
   string toString();
+  string colortohexa(int color);
+  unsigned long createRGB(int r, int g, int b);
   ~RGB();
 
 private:

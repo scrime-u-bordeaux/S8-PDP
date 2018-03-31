@@ -1,17 +1,18 @@
-INC_DIR = ../utilities
-
 CXX = g++
 CXXFLAGS = -std=c++11 -ldl -lsndfile -lcppunit -Wall -Wextra
 
 EXEC= tests
-SRC= $(wildcard *.cpp) $(wildcard ../process/*.cpp) ../ProcessMultiCorrel.cpp ../Connection.cpp ../utilities.cpp ../Matrix.cpp ../RGB.cpp
-OBJ= $(SRC:.cpp=.o)
+SRC= TestMain.cpp $(wildcard TestCoeff/*.cpp) $(wildcard TestMix/*.cpp)\
+$(wildcard TestPreproc/*.cpp) $(wildcard TestColor/*.cpp)\
+$(wildcard ../process/*/*.cpp) $(wildcard TestClasses/*.cpp)
+INC = ../Matrix.cpp ../RGB.cpp ../ProcessMultiCorrel.cpp ../Connection.cpp
+OBJ= $(SRC:.cpp=.o) $(INC:.cpp=.o)
 
 all: $(EXEC)
 
 tests : $(OBJ)
 	@$(CXX) -o $@ $^ $(CXXFLAGS)
-	@mv *.o ../*.o ../process/*.o obj/
+	@mv $(OBJ) obj/
 
 %.o: %.cpp
 	$(CXX) -c $< $(CXXFLAGS) -o $@
@@ -19,4 +20,4 @@ tests : $(OBJ)
 .PHONY: clean
 
 clean:
-	rm -rf *.o ../*.o ../process/*.o obj/*.o tests
+	rm -rf *.o */*.o ../*.o ../process/*/*.o obj/*.o tests

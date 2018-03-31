@@ -3,7 +3,6 @@
 #ifndef CORREL_HPP
 #define CORREL_HPP
 
-#include "utilities.hpp"
 #include "Connection.hpp"
 #include "Matrix.hpp"
 #include "RGB.hpp"

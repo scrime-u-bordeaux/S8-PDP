@@ -72,14 +72,14 @@ void Matrix<float>::swap(Matrix<float>& mat){
 template<>
 string Matrix<RGB>::toString(){
   string str;
-  str  += "Matrix :\n";
   int row = this->getSize();
   int col = this->getRow(0).size();
+  if (row > 0)
+    str += (to_string(row) + "-" + to_string(row));
   for (int i = 0; i < row; i++){
     for (int j = 0; j < col; j++){
-      str += this->getCase(i, j).toString() + " ";
+      str += this->getCase(i, j).toString();
     }
-    str += '\n';
   }
   return str;
 }
