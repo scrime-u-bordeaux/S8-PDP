@@ -17,9 +17,22 @@ class GUIConfigFileSettingBuilder : public GUIFileSettingBuilder {
 public:
     GUIConfigFileSettingBuilder();
     void beginFile();
-    void addSetting(string nameSetting, int value);
-    void addSetting(string nameSetting, string value);
+    void addPort(int port);
+    void addAddress(string address);
+    void addProcessLen(int length);
+    void addEffect(bool effect, int bufferLen);
+    void addAnalogInput(int nb);
+    void addAudioInput(int nb);
+    void addWavFile(string path);
+    void addColorFunction(string functionName);
+    void addCoeffFunction(string functionName);
+    void addPreProcFunction(string functionName);
+    void addMixFunction(string functionName);
     void endFile();
+    string getResult();
     ~GUIConfigFileSettingBuilder();
+
+private:
+    string* fileBuffer;
 };
 #endif // DEF_GUICONFIGFILESETTINGBUILDER
