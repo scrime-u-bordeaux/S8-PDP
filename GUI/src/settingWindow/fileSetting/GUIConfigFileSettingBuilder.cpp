@@ -6,59 +6,73 @@
 #include "GUIConfigFileSettingBuilder.hpp"
 
 GUIConfigFileSettingBuilder::GUIConfigFileSettingBuilder()
-    : fileBuffer(new string()) {}
+    : fileBuffer(new stringstream()) {}
 
 void GUIConfigFileSettingBuilder::beginFile() {
-  fileBuffer << "# Configuration file for ./VisualImpro\n
-#use '#' at beginning of line for comments\n "
+  string str("# Configuration file for ./VisualImpro\n #use \'#\' at beginning of line for comments\n ");
+  *fileBuffer << str;
 }
 
-void GUIConfigFileSettingBuilder::addPort(int port) { fillBuffer << "PORT "; }
+void GUIConfigFileSettingBuilder::addPort(int port) {
+  string str("PORT " + port);
+  *fileBuffer << str;
+}
 
 void GUIConfigFileSettingBuilder::addAddress(string address) {
-  fillBuffer << "ADDRESS ";
+  string str("ADDRESS " + address);
+  *fileBuffer << str;
 }
 
 void GUIConfigFileSettingBuilder::addProcessLen(int length) {
-  fillBuffer << "PROCESSLEN ";
+  string str("PROCESSLEN " + length);
+  *fileBuffer << str;
 }
 
 void GUIConfigFileSettingBuilder::addEffect(bool effect, int bufferLen) {
-  fillBuffer << "EFFECTS ";
-  fillBuffer << "EFFECT_BUFFER_LEN ";
+  string str("EFFECTS " + effect);
+  *fileBuffer << str;
+  str = "EFFECT_BUFFER_LEN " + bufferLen;
+  *fileBuffer << str;
 }
 
 void GUIConfigFileSettingBuilder::addAnalogInput(int nb) {
-  fillBuffer << "ANALOG ";
+  string str("ANALOG " + nb);
+  *fileBuffer << str;
 }
 
 void GUIConfigFileSettingBuilder::addAudioInput(int nb) {
-  fillBuffer << "AUDIO ";
+  string str("AUDIO " + nb);
+  *fileBuffer << str;
 }
 
 void GUIConfigFileSettingBuilder::addWavFile(string path) {
-  fillBuffer << "FILE ";
+  string str("FILE " + path);
+  *fileBuffer << str;
 }
 
 void GUIConfigFileSettingBuilder::addColorFunction(string functionName) {
-  fillBuffer << "COLOR ";
+  string str("COLOR " + functionName);
+  *fileBuffer << str;
 }
 
 void GUIConfigFileSettingBuilder::addCoeffFunction(string functionName) {
-  fillBuffer << "COEFF ";
+  string str("COEFF " + functionName);
+  *fileBuffer << str;
 }
 
 void GUIConfigFileSettingBuilder::addPreProcFunction(string functionName) {
-  fillBuffer << "PREPROC ";
+  string str("PREPROC " + functionName);
+  *fileBuffer << str;
 }
 
 void GUIConfigFileSettingBuilder::addMixFunction(string functionName) {
-  fillBuffer << "MIX ";
+  string str("MIX " + functionName);
+  *fileBuffer << str;
 }
 
 void GUIConfigFileSettingBuilder::endFile() {}
 
-string GUIConfigFileSettingBuilder::getResult() { return fillBuffer; }
+ string GUIConfigFileSettingBuilder::getResult() { return fileBuffer->str(); }
 
 GUIConfigFileSettingBuilder::~GUIConfigFileSettingBuilder() {
   delete fileBuffer;

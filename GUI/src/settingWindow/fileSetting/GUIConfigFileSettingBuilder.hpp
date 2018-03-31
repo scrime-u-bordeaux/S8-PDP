@@ -7,6 +7,7 @@
 #define DEF_GUICONFIGFILESETTINGBUILDER
 
 #include <string>
+#include "sstream"
 
 #include "GUIFileSettingBuilder.hpp"
 
@@ -33,6 +34,6 @@ public:
     ~GUIConfigFileSettingBuilder();
 
 private:
-    string* fileBuffer;
+    stringstream* fileBuffer;
 };
 #endif // DEF_GUICONFIGFILESETTINGBUILDER
