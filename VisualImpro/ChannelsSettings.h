@@ -7,6 +7,7 @@
 #include "Effect.hpp"
 #include "ProcessMultiCorrel.hpp"
 #include "Connection.hpp"
+
 #define NB_AUDIO_MAX 2
 #define NB_ANALOG_MAX 8
 

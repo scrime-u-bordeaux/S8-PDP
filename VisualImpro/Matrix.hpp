@@ -1,5 +1,5 @@
 /**
- * @file SquareMatrix.hpp
+ * @file Matrix.hpp
  * @author Lucas VIVAS
 */
 
@@ -13,19 +13,20 @@
 using namespace std;
 
 template <class T>
-class SquareMatrix {
+class Matrix {
 public:
-    SquareMatrix(int sizeMatix);
-    SquareMatrix(int sizeMatix, vector<T> vec);
+    Matrix(int sizeMatix);
+    Matrix(int sizeMatix, vector<T> vec);
+    Matrix(int sizeMatix, T value);
     T getCase(int x, int y) const;
     void setCase(int x, int y, T val);
     int getSize() const;
-    vector<T> getColumn(int index) const;
-    vector<T>& getColumnRef(int index);
-    void setColumn(int index, vector<T> column);
-    void swap(SquareMatrix<T>& mat);
+    vector<T> getRow(int index) const;
+    vector<T>& getRowRef(int index);
+    void setRow(int index, vector<T> column);
+    void swap(Matrix<T>& mat);
     string toString();
-    virtual ~SquareMatrix();
+    virtual ~Matrix();
 
 private:
     int _sizeMatix;

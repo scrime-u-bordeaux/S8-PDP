@@ -13,20 +13,20 @@ public :
   Parser(std::string file);
   Parser(){}
   ~Parser(){}
-  std::string getCoeff();
-  std::string getColor();
-  std::string getPreproc();
-  std::string getMix();
-  std::string getAddress();
-  int getAnalog();
-  int getAudio();
-  int getPort();
-  int getProcessLength();
-  int getUseEffects();
-  int getEffectLen();
-  std::string getSessionName();
-  std::list<std::string> getTracks();
-  
+  std::string getCoeff() const;
+  std::string getColor() const;
+  std::string getPreproc() const;
+  std::string getMix() const;
+  std::string getAddress() const;
+  int getAnalog() const;
+  int getAudio() const;
+  int getPort() const;
+  int getProcessLength() const;
+  int getUseEffects() const;
+  int getEffectLen() const;
+  std::string getSessionName() const;
+  std::list<std::string> getTracks() const;
+
 private :
   std::string _file;
   std::list<std::string> tracks;

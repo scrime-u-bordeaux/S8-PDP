@@ -32,11 +32,11 @@ vector<float> energyenvelope(const vector<float>& f1, int frame){ //cuts f1 in b
 
 extern "C"{
 
-SquareMatrix<float> PreprocEnergy(const SquareMatrix<float>& input){
+Matrix<float> PreprocEnergy(const Matrix<float>& input){
   int size = input.getSize();
-	SquareMatrix<float> buffer(size);
+	Matrix<float> buffer(size);
 	for (int i = 0 ; i < size; i++){
-		buffer.setColumn(i, energyenvelope(input.getColumn(i), 1024));
+		buffer.setRow(i, energyenvelope(input.getRow(i), 1024));
 	}
 	return buffer;
 }

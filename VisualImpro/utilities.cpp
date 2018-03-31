@@ -1,16 +1,12 @@
 /***** utilities.cpp *****/
 
 #include "utilities.hpp"
-#include "SquareMatrix.hpp"
+#include "Matrix.hpp"
 #include "RGB.hpp"
 #include <cmath>
 #include <algorithm>
 #include "assert.h"
 #include <sndfile.h>
-
-//converts matrix to string
-//(r,g,b) to #rrggbb
-//echelle rouge->vert
 
 using namespace std;
 
@@ -35,75 +31,27 @@ string colortohexa(int color){
 }
 
 string RGBToString(RGB color){;
-  return color.to_String();
+  return ("#" + colortohexa(color.getRed()) + colortohexa(color.getGreen()) + colortohexa(color.getBlue()));
 }
 
-string matrixtostring(SquareMatrix<RGB> matrix){
+string matrixtostring(Matrix<RGB> matrix){
   //all subvectors must be of same size
   string code;
   if (matrix.getSize() > 0)
     code += (to_string(matrix.getSize()) + "-" + to_string(matrix.getSize()));
   for (int i=0; i<matrix.getSize(); i++){
       for (int j=0; j<matrix.getSize(); j++){
-      code += matrix.getCase(i, j).to_String();
+      code += RGBToString(matrix.getCase(i, j));
     }
   }
   return code;
 }
 
-void test_colortohexa(int dec){
-  cout << dec << "--->" << colortohexa(dec) << endl;
-}
-
-void test_dectohexa(int dec){
-  cout << dec << "--->" << dectohexa(dec) << endl;
-}
-
-void test_RGB(RGB color){
-  cout << "RGB " << "--->" << color << endl;
-}
-
-void print_matrix(SquareMatrix<RGB> matrix){
-  cout << "Matrix :\n";
-  for (int i = 0; i < matrix.getSize(); i++){
-    for (int j = 0; j < matrix.getSize(); j++){
-      cout << matrix.getCase(i, j) << " ";
-    }
-    cout << endl;
-  }
-}
-
-
-float correlate(const vector<float>& s1, const vector<float>& s2){
-  if (s1.size() == s2.size()){
-    float corr = 0.0;
-    for (unsigned int i = 0; i < s1.size(); i++){
-      corr += s1[i]*s2[i];
-    }
-    return corr;
-  }
-  printf("wrong sizes");
-  return 0;
-}
-
-// (x|y) < sqrt((x|x)(y|y))
-
-float coeffcorrel(const vector<float>& s1, const vector<float>& s2){
-	float scal = correlate(s1,s2);
-	float norm1 = correlate(s1,s1);
-	float norm2 = correlate(s2,s2);
-  float coeff = fabs(scal)/sqrt(norm1*norm2);
-  assert(coeff <= 1.0);
-  return coeff;
-}
-
 bool check_extension(string filename, string extension){
   int i = filename.size()-1;
   while (i != -1){
-    if (filename[i] == '.'){
-      //std::cout << filename.substr(i+1, filename.size()-i-2) << std::endl;
+    if (filename[i] == '.')
       return (filename.substr(i+1, filename.size()-i-1) == extension);
-    }
     i--;
   }
   return false;

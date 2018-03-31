@@ -1,39 +1,38 @@
 /**
- * @file TestSquareMatrix.cpp
+ * @file TestMatrix.cpp
  * @author Lucas VIVAS
 */
 
-#include "TestSquareMatrix.hpp"
-#include <iostream>
+#include "TestMatrix.hpp"
 
-CPPUNIT_TEST_SUITE_REGISTRATION(TestSquareMatrix);
+CPPUNIT_TEST_SUITE_REGISTRATION(TestMatrix);
 
-void TestSquareMatrix::setUp(){
-  intMatrix = new SquareMatrix<int>(5);
-  floatMatrix = new SquareMatrix<float>(5);
-  RGBmatrix = new SquareMatrix<RGB>(5);
+void TestMatrix::setUp(){
+  intMatrix = new Matrix<int>(5);
+  floatMatrix = new Matrix<float>(5);
+  RGBmatrix = new Matrix<RGB>(5);
 }
 
-void TestSquareMatrix::tearDown(){
+void TestMatrix::tearDown(){
   delete intMatrix;
 }
 
-void  TestSquareMatrix::testConstructor()
+void  TestMatrix::testConstructor()
 {
-  intMatrix = new SquareMatrix<int>(3);
+  intMatrix = new Matrix<int>(3);
 
   CPPUNIT_ASSERT_EQUAL(0,  intMatrix->getCase(0,0));
   CPPUNIT_ASSERT_EQUAL(0,  intMatrix->getCase(2,2));
   CPPUNIT_ASSERT(1 != intMatrix->getCase(1,1));
 }
 
-void TestSquareMatrix::testSetCase(){
+void TestMatrix::testSetCase(){
   CPPUNIT_ASSERT_EQUAL(0,  intMatrix->getCase(0,0));
   intMatrix->setCase(0,0,3);
   CPPUNIT_ASSERT_EQUAL(3,  intMatrix->getCase(0,0));
 }
 
-void TestSquareMatrix::testGetCase(){
+void TestMatrix::testGetCase(){
   CPPUNIT_ASSERT(intMatrix->getCase(0,0) == 0);
   CPPUNIT_ASSERT(intMatrix->getCase(0,1) == 0);
   CPPUNIT_ASSERT(intMatrix->getCase(1,0) == 0);
@@ -41,6 +40,6 @@ void TestSquareMatrix::testGetCase(){
   CPPUNIT_ASSERT(floatMatrix->getCase(0,2) == 5.2f);
 }
 
-void TestSquareMatrix::testToString(){
-  CPPUNIT_ASSERT(intMatrix->toString() == "SquareMatrix");
+void TestMatrix::testToString(){
+  CPPUNIT_ASSERT(intMatrix->toString() == "Matrix");
 }

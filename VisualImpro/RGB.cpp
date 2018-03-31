@@ -13,10 +13,10 @@ void RGB::setRed(int red) { _red = red; }
 void RGB::setGreen(int green) { _green = green; }
 void RGB::setBlue(int blue) { _blue = blue; }
 
-string RGB::to_String(){
+string RGB::toString(){
   stringstream ss;
-  //ss << "(" << this->getRed() << ", " << this->getGreen() << ", " << this->getBlue() << ")";
-  ss << this;
+  ss << "(" << this->getRed() << ", " << this->getGreen() << ", " << this->getBlue() << ")";
+  //ss << this;
   return ss.str();
 }
 

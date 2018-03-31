@@ -5,9 +5,9 @@
 
 #include <queue>
 #include <vector>
-#include "Effect.hpp"
-#include <iostream>
 #include <unistd.h>
+
+#include "Effect.hpp"
 
 using namespace std;
 
@@ -22,20 +22,12 @@ public :
 
   void apply(vector <float>& in, vector<float>& out){
     for (int i = 0; i < in.size(); i++){
-      /*if(_count < _offset){
-		out[i] = in[i];
-		_count++;
-      }
-      else{*/
-		out[i] = in[i] + _amplitude * _samples.front();
-		_samples.pop();
-      //}
-      _samples.push(in[i]);           
-    //}
-    //usleep(1);
+      out[i] = in[i] + _amplitude * _samples.front();
+      _samples.pop();
+      _samples.push(in[i]);
+    }
   }
-  }
-  
+
   virtual ~Echo(){}
 
 private :
@@ -43,8 +35,8 @@ private :
   //int _count;
   float _amplitude;
   queue <float> _samples;
-  
-  
+
+
 };
 
 #endif //ECHO_HPP

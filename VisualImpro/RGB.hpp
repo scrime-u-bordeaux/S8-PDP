@@ -14,7 +14,7 @@ public:
   void setRed(int red);
   void setGreen(int green);
   void setBlue(int blue);
-  string to_String();
+  string toString();
   ~RGB();
 
 private:

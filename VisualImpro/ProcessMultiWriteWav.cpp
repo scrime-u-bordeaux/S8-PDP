@@ -3,7 +3,7 @@ This code is inspired by https://gasstationwithoutpumps.wordpress.com/2011/10/08
 */
 
 #include "ProcessMultiWriteWav.hpp"
-#include "SquareMatrix.hpp"
+#include "Matrix.hpp"
 #include <assert.h>
 
 void write_little_endian(unsigned int word, int num_bytes, FILE *stream)
@@ -29,10 +29,11 @@ ProcessMultiWriteWav::ProcessMultiWriteWav(std::string filename, int numchannels
   fseek(stream, 44, SEEK_CUR);
 }
 
-void ProcessMultiWriteWav::process(const SquareMatrix<float>& buffer){
+void ProcessMultiWriteWav::process(const Matrix<float>& buffer){
+  fseek(stream, 0, SEEK_END);
   int x = buffer.getSize();
   if (x != 0){
-    int y = buffer.getColumn(0).size();
+    int y = buffer.getRow(0).size();
     float tmp = 0;
     short int intVal = 0;
     for (int sample = 0 ; sample < y ; sample ++){
@@ -46,7 +47,6 @@ void ProcessMultiWriteWav::process(const SquareMatrix<float>& buffer){
       write_little_endian((unsigned int) (intVal),2, stream);
       tmp = 0;
     }
-
     this->numsamples+=y;
   }
 }
