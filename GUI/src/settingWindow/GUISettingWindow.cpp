@@ -8,6 +8,7 @@
 #include <iostream>
 
 #include "GUISettingLayoutFactory.hpp"
+#include "GUIConfigFileSettingBuilder.hpp"
 
 #define MIN_ENTRIES 2
 
@@ -50,24 +51,35 @@ void GUISettingWindow::getParam() {
   int nbInput = 0;
   QStringList inputList = inputSettingLayout->getSetting();
   for (int i = 0; i < inputList.size(); i++) {
-    cout << inputList.at(i).toStdString() << endl;
     nbInput += inputList.at(i).toInt();
   }
 
   QStringList processList = processSettingLayout->getSetting();
-  for (int i = 0; i < processList.size(); i++) {
-    cout << processList.at(i).toStdString() << endl;
-  }
-  cout << endl;
+
   QStringList wavList = wavFileLayout->getSetting();
-  for (int i = 0; i < wavList.size(); i++) {
-    cout << wavList.at(i).toStdString() << endl;
-    nbInput++;
-  }
+  nbInput += wavList.size();
+
   if (nbInput < MIN_ENTRIES)
     cout << "bad" << endl;
-  else
-    cout << "good" << endl;
+  else {
+    GUIConfigFileSettingBuilder builder;
+    builder.beginFile();
+    builder.addPort(12345);
+    builder.addAddress("192.168.7.1");
+    builder.addProcessLen(32768);
+    builder.addEffect(false, 32);
+    builder.addAnalogInput(inputList.at(0).toInt());
+    builder.addAudioInput(inputList.at(1).toInt());
+    for (int i = 0; i < wavList.size(); i++) {
+      builder.addWavFile(wavList.at(i).toStdString());
+    }
+    builder.addColorFunction(processList.at(0).toStdString());
+    builder.addCoeffFunction(processList.at(1).toStdString());
+    builder.addPreProcFunction(processList.at(2).toStdString());
+    builder.addMixFunction(processList.at(3).toStdString());
+    builder.endFile();
+    cout << builder.getResult() << endl;
+  }
 }
 
 GUISettingWindow::~GUISettingWindow() {
