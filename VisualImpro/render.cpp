@@ -21,18 +21,19 @@ The Bela software is distributed under the GNU Lesser General Public License
 (LGPL 3.0), available here: https://www.gnu.org/licenses/lgpl-3.0.txt
 */
 
+#include <cmath>
+#include <vector>
+#include <Bela.h>
+#include <SampleStream.hpp>
+#include <sys/time.h>
+#include <time.h>
 #include "ChannelsSettings.h"
 #include "Echo.hpp"
 #include "EffectManaging.hpp"
 #include "ProcessMultiCorrel.hpp"
 #include "ProcessMultiWriteWav.hpp"
 #include "Matrix.hpp"
-#include <Bela.h>
-#include <SampleStream.h>
-#include <cmath>
-#include <sys/time.h>
-#include <time.h>
-#include <vector>
+#include "utilities.hpp"
 
 /******* GENERAL SETTINGS *******/
 
@@ -69,7 +70,7 @@ AuxiliaryTask gEffectTask;
 void effect(Matrix<float> &In, Matrix<float> &Out) {
   assert(In.getSize() == gTotalTracks);
 
-  // audio
+  // Audio
   for (int i = 0; i < gUserSet.nb_audio; i++) { // audio
     if (gUserSet.audioproc[i] == NULL) {
       In.getRowRef(i).swap(Out.getRowRef(i));
@@ -78,7 +79,7 @@ void effect(Matrix<float> &In, Matrix<float> &Out) {
     }
   }
 
-  // analog
+  // Analog
   for (int i = gUserSet.nb_audio; i < gUserSet.nb_audio + gUserSet.nb_analog;
       i++) {
     if (gUserSet.analogproc[i - gUserSet.nb_audio] == NULL) {
@@ -89,7 +90,7 @@ void effect(Matrix<float> &In, Matrix<float> &Out) {
     }
   }
 
-  // files
+  // Files
   for (int i = gUserSet.nb_audio + gUserSet.nb_analog; i < gTotalTracks;
        i++) {
     if (gUserSet.fileproc[i - gUserSet.nb_audio - gUserSet.nb_analog] == NULL) {
@@ -103,7 +104,7 @@ void effect(Matrix<float> &In, Matrix<float> &Out) {
 
 // Auxiliary task used to call the effect function and update effect parameters
 void processEffect() {
-  // this function is located in EffectManaging.hpp
+  // This function is located in EffectManaging.hpp
   genEffect(*gEffectBufferInCopy, gIndIn, *gEffectBufferOut, gIndOut, gCopySize,
             2 * gEffSize, effect);
   gEffectProcessing = 0;
@@ -121,11 +122,11 @@ int gBufferProLen = 0;
 int gNumStreams = NB_FILES_MAX;
 int gNumAnalog = 0;
 int gNumAudio = 0;
-Matrix<float>* gProcessBuffer; // buffer filled in real time
-Matrix<float>* gProcessBufferCopy; // buffer used to process signals
-std::vector<float> gMeanCorrel; // buffer used to process volumes
+Matrix<float>* gProcessBuffer; // Buffer filled in real time
+Matrix<float>* gProcessBufferCopy; // Buffer used to process signals
+std::vector<float> gMeanCorrel; // Buffer used to process volumes
 
-int gFillPosition = -1; // last position that was filled. When gFillPosition =
+int gFillPosition = -1; // Last position that was filled. When gFillPosition =
                         // BUFFERLEN-1, buffer should be analyzed and empty'd
 
 AuxiliaryTask gProcessBufferTask;

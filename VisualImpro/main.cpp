@@ -50,13 +50,14 @@ The Bela software is distributed under the GNU Lesser General Public License
 
 using namespace std;
 
+//Print an error message with the error returned by the dynamic library function
 #define DLERROR(dlsymerror)                                                    \
   dlsymerror = dlerror();                                                      \
   if (dlsymerror) {                                                            \
     cout << "Error : " << dlsymerror << endl;                                  \
   }
 
-//types which are used for processing functions
+// types which are used for processing functions
 typedef RGB (*colorScale)(float coeff);
 typedef float (*coeffCorrel)(const vector<float>& s1, const vector<float>& s2);
 typedef Matrix<float> (*preProcess)(const Matrix<float>&);
@@ -88,7 +89,6 @@ static double getCurrentTime(void) {
            (tv.tv_usec - gFirstMicroseconds);
   return (double)result / 1000000.0;
 }
-
 
 //Initialise the Parser by white the absolute path of the configuration file
 static Parser initParser(int argc, char *argv[]){
@@ -408,5 +408,5 @@ static void launch(int argc, char *argv[]){
 
 int main(int argc, char *argv[]) {
   launch(argc, argv);
-  return 0;
+  return EXIT_SUCCESS;
 }

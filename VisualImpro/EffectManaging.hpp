@@ -4,7 +4,6 @@
 #define EFFECTMANAGING_HPP
 
 #include "Matrix.hpp"
-#include "utilities.hpp"
 #include <assert.h>
 #include <vector>
 

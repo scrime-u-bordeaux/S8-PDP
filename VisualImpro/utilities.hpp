@@ -7,17 +7,9 @@
 #include <string>
 #include <vector>
 
-// Matrix and colors
-std::string dectohexa(int dec);
-std::string colortohexa(int color);
-std::string RGBToString(RGB color);
-std::string matrixtostring(Matrix<RGB> matrix);
+using namespace std;
 
-//Files
-
-bool check_extension(std::string filename, std::string extension);
-int getChannelNumber(std::string filename);
-
-float energy(const vector <float>& f1, int start, int end);
+bool check_extension(string filename, string extension);
+int getChannelNumber(string filename);
 
 #endif //UTILITIES_HPP

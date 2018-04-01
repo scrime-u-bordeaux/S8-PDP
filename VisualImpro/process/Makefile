@@ -1,12 +1,19 @@
-INC_DIR= ../include
+CXX = g++
+CXXFLAGS = -shared -O3 -std=c++11 -Wl,--no-undefined -fPIC
+SRC = $(wildcard Preproc/*.cpp) $(wildcard Color/*.cpp) $(wildcard Coeff/*.cpp)\
+$(wildcard Mix/*.cpp)
+INC = ../Matrix.cpp ../RGB.cpp
+OBJ = $(SRC:.cpp=.o) $(INC:.cpp=.o)
+EXEC = libprocess.so
 
-CPPFLAGS = -O3
-LIBS =
+all : $(EXEC)
 
-all : compile
+$(EXEC) : $(OBJ)
+	@$(CXX) -o $@ $^ $(CXXFLAGS)
+	@mv $(OBJ) obj/
 
-compile :
-	g++ -shared $(CPPFLAGS) $(LIBS) -Wl,--no-undefined -fPIC Preproc*.cpp Coeff*.cpp Color*.cpp Mix*.cpp ../Matrix.cpp ../RGB.cpp -o libprocess.so
+%.o: %.cpp
+	$(CXX) -c $< $(CXXFLAGS) -o $@
 
 clean :
-	rm -rf *.o libprocess.so
+	rm -rf ../*.o */*.o libprocess.so

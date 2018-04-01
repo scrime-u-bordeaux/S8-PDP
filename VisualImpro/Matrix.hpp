@@ -27,7 +27,7 @@ public:
     void swap(Matrix<T>& mat);
     string toString();
     virtual ~Matrix();
-
+    
 private:
     int _sizeMatix;
     vector<vector<T> > _matrix;
