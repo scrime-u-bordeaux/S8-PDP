@@ -8,8 +8,9 @@ TEXFILE = memoire.tex
 
 all: $(PDF)
 
-%.pdf : %.tex
-	$(TEX) $^
+$(PDF): $(TEXFILE)
+	@$(TEX) $^
+	@$(TEX) $^	#This command is used twice to solve tableofcontents issues
 
 .PHONY: clean
 
