@@ -34,9 +34,10 @@ const QStringList GUIProcessSettingLayout::getSetting(){
 QStringList GUIProcessSettingLayout::getFilename(string nameFile) {
   QStringList strList;
   DIR *pDIR;
+  string str = "../VisualImpro/process/" + nameFile + "/";
   struct dirent *entry;
   /*open the directory in pDIR*/
-  if ((pDIR = opendir("../VisualImpro/process/")) != NULL) {
+  if ((pDIR = opendir(str.c_str())) != NULL) {
     while ((entry = readdir(pDIR)) != NULL) {
       string name = entry->d_name;
       /*Check if the filename begins by nameFile*/

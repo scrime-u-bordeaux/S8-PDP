@@ -17,6 +17,9 @@
 #define MIN_ANALOG_INPUT 0
 #define MAX_ANALOG_INPUT 8
 
+#define PORT 12345
+#define PROCESSLEN 32768
+
 GUISettingWindow::GUISettingWindow(QWidget *parent) : QDialog(parent) {
   finishButton = new QPushButton("FIN");
   mainLayout = new QVBoxLayout(this);
@@ -64,18 +67,18 @@ void GUISettingWindow::getParam() {
   else {
     GUIConfigFileSettingBuilder builder;
     builder.beginFile();
-    builder.addPort(12345);
+    builder.addPort(PORT);
     builder.addAddress("192.168.7.1");
-    builder.addProcessLen(32768);
+    builder.addProcessLen(PROCESSLEN);
     builder.addEffect(false, 32);
     builder.addAnalogInput(inputList.at(0).toInt());
     builder.addAudioInput(inputList.at(1).toInt());
     for (int i = 0; i < wavList.size(); i++) {
       builder.addWavFile(wavList.at(i).toStdString());
     }
-    builder.addColorFunction(processList.at(0).toStdString());
-    builder.addCoeffFunction(processList.at(1).toStdString());
-    builder.addPreProcFunction(processList.at(2).toStdString());
+    builder.addCoeffFunction(processList.at(0).toStdString());
+    builder.addPreProcFunction(processList.at(1).toStdString());
+    builder.addColorFunction(processList.at(2).toStdString());
     builder.addMixFunction(processList.at(3).toStdString());
     builder.endFile();
     cout << builder.getResult() << endl;
