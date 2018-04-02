@@ -54,7 +54,9 @@ void GUISettingWindow::checkInput() {
     sample_palette.setColor(QPalette::WindowText, Qt::red);
     finishLabel->setAutoFillBackground(true);
     finishLabel->setPalette(sample_palette);
-    finishLabel->setText("Minimum number of entries is 2");
+    string str = "Minimum number of entries is ";
+    str += to_string(MIN_ENTRIES);
+    finishLabel->setText(str.c_str());
   } else {
     buildConfigFile();
     done(nbInput);
