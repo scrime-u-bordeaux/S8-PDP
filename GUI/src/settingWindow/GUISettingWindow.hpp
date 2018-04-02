@@ -10,6 +10,7 @@
 #include <QGridLayout>
 #include <QPushButton>
 #include <QWidget>
+#include <QLabel>
 
 #include "GUIInputSettingLayout.hpp"
 #include "GUIProcessSettingLayout.hpp"
@@ -31,6 +32,7 @@ private:
   GUIProcessSettingLayout *processSettingLayout;
   GUIInputSettingLayout *inputSettingLayout;
   GUIWavFileSettingLayout *wavFileLayout;
+  QLabel *finishLabel;
   QPushButton *finishButton;
 };
 #endif // DEF_GUISETTINGWINDOW
