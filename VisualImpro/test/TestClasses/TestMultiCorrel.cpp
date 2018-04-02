@@ -8,7 +8,8 @@
  *
  *  This test is used to show us that our processing object ProcessMultiCorrel
  *  works well. We test here the process, getter and setter operations. We
- *  will test more specifically every processing function in the Test* folders.
+ *  will test more specifically every processing function in the others Test*
+ *  folders.
  *
  */
 
