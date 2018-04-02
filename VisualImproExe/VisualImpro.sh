@@ -37,6 +37,7 @@ firefox 192.168.7.1:8080 &
 ssh root@192.168.7.2
 cd /root/Bela/projects/VisualImpro
 ./VisualImpro config/configtmp.cfg &
-while ["$on" = true]; do
-  #statements
+while 1
+do
+
 done
