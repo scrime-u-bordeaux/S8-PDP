@@ -81,5 +81,3 @@ console.log('VISUALIMPRO SERVER: ');
 httpserver.listen(8080);
 
 console.log('Server listening on ' + HOST +':'+ PORT);
-
-
