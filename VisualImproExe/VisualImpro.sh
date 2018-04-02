@@ -28,7 +28,7 @@ awk -F" " -v wavpath="$WAVPATH" '$1 ==  "FILE" {gsub(""$2"", ""wavpath""$2"")}' 
 #Copy config file into Bela
 scp configtmp.cfg root@192.168.7.2:/root/Bela/projects/VisualImpro/config/
 #Launch server
-xterm -e -hold nodejs server.js &
+xterm -hold -e nodejs server.js &
 usleep 5
 #Open Firefox tab
 firefox 192.168.7.1:8080 &
