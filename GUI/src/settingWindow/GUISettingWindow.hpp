@@ -8,13 +8,25 @@
 
 #include <QDialog>
 #include <QGridLayout>
+#include <QLabel>
 #include <QPushButton>
 #include <QWidget>
-#include <QLabel>
 
 #include "GUIInputSettingLayout.hpp"
 #include "GUIProcessSettingLayout.hpp"
 #include "GUIWavFileSettingLayout.hpp"
+
+#define MIN_ENTRIES 2
+
+#define MIN_AUDIO_INPUT 0
+#define MAX_AUDIO_INPUT 2
+#define MIN_ANALOG_INPUT 0
+#define MAX_ANALOG_INPUT 8
+
+#define PORT 12345
+#define IPADDRESS "192.168.7.1"
+#define PROCESSLEN 32768
+#define EFFECTBUFFERLEN 32
 
 using namespace std;
 
@@ -25,9 +37,11 @@ public:
   ~GUISettingWindow();
 
 private slots:
-  void getParam();
+  void checkInput();
 
 private:
+  void buildConfigFile();
+  int getNumInput();
   QVBoxLayout *mainLayout;
   GUIProcessSettingLayout *processSettingLayout;
   GUIInputSettingLayout *inputSettingLayout;
