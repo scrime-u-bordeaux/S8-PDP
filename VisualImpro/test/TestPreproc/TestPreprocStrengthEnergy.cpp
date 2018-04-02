@@ -17,7 +17,12 @@
 CPPUNIT_TEST_SUITE_REGISTRATION(TestPreprocStrengthEnergy);
 
 void TestPreprocStrengthEnergy::setUp(){
-  input = new Matrix<float>(5);
+  input = new Matrix<float>(5, 5.0f);
+  input->setRow(0, vector<float>(1024, 1.0f));
+  input->setRow(1, vector<float>(1024, 2.0f));
+  input->setRow(2, vector<float>(1024, 3.0f));
+  input->setRow(3, vector<float>(1024, 4.0f));
+  input->setRow(4, vector<float>(1024, 5.0f));
 }
 
 void TestPreprocStrengthEnergy::tearDown(){
@@ -30,10 +35,8 @@ void TestPreprocStrengthEnergy::testPreproc(){
   int row = output.getSize();
   int col = output.getRow(0).size();
   CPPUNIT_ASSERT_EQUAL(row, 5);
-  CPPUNIT_ASSERT_EQUAL(col, 5/1024 +1);
+  CPPUNIT_ASSERT_EQUAL(col, 1);
   for(int i=0; i<row; i++){
-    for(int j=0; j<col; j++){
-      CPPUNIT_ASSERT(0 == 0);
-    }
+      CPPUNIT_ASSERT_EQUAL(output.getCase(i,7000), (float)pow(i+1,2));
   }
 }

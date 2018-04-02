@@ -6,10 +6,13 @@
  *
  *  @section DESCRIPTION
  *
- *  This test is used to show us that our default preprocessing function is
- *  doing its job. Here we pass a Matrix as parameter to our neutral mix function
- *  and we assure that every element in our result Matrix has the same value as
- *  out initial Matrix, which is 5.0 in this case
+ *  This test is used to show us that our color function taking a float as
+ *  parameter and returning an RGB triplet representing a color between red
+ *  and green is working well. To demonstrate that, we take three float with the
+ *  minimal expected value, the maximal expected value and the medium expected
+ *  value and then pass them as parameter to our color function. The test is
+ *  satisfied if the string corresponding of the color results are the same as
+ *  expected on the three assertions int the testColor function.
  *
  */
 
@@ -25,7 +28,7 @@ void TestColorGreenToRed::setUp(){
 }
 
 void TestColorGreenToRed::tearDown(){
-
+  // Nothing to delete here
 }
 
 void TestColorGreenToRed::testColor(){

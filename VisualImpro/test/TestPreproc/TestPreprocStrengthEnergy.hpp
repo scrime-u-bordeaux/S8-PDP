@@ -1,7 +1,8 @@
 #ifndef TEST_PREPROCSTRENGTHENERGY
 #define TEST_PREPROCSTRENGTHENERGY
 
-#include<vector>
+#include <vector>
+#include <math.h>
 
 #include <cppunit/TestFixture.h>
 #include <cppunit/extensions/HelperMacros.h>
