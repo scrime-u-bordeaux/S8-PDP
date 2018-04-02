@@ -1,5 +1,44 @@
 \section{Refactoring et révision de l'interface graphique}
 
 \subsection{Révisions générales sur le code}
+  - commentaires d'en-tête à chaque début de fichier source (.cpp) pour
+  expliquer l'intérêt de chacun des fichiers.
+  - Refactoring intégral du main.cpp : transformation d'un gros bloc d'une seule
+  fonction main en découpage fonctionnel. Le main appelle la fonction launch,
+  qui elle-même appelle d'autres fonctions et ainsi de suite si besoin.
+  - Refactoring du render.cpp : Découpage fonctionnel de la fonction setup
+  en plusieurs fonctions regroupées par utilisation. Le refactoring de la
+  fonction render n'était pas possible de la même manière car la fonction render
+  exécute une boucle de traitement audio, en créant des taches auxiliaires
+  exécutées par d'autres threads pour garantir un traitement rapide (qui doit
+  être au minimum plus rapide que la vitesse de lecture des pistes), et le
+  découpage fonctionnel de cette fonction n'était pas possible sans créer de
+  conflits sur les variables enregistrant le nombre de tours de boucle ou les
+  variables contenant les signaux audio par exemple.
+  - Ajout de commentaires en masse : Le projet m'ayant paru incompréhensible au
+  premier abord, il fallait commenter d'avantage l'utilisation des fonctions
+  principales permettant de comprendre les enjeux du programme simpelement en
+  lisant le programme (et non pas en essayant de comprendre en allant chercher
+  sur internet). Les fichiers principaux, main.cpp et render.cpp, ont donc
+  beaucoup été commentés.
+  - Séparation des fichiers de traitement (dossier process/) par fonctions :
+  les dossiers sont Coeff, Color, Preproc, Mix, contenant chacun les fichiers
+  correspondant au type de leur fonction de traitement.
+  - Création des fichiers de tests et séparation par type de test comme pour
+  le dossier process, avec des dossiers TestCoeff, TestColor, TestPreproc et
+  TestMix, contenant chacun les tests des fonctions correspondant à leur type de
+  traitement. Jérémy n'avait fait aucun test alors on lui a testé ses fonctions
+  à cet enculé.
+  - Séparation des dossiers généraux : ___PAS ENCORE ETABLI A 100%___ mais genre
+  dans l'idée il faudra découper les fichiers comme le prof l'avait dit genre
+  avec un dossier src contenant les fichiers source, un dossiers include avec
+  les header (.hpp), un dossier process qu'on a déjà, un dossier test qu'on a
+  déjà aussi, mais à voir comment les organiser et il faudra adapter les
+  makefiles pour ça aussi.
+  - Arrangement des include par type d'include et par ordre alphabétique, et
+  remise en forme du code pour garder un style cohérent selon les différents
+  fichiers, au niveau de la forme et l'alignement des commentaires,
+  les indentations, les crochets au même endroit, et renommage des variables
+  pour une meilleure compréhension.
 
 \subsection{Les changements apportés à l'interface graphique}
