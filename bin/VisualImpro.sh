@@ -53,10 +53,10 @@ function default_display(){
 function help_message(){
   echo -e "Usage : ./VisualImpro [-options]"
   echo -e "The options for this executable are :"
-  echo -e "\t-d (display) and the accepted arguments are :"
+  echo -e "\t-d (display) and the accepted arguments (which one is recquired) are :"
   echo -e "\t\tfirefox (the old version using NodeJS and a manual config file)"
   echo -e "\t\tqt"
-  echo -e "\t-t (testing) and the accepted arguments are :"
+  echo -e "\t-t (testing) and the accepted arguments (which one is recquired) are :"
   echo -e "\t\tconfig1"
   echo -e "\t\tconfig2"
   echo -e "\t-h (help), to show this message."
@@ -73,16 +73,8 @@ while getopts ":hd:" opt; do
         exit 1
       fi
       ;;
-    h|\?)
+    h|\?|*|:)
       help_message
-      exit 1
-      ;;
-    *)
-      help_message
-      exit 1
-      ;;
-    :)
-      echo "Option -$OPTARG requires an argument." >&2
       exit 1
       ;;
   esac
