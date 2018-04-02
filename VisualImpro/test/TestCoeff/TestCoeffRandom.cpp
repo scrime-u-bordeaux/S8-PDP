@@ -7,9 +7,9 @@
  *  @section DESCRIPTION
  *
  *  This test is used to show us that our random correlation function is
- *  functionning well. As we can't realy test precisely values of the results,
- *  what we're doing here is that we verify that the returned value is in Our
- *  range of expected output value.
+ *  functionning well. As we can't realy test precisely the result values, what
+ *  we're doing here is that we verify if the returned value is in our range of
+ *  expected output values.
  *
  */
 
