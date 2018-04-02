@@ -6,8 +6,6 @@ LOGPATH="/root/Bela/projects/VisualImpro/log/"
 CONFIGFILE="./config.cfg"
 CONFIGTMPFILE="./configtmp.cfg"
 
-on=true
-
 function getCurrentDateTime() {
   return date +"%Y-%m-%d.%X"
 }
@@ -19,7 +17,7 @@ trap '{
         scp root@192.168.7.2:$LOGPATHlog logs/$getCurrentDateTime;
         echo "Data saved in logs/$getCurrentDateTime";
         rm $CONFIGTMPFILE;
-        $on = false;
+        exit 1;
       }' SIGINT
 #Parse config file
 #Copy wav files into Bela
