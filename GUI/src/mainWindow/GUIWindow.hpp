@@ -22,7 +22,6 @@ public:
   ~GUIWindow();
 
 private:
-  vector<vector<RGB> > color_matrix(const std::vector<std::vector<float> >& correlMatrix);
   GUIImageMatrix *view;
 
 };
