@@ -43,7 +43,7 @@ int main(int argc, char *argv[]) {
     mainWindow->updateColor(colorMatrix2);
 
     res = app.exec();
-  //  delete(mainWindow);
+    delete(mainWindow);
   }
   delete(settingWindow);
   return res;

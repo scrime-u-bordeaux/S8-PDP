@@ -13,9 +13,6 @@
 
 #include "CoeffRandom.hpp"
 
-#include <cstdlib>
-#include <cmath>
-
 extern "C"{
 
 float CoeffRandom(const vector<float>& s1, const vector<float>& s2){

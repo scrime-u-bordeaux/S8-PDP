@@ -33,5 +33,4 @@ void GUIImageMatrix::updateColor(const vector<vector<RGB> > &matrixRGB) {
 GUIImageMatrix::~GUIImageMatrix() {
   delete imagePix;
   delete scene;
-  delete this;
 }

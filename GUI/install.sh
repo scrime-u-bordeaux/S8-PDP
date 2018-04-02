@@ -1,5 +1,9 @@
 #!/bin/bash
 
-qmake -project -r -Wall
-qmake-qt4 "OBJECTS_DIR = ./obj/" "MOC_DIR = ./obj/"  GUI.pro
+qmake -project -Wall
+qmake-qt4 "QMAKE_CXXFLAGS += -std=c++11 -Wall" \
+ "OBJECTS_DIR = ./obj/" \
+ "MOC_DIR = ./obj/" \
+ "DESTDIR = ./bin/" \
+  GUI.pro
 make

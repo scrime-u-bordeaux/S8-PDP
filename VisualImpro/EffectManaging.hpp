@@ -17,9 +17,9 @@
 #ifndef EFFECTMANAGING_HPP
 #define EFFECTMANAGING_HPP
 
-#include "Matrix.hpp"
-#include <assert.h>
 #include <vector>
+#include <assert.h>
+#include "Matrix.hpp"
 
 using namespace std;
 

@@ -1,13 +1,13 @@
 #ifndef WRITE_WAV_HPP
 #define WRITE_WAV_HPP
 
-#include "Matrix.hpp"
 #include <stdio.h>
 #include <assert.h>
 #include <string>
 #include <fstream>
 #include <iostream>
 #include <vector>
+#include "Matrix.hpp"
 
 using namespace std;
 

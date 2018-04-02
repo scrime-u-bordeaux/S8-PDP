@@ -3,11 +3,11 @@
 
 #include<vector>
 
-#include <cppunit/TestFixture.h>
 #include <cppunit/extensions/HelperMacros.h>
+#include <cppunit/TestFixture.h>
 
-#include "../../RGB.hpp"
 #include "../../process/Color/ColorGreenToRed.hpp"
+#include "../../RGB.hpp"
 
 class TestColorGreenToRed : public CppUnit::TestFixture {
 

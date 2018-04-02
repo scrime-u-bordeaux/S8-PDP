@@ -10,9 +10,9 @@
  *  /2011/10/08/making-wav-files-from-c-programs/
  */
 
-#include "ProcessMultiWriteWav.hpp"
-#include "Matrix.hpp"
 #include <assert.h>
+#include "Matrix.hpp"
+#include "ProcessMultiWriteWav.hpp"
 
 void write_little_endian(unsigned int word, int num_bytes, FILE *stream){
     unsigned buf;

@@ -14,11 +14,11 @@
  *
  */
 
-#include "ProcessMultiCorrel.hpp"
-#include "Matrix.hpp"
 #include <ctime>
 #include <iomanip>
 #include <sys/time.h>
+#include "Matrix.hpp"
+#include "ProcessMultiCorrel.hpp"
 
 struct timeval tv10;
 struct timeval tv20;

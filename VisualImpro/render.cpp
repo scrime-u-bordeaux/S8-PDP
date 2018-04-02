@@ -24,16 +24,18 @@ The Bela software is distributed under the GNU Lesser General Public License
 #include <cmath>
 #include <vector>
 #include <Bela.h>
-#include <SampleStream.hpp>
 #include <sys/time.h>
 #include <time.h>
+#include <SampleStream.hpp>
 #include "ChannelsSettings.h"
 #include "Echo.hpp"
 #include "EffectManaging.hpp"
+#include "Matrix.hpp"
 #include "ProcessMultiCorrel.hpp"
 #include "ProcessMultiWriteWav.hpp"
-#include "Matrix.hpp"
 #include "utilities.hpp"
+
+using namespace std;
 
 /******* GENERAL SETTINGS *******/
 
@@ -124,7 +126,7 @@ int gNumAnalog = 0;
 int gNumAudio = 0;
 Matrix<float>* gProcessBuffer; // Buffer filled in real time
 Matrix<float>* gProcessBufferCopy; // Buffer used to process signals
-std::vector<float> gMeanCorrel; // Buffer used to process volumes
+vector<float> gMeanCorrel; // Buffer used to process volumes
 
 int gFillPosition = -1; // Last position that was filled. When gFillPosition =
                         // BUFFERLEN-1, buffer should be analyzed and empty'd
@@ -186,20 +188,20 @@ void initUserSet(ChSettings& gUserSet){
 void initBuffers(){
   // Initialize effect buffers
   gEffectBufferOut = new Matrix<float>(
-      gTotalTracks, std::vector<float>(2 * gEffSize, 0.0f));
+      gTotalTracks, vector<float>(2 * gEffSize, 0.0f));
   gEffectBufferIn = new Matrix<float>(
-      gTotalTracks, std::vector<float>(gEffSize, 0.0f));
+      gTotalTracks, vector<float>(gEffSize, 0.0f));
   gEffectBufferInCopy = new Matrix<float>(
-      gTotalTracks, std::vector<float>(gEffSize, 0.0f));
+      gTotalTracks, vector<float>(gEffSize, 0.0f));
 
   // Initialize process buffers
   gProcessBuffer = new Matrix<float>(
-      gTotalTracks, std::vector<float>(gBufferProLen, 0.0f));
+      gTotalTracks, vector<float>(gBufferProLen, 0.0f));
   gProcessBufferCopy = new Matrix<float>(
-      gTotalTracks, std::vector<float>(gBufferProLen, 0.0f));
+      gTotalTracks, vector<float>(gBufferProLen, 0.0f));
 
   // Initialize mix Buffer
-  std::vector<float> mixbuffer(gTotalTracks, 1.0f);
+  vector<float> mixbuffer(gTotalTracks, 1.0f);
   gMeanCorrel = mixbuffer;
 
 }

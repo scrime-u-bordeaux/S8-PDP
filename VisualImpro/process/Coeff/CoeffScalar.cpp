@@ -15,10 +15,6 @@
 
 #include "CoeffScalar.hpp"
 
-#include <math.h>
-#include <stdio.h>
-#include <cstdlib>
-
 float correlatescalar(const vector<float>& s1, const vector<float>& s2){
   if (s1.size() != s2.size()){
     fprintf(stderr, "wrong sizes\n");

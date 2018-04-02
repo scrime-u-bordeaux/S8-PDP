@@ -1,25 +1,24 @@
 #ifndef CONNECT_HPP
 #define CONNECT_HPP
 
-#include <stdio.h>
+#include <iostream>
+#include <fstream>
+#include <string>
+#include <vector>
+
 #include <errno.h>
-#include <signal.h>
 #include <netdb.h>
+#include <signal.h>
+#include <stdio.h>
+#include <strings.h>
 #include <unistd.h>
 
+#include <arpa/inet.h>
+#include <netinet/in.h>
 #include <sys/select.h>
 #include <sys/socket.h>
 #include <sys/time.h>
 #include <sys/types.h>
-#include <netinet/in.h>
-
-#include <arpa/inet.h>
-#include <strings.h>
-#include <iostream>
-#include <fstream>
-
-#include <string>
-#include <vector>
 
 #include "UdpClient.h"
 

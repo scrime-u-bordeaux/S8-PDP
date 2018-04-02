@@ -3,12 +3,12 @@
 
 #include<vector>
 
-#include <cppunit/TestFixture.h>
 #include <cppunit/extensions/HelperMacros.h>
+#include <cppunit/TestFixture.h>
 
 #include "../../Matrix.hpp"
-#include "../../RGB.hpp"
 #include "../../process/Mix/MixMinCorrelated.hpp"
+#include "../../RGB.hpp"
 
 class TestMixMinCorrelated : public CppUnit::TestFixture {
 
