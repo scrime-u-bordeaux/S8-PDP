@@ -1,4 +1,15 @@
-/***** SampleStream.cpp *****/
+/**
+ *  @file    SampleStream.cpp
+ *  @author  Jérémy LIXANDRE
+ *  @date    July 2017
+ *
+ *  @section DESCRIPTION
+ *
+ *  The SampleStream object is here to contain wavefiles for out program and
+ *  used in render.cpp. It is represented in our program as an orray of
+ *  SampleStream objects for representing all of our wavefiles only.
+ *
+ */
 
 #include <SampleStream.hpp>
 

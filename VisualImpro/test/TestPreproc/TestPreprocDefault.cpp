@@ -2,14 +2,14 @@
  *  @file    TestPreprocDefault.cpp
  *  @author  Alexandre CASANOVA--FRANGER, Gauthier LARMARQUE, Paul SIMORRE,
  *            Lucas VIVAS
- *  @date    04/03/2018
+ *  @date    March 2018
  *
  *  @section DESCRIPTION
  *
  *  This test is used to show us that our default preprocessing function is
- *  doing its job. Here we pass a Matrix as parameter to our neutral mix function
- *  and we assure that every element in our result Matrix has the same value as
- *  out initial Matrix, which is 5.0 in this case
+ *  doing its job. Here we pass a Matrix as parameter to our neutral mix
+ *  function and we assure that every element in our result Matrix has the same
+ *  value as our initial Matrix, which is 5.0 in this case.
  *
  */
 

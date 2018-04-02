@@ -1,7 +1,16 @@
 /**
- * @file Matrix.cpp
- * @author Lucas VIVAS
-*/
+ *  @file    Matrix.cpp
+ *  @author  Alexandre CASANOVA--FRANGER, Gauthier LARMARQUE, Paul SIMORRE,
+ *            Lucas VIVAS
+ *  @date    March 2018
+ *
+ *  @section DESCRIPTION
+ *
+ *  The Matrix object is used several times in this program, and replace the
+ *  vector<vector<TYPE> > objects. As we process Matrices of signal, this class
+ *  was clearly needed by the program.
+ *
+ */
 
 #include "Matrix.hpp"
 

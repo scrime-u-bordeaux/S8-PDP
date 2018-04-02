@@ -1,7 +1,7 @@
 /**
  *  @file    PreprocEnergy.cpp
  *  @author  Jérémy LIXANDRE
- *  @date    04/03/2018
+ *  @date    July 2017
  *
  *  @section DESCRIPTION
  *

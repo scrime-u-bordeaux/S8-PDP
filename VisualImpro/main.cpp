@@ -1,5 +1,3 @@
-/***** main.cpp *****/
-
 /*
  ____  _____ _        _
 | __ )| ____| |      / \
@@ -50,14 +48,15 @@ The Bela software is distributed under the GNU Lesser General Public License
 
 using namespace std;
 
-//Print an error message with the error returned by the dynamic library function
+// Print an error message with the error returned by the dynamic library
+// function
 #define DLERROR(dlsymerror)                                                    \
   dlsymerror = dlerror();                                                      \
   if (dlsymerror) {                                                            \
     cout << "Error : " << dlsymerror << endl;                                  \
   }
 
-// types which are used for processing functions
+// Types which are used for processing functions
 typedef RGB (*colorScale)(float coeff);
 typedef float (*coeffCorrel)(const vector<float>& s1, const vector<float>& s2);
 typedef Matrix<float> (*preProcess)(const Matrix<float>&);
@@ -90,7 +89,7 @@ static double getCurrentTime(void) {
   return (double)result / 1000000.0;
 }
 
-//Initialise the Parser by white the absolute path of the configuration file
+// Initialise the Parser by white the absolute path of the configuration file
 static Parser initParser(int argc, char *argv[]){
   Parser config;
   if (argc <= 1){ // when the server is in the Bela
@@ -101,7 +100,7 @@ static Parser initParser(int argc, char *argv[]){
   return config;
 }
 
-//Initialise the handler with the absolute path of the dynamic library
+// Initialise the handler with the absolute path of the dynamic library
 static void* initHandler(){
   void *handle;
   handle = dlopen("/root/Bela/projects/VisualImpro/process/libprocess.so",
@@ -113,12 +112,12 @@ static void* initHandler(){
   return handle;
 }
 
-//Initialise the ProcessMultiCorrel object with default functions
+// Initialise the ProcessMultiCorrel object with default functions
 static ProcessMultiCorrel* initProcessMultiCorrel(void* handle){
-  //varible used to print the error
+  // Varible used to print the error
   char *dlsymerror;
 
-  //Seek the defaut functions in the dynamic library
+  // Seek the defaut functions in the dynamic library
   coeffCorrel coeffFunc = (coeffCorrel)dlsym(handle, "CoeffScalar");
   DLERROR(dlsymerror);
   colorScale colorFunc = (colorScale)dlsym(handle, "ColorGreenToRed");
@@ -131,7 +130,7 @@ static ProcessMultiCorrel* initProcessMultiCorrel(void* handle){
   return new ProcessMultiCorrel(coeffFunc, colorFunc, preprocFunc, mixFunc);
 }
 
-//Get the connexion parameter from the parser and set it in the structure
+// Get the connexion parameter from the parser and set it in the structure
 static void setupConnection(ChSettings& gChSettings, const Parser& config){
   Connection conn;
   int port = config.getPort();
@@ -147,11 +146,11 @@ static void setupConnection(ChSettings& gChSettings, const Parser& config){
  */
 static void parseProcessFunc(ChSettings& gChSettings, const Parser& config,
 ProcessMultiCorrel *p, void *handle){
-  //varible used to print the error
+  // Varible used to print the error
   char *dlsymerror;
 
-  //Parse the configuration file to get the functions names and if there is one
-  //then seek in the dynamic librery the function
+  // Parse the configuration file to get the functions names and if there is one
+  // then seek in the dynamic librery the function
   string configCoeff = config.getCoeff();
   if (configCoeff != "") {
     coeffCorrel coeffFunc = (coeffCorrel)dlsym(handle, configCoeff.c_str());
@@ -180,7 +179,7 @@ ProcessMultiCorrel *p, void *handle){
   gChSettings.proc = p;
 }
 
-//Set the length values to the structure by parsing the configuration file
+// Set the length values to the structure by parsing the configuration file
 static void parseLengths(ChSettings& gChSettings, const Parser& config){
   int processlen = config.getProcessLength();
   int effectlen = config.getEffectLen();
@@ -189,7 +188,7 @@ static void parseLengths(ChSettings& gChSettings, const Parser& config){
   gChSettings.effect_len = effectlen;
 }
 
-//Set the track settings to the structure by parsing the configuration file
+// Set the track settings to the structure by parsing the configuration file
 static void parseTracks(ChSettings& gChSettings, const Parser& config){
   list<string> files;
   files = config.getTracks();
@@ -197,25 +196,25 @@ static void parseTracks(ChSettings& gChSettings, const Parser& config){
   gChSettings.nb_audio = config.getAudio();
   gChSettings.nb_analog = config.getAnalog();
 
-  //Check if the wevefiles are corrects and put them in the structure if so
+  // Check if the wevefiles are corrects and put them in the structure if so
   for (string file : files) {
     if (check_extension(file, "wav") && access(file.c_str(), F_OK) != -1) {
       gChSettings.filenames.push_back(file);
     } else {
-      fprintf(stderr, "%s n'est pas un fichier wav existant, il n'a pas été chargé\n",
-file.c_str());
+      fprintf(stderr, "%s n'est pas un fichier wav existant, il n'a pas été" +
+              "chargé\n", file.c_str());
     }
   }
   gChSettings.nb_files = gChSettings.filenames.size();
 
-  //Check if there is at least one track
+  // Check if there is at least one track
   if (gChSettings.nb_files + gChSettings.nb_analog + gChSettings.nb_audio == 0){
     fprintf(stderr, "No track, end");
     exit(EXIT_FAILURE);
   }
 
-  //Check if the total number of tracks is not greater than the maximum number
-  //tracks authorized
+  // Check if the total number of tracks is not greater than the maximum number
+  // tracks authorized
   if (gChSettings.nb_files + gChSettings.nb_analog + gChSettings.nb_audio >
       NB_TRACKS_MAX){
     fprintf(stderr, "Too many tracks");
@@ -223,8 +222,8 @@ file.c_str());
   }
 }
 
-//Set the buffers in the structure with an effect for each instrument if we
-//choose to enable effects
+// Set the buffers in the structure with an effect for each instrument if we
+// choose to enable effects
 static void enableEffects(ChSettings& gChSettings, const Parser& config){
   if (config.getUseEffects() == true) {
     gChSettings.useeffects = true;
@@ -242,7 +241,7 @@ static void enableEffects(ChSettings& gChSettings, const Parser& config){
   }
 }
 
-//Set up everything relative to processing in our structure
+// Set up everything relative to processing in our structure
 static void setupProcess(ChSettings& gChSettings, const Parser& config,
 ProcessMultiCorrel *p, void *handle){
   parseProcessFunc(gChSettings, config, p, handle);
@@ -251,7 +250,7 @@ ProcessMultiCorrel *p, void *handle){
   enableEffects(gChSettings, config);
 }
 
-//Initialise the first line of our log file
+// Initialise the first line of our log file
 static void setupLogFile(const ChSettings& gChSettings){
   std::ofstream logfile;
   logfile.open("log/log");
@@ -261,7 +260,7 @@ static void setupLogFile(const ChSettings& gChSettings){
   logfile.close();
 }
 
-//Set up every basic settings in our structure
+// Set up every basic settings in our structure
 static void setupSettings(ChSettings& gChSettings, const Parser& config,
 ProcessMultiCorrel *p, void *handle){
   cout << "************* VisualImpro ************" << endl;
@@ -270,7 +269,7 @@ ProcessMultiCorrel *p, void *handle){
   setupLogFile(gChSettings);
 }
 
-//Initialise the Bela settings with a BelaInitSettings object
+// Initialise the Bela settings with a BelaInitSettings object
 static BelaInitSettings initBelaSettings(ChSettings& gChSettings, const Parser&
 config, char* argv[]){
   // Standard audio settings
@@ -321,13 +320,13 @@ config, char* argv[]){
   return settings;
 }
 
-//Initialise and start audio which is calling the setup function in render.cpp
+// Initialise and start audio which is calling the setup function in render.cpp
 static void initAndRun(ChSettings& gChSettings, const Parser& config,
 char* argv[]){
   BelaInitSettings settings;
   struct timeval tv;
 
-  //Initialise Bela settings
+  // Initialise Bela settings
   settings = initBelaSettings(gChSettings, config, argv);
 
   // Initialise the PRU audio device
@@ -347,7 +346,8 @@ char* argv[]){
     exit(EXIT_FAILURE);
   }
 
-  // Set up interrupt handler to catch Ctrl-C signal or terminated program signal
+  // Set up interrupt handler to catch Ctrl-C signal or terminated program
+  // signal
   signal(SIGINT, interrupt_handler);
   signal(SIGTERM, interrupt_handler);
 
@@ -357,7 +357,7 @@ char* argv[]){
   }
 }
 
-//The program reveive a signal to stop the execution so we stop and clean audio
+// The program reveive a signal to stop the execution so we stop and clean audio
 static void stopAndCleanupAudio(){
   // Stop the audio device
   Bela_stopAudio();
@@ -366,7 +366,7 @@ static void stopAndCleanupAudio(){
   Bela_cleanupAudio();
 }
 
-//We delete any ressources we used in the main.cpp file
+// We delete any ressources we used in the main.cpp file
 static void freeAndClose(ChSettings& gChSettings, const Parser& config,
 ProcessMultiCorrel *p, void *handle){
   // Free other resources
@@ -391,7 +391,8 @@ ProcessMultiCorrel *p, void *handle){
   delete p;
 }
 
-//Declare and initialise variables then call every functions for the main program
+// Declare and initialise variables then call every functions for the main
+// program
 static void launch(int argc, char *argv[]){
   ChSettings gChSettings;
   Parser config;

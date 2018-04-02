@@ -1,3 +1,16 @@
+/**
+ *  @file    RGB.cpp
+ *  @author  Alexandre CASANOVA--FRANGER, Gauthier LARMARQUE, Paul SIMORRE,
+ *            Lucas VIVAS
+ *  @date    March 2018
+ *
+ *  @section DESCRIPTION
+ *
+ *  The RGB object is an int triplet and used for processing colors for the
+ *  output matrix we obtain at the end of our processing function chain.
+ *
+ */
+
 #include "RGB.hpp"
 #include <sstream>
 //#include <iomanip>

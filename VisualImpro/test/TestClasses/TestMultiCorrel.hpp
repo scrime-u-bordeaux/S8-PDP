@@ -1,7 +1,7 @@
 #ifndef TEST_MULTICORREL
 #define TEST_MULTICORREL
 
-#include<vector>
+#include <vector>
 
 #include <cppunit/TestFixture.h>
 #include <cppunit/extensions/HelperMacros.h>

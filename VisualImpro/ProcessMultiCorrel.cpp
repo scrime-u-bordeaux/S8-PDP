@@ -1,4 +1,18 @@
-/***** ProcessMultiCorrel.cpp *****/
+/**
+ *  @file    ProcessMultiCorrel.cpp
+ *  @author  Jérémy LIXANDRE
+ *  @date    July 2017
+ *
+ *  @section DESCRIPTION
+ *
+ *  Here are the constructor and all the process functions used in our program.
+ *  The render.cpp file will call the process function, as an auxiliary task
+ *  accomplished by another thread than the master thread, every time the buffer
+ *  is filled with signals of length given in parameter of the program.
+ *  The process function will call sequentially every processing function one
+ *  by one.
+ *
+ */
 
 #include "ProcessMultiCorrel.hpp"
 #include "Matrix.hpp"
@@ -15,12 +29,12 @@ struct timeval tv14;
 struct timeval tv15;
 
 ProcessMultiCorrel::ProcessMultiCorrel(
-    float (*coeffcorrel)(const std::vector<float>&, const std::vector<float>&),
+    float (*coeffcorrel)(const vector<float>&, const vector<float>&),
     RGB (*colorscale)(float),
     Matrix<float> (*preproc)(const Matrix<float>&),
-    std::vector<float> (*mixLevel)(const Matrix<float>&))
+    vector<float> (*mixLevel)(const Matrix<float>&))
     : _coeffcorrel(coeffcorrel), _colorscale(colorscale), _preprocess(preproc),
-    _mixLevel(mixLevel) { matrixfile.open(string("log/log"), std::ios::app); }
+    _mixLevel(mixLevel) { matrixfile.open(string("log/log"), ios::app); }
 
 ProcessMultiCorrel::~ProcessMultiCorrel() { matrixfile.close(); }
 
@@ -33,19 +47,19 @@ Matrix<float> ProcessMultiCorrel::calcul_correl(const Matrix<float>& buffer){
       coeffcorrel = this->_coeffcorrel(buffer.getRow(i), buffer.getRow(j));
       correlMatrix.setCase(i, j, coeffcorrel);
       correlMatrix.setCase(j, i, coeffcorrel);
-      matrixfile << std::to_string(coeffcorrel) << " ";
+      matrixfile << to_string(coeffcorrel) << " ";
     }
   }
-  matrixfile << std::endl;
+  matrixfile << endl;
   return correlMatrix;
 }
 
-void ProcessMultiCorrel::process_volume(const Matrix<float>& correlMatrix, std::vector<float>& meanCorrelations) {
+void ProcessMultiCorrel::process_volume(const Matrix<float>& correlMatrix,
+                                        vector<float>& meanCorrelations){
   meanCorrelations = this->_mixLevel(correlMatrix);
 }
 
-Matrix<RGB>
-ProcessMultiCorrel::color_matrix(const Matrix<float>& correlMatrix) {
+Matrix<RGB> ProcessMultiCorrel::color_matrix(const Matrix<float>& correlMatrix){
   int size = correlMatrix.getSize();
   Matrix<RGB> RGBmatrix(size);
   for (int i = 0; i < size; i++) {
@@ -59,7 +73,7 @@ ProcessMultiCorrel::color_matrix(const Matrix<float>& correlMatrix) {
 }
 
 void ProcessMultiCorrel::process(const Matrix<float>& buffer,
-  std::vector<float>& meanCorrelations, Connection conn) {
+  vector<float>& meanCorrelations, Connection conn) {
   Matrix<float> copy = buffer;
   //Preprocessing
   if (_preprocess != NULL) {
