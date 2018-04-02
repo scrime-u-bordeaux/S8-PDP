@@ -1,4 +1,14 @@
-/***** Echo.hpp *****/
+/**
+ *  @file    Echo.hpp
+ *  @author  Jérémy LIXANDRE
+ *  @date    July 2017
+ *
+ *  @section DESCRIPTION
+ *
+ *  The Echo code is and effect (inherited from Effect class), and applies the
+ *  Echo effect from the buffer In to the buffer Out given in parameter.
+ *
+ */
 
 #ifndef ECHO_HPP
 #define ECHO_HPP
@@ -14,10 +24,10 @@ using namespace std;
 class Echo : public Effect {
 
 public :
-  Echo(int offset, float amp) : _offset(offset), /*_count(0),*/ _amplitude(amp) { //offset in samples
+  Echo(int offset, float amp) : _offset(offset), /*_count(0),*/ _amplitude(amp){
     for (int k = 0; k < _offset; k++){
   	_samples.push(0.0);
-  }
+    }
   }
 
   void apply(vector <float>& in, vector<float>& out){

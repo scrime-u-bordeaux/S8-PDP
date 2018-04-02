@@ -2,7 +2,7 @@
  *  @file    PreprocStrengthEnergy.cpp
  *  @author  Alexandre CASANOVA--FRANGER, Gauthier LARMARQUE, Paul SIMORRE,
  *            Lucas VIVAS
- *  @date    04/03/2018
+ *  @date    March 2018
  *
  *  @section DESCRIPTION
  *
@@ -30,7 +30,7 @@ void TestMultiCorrel::setUp(){
     buffer->setCase(2,0,0.1f);
     buffer->setCase(2,1,0.1f);
     buffer->setCase(2,2,0.0f);
-    meanCorrelations = std::vector<float>(3, 0.0f);
+    meanCorrelations = vector<float>(3, 0.0f);
     conn = new Connection();
     p->setMix(MixMinCorrelated);
 }

@@ -1,4 +1,3 @@
-/***** ProcessMultiWriteWav.hpp *****/
 #ifndef WRITE_WAV_HPP
 #define WRITE_WAV_HPP
 
@@ -10,21 +9,24 @@
 #include <iostream>
 #include <vector>
 
+using namespace std;
+
 class ProcessMultiWriteWav{
 
 public :
   void process(const Matrix<float>& buffer);
   void writeheader();
-  ProcessMultiWriteWav(std::string filename, int numchannels, int samplerate = 44100, int bytespersample = 2);
+  ProcessMultiWriteWav(string filename, int numchannels, int samplerate =\
+  44100, int bytespersample = 2);
   ~ProcessMultiWriteWav();
 private :
-  std::string filename;
+  string filename;
   FILE* stream;
   int numsamples;
   int samplerate;
   int numchannels;
   int bytespersample;
-  //std::vector<std::queue<float>> deck;;
+  //vector<queue<float>> deck;;
 };
 
 #endif
