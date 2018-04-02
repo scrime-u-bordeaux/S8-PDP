@@ -5,6 +5,7 @@ CONFIGPATH="/root/Bela/projects/VisualImpro/config/"
 LOGPATH="/root/Bela/projects/VisualImpro/log/"
 CONFIGFILE="./config.cfg"
 CONFIGTMPFILE="./configtmp.cfg"
+CONFIGQTFILE="./config_qt.cfg"
 
 function getCurrentDateTime() {
   DATE=$(date +"%Y-%m-%d.%X")
@@ -25,9 +26,29 @@ function cleanup(){
   cd ..
   scp root@192.168.7.2:/root/Bela/projects/VisualImpro/log/log logs/$DATE
   rm $CONFIGTMPFILE
+  rm $CONFIGQTFILE
   echo Data saved in logs/$DATE
   echo "Don't forget to close the Firefox window."
   exit 1
+}
+
+function qt_display(){
+  #trap cleanup SIGINT
+  cd ../GUI/
+  ./installGUI.sh
+  ./bin/GUI &
+  # while : ; do
+  #   [[ -f $CONFIGQTFILE ]] && break
+  #   echo "Waiting for the configuration file to be created..."
+  #   sleep 2
+  # done
+
+  # while ! test -f $CONFIGQTFILE; do
+  #   sleep 5
+  #   echo "Waiting for the configuration file to be created..."
+  # done
+  getCurrentDateTime
+  echo $DATE
 }
 
 function default_display(){
@@ -68,8 +89,10 @@ while getopts ":hd:" opt; do
     d)
       if [ $OPTARG == "firefox" ] ; then
         default_display
+      elif [ $OPTARG == "qt" ]; then
+        qt_display
       else
-        echo "Invalid argument: $OPTARG" >&2
+        help_message
         exit 1
       fi
       ;;

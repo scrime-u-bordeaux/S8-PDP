@@ -81,7 +81,7 @@ void GUIConfigFileSettingBuilder::endFile() {}
 
 string GUIConfigFileSettingBuilder::getResult() {
     ofstream configFile;
-    configFile.open ("config.cfg");
+    configFile.open ("../bin/config_qt.cfg");
     configFile << fileBuffer->str();
     configFile.close();
     return fileBuffer->str();
