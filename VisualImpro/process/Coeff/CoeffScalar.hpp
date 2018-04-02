@@ -1,7 +1,10 @@
 #ifndef COEFFSCALAR_HPP
 #define COEFFSCALAR_HPP
 
+#include <cstdlib>
 #include <vector>
+#include <math.h>
+#include <stdio.h>
 
 using namespace std;
 

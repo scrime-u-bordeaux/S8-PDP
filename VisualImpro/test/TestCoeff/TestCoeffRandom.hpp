@@ -1,11 +1,11 @@
 #ifndef TEST_COEFFRANDOM
 #define TEST_COEFFRANDOM
 
-#include <vector>
 #include <cstdlib>
+#include <vector>
 
-#include <cppunit/TestFixture.h>
 #include <cppunit/extensions/HelperMacros.h>
+#include <cppunit/TestFixture.h>
 
 #include "../../process/Coeff/CoeffRandom.hpp"
 

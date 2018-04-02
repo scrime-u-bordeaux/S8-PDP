@@ -1,6 +1,8 @@
 #ifndef COEFFRANDOM_HPP
 #define COEFFRANDOM_HPP
 
+#include <cmath>
+#include <cstdlib>
 #include <vector>
 
 using namespace std;

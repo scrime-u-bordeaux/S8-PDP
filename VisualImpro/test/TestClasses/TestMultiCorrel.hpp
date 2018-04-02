@@ -3,20 +3,20 @@
 
 #include <vector>
 
-#include <cppunit/TestFixture.h>
 #include <cppunit/extensions/HelperMacros.h>
+#include <cppunit/TestFixture.h>
 
 #include "../../Matrix.hpp"
-#include "../../RGB.hpp"
 #include "../../ProcessMultiCorrel.hpp"
+#include "../../process/Coeff/CoeffScalar.hpp"
+#include "../../process/Coeff/CoeffRandom.hpp"
+#include "../../process/Color/ColorGreenToRed.hpp"
+#include "../../process/Color/ColorBlackToWhite.hpp"
 #include "../../process/Mix/MixMaxCorrelated.hpp"
 #include "../../process/Mix/MixMinCorrelated.hpp"
 #include "../../process/Preproc/PreprocStrengthEnergy.hpp"
 #include "../../process/Preproc/PreprocEnergy.hpp"
-#include "../../process/Color/ColorGreenToRed.hpp"
-#include "../../process/Color/ColorBlackToWhite.hpp"
-#include "../../process/Coeff/CoeffScalar.hpp"
-#include "../../process/Coeff/CoeffRandom.hpp"
+#include "../../RGB.hpp"
 
 class TestMultiCorrel : public CppUnit::TestFixture {
 

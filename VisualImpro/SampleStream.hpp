@@ -3,13 +3,12 @@
 #ifndef SAMPLESTREAM_HPP
 #define SAMPLESTREAM_HPP
 
-#include <SampleData.h>
+#include <cstdlib>
+#include <iostream>
 #include <string>
 #include <Bela.h>
-
+#include <SampleData.h>
 #include <sndfile.h>	// to load audio files
-#include <iostream>
-#include <cstdlib>
 
 using namespace std;
 
@@ -33,7 +32,7 @@ private:
     // private libsndfile wrappers
     int getSamples(const char* file, float *buf, int channel, int startFrame,\
     int endFrame);
-    
+
     int getNumChannels(const char* file);
     int getNumFrames(const char* file);
 

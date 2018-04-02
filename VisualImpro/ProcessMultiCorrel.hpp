@@ -1,16 +1,16 @@
 #ifndef CORREL_HPP
 #define CORREL_HPP
 
+#include <fstream>
+#include <iostream>
+#include <queue>
+#include <string>
+#include <vector>
+#include <assert.h>
+#include <stdio.h>
 #include "Connection.hpp"
 #include "Matrix.hpp"
 #include "RGB.hpp"
-#include <stdio.h>
-#include <assert.h>
-#include <string>
-#include <vector>
-#include <queue>
-#include <fstream>
-#include <iostream>
 
 using namespace std;
 
@@ -19,8 +19,8 @@ class ProcessMultiCorrel{
 public :
   void process(const Matrix<float>& buffer, vector<float>&\
   meanCorrelations, Connection conn);
-  //ProcessMultiCorrel() : _coeffcorrel(NULL), _colorscale(NULL),\
-  //_preprocess(NULL){}
+/*ProcessMultiCorrel() : _coeffcorrel(NULL), _colorscale(NULL),
+                           _preprocess(NULL), _mixLevel(NULL){} */
   ProcessMultiCorrel(float (*coeffcorrel) (const vector<float>& s1,
   const vector<float>& s2) = NULL, RGB (*colorscale) (float coeff) = NULL,
   Matrix<float>(*preproc) (const Matrix<float>& buff) = NULL,

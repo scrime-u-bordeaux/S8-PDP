@@ -1,8 +1,8 @@
 #ifndef EFFECT_HPP
 #define EFFECT_HPP
 
-#include <vector>
 #include <string>
+#include <vector>
 
 using namespace std;
 

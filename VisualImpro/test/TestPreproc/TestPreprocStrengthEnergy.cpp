@@ -37,6 +37,7 @@ void TestPreprocStrengthEnergy::testPreproc(){
   CPPUNIT_ASSERT_EQUAL(row, 5);
   CPPUNIT_ASSERT_EQUAL(col, 1);
   for(int i=0; i<row; i++){
-      CPPUNIT_ASSERT_EQUAL(output.getCase(i,7000), (float)pow(i+1,2));
+    //printf("strength energy %d : %f\n", i, output.getCase(i,0));
+    CPPUNIT_ASSERT_EQUAL(output.getCase(i,0), (float)pow(i+1,2) - (float)pow(i,2));
   }
 }

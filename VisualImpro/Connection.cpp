@@ -10,23 +10,20 @@
  *
  */
 
-#include "Connection.hpp"
 
-#include <sys/types.h>
-#include <sys/socket.h>
-#include <netinet/in.h>
 #include <arpa/inet.h>
+#include <netinet/in.h>
+#include <sys/socket.h>
+#include <sys/types.h>
 #include <netdb.h>
 #include <stdio.h>
 #include <stdlib.h>
-#include <unistd.h>
 #include <string.h>
+#include <unistd.h>
+#include "Connection.hpp"
 
 #define SYSCALL(call, val, msg) if ((call) == (val)) {perror(msg); return -1;}
 #define TIMEOUT 1
-
-
-using namespace std;
 
 #define LEN 256
 

@@ -14,7 +14,6 @@
 #ifndef CHANNELSSETTINGS_H
 #define CHANNELSSETTINGS_H
 
-
 #include <string>
 #include <vector>
 #include "Connection.hpp"
