@@ -24,10 +24,10 @@ int main(int argc, char *argv[]) {
   QApplication app(argc, argv);
 
   int res = 1;
-  int sizeMatrix = 6;
+  int sizeMatrix;
 
   GUISettingWindow *settingWindow = new GUISettingWindow();
-  if (settingWindow->exec() == GUISettingWindow::Accepted) {
+  if ((sizeMatrix = settingWindow->exec()) > 0) {
     GUIWindow *mainWindow = new GUIWindow(sizeMatrix);
     mainWindow->show();
 

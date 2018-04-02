@@ -5,7 +5,9 @@
 
 #include "GUISettingWindow.hpp"
 
+#include <QPalette>
 #include <iostream>
+#include <string>
 
 #include "GUIConfigFileSettingBuilder.hpp"
 #include "GUISettingLayoutFactory.hpp"
@@ -43,11 +45,10 @@ GUISettingWindow::GUISettingWindow(QWidget *parent) : QDialog(parent) {
   setLayout(mainLayout);
 }
 
-#include <QPalette>
-#include <string>
 
 void GUISettingWindow::checkInput() {
-  if (getNumInput() < MIN_ENTRIES) {
+  int nbInput = getNumInput();
+  if (nbInput < MIN_ENTRIES) {
     /*color the label text*/
     QPalette sample_palette;
     sample_palette.setColor(QPalette::WindowText, Qt::red);
@@ -56,7 +57,7 @@ void GUISettingWindow::checkInput() {
     finishLabel->setText("Minimum number of entries is 2");
   } else {
     buildConfigFile();
-    accept();
+    done(nbInput);
   }
 }
 
