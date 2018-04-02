@@ -1,4 +1,14 @@
-/***** Connection.cpp *****/
+/**
+ *  @file    Connexion.cpp
+ *  @author  Jérémy LIXANDRE
+ *  @date    July 2017
+ *
+ *  @section DESCRIPTION
+ *
+ *  The Connexion object is used, after finishing the processing operations,
+ *  to send the processed data to a web page on Firefox.
+ *
+ */
 
 #include "Connection.hpp"
 
@@ -67,11 +77,11 @@ sock.setServer(ADDR);*/
   serv_addr.sin_family = AF_INET;
   serv_addr.sin_addr = inp;
   serv_addr.sin_port = htons(portno); //recupere num port
-  if (connect(this->sockfd, (struct sockaddr *) &serv_addr, sizeof(serv_addr)) == 0)
-    {
-      this->_isConnected = true;
-      return 0;
-    }
+  if (connect(this->sockfd,
+      (struct sockaddr *) &serv_addr, sizeof(serv_addr)) == 0){
+    this->_isConnected = true;
+    return 0;
+  }
   printf("Pas connecté\n");
   return -1;
 
@@ -90,7 +100,8 @@ int Connection::send(const string &msg){
 
 /*
 	socklen_t addrlen = sizeof(serv_addr);
-	 sendto(this->sockfd, msg.c_str(), msg.length()*sizeof(char), 0,(struct sockaddr * ) &(this->serv_addr), addrlen);
+	sendto(this->sockfd, msg.c_str(), msg.length()*sizeof(char), 0,
+         (struct sockaddr *) &(this->serv_addr), addrlen);
 	//printf("sent ? %d\n", sent);
 
   return 0;

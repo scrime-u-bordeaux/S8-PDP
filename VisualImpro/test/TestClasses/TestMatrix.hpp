@@ -1,8 +1,3 @@
-/**
- * @file TestMatrix.hpp
- * @author Lucas VIVAS
-*/
-
 #ifndef TEST_MATRIX
 #define TEST_MATRIX
 

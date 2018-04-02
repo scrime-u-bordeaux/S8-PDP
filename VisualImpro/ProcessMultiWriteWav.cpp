@@ -1,23 +1,31 @@
-/*
-This code is inspired by https://gasstationwithoutpumps.wordpress.com/2011/10/08/making-wav-files-from-c-programs/
-*/
+/**
+ *  @file    ProcessMultiWriteWav.cpp
+ *  @author  Jérémy LIXANDRE
+ *  @date    July 2017
+ *
+ *  @section DESCRIPTION
+ *
+ *  This object is used to create wavefiles by writing in little endian.
+ *  This code is inspired by https://gasstationwithoutpumps.wordpress.com\
+ *  /2011/10/08/making-wav-files-from-c-programs/
+ */
 
 #include "ProcessMultiWriteWav.hpp"
 #include "Matrix.hpp"
 #include <assert.h>
 
-void write_little_endian(unsigned int word, int num_bytes, FILE *stream)
-{
+void write_little_endian(unsigned int word, int num_bytes, FILE *stream){
     unsigned buf;
-    while(num_bytes>0)
-    {   buf = word & 0xff;
-        fwrite(&buf, 1,1, stream);
-        num_bytes--;
-    word >>= 8;
+    while(num_bytes>0){
+      buf = word & 0xff;
+      fwrite(&buf, 1,1, stream);
+      num_bytes--;
+      word >>= 8;
     }
 }
 
-ProcessMultiWriteWav::ProcessMultiWriteWav(std::string filename, int numchannels, int samplerate, int bytespersample){
+ProcessMultiWriteWav::ProcessMultiWriteWav(string filename, int numchannels,
+                                           int samplerate, int bytespersample){
   this->filename = filename;
   this->numchannels = numchannels;
   this->samplerate = samplerate;
@@ -39,11 +47,13 @@ void ProcessMultiWriteWav::process(const Matrix<float>& buffer){
     for (int sample = 0 ; sample < y ; sample ++){
     	//float j = buffer[0][sample];
       for (int channel = 0 ; channel < x ; channel++){
-      	assert((buffer[channel][sample] - buffer[0][sample])*(buffer[channel][sample] - buffer[0][sample]) <= 0.001);
-		tmp += buffer.getCase(channel,sample);
-    }
+      	assert((buffer[channel][sample] -
+      	        buffer[0][sample])*(buffer[channel][sample] -
+                buffer[0][sample]) <= 0.001);
+		    tmp += buffer.getCase(channel,sample);
+      }
       intVal = (short int)(tmp * 32768.0/x);
-      //stream << intVal;
+      // stream << intVal;
       write_little_endian((unsigned int) (intVal),2, stream);
       tmp = 0;
     }

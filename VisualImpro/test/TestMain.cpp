@@ -1,7 +1,15 @@
 /**
- * @file TestMain.cpp
- * @brief Main test program.
- * @author Lucas VIVAS
+ *  @file    TestMain.cpp
+ *  @author  Alexandre CASANOVA--FRANGER, Gauthier LARMARQUE, Paul SIMORRE,
+ *            Lucas VIVAS
+ *  @date    March 2018
+ *
+ *  @section DESCRIPTION
+ *
+ *  The main function standing for all of out tests. It will get the registry
+ *  of all of our cppunit testes contained in the Test* folders and print the
+ *  results of our tests in the standard output.
+ *
  */
 
 #include <iostream>

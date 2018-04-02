@@ -1,9 +1,18 @@
-/***** utilities.cpp *****/
+/**
+ *  @file    utilities.cpp
+ *  @author  Jérémy LIXANDRE
+ *  @date    July 2017
+ *
+ *  @section DESCRIPTION
+ *
+ *  This code contain utilities functions used in the main an render files.
+ *
+ */
 
 #include "utilities.hpp"
 
-/* Function used to check if the filename extension corresponds to the extension
- * given in parameter
+/** Function used to check if the filename extension corresponds to the
+ *  extension given in parameter
  */
 bool check_extension(string filename, string extension){
   int i = filename.size()-1;

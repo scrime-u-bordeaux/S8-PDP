@@ -1,8 +1,3 @@
-/**
- * @file Matrix.hpp
- * @author Lucas VIVAS
-*/
-
 #ifndef DEF_MATRIX
 #define DEF_MATRIX
 
@@ -27,7 +22,7 @@ public:
     void swap(Matrix<T>& mat);
     string toString();
     virtual ~Matrix();
-    
+
 private:
     int _sizeMatix;
     vector<vector<T> > _matrix;

@@ -2,7 +2,7 @@
  *  @file    CoeffRandom.cpp
  *  @author  Alexandre CASANOVA--FRANGER, Gauthier LARMARQUE, Paul SIMORRE,
  *            Lucas VIVAS
- *  @date    04/03/2018
+ *  @date    March 2018
  *
  *  @section DESCRIPTION
  *

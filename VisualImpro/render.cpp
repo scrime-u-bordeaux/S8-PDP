@@ -362,7 +362,8 @@ void render(BelaContext *context, void *userData) {
     else {
       // Files
       for (int s = 0; s < gNumStreams; s++) {
-        outsample = (sampleStream[s]->getSample(0) + sampleStream[s]->getSample(1)) / 2;
+        outsample = (sampleStream[s]->getSample(0) +
+                     sampleStream[s]->getSample(1)) / 2;
         gProcessBuffer->setCase(s, gFillPosition + 1, outsample);
         out += outsample*gMeanCorrel[s];
 	     }
@@ -381,7 +382,8 @@ void render(BelaContext *context, void *userData) {
         } else {
           outsample = audioRead(context, n, a);
         }
-        gProcessBuffer->setCase(gNumStreams + gNumAnalog + a, gFillPosition + 1, outsample);
+        gProcessBuffer->setCase(gNumStreams + gNumAnalog + a, gFillPosition + 1,
+                                outsample);
         out += outsample;
       }
     }
