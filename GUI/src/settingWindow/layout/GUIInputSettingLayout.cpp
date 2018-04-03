@@ -59,7 +59,7 @@ void GUIInputSettingLayout::addSetting(string name, int min, int max){
  * @param var description
  */
 
-const QStringList GUIInputSettingLayout::getSetting(){
+const QStringList GUIInputSettingLayout::getSettings(){
     QStringList strList;
     for (int i = 0; i < allSpinBox->size(); i++) {
       strList << QString::number((allSpinBox->at(i))->value());

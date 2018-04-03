@@ -42,7 +42,7 @@ void GUIProcessSettingLayout::addSetting(string name) {
  *
  * @param var description
  */
-const QStringList GUIProcessSettingLayout::getSetting(){
+const QStringList GUIProcessSettingLayout::getSettings(){
   QStringList str;
   for (int i = 0; i < allBox->size(); i++) {
     str << allBox->at(i)->currentText();

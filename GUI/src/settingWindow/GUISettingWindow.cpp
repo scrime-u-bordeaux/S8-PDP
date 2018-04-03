@@ -12,42 +12,64 @@
 #include "GUIConfigFileSettingBuilder.hpp"
 #include "GUISettingLayoutFactory.hpp"
 
+/**
+ * @fn GUISettingWindow(QWidget *parent)
+ * @brief Constructor for GUISettingWindow class.
+ *
+ * @param parent the parent of this layout.
+ */
 GUISettingWindow::GUISettingWindow(QWidget *parent) : QDialog(parent) {
   finishButton = new QPushButton("FIN");
   finishLabel = new QLabel();
   mainLayout = new QVBoxLayout(this);
 
+  /*get all the layouts*/
   processSettingLayout =
       GUISettingLayoutFactory::createGUIProcessSettingLayout();
   inputSettingLayout = GUISettingLayoutFactory::createGUIInputSettingLayout();
   wavFileLayout = GUISettingLayoutFactory::createGUIWavFileSettingLayout();
 
+  /*set differents parts of the process layout*/
   processSettingLayout->addSetting("Coeff");
   processSettingLayout->addSetting("Preproc");
   processSettingLayout->addSetting("Color");
   processSettingLayout->addSetting("Mix");
 
+  /*set differents parts of the input  layout*/
   inputSettingLayout->addSetting("Number of audio input", MIN_AUDIO_INPUT,
                                  MAX_AUDIO_INPUT);
   inputSettingLayout->addSetting("Number of analog input", MIN_ANALOG_INPUT,
                                  MAX_ANALOG_INPUT);
 
+  /*set the settings of finish button*/
   finishButton->setDefault(true);
   connect(finishButton, SIGNAL(clicked()), this, SLOT(checkInput()));
 
+  /*set the settings of finish label*/
   finishLabel->setAlignment(Qt::AlignCenter);
 
+  /*add all the layout in a global layout*/
   mainLayout->addLayout(inputSettingLayout, 0);
   mainLayout->addLayout(processSettingLayout, 1);
   mainLayout->addLayout(wavFileLayout, 2);
   mainLayout->addWidget(finishLabel, 3);
   mainLayout->addWidget(finishButton, 4);
+
+  /*add the global layout to this window*/
   setLayout(mainLayout);
 }
 
-
+/**
+ * @fn checkInput()
+ * @brief Check if the number of inputs more then MIN_ENTRIES if it is not
+ * print on the window a error message else build the config file and close
+ * this window return the number of inputs.
+ *
+ * @param
+ */
 void GUISettingWindow::checkInput() {
   int nbInput = getNumInput();
+  /*print an error*/
   if (nbInput < MIN_ENTRIES) {
     /*color the label text*/
     QPalette sample_palette;
@@ -57,17 +79,26 @@ void GUISettingWindow::checkInput() {
     string str = "Minimum number of entries is ";
     str += to_string(MIN_ENTRIES);
     finishLabel->setText(str.c_str());
+    /*build and exit*/
   } else {
     buildConfigFile();
     done(nbInput);
   }
 }
 
+/**
+ * @fn buildConfigFile()
+ * @brief Get all the settings and build the config file with its.
+ *
+ * @param
+ */
 void GUISettingWindow::buildConfigFile() {
-  QStringList inputList = inputSettingLayout->getSetting();
-  QStringList processList = processSettingLayout->getSetting();
-  QStringList wavList = wavFileLayout->getSetting();
+  /*get all the settings*/
+  QStringList inputList = inputSettingLayout->getSettings();
+  QStringList processList = processSettingLayout->getSettings();
+  QStringList wavList = wavFileLayout->getSettings();
   GUIConfigFileSettingBuilder builder;
+  /*call all the function to builde the config file*/
   builder.beginFile();
   builder.addPort(PORT);
   builder.addAddress(IPADDRESS);
@@ -83,20 +114,36 @@ void GUISettingWindow::buildConfigFile() {
   builder.addColorFunction(processList.at(2).toStdString());
   builder.addMixFunction(processList.at(3).toStdString());
   builder.endFile();
+  /*create the config file*/
   builder.getResult();
 }
 
+/**
+ * @fn getNumInput()
+ * @brief Return the number of input which are the number of audio, analog
+ * inputs and the number of wav files.
+ *
+ * @param
+ */
 int GUISettingWindow::getNumInput() {
   int nbInput = 0;
-  QStringList inputList = inputSettingLayout->getSetting();
+  /*get the number of inputs*/
+  QStringList inputList = inputSettingLayout->getSettings();
   for (int i = 0; i < inputList.size(); i++) {
     nbInput += inputList.at(i).toInt();
   }
 
-  nbInput += wavFileLayout->getSetting().size();
+  /*get the number of wav files*/
+  nbInput += wavFileLayout->getSettings().size();
   return nbInput;
 }
 
+/**
+ * @fn ~GUISettingWindow()
+ * @brief Destructor for GUISettingWindow class.
+ *
+ * @param
+ */
 GUISettingWindow::~GUISettingWindow() {
   delete (finishButton);
   delete (wavFileLayout);

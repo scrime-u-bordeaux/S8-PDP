@@ -40,7 +40,7 @@ GUIWavFileSettingLayout::GUIWavFileSettingLayout(QWidget *parent) : QGridLayout(
   this->addWidget(listView, 0, 1);
 }
 
-const QStringList GUIWavFileSettingLayout::getSetting() { return *nameFile; }
+const QStringList GUIWavFileSettingLayout::getSettings() { return *nameFile; }
 
 void GUIWavFileSettingLayout::loadWavFile() {
   QString filename = fileDialog->getOpenFileName(NULL, "Choisir un fichier wav",
