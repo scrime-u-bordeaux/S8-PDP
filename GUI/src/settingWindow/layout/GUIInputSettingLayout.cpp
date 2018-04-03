@@ -1,32 +1,45 @@
 /**
  * @file GUIInputSettingLayout.cpp
- * @author Lucas VIVAS
+ * @author  Alexandre CASANOVA--FRANGER, Gauthier LARMARQUE, Paul SIMORRE,
+*            Lucas VIVAS
 */
 
 #include "GUIInputSettingLayout.hpp"
 
 #include <Qt>
-#include <iostream>
 
 template class QVector<QLabel *>;
 template class QVector<QSlider *>;
 template class QVector<QSpinBox *>;
 
-GUIInputSettingLayout::GUIInputSettingLayout(QWidget *parent) : QGridLayout(parent){
+/**
+ * @fn GUIInputSettingLayout::GUIInputSettingLayout(QWidget *parent)
+ * @brief Constructor of the layout with all the input setting inside.
+ *
+ * @param parent parent of the layout.
+ */
+GUIInputSettingLayout::GUIInputSettingLayout(QWidget *parent) :
+  QGridLayout(parent),
+  allLabel(new QVector<QLabel *>()),
+  allSlider(new QVector<QSlider *>()),
+  allSpinBox(new QVector<QSpinBox *>())
+{}
 
-  allLabel = new QVector<QLabel *>();
-  allSlider = new QVector<QSlider *>();
-  allSpinBox = new QVector<QSpinBox *>();
-}
-
+  /**
+   * @fn
+   * @brief
+   *
+   * @param var description
+   */
 void GUIInputSettingLayout::addSetting(string name, int min, int max){
   allLabel->push_back(new QLabel(name.c_str()));
   allSlider->push_back(new QSlider(Qt::Horizontal));
   allSpinBox->push_back(new QSpinBox());
 
+  /*set the minimum and maximum of the slider*/
   allSlider->back()->setMinimum(min);
   allSlider->back()->setMaximum(max);
-
+  /*set the minimum and maximum of the box*/
   allSpinBox->back()->setMinimum(min);
   allSpinBox->back()->setMaximum(max);
 
@@ -39,6 +52,13 @@ void GUIInputSettingLayout::addSetting(string name, int min, int max){
   addWidget(allSpinBox->back(), pos + pos - 1, 1);
 }
 
+/**
+ * @fn
+ * @brief
+ *
+ * @param var description
+ */
+
 const QStringList GUIInputSettingLayout::getSetting(){
     QStringList strList;
     for (int i = 0; i < allSpinBox->size(); i++) {
@@ -46,6 +66,13 @@ const QStringList GUIInputSettingLayout::getSetting(){
     }
     return strList;
 }
+
+/**
+ * @fn
+ * @brief
+ *
+ * @param var description
+ */
 
 GUIInputSettingLayout::~GUIInputSettingLayout(){
     QLabel* label;

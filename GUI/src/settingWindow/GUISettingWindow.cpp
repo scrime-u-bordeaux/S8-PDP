@@ -1,12 +1,12 @@
 /**
  * @file GUISettingWindow.cpp
- * @author Lucas VIVAS
+ * @author  Alexandre CASANOVA--FRANGER, Gauthier LARMARQUE, Paul SIMORRE,
+*            Lucas VIVAS
 */
 
 #include "GUISettingWindow.hpp"
 
 #include <QPalette>
-#include <iostream>
 #include <string>
 
 #include "GUIConfigFileSettingBuilder.hpp"
@@ -83,7 +83,7 @@ void GUISettingWindow::buildConfigFile() {
   builder.addColorFunction(processList.at(2).toStdString());
   builder.addMixFunction(processList.at(3).toStdString());
   builder.endFile();
-  cout << builder.getResult() << endl;
+  builder.getResult();
 }
 
 int GUISettingWindow::getNumInput() {

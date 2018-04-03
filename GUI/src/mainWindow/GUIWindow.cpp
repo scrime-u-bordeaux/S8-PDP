@@ -1,6 +1,7 @@
 /**
  * @file GUIWindow.cpp
- * @author Lucas VIVAS
+ * @author  Alexandre CASANOVA--FRANGER, Gauthier LARMARQUE, Paul SIMORRE,
+*            Lucas VIVAS
 */
 
 #include "GUIWindow.hpp"

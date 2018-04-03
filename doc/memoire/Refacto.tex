@@ -54,7 +54,25 @@ l'organisation des fichiers.
     d'autres fonctions (lesquelles, parfois, en appellent elles-mêmes
     de nouvelles).
 
-    %screen launch
+    \begin{lstlistings}
+      static void launch(int argc, char *argv[]){
+        ChSettings gChSettings;
+        Parser config;
+        void *handle;
+        ProcessMultiCorrel *p;
+        config = initParser(argc, argv);
+        handle = initHandler();
+        p = initProcessMultiCorrel(handle);
+        setupSettings(gChSettings, config, p, handle);
+        initAndRun(gChSettings, config, argv);
+        stopAndCleanupAudio();
+        freeAndClose(gChSettings, config, p, handle);
+      }
+    \end{lstlistings}
+
+    \begin{center}
+      \textit{Ci-dessus, le code de la fonction launch}
+    \end{center}    
 
     \item Nous avons de même effectué un découpage fonctionnel sur la
       fonction \verb!setup(BelaContext *context, void *userData)! du
@@ -73,23 +91,62 @@ l'organisation des fichiers.
       le nombre de tours de boucle ou les variables contenant les
       signaux audio par exemple.
 
-      %screen setup
+      \begin{lstlistings}
+      bool setup(BelaContext *context, void *userData) {
+        gUserSet = *((ChSettings *)userData);
+        initUserSet(gUserSet);
+        initBuffers();
+        initSampleStreams(gUserSet);
+        printInfo();
+        return initAuxiliaryTasks();
+      }
+    \end{lstlistings}
+
+    \begin{center}
+      \textit{Ci-dessus, le code de la fonction setup}
+    \end{center}    
 
       \item \`{A} l'intérieur du dossier \verb!process!, les
         différents fichiers de traitement ont été classés par
         fonctions en quatre dossiers \verb!Coeff!, \verb!Color!,
         \verb!Preproc! et \verb!Mix!. \`{A} l'intérieur du dossier
-        test, les fichiers que nous avons implémenté pour tester les
+        \verb!test!, les fichiers que nous avons implémenté pour tester les
         différentes fonctions du programme ont été classés de la même
         manière (Jérémy Lixandre n'avait pour sa part pas implémenté
         de fichiers de test).
 
+        \item D'une manière générale, les fichiers ont été triés pour
+          ordonner l'architecture proposée par Jérémy qui était un peu
+          confuse ; des fichiers de code n'ayant rien à voir entre eux
+          se côtoyaient au sein d'un même dossier, et l'architecture
+          présentait une hiérarchie n'étant pas toujours en rapport
+          avec celle que présente le logiciel. Pour ces raisons, nous
+          avons partagé les fichiers en plusieurs sous-dossiers,
+          notamment les fichiers sources et les fichiers d'en-tête au
+          sein du dossier \verb!VisualImpro!, et nous avons modifié
+          les fichiers Makefile en conséquence.
 \end{itemize}
-  - Séparation des dossiers généraux : ___PAS ENCORE ETABLI A 100%___ mais genre
-  dans l'idée il faudra découper les fichiers comme le prof l'avait dit genre
-  avec un dossier src contenant les fichiers source, un dossiers include avec
-  les header (.hpp), un dossier process qu'on a déjà, un dossier test qu'on a
-  déjà aussi, mais à voir comment les organiser et il faudra adapter les
-  makefiles pour ça aussi.
 
 \subsection{Les changements apportés à l'interface graphique}
+\paragraph{}
+Précédemment, nous parlions de la nécessité de modifier l'affichage de
+l'interface graphique pour diverses raisons. Nos clients n'exprimaient
+pas de préférence quant à la méthode employée pour afficher la matrice
+imaginée par nos prédécesseurs de l'ENSEIRB, mais nous trouvions peu
+judicieux et coûteux pour le programme de passer par NodeJS et Mozilla
+Firefox pour la produire. Un affichage graphique implémenté en C++
+grâce au framework Qt nous paraissait plus logique, judicieux et
+conforme au reste de l'architecture de notre programme.
+\paragraph{}
+Cependant, nous pouvons reconnaître l'avantage que peut avoir
+l'affichage de la matrice sur un navigateur répandu comme Mozilla
+Firefox. En effet, on peut imaginer qu'à l'avenir, le programme
+embarqué sur le système Bela pourra se passer d'un ordinateur pour
+fonctionner et afficher la matrice sur l'écran d'un smartphone par
+exemple en passant par un navigateur web. Pour cette raison, nous
+avons décidé d'offrir à l'utilisateur la possibilité de choisir entre
+l'affichage Qt et l'affichage sur navigateur au moment de lancer
+l'exécution du programme.
+
+\subsubsection{L'implémentation de la méthode d'affichage sous Qt}
+
