@@ -54,7 +54,7 @@ l'organisation des fichiers.
     d'autres fonctions (lesquelles, parfois, en appellent elles-mêmes
     de nouvelles).
 
-    \begin{lstlistings}
+    \begin{lstlisting}
       static void launch(int argc, char *argv[]){
         ChSettings gChSettings;
         Parser config;
@@ -68,7 +68,7 @@ l'organisation des fichiers.
         stopAndCleanupAudio();
         freeAndClose(gChSettings, config, p, handle);
       }
-    \end{lstlistings}
+    \end{lstlisting}
 
     \begin{center}
       \textit{Ci-dessus, le code de la fonction launch}
@@ -91,7 +91,7 @@ l'organisation des fichiers.
       le nombre de tours de boucle ou les variables contenant les
       signaux audio par exemple.
 
-      \begin{lstlistings}
+      \begin{lstlisting}
       bool setup(BelaContext *context, void *userData) {
         gUserSet = *((ChSettings *)userData);
         initUserSet(gUserSet);
@@ -100,7 +100,7 @@ l'organisation des fichiers.
         printInfo();
         return initAuxiliaryTasks();
       }
-    \end{lstlistings}
+    \end{lstlisting}
 
     \begin{center}
       \textit{Ci-dessus, le code de la fonction setup}
