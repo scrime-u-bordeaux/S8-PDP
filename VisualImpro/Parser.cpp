@@ -1,9 +1,9 @@
 /**
- *  @file    Parser.cpp
- *  @author  Jérémy LIXANDRE
- *  @date    July 2017
+ *  \file    Parser.cpp
+ *  \author  Jérémy LIXANDRE
+ *  \date    July 2017
  *
- *  @section DESCRIPTION
+ *  \brief  Parser object used to get information from config file.
  *
  *  Parses a config file with filenames and functions. It is used in main.cpp to
  *  fill a Channel settings structure with the parameters given to the program.

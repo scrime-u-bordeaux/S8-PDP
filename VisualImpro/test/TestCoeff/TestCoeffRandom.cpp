@@ -1,10 +1,10 @@
 /**
- *  @file    PreprocStrengthEnergy.cpp
- *  @author  Alexandre CASANOVA--FRANGER, Gauthier LARMARQUE, Paul SIMORRE,
+ *  \file    PreprocStrengthEnergy.cpp
+ *  \author  Alexandre CASANOVA--FRANGER, Gauthier LARMARQUE, Paul SIMORRE,
  *            Lucas VIVAS
- *  @date    March 2018
+ *  \date    March 2018
  *
- *  @section DESCRIPTION
+ *  \brief Test program of the CoeffRandom function.
  *
  *  This test is used to show us that our random correlation function is
  *  functionning well. As we can't realy test precisely the result values, what

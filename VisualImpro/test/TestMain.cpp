@@ -1,10 +1,10 @@
 /**
- *  @file    TestMain.cpp
- *  @author  Alexandre CASANOVA--FRANGER, Gauthier LARMARQUE, Paul SIMORRE,
+ *  \file    TestMain.cpp
+ *  \author  Alexandre CASANOVA--FRANGER, Gauthier LARMARQUE, Paul SIMORRE,
  *            Lucas VIVAS
- *  @date    March 2018
+ *  \date    March 2018
  *
- *  @section DESCRIPTION
+ *  \brief The main test program.
  *
  *  The main function standing for all of out tests. It will get the registry
  *  of all of our cppunit testes contained in the Test* folders and print the

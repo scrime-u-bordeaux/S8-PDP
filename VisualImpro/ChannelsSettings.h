@@ -1,9 +1,9 @@
 /**
- *  @file    ChannelsSettings.h
- *  @author  Jérémy LIXANDRE
- *  @date    July 2017
+ *  \file    ChannelsSettings.h
+ *  \author  Jérémy LIXANDRE
+ *  \date    July 2017
  *
- *  @section DESCRIPTION
+ *  \brief File containing the structure ChSettings.
  *
  *  The ChannelsSettings structure is declared and filled in main.cpp, and
  *  contains the parameters given to the program, such as the number of tracks
@@ -29,38 +29,73 @@
 #define DEFAULT_PROCESS_LEN 32768
 #define DEFAULT_EFFECT_LEN 32
 
-#define STANDARD_SAMPLE_RATE 1 // Sample rates are multiples of this
+#define STANDARD_SAMPLE_RATE 1
 #define DOUBLE_SAMPLE_RATE 2
 
 #define FILE_BUFFER_LEN 44100
 
+/**
+ * \namespace std
+ * Standard C++ library
+ */
 using namespace std;
 
 typedef void (*process)(float**, float**);
 
+/**
+ *  \struct ChSettings
+ *  \brief Object containing the settings given by the user
+ */
 struct ChSettings{
+  /**
+   * \var useeffects If effects are activated (much faster if disabled)
+   */
+  bool useeffects;
 
-bool useeffects; //if effects are activated (much faster if disabled)
+  /**
+   * \var nb_audio  Number of audio channels
+   * \var nb_analog Number of analog channels
+   * \var nb_files  Number of files to play
+   */
+  int nb_audio;
+  int nb_analog;
+  int nb_files;
 
-int nb_audio; //number of audio channels
-int nb_analog; //number of analog channels
-int nb_files; //number of files to play
+  /**
+   * \var audioproc  Effects for each audio track
+   * \var analogproc Idem for analogue
+   * \var fileproc   Idem for files
+   */
+  vector<Effect*> audioproc;
+  vector<Effect*> analogproc;
+  vector<Effect*> fileproc;
 
-vector<Effect*> audioproc; //effects for each audio track
-vector<Effect*> analogproc; //idem for analogue
-vector<Effect*> fileproc; //idem for files
+  /**
+   * \var filenames All the filenames of the tracks in this vector
+   */
+  vector<string> filenames;
 
-vector<string> filenames;
+  /**
+   * \var buffer_len Length of buffers to process
+   * \var effect_len Length of buffer for effects (the smaller the better)
+   */
+  int buffer_len;
+  int effect_len;
 
-int buffer_len; //length of buffers to process
-int effect_len; //length of buffer for effects (the smaller the better)
+  /**
+   * \var sample_factor Values are : 1 (22050) or 2 (44100)
+   */
+  int sample_factor;
 
-int sample_factor; //1 (22050) or 2 (44100)
+  /**
+   * \var proc Process to use (polymorphisme)
+   */
+  ProcessMultiCorrel * proc;
 
-ProcessMultiCorrel * proc; //process to use (polymorphisme)
-
-
-Connection conn; //connection to server
+  /**
+   * \var conn Connection to server
+   */
+  Connection conn;
 
 };
 

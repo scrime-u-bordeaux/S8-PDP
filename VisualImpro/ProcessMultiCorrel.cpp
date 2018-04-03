@@ -1,9 +1,9 @@
 /**
- *  @file    ProcessMultiCorrel.cpp
- *  @author  Jérémy LIXANDRE
- *  @date    July 2017
+ *  \file    ProcessMultiCorrel.cpp
+ *  \author  Jérémy LIXANDRE
+ *  \date    July 2017
  *
- *  @section DESCRIPTION
+ *  \brief Processing object composed by function pointers members.
  *
  *  Here are the constructor and all the process functions used in our program.
  *  The render.cpp file will call the process function, as an auxiliary task
@@ -36,8 +36,15 @@ ProcessMultiCorrel::ProcessMultiCorrel(
     : _coeffcorrel(coeffcorrel), _colorscale(colorscale), _preprocess(preproc),
     _mixLevel(mixLevel) { matrixfile.open(string("log/log"), ios::app); }
 
+/**
+ * Destructor for the ProcessMultiCorrel object. It will also close the
+ * logfile called matrixfile.
+ */
 ProcessMultiCorrel::~ProcessMultiCorrel() { matrixfile.close(); }
 
+/**
+ * Correlation process function.
+ */
 Matrix<float> ProcessMultiCorrel::calcul_correl(const Matrix<float>& buffer){
   int size = buffer.getSize();
   Matrix<float> correlMatrix(size);
@@ -54,11 +61,17 @@ Matrix<float> ProcessMultiCorrel::calcul_correl(const Matrix<float>& buffer){
   return correlMatrix;
 }
 
+/**
+ * Mix volume process function.
+ */
 void ProcessMultiCorrel::process_volume(const Matrix<float>& correlMatrix,
                                         vector<float>& meanCorrelations){
   meanCorrelations = this->_mixLevel(correlMatrix);
 }
 
+/**
+ * Coloration process function.
+ */
 Matrix<RGB> ProcessMultiCorrel::color_matrix(const Matrix<float>& correlMatrix){
   int size = correlMatrix.getSize();
   Matrix<RGB> RGBmatrix(size);
@@ -72,22 +85,21 @@ Matrix<RGB> ProcessMultiCorrel::color_matrix(const Matrix<float>& correlMatrix){
   return RGBmatrix;
 }
 
+/**
+ * Calling every processing function sequentially.
+ */
 void ProcessMultiCorrel::process(const Matrix<float>& buffer,
-  vector<float>& meanCorrelations, Connection conn) {
+                                 vector<float>& meanCorrelations,
+                                 Connection conn){
   Matrix<float> copy = buffer;
-  //Preprocessing
-  if (_preprocess != NULL) {
-    copy = _preprocess(buffer);
-  }
-  //Correlation process
+
+  // Processing functions
+  copy = _preprocess(buffer);
   Matrix<float> correlMatrix = calcul_correl(copy);
-  //Adjusting volumes depending on the mean correlations
-  if (_mixLevel != NULL) {
-    process_volume(correlMatrix, meanCorrelations);
-  }
-  //Matrix coloration
+  process_volume(correlMatrix, meanCorrelations);
   Matrix<RGB> mat = color_matrix(correlMatrix);
-  //Send data
+
+  // Send data
   string str = mat.toString();
   conn.send(str);
 }

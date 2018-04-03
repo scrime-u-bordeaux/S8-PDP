@@ -1,9 +1,9 @@
 /**
- *  @file    PreprocDefault.cpp
- *  @author  Jérémy LIXANDRE
- *  @date    July 2017
+ *  \file    PreprocDefault.cpp
+ *  \author  Jérémy LIXANDRE
+ *  \date    July 2017
  *
- *  @section DESCRIPTION
+ *  \brief Code containing the default preprocessing function.
  *
  *  This is a preprocessing function returning the default signals given as
  *	parameter. As no preprocessing is applied here, we consider this is the

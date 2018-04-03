@@ -1,10 +1,10 @@
 /**
- *  @file    MixMaxCorrelated.cpp
- *  @author  Alexandre CASANOVA--FRANGER, Gauthier LARMARQUE, Paul SIMORRE,
+ *  \file    MixMaxCorrelated.cpp
+ *  \author  Alexandre CASANOVA--FRANGER, Gauthier LARMARQUE, Paul SIMORRE,
  *            Lucas VIVAS
- *  @date    March 2018
+ *  \date    March 2018
  *
- *  @section DESCRIPTION
+ *  \brief Code containing the mix based on maximal correlations function.
  *
  *  This function is used to process the mean correlation of each instrument.
  *  We will use it to mix the volume of each instrument depending on the
@@ -17,7 +17,6 @@
 
 extern "C" {
 
-// return a vector whose elements are the mean correlations of every instruments
 vector<float> MixMaxCorrelated(const Matrix<float>& correlMatrix) {
 
   int row = correlMatrix.getSize();

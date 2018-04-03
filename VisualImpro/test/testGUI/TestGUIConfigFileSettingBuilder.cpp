@@ -1,6 +1,6 @@
 /**
- * @file TestGUIConfigFileSettingBuilder.cpp
- * @author Lucas VIVAS
+ * \file TestGUIConfigFileSettingBuilder.cpp
+ * \author Lucas VIVAS
 */
 
 #include "TestGUIConfigFileSettingBuilder.hpp"

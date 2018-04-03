@@ -35,22 +35,36 @@ The Bela software is distributed under the GNU Lesser General Public License
 #include "ProcessMultiWriteWav.hpp"
 #include "utilities.hpp"
 
+/**
+ * \namespace std
+ * Standard C++ library
+ */
 using namespace std;
 
 /******* GENERAL SETTINGS *******/
 
+/**
+ * \var gUserSet      Structure containing the user settings
+ * \var gTotalTracks  Number of tracks
+ * \var gSampleFactor Sampling at 22050 Hz
+ */
 ChSettings gUserSet;
 int gTotalTracks = 0;
-int gSampleFactor = 1; // Sampling at 22050 Hz
+int gSampleFactor = 1;
 
 SampleStream *sampleStream[NB_FILES_MAX];
 AuxiliaryTask gFillBuffersTask;
 
 /******* EFFECTS VARIABLES AND TASKS *******/
 
-Matrix<float>* gEffectBufferIn; // buffer filled in real time
-Matrix<float>* gEffectBufferInCopy; // Buffer sent as the In effect buffer
-Matrix<float>* gEffectBufferOut; // Buffer storing the effects signals results
+/**
+ * \var gEffectBufferIn      Buffer filled in real time
+ * \var gEffectBufferInCopy  Buffer sent as the In effect buffer
+ * \var gEffectBufferOut     Buffer storing the effects signals results
+ */
+Matrix<float>* gEffectBufferIn;
+Matrix<float>* gEffectBufferInCopy;
+Matrix<float>* gEffectBufferOut;
 
 bool gUseEffects = false;
 int gEffSize = 0;
@@ -68,8 +82,14 @@ int gLastSample = 0;
 
 AuxiliaryTask gEffectTask;
 
-// Applies an effect from buffer In to buffer Out
-void effect(Matrix<float> &In, Matrix<float> &Out) {
+/**
+ * \fn     void effect(Matrix<float> &In, Matrix<float> &Out)
+ * \brief  Applies an effect from buffer In to buffer Out.
+ *
+ * \param  In  The matrix containing the signal pre effect
+ * \param  Out The matrix containing the signal post effect
+ */
+void effect(Matrix<float> &In, Matrix<float> &Out){
   assert(In.getSize() == gTotalTracks);
 
   // Audio
@@ -104,7 +124,11 @@ void effect(Matrix<float> &In, Matrix<float> &Out) {
   }
 }
 
-// Auxiliary task used to call the effect function and update effect parameters
+/**
+ * \fn     void processEffect()
+ * \brief  Auxiliary task used to call the effect function and update effect
+ *         parameters.
+ */
 void processEffect() {
   // This function is located in EffectManaging.hpp
   genEffect(*gEffectBufferInCopy, gIndIn, *gEffectBufferOut, gIndOut, gCopySize,
@@ -124,12 +148,22 @@ int gBufferProLen = 0;
 int gNumStreams = NB_FILES_MAX;
 int gNumAnalog = 0;
 int gNumAudio = 0;
-Matrix<float>* gProcessBuffer; // Buffer filled in real time
-Matrix<float>* gProcessBufferCopy; // Buffer used to process signals
-vector<float> gMeanCorrel; // Buffer used to process volumes
 
-int gFillPosition = -1; // Last position that was filled. When gFillPosition =
-                        // BUFFERLEN-1, buffer should be analyzed and empty'd
+/**
+ * \var gProcessBuffer      Buffer filled in real time
+ * \var gProcessBufferCopy  Buffer used to process signals
+ * \var gMeanCorrel         Buffer used to process volumes
+ */
+Matrix<float>* gProcessBuffer;
+Matrix<float>* gProcessBufferCopy;
+vector<float> gMeanCorrel;
+
+/**
+ * \var gFillPosition Last position that was filled. When
+ *                    gFillPosition = BUFFERLEN-1, buffer should be analyzed
+ *                    and empty'd
+ */
+int gFillPosition = -1;
 
 AuxiliaryTask gProcessBufferTask;
 bool gBufferProcessed = 1;
@@ -144,7 +178,10 @@ struct timeval tv4;
 int fillless = 0;
 int fillcount = 10;
 
-// Auxiliary Ttsk for filling sample buffers
+/**
+ * \fn     void fillBuffers()
+ * \brief  Auxiliary Ttsk for filling sample buffers.
+ */
 void fillBuffers() {
   for (int i = 0; i < gUserSet.nb_files; i++) {
     if (sampleStream[i]->bufferNeedsFilled())
@@ -152,7 +189,10 @@ void fillBuffers() {
   }
 }
 
-// Auxiliary task for processing with the ProcessMultiCorrel functions
+/**
+ * \fn     void processBuffer()
+ * \brief  Auxiliary task for processing with the ProcessMultiCorrel functions.
+ */
 void processBuffer() {
   if (gBufferProcessed == 0) {
     p->process(*gProcessBufferCopy, gMeanCorrel, gUserSet.conn);
@@ -167,8 +207,12 @@ Order in Buffers :
 - from gNumStreams + gNumAnalog to gNumStreams + gNumAnalog + gNumAudio : audio
 */
 
-/* Initialise the global variables with the values containent in the userData
- * structure sent from main.cpp
+/**
+ * \fn     void initUserSet(ChSettings& gUserSet)
+ * \brief  Initialize the global variables with the values contained in the
+ *         userData structure sent from main.cpp.
+ *
+ * \param  gUserSet The channel settings structure.
  */
 void initUserSet(ChSettings& gUserSet){
     gTotalTracks = gUserSet.nb_files + gUserSet.nb_audio + gUserSet.nb_analog;
@@ -184,7 +228,10 @@ void initUserSet(ChSettings& gUserSet){
     gUserSet.conn.init();
 }
 
-// Initialise the effect, process and mix bufferss
+/**
+ * \fn     void initBuffers()
+ * \brief  Initialize the effect, process and mix bufferss.
+ */
 void initBuffers(){
   // Initialize effect buffers
   gEffectBufferOut = new Matrix<float>(
@@ -206,8 +253,12 @@ void initBuffers(){
 
 }
 
-/* Initialise the SampleStream array with the wavefiles contained in the
- * structure sent from main.cpp and set them as playable
+/**
+ * \fn     void initSampleStreams(const ChSettings& gUserSet)
+ * \brief  Initialize the SampleStream array with the wavefiles contained in
+ *         the structure sent from main.cpp and set them as playable.
+ *
+ * \param  gUserSet The channel settings structure.
  */
 void initSampleStreams(const ChSettings& gUserSet){
   for (int i = 0; i < gNumStreams; i++) {
@@ -220,7 +271,10 @@ void initSampleStreams(const ChSettings& gUserSet){
   }
 }
 
-// Print on the standard output the information about the program
+/**
+ * \fn     void printInfo()
+ * \brief  Print on the standard output the information about the program.
+ */
 void printInfo(){
   cout << endl << endl;
   cout << "------ Settings ------" << endl;
@@ -240,7 +294,13 @@ void printInfo(){
   }
 }
 
-// Initalise every auxiliary task and return false if it fails
+/**
+ * \fn     bool initAuxiliaryTasks()
+ * \brief  Initalise every auxiliary task.
+ *
+ * \return true if all the auxiliary tasks were initialized succefully,
+ *         false if not.
+ */
 bool initAuxiliaryTasks(){
   if (((gFillBuffersTask =
             Bela_createAuxiliaryTask(&fillBuffers, 80, "fill-buffer")) == 0) ||
@@ -252,8 +312,17 @@ bool initAuxiliaryTasks(){
   return true;
 }
 
-/* One of the three primary bela functions used in this file
- * setup is used to initialise ressources and set up parameters
+/**
+ * \fn     bool setup(BelaContext *context, void *userData)
+ * \brief  Set up ressources and parameters.
+ *
+ * \param  context  The bela default settings
+ * \param  userData The parameters given by the user.
+ * \return true if all the auxiliary tasks were initialized succefully,
+ *         false if not.
+ *
+ * One of the three primary bela functions used in this file
+ * setup is used to Initialize ressources and set up parameters.
  */
 bool setup(BelaContext *context, void *userData) {
   gUserSet = *((ChSettings *)userData);
@@ -264,10 +333,17 @@ bool setup(BelaContext *context, void *userData) {
   return initAuxiliaryTasks();
 }
 
-/* The second primary Bela function used in this file
- * render is called recursively until it is told to stop by a signal7
- * We use this function to launch auxiliary task, executed by other threads,
- * and write the audio frames in the audio standar output
+/**
+ * \fn     void render(BelaContext *context, void *userData)
+ * \brief  Process loop for writing audio and schedule auxiliary tasks.
+ *
+ * \param  context  The bela default settings
+ * \param  userData The parameters given by the user.
+ *
+ * The second primary Bela function used in this file.
+ * The render function is called recursively until it is told to stop by a
+ * signal. We use this function to launch auxiliary task, executed by other
+ * threads, and write the audio frames in the audio standar output.
  */
 void render(BelaContext *context, void *userData) {
 
@@ -406,8 +482,15 @@ void render(BelaContext *context, void *userData) {
   }
 }
 
-/* Last one of the three primary Bela function used in this file
- * cleanup is used to free ressources as closing the connexion and deleting
+/**
+ * \fn     void cleanup(BelaContext *context, void *userData)
+ * \brief  Clean the ressources and close connection
+ *
+ * \param  context  The bela default settings
+ * \param  userData The parameters given by the user.
+ *
+ * Last one of the three primary Bela function used in this file
+ * cleanup is used to free ressources as closing the connection and deleting
  * every samples stored in the sampleStrem array
  */
 void cleanup(BelaContext *context, void *userData) {

@@ -1,6 +1,6 @@
 /**
- * @file TestMatrix.hpp
- * @author Lucas VIVAS
+ * \file TestMatrix.hpp
+ * \author Lucas VIVAS
 */
 
 #ifndef TEST_

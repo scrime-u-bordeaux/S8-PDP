@@ -46,39 +46,81 @@ The Bela software is distributed under the GNU Lesser General Public License
 #include "SampleData.h"
 #include "utilities.hpp"
 
+/**
+ * \namespace std
+ * Standard C++ library
+ */
 using namespace std;
 
-// Print an error message with the error returned by the dynamic library
-// function
+/**
+ * \def   DLERROR(dlsymerror)
+ * \brief Print an error message.
+ * \param the error returned by the dynamic library function.
+ */
 #define DLERROR(dlsymerror)                                                    \
   dlsymerror = dlerror();                                                      \
   if (dlsymerror) {                                                            \
     cout << "Error : " << dlsymerror << endl;                                  \
   }
 
-// Types which are used for processing functions
+/**
+ * \typedef RGB (*colorScale)(float coeff)
+ * \brief   defines a colorScale type as a function pointer
+ */
 typedef RGB (*colorScale)(float coeff);
+
+/**
+ * \typedef float (*coeffCorrel)(const vector<float>& s1,
+                                 const vector<float>& s2)
+ * \brief   defines a coeffCorrel type as a function pointer
+ */
 typedef float (*coeffCorrel)(const vector<float>& s1, const vector<float>& s2);
+
+/**
+ * \typedef Matrix<float> (*preProcess)(const Matrix<float>&)
+ * \brief   defines a preProcess type as a function pointer
+ */
 typedef Matrix<float> (*preProcess)(const Matrix<float>&);
+
+/**
+ * \typedef vector<float> (*mixLevel)(const Matrix<float>&)
+ * \brief   defines a mixLevel type as a function pointer
+ */
 typedef vector<float> (*mixLevel)(const Matrix<float>&);
 
-// Global variables used by getCurrentTime()
+/**
+ * \var gFirstSeconds      Number of seconds spent during execution
+ * \var gFirstMicroseconds Number of microseconds spent during execution
+ */
 static unsigned long long gFirstSeconds, gFirstMicroseconds;
 
 /*** Function called by main program ***/
 
-// Handle Ctrl-C by requesting that the audio rendering stop
+/**
+ * \fn    static void interrupt_handler(int var)
+ * \brief Handle Ctrl-C by requesting that the audio rendering stop.
+ *
+ * \param var Valeur du signal.
+ */
 static void interrupt_handler(int var) { gShouldStop = true; }
 
-// Print usage information
+/**
+ * \fn    static void usage(const char *processName)
+ * \brief Print usage information.
+ *
+ * \param processName Name of the process used wrong.
+ */
 static void usage(const char *processName) {
   cerr << "Usage: " << processName << " [options]" << endl;
   Bela_usage();
   cerr << "   --help [-h]:                Print this menu\n";
 }
 
-/* Function which returns the time since start of the program
- * in (fractional) seconds.
+/**
+ * \fn      static double getCurrentTime(void)
+ * \brief   Get the elapsed time since the start of the program.
+ *
+ * \return  elapsed time in (fractional) seconds.
  */
 static double getCurrentTime(void) {
   unsigned long long result;
@@ -89,7 +131,14 @@ static double getCurrentTime(void) {
   return (double)result / 1000000.0;
 }
 
-// Initialise the Parser by white the absolute path of the configuration file
+/**
+ * \fn      static double getCurrentTime(void)
+ * \brief   Initialize the Parser.
+ *
+ * \param   argc The number of arguments given to the program.
+ * \param   argv The list of arguments given to the program.
+ * \return  The Parser with the absolute path of the configuration file.
+ */
 static Parser initParser(int argc, char *argv[]){
   Parser config;
   if (argc <= 1){ // when the server is in the Bela
@@ -100,7 +149,10 @@ static Parser initParser(int argc, char *argv[]){
   return config;
 }
 
-// Initialise the handler with the absolute path of the dynamic library
+/**
+ * \fn    static double getCurrentTime(void)
+ * \brief Initialize the handler with the absolute path of the dynamic library.
+ */
 static void* initHandler(){
   void *handle;
   handle = dlopen("/root/Bela/projects/VisualImpro/process/libprocess.so",
@@ -112,7 +164,13 @@ static void* initHandler(){
   return handle;
 }
 
-// Initialise the ProcessMultiCorrel object with default functions
+/**
+ * \fn      static double getCurrentTime(void)
+ * \brief   Initialize the ProcessMultiCorrel object with default functions.
+ *
+ * \param   handle The handler opening and reading the dynamic library.
+ * \return  The initialized ProcessMultiCorrel object.
+ */
 static ProcessMultiCorrel* initProcessMultiCorrel(void* handle){
   // Varible used to print the error
   char *dlsymerror;
@@ -130,7 +188,15 @@ static ProcessMultiCorrel* initProcessMultiCorrel(void* handle){
   return new ProcessMultiCorrel(coeffFunc, colorFunc, preprocFunc, mixFunc);
 }
 
-// Get the connexion parameter from the parser and set it in the structure
+/**
+ * \fn     static void setupConnection(ChSettings& gChSettings,
+ *                                     const Parser& config)
+ * \brief  Set up connection parameters to the Connection object.
+ *
+ * \param  gChSettings The channel settings structure.
+ * \param  config The parser.
+ * \return The initialized ProcessMultiCorrel object.
+ */
 static void setupConnection(ChSettings& gChSettings, const Parser& config){
   Connection conn;
   int port = config.getPort();
@@ -141,8 +207,17 @@ static void setupConnection(ChSettings& gChSettings, const Parser& config){
   gChSettings.conn = conn;
 }
 
-/* Dynamic linking with libprocess.so to change the default functions of the
- * processing parameteters of the object ProcessMultiCorrel if needed
+/**
+ * \fn     static void parseProcessFunc(ChSettings& gChSettings,
+ *                                      const Parser& config,
+ *                                      ProcessMultiCorrel *p, void *handle)
+ * \brief  Parses the processing functions and set up the ProcessMultiCorrel
+ *         object with dynamic linking with libprocess.so.
+ *
+ * \param  gChSettings The channel settings structure.
+ * \param  config The parser.
+ * \param  p The ProcessMultiCorrel object containing the processing functions.
+ * \param  handle The handler of the dynamic library.
  */
 static void parseProcessFunc(ChSettings& gChSettings, const Parser& config,
 ProcessMultiCorrel *p, void *handle){
@@ -179,7 +254,15 @@ ProcessMultiCorrel *p, void *handle){
   gChSettings.proc = p;
 }
 
-// Set the length values to the structure by parsing the configuration file
+/**
+ * \fn     static void setupConnection(ChSettings& gChSettings,
+ *                                     const Parser& config)
+ * \brief  Set up connection parameters to the Connection object.
+ *
+ * \param  gChSettings The channel settings structure
+ * \param  config The parser
+ * \return The initialized ProcessMultiCorrel object.
+ */
 static void parseLengths(ChSettings& gChSettings, const Parser& config){
   int processlen = config.getProcessLength();
   int effectlen = config.getEffectLen();
@@ -188,7 +271,14 @@ static void parseLengths(ChSettings& gChSettings, const Parser& config){
   gChSettings.effect_len = effectlen;
 }
 
-// Set the track settings to the structure by parsing the configuration file
+/**
+ * \fn     static void parseTracks(ChSettings& gChSettings,
+ *                                 const Parser& config)
+ * \brief  Set the tracks and track ssettings.
+ *
+ * \param  gChSettings The channel settings structure
+ * \param  config The parser
+ */
 static void parseTracks(ChSettings& gChSettings, const Parser& config){
   list<string> files;
   files = config.getTracks();
@@ -222,8 +312,15 @@ static void parseTracks(ChSettings& gChSettings, const Parser& config){
   }
 }
 
-// Set the buffers in the structure with an effect for each instrument if we
-// choose to enable effects
+/**
+ * \fn     static void enableEffects(ChSettings& gChSettings,
+ *                                   const Parser& config)
+ * \brief  Set the buffers in the structure with an effect for each instrument
+ *         if we choose to enable effects.
+ *
+ * \param  gChSettings The channel settings structure
+ * \param  config The parser
+ */
 static void enableEffects(ChSettings& gChSettings, const Parser& config){
   if (config.getUseEffects() == true) {
     gChSettings.useeffects = true;
@@ -241,7 +338,16 @@ static void enableEffects(ChSettings& gChSettings, const Parser& config){
   }
 }
 
-// Set up everything relative to processing in our structure
+/**
+ * \fn     static void enableEffects(ChSettings& gChSettings,
+ *                                   const Parser& config)
+ * \brief Set up everything relative to processing in our structure.
+ *
+ * \param  gChSettings The channel settings structure.
+ * \param  config The parser.
+ * \param  p The ProcessMultiCorrel object containing the processing functions.
+ * \param  handle The handler of the dynamic library.
+ */
 static void setupProcess(ChSettings& gChSettings, const Parser& config,
 ProcessMultiCorrel *p, void *handle){
   parseProcessFunc(gChSettings, config, p, handle);
@@ -250,7 +356,12 @@ ProcessMultiCorrel *p, void *handle){
   enableEffects(gChSettings, config);
 }
 
-// Initialise the first line of our log file
+/**
+ * \fn     static void setupLogFile(const ChSettings& gChSettings)
+ * \brief  Initialize the first line of our log file.
+ *
+ * \param  gChSettings The settings structure.
+ */
 static void setupLogFile(const ChSettings& gChSettings){
   std::ofstream logfile;
   logfile.open("log/log");
@@ -260,7 +371,17 @@ static void setupLogFile(const ChSettings& gChSettings){
   logfile.close();
 }
 
-// Set up every basic settings in our structure
+/**
+ * \fn     static void setupSettings(ChSettings& gChSettings,
+ *                                   const Parser& config,
+ *                                   ProcessMultiCorrel *p, void *handle)
+ * \brief  Set up every basic settings in our structure.
+ *
+ * \param  gChSettings The channel settings structure.
+ * \param  config The parser.
+ * \param  p The ProcessMultiCorrel object containing the processing functions.
+ * \param  handle The handler of the dynamic library.
+ */
 static void setupSettings(ChSettings& gChSettings, const Parser& config,
 ProcessMultiCorrel *p, void *handle){
   cout << "************* VisualImpro ************" << endl;
@@ -269,7 +390,16 @@ ProcessMultiCorrel *p, void *handle){
   setupLogFile(gChSettings);
 }
 
-// Initialise the Bela settings with a BelaInitSettings object
+/**
+ * \fn     static BelaInitSettings initBelaSettings(ChSettings& gChSettings,
+ *                                                  const Parser& config,
+ *                                                  char* argv[])
+ * \brief  Initialize the Bela settings with a BelaInitSettings object.
+ *
+ * \param  gChSettings The channel settings structure.
+ * \param  config The parser.
+ * \param  argv The list of arguments given to the program.
+ */
 static BelaInitSettings initBelaSettings(ChSettings& gChSettings, const Parser&
 config, char* argv[]){
   // Standard audio settings
@@ -320,22 +450,30 @@ config, char* argv[]){
   return settings;
 }
 
-// Initialise and start audio which is calling the setup function in render.cpp
+/**
+ * \fn     static void initAndRun(ChSettings& gChSettings, const Parser& config,
+                                  char* argv[])
+ * \brief  Initialize the Bela settings with a BelaInitSettings object.
+ *
+ * \param  gChSettings The channel settings structure.
+ * \param  config The parser.
+ * \param  argv The list of arguments given to the program.
+ */
 static void initAndRun(ChSettings& gChSettings, const Parser& config,
 char* argv[]){
   BelaInitSettings settings;
   struct timeval tv;
 
-  // Initialise Bela settings
+  // Initialize Bela settings
   settings = initBelaSettings(gChSettings, config, argv);
 
-  // Initialise the PRU audio device
+  // Initialize the PRU audio device
   if (Bela_initAudio(&settings, &gChSettings) != 0) {
-    fprintf(stderr, "Error: unable to initialise audio\n");
+    fprintf(stderr, "Error: unable to Initialize audio\n");
     exit(EXIT_FAILURE);
   }
 
-  // Initialise time
+  // Initialize time
   gettimeofday(&tv, NULL);
   gFirstSeconds = tv.tv_sec;
   gFirstMicroseconds = tv.tv_usec;
@@ -357,7 +495,12 @@ char* argv[]){
   }
 }
 
-// The program reveive a signal to stop the execution so we stop and clean audio
+/**
+ * \fn     static void initAndRun(ChSettings& gChSettings, const Parser& config,
+                                  char* argv[])
+ * \brief  The program reveive a signal to stop the execution so we stop and
+ *         clean audio.
+ */
 static void stopAndCleanupAudio(){
   // Stop the audio device
   Bela_stopAudio();
@@ -366,7 +509,17 @@ static void stopAndCleanupAudio(){
   Bela_cleanupAudio();
 }
 
-// We delete any ressources we used in the main.cpp file
+/**
+ * \fn     static void freeAndClose(ChSettings& gChSettings,
+ *                                  const Parser& config,
+ *                                  ProcessMultiCorrel *p,void *handle)
+ * \brief  We delete any ressources we used in the main.cpp file.
+ *
+ * \param  gChSettings The channel settings structure.
+ * \param  config The parser.
+ * \param  p The ProcessMultiCorrel object containing the processing functions.
+ * \param  handle The handler of the dynamic library.
+ */
 static void freeAndClose(ChSettings& gChSettings, const Parser& config,
 ProcessMultiCorrel *p, void *handle){
   // Free other resources
@@ -391,8 +544,16 @@ ProcessMultiCorrel *p, void *handle){
   delete p;
 }
 
-// Declare and initialise variables then call every functions for the main
-// program
+/**
+ * \fn     static void freeAndClose(ChSettings& gChSettings,
+ *                                  const Parser& config,
+ *                                  ProcessMultiCorrel *p,void *handle)
+ * \brief  Declare and Initialize variables then call every functions for the
+ *         main program.
+ *
+ * \param   argc The number of arguments given to the program.
+ * \param   argv The list of arguments given to the program.
+ */
 static void launch(int argc, char *argv[]){
   ChSettings gChSettings;
   Parser config;
@@ -407,6 +568,13 @@ static void launch(int argc, char *argv[]){
   freeAndClose(gChSettings, config, p, handle);
 }
 
+/**
+ * \fn     int main(int argc, char *argv[])
+ * \brief  The main function of the program.
+ *
+ * \param   argc The number of arguments given to the program.
+ * \param   argv The list of arguments given to the program.
+ */
 int main(int argc, char *argv[]) {
   launch(argc, argv);
   return EXIT_SUCCESS;

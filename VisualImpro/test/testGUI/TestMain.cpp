@@ -1,7 +1,7 @@
 /**
- * @file TestMain.cpp
+ * \file TestMain.cpp
  * @brief Main test program.
- * @author Lucas VIVAS
+ * \author Lucas VIVAS
  */
 
 #include <iostream>
