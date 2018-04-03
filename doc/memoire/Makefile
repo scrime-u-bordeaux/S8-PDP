@@ -15,4 +15,4 @@ $(PDF): $(TEXFILE)
 .PHONY: clean
 
 clean:
-	rm -rf $(PDF) *.aux *.log *.toc *.out
+	rm -rf $(PDF) *.aux *.log *.toc *.out *.fls *.fdb_latexmk *.synctex.gz
