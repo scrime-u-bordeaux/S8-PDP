@@ -11,6 +11,6 @@ using namespace std;
 
 class GUISettingLayout {
 public:
-  virtual const QStringList getSetting() = 0;
+  virtual const QStringList getSettings() = 0;
 };
 #endif // DEF_GUISETTINGLAYOUT

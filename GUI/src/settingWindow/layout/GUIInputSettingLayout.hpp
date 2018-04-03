@@ -25,7 +25,7 @@ class GUIInputSettingLayout : public QGridLayout, public GUISettingLayout {
 public:
   GUIInputSettingLayout(QWidget *parent = 0);
   void addSetting(string name, int min, int max);
-  const QStringList getSetting();
+  const QStringList getSettings();
   ~GUIInputSettingLayout();
 
 private:
