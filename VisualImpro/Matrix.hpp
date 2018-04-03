@@ -1,9 +1,9 @@
 #ifndef DEF_MATRIX
 #define DEF_MATRIX
 
-#include "RGB.hpp"
-#include <vector>
 #include <string>
+#include <vector>
+#include "RGB.hpp"
 
 using namespace std;
 

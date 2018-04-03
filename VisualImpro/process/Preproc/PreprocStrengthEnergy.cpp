@@ -16,8 +16,6 @@
 
 #include "PreprocStrengthEnergy.hpp"
 
-using namespace std;
-
 /* Cuts f1 in blocks of length 'frame' and applies norm to get the energy of the
  *signal
  */

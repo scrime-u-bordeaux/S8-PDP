@@ -1,11 +1,11 @@
 #ifndef TEST_COEFFSCALAR
 #define TEST_COEFFSCALAR
 
-#include <vector>
 #include <cstdlib>
+#include <vector>
 
-#include <cppunit/TestFixture.h>
 #include <cppunit/extensions/HelperMacros.h>
+#include <cppunit/TestFixture.h>
 
 #include "../../process/Coeff/CoeffScalar.hpp"
 

@@ -1,15 +1,15 @@
 #ifndef TEST_MIXMAXCORRELATED
 #define TEST_MIXMAXCORRELATED
 
-#include <vector>
 #include <cmath>
+#include <vector>
 
-#include <cppunit/TestFixture.h>
 #include <cppunit/extensions/HelperMacros.h>
+#include <cppunit/TestFixture.h>
 
 #include "../../Matrix.hpp"
-#include "../../RGB.hpp"
 #include "../../process/Mix/MixMaxCorrelated.hpp"
+#include "../../RGB.hpp"
 
 class TestMixMaxCorrelated : public CppUnit::TestFixture {
 

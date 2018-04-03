@@ -1,11 +1,11 @@
 #ifndef TEST_MATRIX
 #define TEST_MATRIX
 
-#include <cppunit/TestFixture.h>
 #include <cppunit/extensions/HelperMacros.h>
+#include <cppunit/TestFixture.h>
 
-#include "../../RGB.hpp"
 #include "../../Matrix.hpp"
+#include "../../RGB.hpp"
 
 class TestMatrix : public CppUnit::TestFixture {
 

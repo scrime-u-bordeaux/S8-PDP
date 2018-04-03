@@ -1,8 +1,8 @@
 #ifndef ENERGYPROCESS_HPP
 #define ENERGYPROCESS_HPP
 
-#include <vector>
 #include <math.h>
+#include <vector>
 
 using namespace std;
 

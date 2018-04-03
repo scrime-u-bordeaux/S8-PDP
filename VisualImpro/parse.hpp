@@ -1,8 +1,8 @@
 #ifndef PARSE_HPP
 #define PARSE_HPP
 
-#include <string>
 #include <arpa/inet.h>
+#include <string>
 
 using namespace std;
 

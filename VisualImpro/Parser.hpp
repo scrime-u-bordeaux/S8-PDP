@@ -1,11 +1,11 @@
 #ifndef PARSER_HPP
 #define PARSER_HPP
 
-#include "parse.hpp"
-#include "ChannelsSettings.h"
-#include <list>
-#include <iostream>
 #include <fstream>
+#include <iostream>
+#include <list>
+#include "ChannelsSettings.h"
+#include "parse.hpp"
 
 using namespace std;
 

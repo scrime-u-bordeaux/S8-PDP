@@ -175,12 +175,12 @@ void GUIConfigFileSettingBuilder::endFile() {}
  * @param
  */
 string GUIConfigFileSettingBuilder::getResult() {
-  ofstream configFile;
-  configFile.open("config.cfg");
-  configFile << fileBuffer->str();
-  configFile.close();
-  return fileBuffer->str();
-}
+    ofstream configFile;
+    configFile.open ("../bin/config_qt.cfg");
+    configFile << fileBuffer->str();
+    configFile.close();
+    return fileBuffer->str();
+  }
 
 /**
  * @fn ~GUIConfigFileSettingBuilder()

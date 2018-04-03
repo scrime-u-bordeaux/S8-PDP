@@ -21,15 +21,15 @@ The Bela software is distributed under the GNU Lesser General Public License
 (LGPL 3.0), available here: https://www.gnu.org/licenses/lgpl-3.0.txt
 */
 
-#include <Bela.h>
 #include <cstdio>
 #include <cstdlib>
+#include <iostream>
+#include <list>
+#include <Bela.h>
 #include <dlfcn.h>
 #include <fcntl.h>
 #include <getopt.h>
-#include <iostream>
 #include <libgen.h>
-#include <list>
 #include <signal.h>
 #include <sndfile.h>
 #include <string.h>
@@ -39,12 +39,12 @@ The Bela software is distributed under the GNU Lesser General Public License
 #include <unistd.h>
 #include "ChannelsSettings.h"
 #include "Echo.hpp"
+#include "Matrix.hpp"
 #include "Parser.hpp"
 #include "ProcessMultiCorrel.hpp"
+#include "RGB.hpp"
 #include "SampleData.h"
 #include "utilities.hpp"
-#include "Matrix.hpp"
-#include "RGB.hpp"
 
 using namespace std;
 

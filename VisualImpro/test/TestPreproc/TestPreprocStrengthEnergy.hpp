@@ -1,11 +1,11 @@
 #ifndef TEST_PREPROCSTRENGTHENERGY
 #define TEST_PREPROCSTRENGTHENERGY
 
-#include <vector>
 #include <math.h>
+#include <vector>
 
-#include <cppunit/TestFixture.h>
 #include <cppunit/extensions/HelperMacros.h>
+#include <cppunit/TestFixture.h>
 
 #include "../../Matrix.hpp"
 #include "../../process/Preproc/PreprocStrengthEnergy.hpp"

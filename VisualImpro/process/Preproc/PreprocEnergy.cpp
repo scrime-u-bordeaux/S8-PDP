@@ -13,8 +13,6 @@
 
 #include "PreprocEnergy.hpp"
 
-using namespace std;
-
 vector<float> energyenvelope(const vector<float>& f1, int frame){ //cuts f1 in blocks of length 'frame' and applies norm to get the energy of the signal
   int size = f1.size();
   int nbframes = 0;

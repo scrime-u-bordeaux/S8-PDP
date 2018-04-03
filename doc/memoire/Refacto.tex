@@ -1,5 +1,95 @@
 \section{Refactoring et révision de l'interface graphique}
 
 \subsection{Révisions générales sur le code}
+\paragraph{}
+Nous avons rapidement établi que le refactoring du code existant
+faisait partie des besoins de notre projet. Dans cette partie, nous
+décrirons l'ensemble des travaux réalisés dans ce cadre.
+
+\subsubsection{Conventions de programmation et assistance au programmeur}
+\paragraph{}
+L'un des premiers reproches faits par l'équipe pédagogique à
+l'architecture héritée de Jérémy Lixandre est son manque de clarté ;
+le code livré était trop peu commenté pour permettre à un programmeur
+de comprendre ne serait-ce que le rôle de chaque classe sans rentrer
+en détail dans l'intégralité de leur code. Pour cette raison, nous
+avons ajouté des commentaires d'en-tête à chaque début de fichier
+\verb!.cpp! afin d'expliquer le rôle de chacun de ces fichiers.
+\paragraph{}
+Des commentaires ont également été ajoutés massivement au niveau des
+fonctions principales du programme. En effet, la compréhension du
+programme existant a considérablement ralenti le démarrage de notre
+implémentation sur ce projet, et a nécessité plusieurs recherches sur
+le web et la consultation conjointe de divers documents de sources
+différentes. Les deux fichiers ayant été les plus commentés de la
+sorte sont \verb!main.cpp! et \verb!render.cpp!.
+\paragraph{}
+La syntaxe du code a été remodelée de manière générale pour répondre à
+des conventions autant que pour faciliter sa compréhension : les
+"include" en début de fichiers ont été classés selon le type de
+fichiers inclus et par ordre alphabétique, la langue des commentaires
+a été uniformisée, les indentations, choix de placement de
+crochets/accolades etc. ont été uniformisés également pour une
+meilleure cohérence de la syntaxe, les variables ont été renommées
+pour être plus claires et éviter de heurter les conventions qui nous
+ont été enseignées.
+
+\subsubsection{Modification de l'architecture logicielle}
+\paragraph{}
+D'autres approches du code réalisées par Jérémy Lixandre nous
+semblaient maladroites. Afin de rendre une architecture répondant au
+mieux aux conventions de programmation vues en cours et qui soit la
+plus compréhensible et claire possible aux yeux d'un potentiel futur
+programmeur, nous avons apporté plusieurs révisions liées à
+l'organisation des fichiers.
+\begin{itemize}
+  \item Le code de \verb!main.cpp! a été entièrement révisé. En effet,
+    il contenait une unique fonction
+    \verb!main(int argc, char *argv[])! qui nous paraissait bien trop
+    dense. Afin de faciliter la compréhension du lecteur et de mieux
+    correspondre aux conventions, nous avons effectué un découpage
+    fonctionnel de cette fonction en plusieurs fonctions. La fonction
+    \verb!main! appelle une fonction
+    \verb!launch(int argc, char *argv[])! qui elle-même appelle
+    d'autres fonctions (lesquelles, parfois, en appellent elles-mêmes
+    de nouvelles).
+
+    %screen launch
+
+    \item Nous avons de même effectué un découpage fonctionnel sur la
+      fonction \verb!setup(BelaContext *context, void *userData)! du
+      fichier \verb!render.cpp!. Ce dernier, qui présentait tout comme
+      \verb!main.cpp! une organisation assez confuse, ne pouvait pas
+      cependant être remanié autant en profondeur que le code
+      précédemment abordé. En effet, la fonction principale du
+      fichier,
+      \verb!void render(BelaContext * context, void *userData)!, ne
+      pouvait être découpée de manière maintenable. En effet, elle
+      exécute une boucle de traitement audio, en créant des taches
+      auxiliaires exécutées par d'autres threads pour garantir un
+      traitement rapide (qui doit être au minimum plus rapide que la
+      vitesse de lecture des pistes), et il n'était pas possible de la
+      découper sans créer de conflits sur les variables enregistrant
+      le nombre de tours de boucle ou les variables contenant les
+      signaux audio par exemple.
+
+      %screen setup
+
+      \item \`{A} l'intérieur du dossier \verb!process!, les
+        différents fichiers de traitement ont été classés par
+        fonctions en quatre dossiers \verb!Coeff!, \verb!Color!,
+        \verb!Preproc! et \verb!Mix!. \`{A} l'intérieur du dossier
+        test, les fichiers que nous avons implémenté pour tester les
+        différentes fonctions du programme ont été classés de la même
+        manière (Jérémy Lixandre n'avait pour sa part pas implémenté
+        de fichiers de test).
+
+\end{itemize}
+  - Séparation des dossiers généraux : ___PAS ENCORE ETABLI A 100%___ mais genre
+  dans l'idée il faudra découper les fichiers comme le prof l'avait dit genre
+  avec un dossier src contenant les fichiers source, un dossiers include avec
+  les header (.hpp), un dossier process qu'on a déjà, un dossier test qu'on a
+  déjà aussi, mais à voir comment les organiser et il faudra adapter les
+  makefiles pour ça aussi.
 
 \subsection{Les changements apportés à l'interface graphique}
