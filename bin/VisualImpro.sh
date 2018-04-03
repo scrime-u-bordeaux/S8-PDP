@@ -51,10 +51,10 @@ function qt_display(){
     sleep 2
     echo "Waiting for the configuration file to be created..."
   done
-  awk -F" " -v wavpath="$WAVPATH" '$1 ==  "FILE" {system("scp "$2" root@192.168.7.2:"wavpath"")}' config_qt.cfg
+  #awk -F" " -v wavpath="$WAVPATH" '$1 ==  "FILE" {system("scp "$2" root@192.168.7.2:"wavpath"")}' config_qt.cfg
   path=($(awk -F" " '$1=="FILE" {print $2};' config_qt.cfg))
   change_path $path
-  awk -F" " -v path=$path'$1=="FILE" {}'
+  awk -F" " -v path="${path[*]}" '$1=="FILE" {gsub($2, path[$NR])};1' $CONFIGQTFILE > $CONFIGTMPFILE
 }
 
 function default_display(){
