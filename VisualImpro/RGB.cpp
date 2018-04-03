@@ -22,6 +22,16 @@ string hexa[] = {"0","1","2","3","4","5","6","7","8","9","A","B","C","D","E","F"
 RGB::RGB(int red, int green, int blue)
     : _red(red), _green(green), _blue(blue) {}
 
+RGB::RGB(string hexaCode){
+  int start = 1;
+  _red = std::stoi(str.substr(start, 2), nullptr, 16);
+  _blue = std::stoi(str.substr(start + 2, 2), nullptr, 16);
+  _green = std::stoi(str.substr(start + 4, 2), nullptr, 16);
+   cout << _red <<endl;
+   cout << _green <<endl;
+   cout << _blue <<endl;
+}
+
 // Getters and setters for each component of the RGB triplet
 int RGB::getRed() const { return _red; }
 int RGB::getGreen() const { return _green; }

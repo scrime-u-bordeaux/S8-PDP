@@ -12,9 +12,10 @@
  *
  * @param sizeMatrix Size of the matrix.
  */
-GUIWindow::GUIWindow(int sizeMatrix, QWidget *parent) : QMainWindow(parent) {
+GUIWindow::GUIWindow(int sizeMatrix, QWidget *parent) : QMainWindow(parent),
+ view(new GUIImageMatrix(sizeMatrix, this)),
+ server(new GUITCPServer()) {
   setWindowTitle("Matrice");
-  view = new GUIImageMatrix(sizeMatrix, this);
   setCentralWidget(view);
   resize((SQUARE_SIZE * sizeMatrix)+2, (SQUARE_SIZE * sizeMatrix)+2);
 }

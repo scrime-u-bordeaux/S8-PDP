@@ -7,11 +7,13 @@
 #ifndef DEF_GUIWINDOW
 #define DEF_GUIWINDOW
 
-#include "GUIImageMatrix.hpp"
-#include "RGB.hpp"
 #include <QWidget>
 #include <QtGui>
 #include <vector>
+
+#include "RGB.hpp"
+#include "GUIImageMatrix.hpp"
+#include "GUITCPServer.hpp"
 
 using namespace std;
 
@@ -24,6 +26,7 @@ public:
 
 private:
   GUIImageMatrix *view;
+  GUITCPServer *server;
 
 };
 #endif // DEF_GUIWINDOW

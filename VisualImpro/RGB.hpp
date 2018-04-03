@@ -9,6 +9,7 @@ using namespace std;
 class RGB {
 public:
   RGB(int red, int green, int blue);
+  RGB(string hexaCode);
   int getRed() const;
   int getGreen() const;
   int getBlue() const;
