@@ -54,7 +54,25 @@ l'organisation des fichiers.
     d'autres fonctions (lesquelles, parfois, en appellent elles-mêmes
     de nouvelles).
 
-    %screen launch
+    \begin{lstlistings}
+      static void launch(int argc, char *argv[]){
+        ChSettings gChSettings;
+        Parser config;
+        void *handle;
+        ProcessMultiCorrel *p;
+        config = initParser(argc, argv);
+        handle = initHandler();
+        p = initProcessMultiCorrel(handle);
+        setupSettings(gChSettings, config, p, handle);
+        initAndRun(gChSettings, config, argv);
+        stopAndCleanupAudio();
+        freeAndClose(gChSettings, config, p, handle);
+      }
+    \end{lstlistings}
+
+    \begin{center}
+      \textit{Ci-dessus, le code de la fonction launch}
+    \end{center}    
 
     \item Nous avons de même effectué un découpage fonctionnel sur la
       fonction \verb!setup(BelaContext *context, void *userData)! du
@@ -73,13 +91,26 @@ l'organisation des fichiers.
       le nombre de tours de boucle ou les variables contenant les
       signaux audio par exemple.
 
-      %screen setup
+      \begin{lstlistings}
+      bool setup(BelaContext *context, void *userData) {
+        gUserSet = *((ChSettings *)userData);
+        initUserSet(gUserSet);
+        initBuffers();
+        initSampleStreams(gUserSet);
+        printInfo();
+        return initAuxiliaryTasks();
+      }
+    \end{lstlistings}
+
+    \begin{center}
+      \textit{Ci-dessus, le code de la fonction setup}
+    \end{center}    
 
       \item \`{A} l'intérieur du dossier \verb!process!, les
         différents fichiers de traitement ont été classés par
         fonctions en quatre dossiers \verb!Coeff!, \verb!Color!,
         \verb!Preproc! et \verb!Mix!. \`{A} l'intérieur du dossier
-        test, les fichiers que nous avons implémenté pour tester les
+        \verb!test!, les fichiers que nous avons implémenté pour tester les
         différentes fonctions du programme ont été classés de la même
         manière (Jérémy Lixandre n'avait pour sa part pas implémenté
         de fichiers de test).
