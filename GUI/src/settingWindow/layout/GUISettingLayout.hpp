@@ -1,6 +1,7 @@
 /**
  * @file GUISettingLayout.hpp
- * @author Lucas VIVAS
+ * @author  Alexandre CASANOVA--FRANGER, Gauthier LARMARQUE, Paul SIMORRE,
+*            Lucas VIVAS
 */
 
 #ifndef DEF_GUISETTINGLAYOUT
@@ -10,6 +11,6 @@ using namespace std;
 
 class GUISettingLayout {
 public:
-  virtual const QStringList getSetting() = 0;
+  virtual const QStringList getSettings() = 0;
 };
 #endif // DEF_GUISETTINGLAYOUT

@@ -1,6 +1,7 @@
 /**
- * \file TestMatrix.hpp
- * \author Lucas VIVAS
+ * @file TestMatrix.hpp
+ * @author  Alexandre CASANOVA--FRANGER, Gauthier LARMARQUE, Paul SIMORRE,
+*            Lucas VIVAS
 */
 
 #ifndef TEST_

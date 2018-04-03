@@ -1,6 +1,7 @@
 /**
  * @file GUIConfigFileSettingBuilder.hpp
- * @author Lucas VIVAS
+ * @author  Alexandre CASANOVA--FRANGER, Gauthier LARMARQUE, Paul SIMORRE,
+*            Lucas VIVAS
 */
 
 #ifndef DEF_GUICONFIGFILESETTINGBUILDER
@@ -30,7 +31,7 @@ public:
     void addPreProcFunction(string functionName);
     void addMixFunction(string functionName);
     void endFile();
-    string getResult();
+    void getResult();
     ~GUIConfigFileSettingBuilder();
 
 private:

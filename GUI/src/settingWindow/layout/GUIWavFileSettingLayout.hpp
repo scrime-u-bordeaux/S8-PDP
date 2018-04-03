@@ -1,6 +1,7 @@
 /**
  * @file GUIWavFileSettingLayout.hpp
- * @author Lucas VIVAS
+ * @author  Alexandre CASANOVA--FRANGER, Gauthier LARMARQUE, Paul SIMORRE,
+*            Lucas VIVAS
 */
 
 #ifndef DEF_GUIWAVFILESETTINGLAYOUT
@@ -25,7 +26,7 @@ class GUIWavFileSettingLayout : public QGridLayout, public GUISettingLayout {
   Q_OBJECT
 public:
   GUIWavFileSettingLayout(QWidget *parent = 0);
-  const QStringList getSetting();
+  const QStringList getSettings();
   ~GUIWavFileSettingLayout();
 
 private slots:

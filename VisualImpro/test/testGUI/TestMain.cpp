@@ -1,7 +1,8 @@
 /**
  * \file TestMain.cpp
  * @brief Main test program.
- * \author Lucas VIVAS
+ * @author  Alexandre CASANOVA--FRANGER, Gauthier LARMARQUE, Paul SIMORRE,
+*            Lucas VIVAS
  */
 
 #include <iostream>

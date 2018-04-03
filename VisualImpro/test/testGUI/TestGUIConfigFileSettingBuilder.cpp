@@ -1,6 +1,7 @@
 /**
- * \file TestGUIConfigFileSettingBuilder.cpp
- * \author Lucas VIVAS
+ * @file TestGUIConfigFileSettingBuilder.cpp
+ * @author  Alexandre CASANOVA--FRANGER, Gauthier LARMARQUE, Paul SIMORRE,
+*            Lucas VIVAS
 */
 
 #include "TestGUIConfigFileSettingBuilder.hpp"

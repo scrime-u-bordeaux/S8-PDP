@@ -1,6 +1,7 @@
 /**
  * @file GUIFileSettingBuilder.hpp
- * @author Lucas VIVAS
+ * @author  Alexandre CASANOVA--FRANGER, Gauthier LARMARQUE, Paul SIMORRE,
+*            Lucas VIVAS
 */
 
 #ifndef DEF_GUIFILESETTINGBUILDER

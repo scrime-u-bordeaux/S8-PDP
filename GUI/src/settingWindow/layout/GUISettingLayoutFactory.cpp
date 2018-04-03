@@ -1,18 +1,40 @@
 /**
  * @file GUISettingLayoutFactory.cpp
- * @author Lucas VIVAS
+ * @author  Alexandre CASANOVA--FRANGER, Gauthier LARMARQUE, Paul SIMORRE,
+ *            Lucas VIVAS
+ *  @date   March 2018
 */
 
 #include "GUISettingLayoutFactory.hpp"
 
-GUIInputSettingLayout* GUISettingLayoutFactory::createGUIInputSettingLayout(){
-    return new GUIInputSettingLayout();
+/**
+ * @fn
+ * @brief
+ *
+ * @param var description
+ */
+GUIInputSettingLayout *GUISettingLayoutFactory::createGUIInputSettingLayout() {
+  return new GUIInputSettingLayout();
 }
 
-GUIProcessSettingLayout* GUISettingLayoutFactory::createGUIProcessSettingLayout(){
-    return new GUIProcessSettingLayout();
+/**
+ * @fn
+ * @brief
+ *
+ * @param var description
+ */
+GUIProcessSettingLayout *
+GUISettingLayoutFactory::createGUIProcessSettingLayout() {
+  return new GUIProcessSettingLayout();
 }
 
-GUIWavFileSettingLayout* GUISettingLayoutFactory::createGUIWavFileSettingLayout(){
-    return new GUIWavFileSettingLayout();
+/**
+ * @fn
+ * @brief
+ *
+ * @param var description
+ */
+GUIWavFileSettingLayout *
+GUISettingLayoutFactory::createGUIWavFileSettingLayout() {
+  return new GUIWavFileSettingLayout();
 }

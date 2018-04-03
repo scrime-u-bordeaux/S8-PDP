@@ -1,13 +1,13 @@
 /**
  * @file GUIWavFileSettingLayout.cpp
- * @author Lucas VIVAS
+ * @author  Alexandre CASANOVA--FRANGER, Gauthier LARMARQUE, Paul SIMORRE,
+*            Lucas VIVAS
 */
 
 #include "GUIWavFileSettingLayout.hpp"
 
 #include <QString>
 #include <dirent.h>
-#include <iostream>
 #include <string>
 
 GUIWavFileSettingLayout::GUIWavFileSettingLayout(QWidget *parent) : QGridLayout(parent) {
@@ -40,7 +40,7 @@ GUIWavFileSettingLayout::GUIWavFileSettingLayout(QWidget *parent) : QGridLayout(
   this->addWidget(listView, 0, 1);
 }
 
-const QStringList GUIWavFileSettingLayout::getSetting() { return *nameFile; }
+const QStringList GUIWavFileSettingLayout::getSettings() { return *nameFile; }
 
 void GUIWavFileSettingLayout::loadWavFile() {
   QString filename = fileDialog->getOpenFileName(NULL, "Choisir un fichier wav",

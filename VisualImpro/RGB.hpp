@@ -22,6 +22,8 @@ public:
    */
   RGB(int red, int green, int blue);
 
+  RGB::RGB(string hexaCode);
+  
   /**
    * \fn     int getRed() const
    * \brief  Get the value of the red component.

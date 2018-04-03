@@ -1,6 +1,7 @@
 /**
  * @file GUIWindow.cpp
- * @author Lucas VIVAS
+ * @author  Alexandre CASANOVA--FRANGER, Gauthier LARMARQUE, Paul SIMORRE,
+*            Lucas VIVAS
 */
 
 #include "GUIWindow.hpp"
@@ -11,11 +12,13 @@
  *
  * @param sizeMatrix Size of the matrix.
  */
-GUIWindow::GUIWindow(int sizeMatrix, QWidget *parent) : QMainWindow(parent) {
+GUIWindow::GUIWindow(int sizeMatrix, QWidget *parent) : QMainWindow(parent),
+ view(new GUIImageMatrix(sizeMatrix, this)),
+ server(new GUITCPServer()) {
   setWindowTitle("Matrice");
-  view = new GUIImageMatrix(sizeMatrix, this);
   setCentralWidget(view);
   resize((SQUARE_SIZE * sizeMatrix)+2, (SQUARE_SIZE * sizeMatrix)+2);
+  connect(server, SIGNAL(sendToGUI(vector<vector<RGB>>)), this, SLOT(updateColor(vector<vector<RGB>>)));
 }
 
 void GUIWindow::updateColor(const vector<vector<RGB> >& matrixRGB){
