@@ -34,7 +34,22 @@ appelée dans le fichier \verb!main.cpp!, nous avons dû ajouter
 l'analyse de la fonction de mixage sur le modèle des analyses des
 trois autres fonctions de \textit{processing}.
 \paragraph{}
-
+L'architecture de Bela a été conçue pour permettre la synthèse d'un
+retour sonore dans le corps de la fonction
+\verb!void render(BelaContext *context, void *userData)! du fichier
+éponyme. Grâce au code implémenté par notre prédécesseur au sein de
+cette fonction, Bela peut synthétiser un retour sonore modifié par
+notre fonction de mixage.
+\paragraph{}
+Dans le fichier \verb!render.cpp!, la fonction
+\verb!void processBuffer()! est utilisée comme tâche auxiliaire de la
+boucle de traitement principale. Nous avons déclaré un vecteur
+\verb!gMeanCorrel! dans \verb!render.cpp! ; initialisé avec une valeur
+de 1 pour tous les indices, il prend la valeur que retourne la
+fonction de mixage à l'intérieur du code de la fonction
+\verb!void ProcessMultiCorrel::process(const Matrix<float>& buffer, vector<float>& meanCorrelations, Connection conn)!
+que nous avons modifiée et qui est appelée dans \verb!processBuffer!
+de \verb!render.cpp!.
 
 \subsection{L'interface de configuration utilisateur}
 
