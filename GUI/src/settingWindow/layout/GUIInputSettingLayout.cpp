@@ -36,9 +36,10 @@ void GUIInputSettingLayout::addSetting(string name, int min, int max){
   allSlider->push_back(new QSlider(Qt::Horizontal));
   allSpinBox->push_back(new QSpinBox());
 
+  /*set the minimum and maximum of the slider*/
   allSlider->back()->setMinimum(min);
   allSlider->back()->setMaximum(max);
-
+  /*set the minimum and maximum of the box*/
   allSpinBox->back()->setMinimum(min);
   allSpinBox->back()->setMaximum(max);
 

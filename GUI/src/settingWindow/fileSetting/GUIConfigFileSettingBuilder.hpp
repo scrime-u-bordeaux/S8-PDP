@@ -31,7 +31,7 @@ public:
     void addPreProcFunction(string functionName);
     void addMixFunction(string functionName);
     void endFile();
-    string getResult();
+    void getResult();
     ~GUIConfigFileSettingBuilder();
 
 private:

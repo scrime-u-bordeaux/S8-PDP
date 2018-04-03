@@ -169,18 +169,17 @@ void GUIConfigFileSettingBuilder::endFile() {}
 
 /**
  * @fn getResult()
- * @brief print all the setting in a cfg file and return the settings in string
+ * @brief print all the setting in a .cfg file.
  * format.
  *
  * @param
  */
-string GUIConfigFileSettingBuilder::getResult() {
-    ofstream configFile;
-    configFile.open ("../bin/config_qt.cfg");
-    configFile << fileBuffer->str();
-    configFile.close();
-    return fileBuffer->str();
-  }
+void GUIConfigFileSettingBuilder::getResult() {
+  ofstream configFile;
+  configFile.open("../bin/config_qt.cfg");
+  configFile << fileBuffer->str();
+  configFile.close();
+}
 
 /**
  * @fn ~GUIConfigFileSettingBuilder()

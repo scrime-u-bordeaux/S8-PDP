@@ -83,6 +83,7 @@ void GUISettingWindow::buildConfigFile() {
   builder.addColorFunction(processList.at(2).toStdString());
   builder.addMixFunction(processList.at(3).toStdString());
   builder.endFile();
+  builder.getResult();
 }
 
 int GUISettingWindow::getNumInput() {
