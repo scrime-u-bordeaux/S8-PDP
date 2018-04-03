@@ -25,11 +25,21 @@ function cleanup(){
   mkdir $DATE
   cd ..
   scp root@192.168.7.2:/root/Bela/projects/VisualImpro/log/log logs/$DATE
-  rm $CONFIGTMPFILE
-  rm $CONFIGQTFILE
+  rm $CONFIGTMPFILE 
   echo Data saved in logs/$DATE
   echo "Don't forget to close the Firefox window."
   exit 1
+}
+
+function change_path(){
+  for ((i=0; i<${#path[@]}; i++));
+  do
+    path[$i]=$(echo ${path[$i]} | awk -F"/" -v wavpath=$WAVPATH '$0=""wavpath""$NF""')
+  done
+  for i in "${path[@]}"
+  do  
+    echo $i
+  done
 }
 
 function qt_display(){
@@ -37,18 +47,14 @@ function qt_display(){
   cd ../GUI/
   ./installGUI.sh
   ./bin/GUI &
-  # while : ; do
-  #   [[ -f $CONFIGQTFILE ]] && break
-  #   echo "Waiting for the configuration file to be created..."
-  #   sleep 2
-  # done
-
-  # while ! test -f $CONFIGQTFILE; do
-  #   sleep 5
-  #   echo "Waiting for the configuration file to be created..."
-  # done
-  getCurrentDateTime
-  echo $DATE
+  while ! test -f $CONFIGQTFILE; do
+    sleep 2
+    echo "Waiting for the configuration file to be created..."
+  done
+  awk -F" " -v wavpath="$WAVPATH" '$1 ==  "FILE" {system("scp "$2" root@192.168.7.2:"wavpath"")}' config_qt.cfg
+  path=($(awk -F" " '$1=="FILE" {print $2};' config_qt.cfg))
+  change_path $path
+  awk -F" " -v path=$path'$1=="FILE" {}'
 }
 
 function default_display(){
