@@ -1,13 +1,13 @@
 /**
  * @file GUIWavFileSettingLayout.cpp
- * @author Lucas VIVAS
+ * @author  Alexandre CASANOVA--FRANGER, Gauthier LARMARQUE, Paul SIMORRE,
+*            Lucas VIVAS
 */
 
 #include "GUIWavFileSettingLayout.hpp"
 
 #include <QString>
 #include <dirent.h>
-#include <iostream>
 #include <string>
 
 GUIWavFileSettingLayout::GUIWavFileSettingLayout(QWidget *parent) : QGridLayout(parent) {

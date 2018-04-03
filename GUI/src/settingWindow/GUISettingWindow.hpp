@@ -1,6 +1,7 @@
 /**
  * @file GUISettingWindow.hpp
- * @author Lucas VIVAS
+ * @author  Alexandre CASANOVA--FRANGER, Gauthier LARMARQUE, Paul SIMORRE,
+*            Lucas VIVAS
 */
 
 #ifndef DEF_GUISETTINGWINDOW

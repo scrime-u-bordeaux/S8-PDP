@@ -1,6 +1,7 @@
 /**
  * @file GUIImageMatrix.cpp
- * @author Lucas VIVAS
+ * @author  Alexandre CASANOVA--FRANGER, Gauthier LARMARQUE, Paul SIMORRE,
+*            Lucas VIVAS
 */
 #include "GUIImageMatrix.hpp"
 
