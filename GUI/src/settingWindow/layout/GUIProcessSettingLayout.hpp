@@ -22,7 +22,7 @@ class GUIProcessSettingLayout : public QFormLayout, public GUISettingLayout {
 public:
   GUIProcessSettingLayout(QWidget *parent = 0);
   void addSetting(string name);
-  const QStringList getSetting();
+  const QStringList getSettings();
   ~GUIProcessSettingLayout();
 
 private:
