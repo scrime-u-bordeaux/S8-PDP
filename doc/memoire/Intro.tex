@@ -33,22 +33,35 @@ qualité de leur accord porte un nom : c'est la corrélation.
 Au sens premier et basique du terme, la corrélation est le rapport
 réciproque entre deux éléments. En statistiques, on parle souvent de
 corrélation pour mesurer l'intensité de la liaison existant entre deux
-variables. Dans le cadre de l'étude de signaux sonores, les
-traductions graphiques de ces signaux par transformée de Fourier
-peuvent jouer le rôle des courbes dont on mesure la corrélation. Tout
-au long du déroulement de notre projet, nous travaillons uniquement
-sur des fonctions de corrélation portant sur la comparaison des
-signaux graphiques obtenus à partir des pistes sonores.
-
+variables.
+Dans le cadre de l'étude de signaux sonores, nous faisons le calcul de
+corrélation entre deux signaux. Cette corrélation cherche à mesurer
+la similarité entre ces deux signaux suivant
+différents critères, par exemple la longueur d'onde.
 \paragraph{}
 En musique, il n'existe pas une mais un nombre indéfini de "fonctions
 de corrélation" potentiellement existantes, dont la complexité
-varie. "Comprendre" la corrélation et l'improvisation, dans le cadre
-de ce projet, c'est aussi trouver, inventer la fonction de corrélation
-qui répond le mieux aux besoins d'un groupe d'improvisateurs. Une
-bonne fonction de corrélation, dans ce cadre spécifique, est une
-fonction qui fait en sorte qu'un groupe de musiciens joue un morceau
-plus satisfaisant lorsque ses membres sont davantage corrélés.
+varie.
+Un exemple de fontion de corrélation assez parlant serait une corrélation
+rythmique qui comparerait le tempo de chacun des deux signaux.
+
+
+% les
+% traductions graphiques de ces signaux par transformée de Fourier
+% peuvent jouer le rôle des courbes dont on mesure la corrélation. Tout
+% au long du déroulement de notre projet, nous travaillons uniquement
+% sur des fonctions de corrélation portant sur la comparaison des
+% signaux graphiques obtenus à partir des pistes sonores.
+
+% \paragraph{}
+% En musique, il n'existe pas une mais un nombre indéfini de "fonctions
+% de corrélation" potentiellement existantes, dont la complexité
+% varie. "Comprendre" la corrélation et l'improvisation, dans le cadre
+% de ce projet, c'est aussi trouver, inventer la fonction de corrélation
+% qui répond le mieux aux besoins d'un groupe d'improvisateurs. Une
+% bonne fonction de corrélation, dans ce cadre spécifique, est une
+% fonction qui fait en sorte qu'un groupe de musiciens joue un morceau
+% plus satisfaisant lorsque ses membres sont davantage corrélés.
 
 \subsection{L'existant}
 \paragraph{}
@@ -67,13 +80,13 @@ programme, prenant en entrées des pistes sonores, retourne une matrice
 graphique prenant les mêmes pistes en abscisses et en ordonnées et
 retournant pour chaque case une couleur permettant d'évaluer la
 corrélation existant entre les deux pistes correspondantes grâce à un
-code précis.
+code couleur précis.
 
 \begin{figure}[h]
-	\centering
-	\includegraphics[scale=0.5]{matriceenseirb.png}
-	\caption{Capture d'écran du projet mené par les étudiants de l'ENSEIRB}
-	\label{matrice-enseirb}
+ \centering
+ \includegraphics[scale=0.5]{matriceenseirb.png}
+ \caption{Capture d'écran du projet mené par les étudiants de l'ENSEIRB}
+ \label{matrice-enseirb}
 \end{figure}
 
 \paragraph{}
@@ -91,14 +104,21 @@ systématiquement symétrique.
 \subsubsection{Le système embarqué BELA}
 \paragraph{}
 Avant de confier la suite du projet à d'autres étudiants, nos clients
-ont choisi de le rendre plus fonctionnel grâce à l'emploi d'un système
+ont choisi de changer de support et sont donc passé à un système
 embarqué particulier : BELA.
+% Avant de confier la suite du projet à d'autres étudiants, nos clients
+% ont choisi de le rendre plus fonctionnel grâce à l'emploi d'un système
+% embarqué particulier : BELA.
+
+\paragraph{}
+Ce changement de support est dû au fait que ce système est largement plus
+portable par rapport à un ordinateur ce qui est un avantage, mais surtout
 
 \begin{figure}[h]
-	\centering
-	\includegraphics[scale=0.2]{bela.png}
-	\caption{Capture de la documentation proposée par le site officiel de Bela}
-	\label{bela}
+ \centering
+ \includegraphics[scale=0.2]{bela.png}
+ \caption{Capture de la documentation proposée par le site officiel de Bela}
+ \label{bela}
 \end{figure}
 
 \paragraph{}
@@ -168,23 +188,23 @@ afin de permettre à un utilisateur de choisir la fonction de
 pré-traitement/calcul de coefficient de
 corrélation/traduction en couleur de son choix.
 \begin{itemize}
-	\item La fonction \verb!Preproc! prend en entrée une matrice de
-	      vecteurs représentant les signaux d'entrée. Elle retourne une
-	      nouvelle matrice de vecteurs, qui pourra présenter des
-	      échantillons de plus petite taille que la matrice d'entrée par
-	      exemple, dans un souci d'optimisation des performances du
-	      programme.
-	\item La fonction \verb!Coeff! prend en entrée deux vecteurs
-	      (appartenant à la matrice de sortie précédemment abordée) et
-	      retourne une valeur comprise entre 0 et 1 et correspondant à la
-	      corrélation établie entre les deux signaux traités. On peut
-	      imaginer une infinité potentielle de calculs pour donner lieu à
-	      une corrélation dans le cadre de ce programme ; il s'agit de
-	      calculs relativement arbitraires qui seront décrits plus en détail
-	      dans la suite de ce mémoire.
-	\item La fonction \verb!Color! prend le coefficient précédemment obtenu
-	      pour entrée et retourne un triplet RGB ; il s'agit d'un objet C++
-	      défini par l'une des classes du programme.
+ \item La fonction \verb!Preproc! prend en entrée une matrice de
+       vecteurs représentant les signaux d'entrée. Elle retourne une
+       nouvelle matrice de vecteurs, qui pourra présenter des
+       échantillons de plus petite taille que la matrice d'entrée par
+       exemple, dans un souci d'optimisation des performances du
+       programme.
+ \item La fonction \verb!Coeff! prend en entrée deux vecteurs
+       (appartenant à la matrice de sortie précédemment abordée) et
+       retourne une valeur comprise entre 0 et 1 et correspondant à la
+       corrélation établie entre les deux signaux traités. On peut
+       imaginer une infinité potentielle de calculs pour donner lieu à
+       une corrélation dans le cadre de ce programme ; il s'agit de
+       calculs relativement arbitraires qui seront décrits plus en détail
+       dans la suite de ce mémoire.
+ \item La fonction \verb!Color! prend le coefficient précédemment obtenu
+       pour entrée et retourne un triplet RGB ; il s'agit d'un objet C++
+       défini par l'une des classes du programme.
 \end{itemize}
 Ces trois fichiers sont répertoriés dans un dossier \verb!process!. Un
 fichier de configuration permet d'écrire quel fichier choisir pour
@@ -194,13 +214,13 @@ chacune des trois fonctions.
 Le seul fichier imposé par le framework Bela se nomme \verb!render.cpp!. Il
 contient lui-même trois fonctions :
 \begin{itemize}
-	\item La fonction \verb!setup()! initialise et prépare les ressources de
-	      traitement du son.
-	\item La fonction \verb!render()! s'appelle de manière régulière et répétée
-	      tout au long du processus audio. Elle a pour arguments des buffers
-	      contenant les échantillons à traiter.
-	\item La fonction \verb!cleanup()! est appelée à la fin du processus pour
-	      libérer les ressources allouées et mettre fin à certaines tâches.
+ \item La fonction \verb!setup()! initialise et prépare les ressources de
+       traitement du son.
+ \item La fonction \verb!render()! s'appelle de manière régulière et répétée
+       tout au long du processus audio. Elle a pour arguments des buffers
+       contenant les échantillons à traiter.
+ \item La fonction \verb!cleanup()! est appelée à la fin du processus pour
+       libérer les ressources allouées et mettre fin à certaines tâches.
 \end{itemize}
 
 \paragraph{}
@@ -239,10 +259,10 @@ si la configuration choisie leur convient et produit un résultat
 agréable à l'oreille dans leur façon de jouer.
 
 \begin{figure}[h]
-	\centering
-	\includegraphics[scale=0.5]{schemaglobal.png}
-	\verb!\caption{Schéma global du dispositif de VisualImpro}!
-	\label{schéma global}
+ \centering
+ \includegraphics[scale=0.5]{schemaglobal.png}
+ \verb!\caption{Schéma global du dispositif de VisualImpro}!
+ \label{schéma global}
 \end{figure}
 
 \paragraph{}

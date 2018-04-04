@@ -18,11 +18,7 @@ GUIWindow::GUIWindow(int sizeMatrix, QWidget *parent) : QMainWindow(parent),
   setWindowTitle("Matrice");
   setCentralWidget(view);
   resize((SQUARE_SIZE * sizeMatrix)+2, (SQUARE_SIZE * sizeMatrix)+2);
-  connect(server, SIGNAL(sendToGUI(vector<vector<RGB>>)), this, SLOT(updateColor(vector<vector<RGB>>)));
-}
-
-void GUIWindow::updateColor(const vector<vector<RGB> >& matrixRGB){
-  view->updateColor(matrixRGB);
+  connect(server, SIGNAL(sendToGUI(vector<vector<RGB>>)), view, SLOT(updateColor(vector<vector<RGB>>)));
 }
 
 GUIWindow::~GUIWindow() {

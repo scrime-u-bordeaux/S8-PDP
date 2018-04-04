@@ -22,8 +22,6 @@ class GUIWindow : public QMainWindow {
 public:
   GUIWindow(int sizeMatrix, QWidget *parent = 0);
   ~GUIWindow();
-public slots :
-  void updateColor(const vector<vector<RGB> >& matrixRGB);
 private:
   GUIImageMatrix *view;
   GUITCPServer *server;

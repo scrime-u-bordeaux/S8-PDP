@@ -21,9 +21,10 @@ class GUIImageMatrix : public QGraphicsView {
     Q_OBJECT
 public:
   GUIImageMatrix(int sizeMatrix, QWidget *parent = 0);
-  void updateColor(const vector<vector<RGB> > &matrixRGB);
   ~GUIImageMatrix();
 
+public slots:
+  void updateColor(const vector<vector<RGB> > &matrixRGB);
 private:
   QPixmap *imagePix;
   QGraphicsScene *scene;
