@@ -11,14 +11,10 @@
  *
  */
 
-//#include <iomanip>
+#include <iomanip>
+#include <iostream>
 #include <sstream>
 #include "RGB.hpp"
-
-/**
- * \var hexa Array containing every possible hexadecimal values
- */
-string hexa[] = {"0","1","2","3","4","5","6","7","8","9","A","B","C","D","E","F"};
 
 /**
   * Constructor for our RGB triplet.
@@ -28,12 +24,9 @@ RGB::RGB(int red, int green, int blue)
 
 RGB::RGB(string hexaCode){
   int start = 1;
-  _red = std::stoi(str.substr(start, 2), nullptr, 16);
-  _blue = std::stoi(str.substr(start + 2, 2), nullptr, 16);
-  _green = std::stoi(str.substr(start + 4, 2), nullptr, 16);
-   cout << _red <<endl;
-   cout << _green <<endl;
-   cout << _blue <<endl;
+  _red = std::stoi(hexaCode.substr(start, 2), nullptr, 16);
+  _green = std::stoi(hexaCode.substr(start + 2, 2), nullptr, 16);
+  _blue = std::stoi(hexaCode.substr(start + 4, 2), nullptr, 16);
 }
 
 /**
@@ -50,29 +43,19 @@ void RGB::setBlue(int blue) { _blue = blue; }
 /**
   * Returns the color RGB triplet to a string corresponding to its RGB values.
   */
-string RGB::to_String(RGB color){
-  return ("#" + colortohexa(color.getRed()) + colortohexa(color.getGreen()) +
-          colortohexa(color.getBlue()));
+string RGB::toString(){
+  stringstream stream;
+  stream << "#";
+  if(this->getRed() == 0 && this->getGreen() == 0 && this->getBlue() == 0){
+    stream << "000000";
+    return stream.str();
+  }
+  stream << hex << uppercase << this->getRed();
+  stream << hex << uppercase << this->getGreen();
+  stream << hex << uppercase << this->getBlue();
+  return stream.str();
 }
 
-/**
-  * Transforms an int into an hexadecimal value.
-  */
-string RGB::colortohexa(int color){
-  if ((color < 0) || (color > 255))
-    return "00";
-  else
-    return (hexa[color/16] + hexa[color%16]);
-}
-
-/*string RGB::toString(){
-stringstream stream;
-stream << "#";
-stream << hex << this->getRed();
-stream << hex << this->getGreen();
-stream << hex << this->getBlue();
-return stream.str();
-}*/
 
 RGB::~RGB() {}
 
@@ -81,7 +64,6 @@ RGB::~RGB() {}
   * flux.
   */
 ostream & operator<<(ostream &flux, const RGB& rgb) {
-  flux << "#" << "(" << rgb.getRed() << ", " << rgb.getGreen() << ", " <<
-  rgb.getBlue() << ")";
+  flux << "#" << rgb.getRed() << rgb.getGreen() << rgb.getBlue();
   return flux;
 }

@@ -29,7 +29,13 @@ public:
    */
   RGB(int red, int green, int blue);
 
-  RGB::RGB(string hexaCode);
+  /**
+   * \fn    RGB(string hexaCode)
+   * \brief Constructor of the RGB object from a string
+   *
+   * \param hexaCode A hexadecimal value as a string to construct a RGB object.
+   */
+  RGB(string hexaCode);
 
   /**
    * \fn     int getRed() const
@@ -89,13 +95,6 @@ public:
    */
   string toString();
 
-  /**
-   * \fn     string colortohexa(int color)
-   * \brief  Transforms an int into and hexadecimal value.
-   *
-   * \return A string corresponding to the int transformed to an hexadecimal.
-   */
-  string colortohexa(int color);
 
   /**
    * \fn    virtual ~RGB()

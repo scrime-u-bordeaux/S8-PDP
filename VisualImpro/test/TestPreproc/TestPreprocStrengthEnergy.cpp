@@ -8,7 +8,8 @@
  *
  *  This test is used to show us that our strength energy preprocessing function
  *  is doing its job. Here we pass a Matrix as parameter to our preprocessing
- *  and we assure that..........
+ *  and we assure that every value of the returned vector is equals to what we
+ *  attended as depending of the values we put in the setUp function.
  *
  */
 
@@ -37,7 +38,6 @@ void TestPreprocStrengthEnergy::testPreproc(){
   CPPUNIT_ASSERT_EQUAL(row, 5);
   CPPUNIT_ASSERT_EQUAL(col, 1);
   for(int i=0; i<row; i++){
-    //printf("strength energy %d : %f\n", i, output.getCase(i,0));
-    CPPUNIT_ASSERT_EQUAL(output.getCase(i,0), (float)pow(i+1,2) - (float)pow(i,2));
+    CPPUNIT_ASSERT_EQUAL(output.getCase(i,0), (float)pow(i+1,2));
   }
 }

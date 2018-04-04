@@ -3,6 +3,8 @@
 
 #include <cstdlib>
 #include <vector>
+#include <math.h>
+
 
 #include <cppunit/extensions/HelperMacros.h>
 #include <cppunit/TestFixture.h>

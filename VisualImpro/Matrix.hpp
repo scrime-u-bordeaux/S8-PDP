@@ -1,6 +1,7 @@
 #ifndef DEF_MATRIX
 #define DEF_MATRIX
 
+#include <sstream>
 #include <string>
 #include <vector>
 #include "RGB.hpp"
@@ -21,6 +22,15 @@ template <class T>
 class Matrix {
 
 public:
+
+  /**
+   * \fn    Matrix()
+   * \brief Constructor of an empty matrix
+   *
+   * Constructor of the Matrix class for an empty matrix.
+   */
+  Matrix();
+
   /**
    * \fn    Matrix(int sizeMatix)
    * \brief Constructor of a squared matrix with default values.
@@ -109,22 +119,6 @@ public:
    *         the vector called row.
    */
   void setRow(int index, vector<T> row);
-
-  /**
-   * \fn     vector<vector<T> > getMatrix()
-   * \brief  Get the entire matrix.
-   *
-   * \return The matrix itself.
-   */
-  vector<vector<T> > getMatrix():
-
-  /**
-   * \fn     vector<vector<T> >& getMatrixRef()
-   * \brief  Get a reference to the entire matrix.
-   *
-   * \return A reference to the matrix itself.
-   */
-  vector<vector<T> >& getMatrixRef();
 
   /**
    * \fn     void swap(Matrix<T>& mat)

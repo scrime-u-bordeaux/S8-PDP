@@ -112,30 +112,13 @@ void Matrix<T>::setRow(int index, vector<T> row){
 }
 
 /**
- * Returns the entire matrix.
- */
-template<class T>
-vector<vector<T> > Matrix<T>::getMatrix(){
-  return _matrix;
-}
-
-/**
- * Returns a reference to the entire matrix.
- */
-template<class T>
-vector<vector<T> >& Matrix<T>::getMatrixRef(){
-  return _matrix;
-}
-
-/**
  * Swap the matrix mat with the matrix calling the function.
  */
 template<>
 void Matrix<float>::swap(Matrix<float>& mat){
-  mat.getMatrix().swap(thix->getMatrixRef());
-/*  for(int i=0; i<mat.getSize(); i++){
+  for(int i=0; i<mat.getSize(); i++){
       mat.getRow(i).swap(this->getRowRef(i));
-    }*/
+  }
 }
 
 /**
@@ -148,10 +131,25 @@ string Matrix<T>::toString(){
   int row = this->getSize();
   int col = this->getRow(0).size();
   if (row > 0)
-    str += (to_string(row) + "-" + to_string(row));
+    str += (to_string(row) + "-" + to_string(col));
   for (int i = 0; i < row; i++){
     for (int j = 0; j < col; j++){
       str += to_string(this->getCase(i, j));
+    }
+  }
+  return str;
+}
+
+template<>
+string Matrix<RGB>::toString(){
+  string str;
+  int row = this->getSize();
+  int col = this->getRow(0).size();
+  if (row > 0)
+    str += (to_string(row) + "-" + to_string(col));
+  for (int i = 0; i < row; i++){
+    for (int j = 0; j < col; j++){
+      str += this->getCase(i, j).toString();
     }
   }
   return str;
@@ -163,7 +161,7 @@ string Matrix<T>::toString(){
  */
 template<class T>
 Matrix<T>::~Matrix(){
-  Matrix empty;
+  vector<vector<T> > empty;
   empty.swap(_matrix);
 }
 

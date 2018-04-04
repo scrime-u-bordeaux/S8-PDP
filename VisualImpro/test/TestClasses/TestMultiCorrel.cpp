@@ -1,5 +1,5 @@
 /**
- *  \file    PreprocStrengthEnergy.cpp
+ *  \file    TestMultiCorrel.cpp
  *  \author  Alexandre CASANOVA--FRANGER, Gauthier LARMARQUE, Paul SIMORRE,
  *            Lucas VIVAS
  *  \date    March 2018
