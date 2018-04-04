@@ -18,8 +18,12 @@ l'improvisation en musique.
 
 \subsection{Improvisation et corrélation}
 \paragraph{}
+
+% A DEBATTRE
 Il est essentiel de comprendre ces deux notions afin de bien situer
 l'intérêt du projet ; elles sont le c\oe ur de notre travail.
+% A DEBATTRE
+
 \paragraph{}
 Lors d'une improvisation en groupe, des musiciens jouent sans règles
 établies ; ils cherchent alors à fournir à leur auditoire une
@@ -31,13 +35,20 @@ qualité de leur accord porte un nom : c'est la corrélation.
 Au sens premier et basique du terme, la corrélation est le rapport
 réciproque entre deux éléments. En statistiques, on parle souvent de
 corrélation pour mesurer l'intensité de la liaison existant entre deux
-variables. Dans le cadre de l'étude de signaux sonores, les
+variables.
+
+% A DEBATTRE
+ Dans le cadre de l'étude de signaux sonores, les
 traductions graphiques de ces signaux par transformée de Fourier
 peuvent jouer le rôle des courbes dont on mesure la corrélation.
+% A DEBATTRE
+
 \paragraph{}
 En musique, il n'existe pas une mais un nombre indéfini de "fonctions
 de corrélation" potentiellement existantes, dont la complexité et les
-paramètres varient. "Comprendre" la corrélation et l'improvisation,
+paramètres
+%LES RESULTATS
+varient. "Comprendre" la corrélation et l'improvisation,
 dans le cadre de ce projet, c'est aussi trouver, inventer la fonction
 de corrélation qui répond le mieux aux besoins d'un groupe
 d'improvisateurs. Une bonne fonction de corrélation, dans ce cadre
@@ -62,7 +73,9 @@ programme, prenant en entrées des pistes sonores, retourne une matrice
 graphique prenant les mêmes pistes en abscisses et en ordonnées et
 retournant pour chaque case une couleur permettant d'évaluer la
 corrélation existant entre les deux pistes correspondantes grâce à un
-code précis.
+code
+% COULEUR
+précis.
 
 \begin{figure}[h]
 	\centering
@@ -101,12 +114,13 @@ L'aperçu du dispositif externe de BELA présenté ci-dessus témoigne
 notamment de la présence d'entrées analogiques pour connecter des
 instruments électriques ou enregistreurs sonores. On comprend alors
 que le rôle de BELA au sein de ce projet est l'utilisation d'un
-programme similaire à celui implémenté par les étudiants de l'ENSEIRB
-en temps réel par un groupe d'improvisateurs, dont les instruments
-seraient connectés à cet outil. Ce dernier dispose déjà de fonctions
-de traitement du son codées en C++, mais revêt surtout un intérêt pour
-les développeurs, qui peuvent librement modifier et enrichir son
+programme en temps réel par un groupe d'improvisateurs,
+similaire à celui implémenté par les étudiants de l'ENSEIRB, dont les
+instruments seraient connectés à cet outil. Ce dernier dispose déjà de
+fonctions de traitement du son codées en C++, mais revêt surtout un intérêt
+pour les développeurs, qui peuvent librement modifier et enrichir son
 programme.
+% PLUS DE CHOSES A DIRE SUR LE BELA
 
 \subsubsection{Un logiciel d'aide à l'improvisation musicale}
 \paragraph{}
@@ -130,6 +144,7 @@ branchés directement sur le système. Ce nouveau programme permet donc
 improvisation, et peut même comparer des pistes mono-instrumentales
 jouées en temps réel avec des fichiers sonores numériques déjà
 existant.
+%	
 
 \subsubsection{Détails sur le programme existant}
 \paragraph{}
@@ -191,7 +206,7 @@ contient lui-même trois fonctions :
 \paragraph{}
 Une structure \verb!AuxiliaryTask! est mise à la disposition du
 programmeur et est destinée à éxécuter de façon parallèle du code spécifié
-en amont et considéré comme trop coûteux (dans le programme, il s'agit du 
+en amont et considéré comme trop coûteux (dans le programme, il s'agit du
 traitement des données), afin de soulager l'éxécution de \verb!render.cpp!.
 
 \paragraph{}

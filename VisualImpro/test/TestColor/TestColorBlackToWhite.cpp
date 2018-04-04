@@ -1,10 +1,10 @@
 /**
- *  @file    TestColorBlackToWhite.cpp
- *  @author  Alexandre CASANOVA--FRANGER, Gauthier LARMARQUE, Paul SIMORRE,
+ *  \file    TestColorBlackToWhite.cpp
+ *  \author  Alexandre CASANOVA--FRANGER, Gauthier LARMARQUE, Paul SIMORRE,
  *            Lucas VIVAS
- *  @date    March 2018
+ *  \date    March 2018
  *
- *  @section DESCRIPTION
+ *  \brief Test program of the ColorBlackToWhite function.
  *
  *  This test is used to show us that our color function taking a float as
  *  parameter and returning an RGB triplet representing a color between black

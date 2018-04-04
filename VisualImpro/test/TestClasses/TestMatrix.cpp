@@ -1,10 +1,10 @@
 /**
- *  @file    PreprocStrengthEnergy.cpp
- *  @author  Alexandre CASANOVA--FRANGER, Gauthier LARMARQUE, Paul SIMORRE,
+ *  \file    PreprocStrengthEnergy.cpp
+ *  \author  Alexandre CASANOVA--FRANGER, Gauthier LARMARQUE, Paul SIMORRE,
  *            Lucas VIVAS
- *  @date    March 2018
+ *  \date    March 2018
  *
- *  @section DESCRIPTION
+ *  \brief Test program of the Matrix object.
  *
  *  This test is used to show us that our Matrix object if functionning as we
  *  intended. Our tests here stand for operations on cases, rows and columns.

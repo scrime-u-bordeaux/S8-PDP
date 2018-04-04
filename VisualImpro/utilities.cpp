@@ -1,9 +1,9 @@
 /**
- *  @file    utilities.cpp
- *  @author  Jérémy LIXANDRE
- *  @date    July 2017
+ *  \file    utilities.cpp
+ *  \author  Jérémy LIXANDRE
+ *  \date    July 2017
  *
- *  @section DESCRIPTION
+ *  \brief utilities functions.
  *
  *  This code contain utilities functions used in the main an render files.
  *
@@ -11,8 +11,13 @@
 
 #include "utilities.hpp"
 
-/** Function used to check if the filename extension corresponds to the
- *  extension given in parameter
+/**
+ * \fn     bool check_extension(string filename, string extension)
+ * \brief  Check if the filename extension corresponds to the extension given
+ *         in parameter
+ *
+ * \param  filename  The name of the file
+ * \param  extension The extension (ex: .wav)
  */
 bool check_extension(string filename, string extension){
   int i = filename.size()-1;
@@ -24,7 +29,12 @@ bool check_extension(string filename, string extension){
   return false;
 }
 
-// Returns the channel number of the filename
+/**
+ * \fn     int getChannelNumber(string filename)
+ * \brief  Returns the channel number of the filename.
+ *
+ * \param  filename  The name of the file
+ */
 int getChannelNumber(string filename){
   if (check_extension(filename, "wav")){
       FILE* stream = fopen(filename.c_str(), "r");

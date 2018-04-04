@@ -1,12 +1,12 @@
 /**
- *  @file    Connexion.cpp
- *  @author  Jérémy LIXANDRE
- *  @date    July 2017
+ *  \file    Connection.cpp
+ *  \author  Jérémy LIXANDRE
+ *  \date    July 2017
  *
- *  @section DESCRIPTION
+ *  \brief Connection object to send data on a web page.
  *
- *  The Connexion object is used, after finishing the processing operations,
- *  to send the processed data to a web page on Firefox.
+ *  The Connection object is used, after finishing the processing
+ *  operations, to send the processed data to a web page on Firefox.
  *
  */
 
@@ -22,6 +22,10 @@
 #include <unistd.h>
 #include "Connection.hpp"
 
+/**
+ * \def SYSCALL(call, val, msg)
+ * Check if the the return value of the call is equals to val, returns -1 if so.
+ */
 #define SYSCALL(call, val, msg) if ((call) == (val)) {perror(msg); return -1;}
 #define TIMEOUT 1
 
@@ -53,10 +57,10 @@ sock.setServer(ADDR);*/
   struct in_addr inp;
   SYSCALL(inet_aton(addr.c_str(), &inp), 0, "ERROR copying address");
   //struct sockaddr_in serv_addr;
-  bzero((char*) &serv_addr, sizeof(serv_addr)); //utile ?
+  bzero((char*) &serv_addr, sizeof(serv_addr)); //useful ?
   serv_addr.sin_family = AF_INET;
   serv_addr.sin_addr = inp;
-  serv_addr.sin_port = htons(portno); //recupere num port
+  serv_addr.sin_port = htons(portno); // Get port number
   return 0;*/
 
 //TCP
@@ -70,10 +74,10 @@ sock.setServer(ADDR);*/
   struct in_addr inp;
   SYSCALL(inet_aton(addr.c_str(), &inp), 0, "ERROR copying address");
   struct sockaddr_in serv_addr;
-  bzero((char*) &serv_addr, sizeof(serv_addr)); //utile ?
+  bzero((char*) &serv_addr, sizeof(serv_addr)); //useful ?
   serv_addr.sin_family = AF_INET;
   serv_addr.sin_addr = inp;
-  serv_addr.sin_port = htons(portno); //recupere num port
+  serv_addr.sin_port = htons(portno); // Get port number
   if (connect(this->sockfd,
       (struct sockaddr *) &serv_addr, sizeof(serv_addr)) == 0){
     this->_isConnected = true;

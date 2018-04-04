@@ -7,6 +7,10 @@
 #include "Matrix.hpp"
 #include "RGB.hpp"
 
+/**
+ * \namespace std
+ * Standard C++ library
+ */
 using namespace std;
 
 bool check_extension(string filename, string extension);

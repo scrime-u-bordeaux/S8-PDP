@@ -1,9 +1,9 @@
 /**
- *  @file    EffectManaging.hpp
- *  @author  Jérémy LIXANDRE
- *  @date    July 2017
+ *  \file    EffectManaging.hpp
+ *  \author  Jérémy LIXANDRE
+ *  \date    July 2017
  *
- *  @section DESCRIPTION
+ *  \brief Code containing the function to apply any effect.
  *
  *  EffectManaging only contais the method genEffect, used in render.cpp, and
  *	takes as parameter a buffer in (pre effect) and a buffer out (post effect),
@@ -21,6 +21,10 @@
 #include <assert.h>
 #include "Matrix.hpp"
 
+/**
+ * \namespace std
+ * Standard C++ library
+ */
 using namespace std;
 
 typedef void (*effectprocess) (Matrix<float>&, Matrix<float>&);

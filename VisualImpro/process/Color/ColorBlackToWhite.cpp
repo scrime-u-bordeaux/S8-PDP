@@ -1,9 +1,9 @@
 /**
- *  @file    ColorGreenToRed.cpp
- *  @author  Jérémy LIXANDRE
- *  @date    July 2017
+ *  \file    ColorGreenToRed.cpp
+ *  \author  Jérémy LIXANDRE
+ *  \date    July 2017
  *
- *  @section DESCRIPTION
+ *  \brief Code containing the coloration from black to white function.
  *
  *  This color function is used to compute, from a float representing the
  *  correlation between two instruments, the RGB triplet corresponding to that

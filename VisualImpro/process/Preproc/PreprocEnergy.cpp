@@ -1,9 +1,9 @@
 /**
- *  @file    PreprocEnergy.cpp
- *  @author  Jérémy LIXANDRE
- *  @date    July 2017
+ *  \file    PreprocEnergy.cpp
+ *  \author  Jérémy LIXANDRE
+ *  \date    July 2017
  *
- *  @section DESCRIPTION
+ *  \brief Code containing the preprocessing based on energy function.
  *
  *  This is a preprocessing function returning a Matrix witch has in every line
  *  the energy envelope of each instrument of the original Matrix of signals
@@ -13,7 +13,11 @@
 
 #include "PreprocEnergy.hpp"
 
-vector<float> energyenvelope(const vector<float>& f1, int frame){ //cuts f1 in blocks of length 'frame' and applies norm to get the energy of the signal
+/**
+ *  Cuts f1 in blocks of length 'frame' and applies norm to get the energy of
+ *  the signal
+ */
+vector<float> energyenvelope(const vector<float>& f1, int frame){
   int size = f1.size();
   int nbframes = 0;
   if(size%frame == 0)

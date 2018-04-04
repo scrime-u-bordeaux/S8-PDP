@@ -7,8 +7,19 @@
 #include "ChannelsSettings.h"
 #include "parse.hpp"
 
+/**
+ * \namespace std
+ * Standard C++ library
+ */
 using namespace std;
 
+/**
+ * \class Parser
+ * \brief Class used to parse a configuration file
+ *
+ * This class will parse the file containing the settings and will store in its
+ * class members variables every settings relative to this file.
+ */
 class Parser{
 
 public :

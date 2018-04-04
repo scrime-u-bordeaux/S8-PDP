@@ -1,9 +1,9 @@
 /**
- *  @file    Echo.hpp
- *  @author  Jérémy LIXANDRE
- *  @date    July 2017
+ *  \file    Echo.hpp
+ *  \author  Jérémy LIXANDRE
+ *  \date    July 2017
  *
- *  @section DESCRIPTION
+ *  \brief
  *
  *  The Echo code is and effect (inherited from Effect class), and applies the
  *  Echo effect from the buffer In to the buffer Out given in parameter.
@@ -19,8 +19,19 @@
 
 #include "Effect.hpp"
 
+/**
+ * \namespace std
+ * Standard C++ library
+ */
 using namespace std;
 
+/**
+ * \class Echo
+ * \brief Class representing the echo effect.
+ *
+ * This class is used to apply an effect on a buffer and get the result in
+ * another buffer.
+ */
 class Echo : public Effect {
 
 public :

@@ -1,9 +1,9 @@
 /**
- *  @file    parse.cpp
- *  @author  Jérémy LIXANDRE
- *  @date    July 2017
+ *  \file    parse.cpp
+ *  \author  Jérémy LIXANDRE
+ *  \date    July 2017
  *
- *  @section DESCRIPTION
+ *  \brief  Code used by the parser object.
  *
  *  This code contains functions used by the Parser object to iterate through
  *  string parameters given to the program.

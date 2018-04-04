@@ -1,10 +1,10 @@
 /**
- *  @file    PreprocStrengthEnergy.cpp
- *  @author  Alexandre CASANOVA--FRANGER, Gauthier LARMARQUE, Paul SIMORRE,
+ *  \file    PreprocStrengthEnergy.cpp
+ *  \author  Alexandre CASANOVA--FRANGER, Gauthier LARMARQUE, Paul SIMORRE,
  *            Lucas VIVAS
- *  @date    March 2018
+ *  \date    March 2018
  *
- *  @section DESCRIPTION
+ *  \brief Test program of the CoeffScalar function.
  *
  *  This test is used to show us that our scalar correlation function is
  *  functionning well.

@@ -1,10 +1,10 @@
 /**
- *  @file    PreprocStrengthEnergy.cpp
- *  @author  Alexandre CASANOVA--FRANGER, Gauthier LARMARQUE, Paul SIMORRE,
+ *  \file    PreprocStrengthEnergy.cpp
+ *  \author  Alexandre CASANOVA--FRANGER, Gauthier LARMARQUE, Paul SIMORRE,
  *            Lucas VIVAS
- *  @date    March 2018
+ *  \date    March 2018
  *
- *  @section DESCRIPTION
+ *  \brief Test program of the MixMinCorrelated function.
  *
  *  This test is used to show us that our mix based on minimal correlations is
  *  functionning well. Indeed, here we setup a 3x3 matrix with a custom values

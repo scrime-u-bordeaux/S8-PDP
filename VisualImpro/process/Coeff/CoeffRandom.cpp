@@ -1,10 +1,10 @@
 /**
- *  @file    CoeffRandom.cpp
- *  @author  Alexandre CASANOVA--FRANGER, Gauthier LARMARQUE, Paul SIMORRE,
+ *  \file    CoeffRandom.cpp
+ *  \author  Alexandre CASANOVA--FRANGER, Gauthier LARMARQUE, Paul SIMORRE,
  *            Lucas VIVAS
- *  @date    March 2018
+ *  \date    March 2018
  *
- *  @section DESCRIPTION
+ *  \brief Code containing the random correlation function.
  *
  *  This is a correlation function used to return a random correlation value.
  *  The volume and the coloration matrix will be affected by this value.

@@ -1,9 +1,9 @@
 /**
- *  @file    ProcessMultiWriteWav.cpp
- *  @author  Jérémy LIXANDRE
- *  @date    July 2017
+ *  \file    ProcessMultiWriteWav.cpp
+ *  \author  Jérémy LIXANDRE
+ *  \date    July 2017
  *
- *  @section DESCRIPTION
+ *  \brief  Object used to create wavefiles.
  *
  *  This object is used to create wavefiles by writing in little endian.
  *  This code is inspired by https://gasstationwithoutpumps.wordpress.com\
@@ -70,15 +70,15 @@ void ProcessMultiWriteWav::writeheader(){
   fwrite("RIFF", 1, 4, stream);
   write_little_endian(36 + bytespersample* numsamples*numchannels, 4, stream);
   fwrite("WAVE", 1, 4, stream);
-  /* write fmt  subchunk */
+  // write fmt subchunk
   fwrite("fmt ", 1, 4, stream);
-  write_little_endian(16, 4, stream);   /* SubChunk1Size is 16 */
-  write_little_endian(1, 2, stream);    /* PCM is format 1 */
+  write_little_endian(16, 4, stream);   // SubChunk1Size is 16
+  write_little_endian(1, 2, stream);    // PCM is format 1
   write_little_endian(numchannels, 2, stream);
   write_little_endian(samplerate, 4, stream);
   write_little_endian(byterate, 4, stream);
-  write_little_endian(numchannels*bytespersample, 2, stream);  /* block align */
-  write_little_endian(8*bytespersample, 2, stream);  /* bits/sample */
+  write_little_endian(numchannels*bytespersample, 2, stream);  // block align
+  write_little_endian(8*bytespersample, 2, stream);  // bits/sample
   fwrite("data", 1, 4, stream);
   write_little_endian(bytespersample*numsamples*numchannels, 4, stream);
 }

@@ -22,8 +22,18 @@
 
 #include "UdpClient.h"
 
+/**
+ * \namespace std
+ * Standard C++ library
+ */
 using namespace std;
 
+/**
+ * \class Connection
+ * \brief Class representing the connection object.
+ *
+ * This class is used to send data on a web page.
+ */
 class Connection{
 
 private :
@@ -38,7 +48,7 @@ public :
 	Connection() : _port(12345), _addr("192.168.7.1") {}
 	Connection(int port, string addr) : _port(port), _addr(addr){}
   bool isConnected();
-  //Initialise TCP connection
+  //Initialize TCP connection
   int init();
   int send(const string& msg);
   //Stops TCP connection

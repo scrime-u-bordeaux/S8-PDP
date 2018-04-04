@@ -1,5 +1,5 @@
 /**
- * @file TestMain.cpp
+ * \file TestMain.cpp
  * @brief Main test program.
  * @author  Alexandre CASANOVA--FRANGER, Gauthier LARMARQUE, Paul SIMORRE,
 *            Lucas VIVAS

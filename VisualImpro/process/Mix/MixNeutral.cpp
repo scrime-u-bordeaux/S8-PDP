@@ -1,10 +1,10 @@
 /**
- *  @file    MixNeutral.cpp
- *  @author  Alexandre CASANOVA--FRANGER, Gauthier LARMARQUE, Paul SIMORRE,
+ *  \file    MixNeutral.cpp
+ *  \author  Alexandre CASANOVA--FRANGER, Gauthier LARMARQUE, Paul SIMORRE,
  *            Lucas VIVAS
- *  @date    March 2018
+ *  \date    March 2018
  *
- *  @section DESCRIPTION
+ *  \brief Code containing the mix neutral function/
  *
  *  This function is used for returning a neutral mix on each instrument. We can
  *  use this function if we don't want any changes of the mix volume during the
@@ -16,7 +16,6 @@
 
 extern "C" {
 
-// Returns a vector whose elements are the mean correlations of every instruments
 vector<float> MixNeutral(const Matrix<float>& correlMatrix) {
 
   // Initialize the result vector with ones, no process here

@@ -1,9 +1,9 @@
 /**
- *  @file    PreprocStrengthEnergy.cpp
- *  @author  Jérémy LIXANDRE
- *  @date    July 2017
+ *  \file    PreprocStrengthEnergy.cpp
+ *  \author  Jérémy LIXANDRE
+ *  \date    July 2017
  *
- *  @section DESCRIPTION
+ *  \brief Code containing the preprocessing based on strength energy function.
  *
  *  This is a preprocessing function returning a Matrix witch has in every line
  *  the strength energy envelope of each instrument of the original Matrix of
@@ -16,8 +16,9 @@
 
 #include "PreprocStrengthEnergy.hpp"
 
-/* Cuts f1 in blocks of length 'frame' and applies norm to get the energy of the
- *signal
+/**
+ *  Cuts f1 in blocks of length 'frame' and applies norm to get the energy of
+ *  the signal
  */
 vector<float> strengthenergyenvelope(const vector<float>& f1, int frame){
   int size = f1.size();
