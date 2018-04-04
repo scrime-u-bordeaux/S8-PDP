@@ -44,14 +44,6 @@ public:
   GUIImageMatrix(int sizeMatrix, QWidget *parent = 0);
 
   /**
-   * \fn    void updateColor(const vector<vector<RGB> >& matrixRGB)
-   * \brief Update the colors of the matrix
-   *
-   * \param matrixRGB The RGB matrix with the fresh colors to update.
-   */
-  void updateColor(const vector<vector<RGB> > &matrixRGB);
-
-  /**
    * \fn    ~GUIImageMatrix()
    * \brief Destructor
    *
@@ -59,6 +51,14 @@ public:
    */
   ~GUIImageMatrix();
 
+public slots:
+ /**
+  * \fn    void updateColor(const vector<vector<RGB> >& matrixRGB)
+  * \brief Update the colors of the matrix
+  *
+  * \param matrixRGB The RGB matrix with the fresh colors to update.
+  */
+  void updateColor(const vector<vector<RGB> > &matrixRGB);
 private:
 
   /**
