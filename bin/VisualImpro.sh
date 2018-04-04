@@ -70,10 +70,10 @@ function qt_display(){
   ./bin/GUI &
   pid=$!
   #Loop used to wait for the configuration file to be created through GUI
+  echo "Waiting for the configuration file to be created..."
   while ! test -f $CONFIGQTFILE ; do
     if kill -0 $pid 2> /dev/null; then
       sleep 2
-      echo "Waiting for the configuration file to be created..."
     else
       exit 1
     fi
@@ -118,9 +118,6 @@ function help_message(){
   echo -e "\t-d (display) and the accepted arguments (which one is recquired) are :"
   echo -e "\t\tfirefox (the old version using NodeJS and a manual config file)"
   echo -e "\t\tqt"
-  echo -e "\t-t (testing) and the accepted arguments (which one is recquired) are :"
-  echo -e "\t\tconfig1"
-  echo -e "\t\tconfig2"
   echo -e "\t-h (help), to show this message."
 
 }
