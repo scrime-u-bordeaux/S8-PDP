@@ -15,15 +15,14 @@ using namespace std;
 
 /**
  * \class GUISettingLayoutFactory
- * \brief Class used to ***EXPLICATION***
+ * \brief Class used as an interface for all the layouts.
  *
- * ***EXPLICATIONS***
  */
 class GUISettingLayout {
 public:
   /**
    * \fn    virtual const QStringList getSettings() = 0
-   * \brief
+   * \brief get the settings from a layout.
    */
   virtual const QStringList getSettings() = 0;
 };

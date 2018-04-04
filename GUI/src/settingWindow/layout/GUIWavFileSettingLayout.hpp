@@ -28,9 +28,8 @@ using namespace std;
 
 /**
  * \class GUIWavFileSettingLayout
- * \brief Class used to ***EXPLICATION***
+ * \brief Class used to create the layout for the wav file
  *
- * ***EXPLICATIONS***
  */
 class GUIWavFileSettingLayout : public QGridLayout, public GUISettingLayout {
 
@@ -49,7 +48,9 @@ public:
 
   /**
    * \fn    const QStringList getSettings()
-   * \brief
+   * \brief get all the settings.
+   *
+   *  Get all the wav file absolut path and return it as a QStringList.
    */
   const QStringList getSettings();
 
@@ -64,19 +65,23 @@ public:
 private slots:
  /**
   * \fn    void loadWavFile()
-  * \brief
+  * \brief load a wav file.
+  *
+  * This function is call when the loadButton is pressed, the function open
+  * a fileDialog and store the absolut path and print just the name of
+  * the file.
   */
   void loadWavFile();
 
   /**
    * \fn    removeWavFile()
-   * \brief
+   * \brief remove a file from the list.
    */
   void removeWavFile();
 
   /**
    * \fn    void clearWavFile()
-   * \brief
+   * \brief remove all the file from the list.
    */
   void clearWavFile();
 

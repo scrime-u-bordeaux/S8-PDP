@@ -55,16 +55,16 @@ vector<float> MixMaxCorrelated(const Matrix<float>& correlMatrix) {
 \end{lstlisting}
 
 \begin{center}
-\textit{Ci-dessus, l'exemple de la fonction de mixage précédemment cité}
-  \end{center}
+ \textit{Ci-dessus, l'exemple de la fonction de mixage précédemment cité}
+\end{center}
 
 \paragraph{}
 Dans la fonction
 \verb!void parseProcessFunc(ChSettings& gChSettings, const!
 \\ \verb!Parser& config, ProcessMultiCorrel *p, void *handle)!
-  appelée dans le fichier \\ \verb!main.cpp!, nous avons dû ajouter
-  l'analyse de la fonction de mixage sur le modèle des analyses des
-  trois autres fonctions de \textit{processing}.
+appelée dans le fichier \\ \verb!main.cpp!, nous avons dû ajouter
+l'analyse de la fonction de mixage sur le modèle des analyses des
+trois autres fonctions de \textit{processing}.
 
 \paragraph{}
 L'architecture de Bela a été conçue pour permettre la synthèse d'un
@@ -74,19 +74,11 @@ retour sonore dans le corps de la fonction
 cette fonction, Bela peut synthétiser un retour sonore modifié par
 notre fonction de mixage.
 
-\begin{lstlisting}
-for(unsigned int i=0; i<context->audioOutChannels; i++){
-  	    if (gSampleFactor == STANDARD_SAMPLE_RATE) {
-          audioWrite(context, 2 * n, i, out);
-  	      audioWrite(context, 2 * n + 1, i, out);
-  	    } else {
-  	      audioWrite(context, n, i, out);
-  	    }
-}
-\end{lstlisting}
-\begin{center}
-Ci-dessus, l'implémentation du retour sonore dans le corps de la fonction principale de \verb!render.cpp!
-  \end{center}
+\begin{lstlisting} for(unsigned int i=0; i<context->audioOutChannels; i++){ if
+(gSampleFactor == STANDARD_SAMPLE_RATE) { audioWrite(context, 2 * n, i, out);
+audioWrite(context, 2 * n + 1, i, out); } else { audioWrite(context, n, i, out); } }
+\end{lstlisting} \begin{center} Ci-dessus, l'implémentation du retour sonore
+dans le corps de la fonction principale de \verb!render.cpp! \end{center}
 
 \paragraph{}
 Dans le fichier \verb!render.cpp!, la fonction
@@ -101,13 +93,30 @@ de \verb!render.cpp!.
 
 \subsection{L'interface de configuration utilisateur}
 \paragraph{}
-Afin d'implémenter l'interface de configuration utilisateur
-précédemment abordée mais également le nouvel affichage de la matrice
-via Qt, nous avons ajouté à l'architecture du programme un dossier
-\verb!GUI! (\textit{Graphic User Interface}) à la racine du
-programme. Le sous-répertoire contenant les fichiers relatifs à
-l'implémentation de l'interface de configuration se nomme
-\verb!settingWindow!.
+Afin d'implémenter l'interface de configuration utilisateur précédemment abordée
+nous avons ajouté à l'architecture du programme un dossier
+\verb!GUI! (\textit{Graphic User Interface}) à la racine du programme.
+Le sous-répertoire contenant les fichiers relatifs à l'implémentation de
+l'interface de configuration se nomme \verb!settingWindow!.
+
+\begin{figure}[h]
+ \centering
+ \includegraphics[scale=0.3]{umlSettingWindow.png}
+ \verb!\caption{Schéma global du dispositif de VisualImpro}!
+ \label{schéma global}
+\end{figure}
+
 \paragraph{}
+La fenêtre de configuration
+
+\begin{figure}[h]
+ \centering
+ \includegraphics[scale=0.5]{umlBuilder.png}
+ \verb!\caption{Schéma global du dispositif de VisualImpro}!
+ \label{schéma global}
+\end{figure}
+
+\paragraph{}
+La fenêtre de configuration
 
 \subsection{Autres ajouts mineurs sur le programme}
