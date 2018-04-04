@@ -16,6 +16,15 @@ musicale", un dispositif permettant d'aider un groupe de musiciens à
 improviser mais permettant aussi de mieux comprendre la nature de
 l'improvisation en musique.
 
+\begin{figure}[h]
+      \centering
+      \includegraphics[scale=0.5]{assets/principe_global.png}
+      \caption{Principe général du projet}
+      \label{principe général}
+\end{figure}
+\paragraph{}
+Le schéma ci-dessus résume le principe général du projet. Les musiciens jouent librement, et leur musique une fois transformée en signal discret, pourra alors être traitée pour que se dégage en sortie un résultat que l'on appelle la "corrélation" (voir la section suivante). Ensuite, il s'agit d'établir un retour (visuel, audio) pour que les musiciens puissent être stimulés. L'objectif de cet outil est de reproduire la boucle décrite sur le schéma.
+
 \subsection{Improvisation et corrélation}
 \paragraph{}
 
@@ -84,7 +93,7 @@ code couleur précis.
 
 \begin{figure}[h]
  \centering
- \includegraphics[scale=0.5]{matriceenseirb.png}
+ \includegraphics[scale=0.5]{assets/matriceenseirb.png}
  \caption{Capture d'écran du projet mené par les étudiants de l'ENSEIRB}
  \label{matrice-enseirb}
 \end{figure}
@@ -105,7 +114,7 @@ systématiquement symétrique.
 \paragraph{}
 Avant de confier la suite du projet à d'autres étudiants, nos clients
 ont choisi de changer de support et sont donc passé à un système
-embarqué particulier : BELA.
+embarqué particulier : BELA.\cite{BELA}
 % Avant de confier la suite du projet à d'autres étudiants, nos clients
 % ont choisi de le rendre plus fonctionnel grâce à l'emploi d'un système
 % embarqué particulier : BELA.
@@ -113,14 +122,12 @@ embarqué particulier : BELA.
 \paragraph{}
 Ce changement de support est dû au fait que, premièrement ce système est
 largement plus portable par rapport à un ordinateur ce qui est un avantage,
-mais la raison principale est que BELA est basé sur un système (Xenomai Linux) %link : https://bela.io/
-qui lui permet de faire du traitement audio en temps réel avec un temps de
-latence extrêmement faible (100us).
-%explication xenomai
+mais la raison principale est que BELA est basé sur un système appelé Xenomai Linux, un framework qui ajoute au noyau Linux des éléments permettant de traiter des opérations en temps réel.\cite{XENOMAI}
+Cela permet au système de faire du traitement audio en temps réel avec un temps de latence extrêmement faible (100 microsecondes).
 
 \begin{figure}[h]
  \centering
- \includegraphics[scale=0.2]{bela.png}
+ \includegraphics[scale=0.2]{assets/bela.png}
  \caption{Capture de la documentation proposée par le site officiel de Bela}
  \label{bela}
 \end{figure}
@@ -136,7 +143,6 @@ instruments seraient connectés à cet outil. Ce dernier dispose déjà de
 fonctions de traitement du son codées en C++, mais revêt surtout un intérêt
 pour les développeurs, qui peuvent librement modifier et enrichir son
 programme.
-% PLUS DE CHOSES A DIRE SUR LE BELA, HISTOIRE DE LATENCES
 \paragraph{}
 Le dispositif externe BELA comprend huit entrées analogiques et deux
 entrées audio. Son architecture lui permet d'interpréter parallèlement
@@ -264,8 +270,8 @@ agréable à l'oreille dans leur façon de jouer.
 
 \begin{figure}[h]
  \centering
- \includegraphics[scale=0.5]{schemaglobal.png}
- \verb!\caption{Schéma global du dispositif de VisualImpro}!
+ \includegraphics[scale=0.5]{assets/VisualImpro.png}
+ \caption{Schéma global du dispositif de VisualImpro}
  \label{schéma global}
 \end{figure}
 
