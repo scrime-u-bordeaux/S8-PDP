@@ -48,11 +48,11 @@ string RGB::toString(){
   stream << "#";
   if(this->getRed() == 0 && this->getGreen() == 0 && this->getBlue() == 0){
     stream << "000000";
-    return stream.str();
+  }else{
+    stream << hex << uppercase << this->getRed();
+    stream << hex << uppercase << this->getGreen();
+    stream << hex << uppercase << this->getBlue();
   }
-  stream << hex << uppercase << this->getRed();
-  stream << hex << uppercase << this->getGreen();
-  stream << hex << uppercase << this->getBlue();
   return stream.str();
 }
 
