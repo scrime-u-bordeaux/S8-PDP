@@ -23,10 +23,11 @@ diminuée en volume sonore dans le retour audio.
 
 \paragraph{}
 Nous avons implémenté plusieurs fonctions de mixage. La fonction
-\verb!vector<float> MixMaxCorrelated(const Matrix<float>& correlMatrix)!,
-par exemple, renvoie un coefficient égal à la moyenne des coefficients
-de corrélation de la piste avec toutes les autres pistes. Tandis que
-la fonction de traduction du coefficient de corrélation en triplet RGB
+\verb!vector<float>!
+\\ \verb!MixMaxCorrelated(const Matrix<float>& correlMatrix)!, par
+exemple, renvoie un coefficient égal à la moyenne des coefficients de
+corrélation de la piste avec toutes les autres pistes. Tandis que la
+fonction de traduction du coefficient de corrélation en triplet RGB
 est dédiée uniquement au retour visuel, celle de mixage est dédiée
 uniquement au retour sonore.
 
@@ -59,10 +60,11 @@ vector<float> MixMaxCorrelated(const Matrix<float>& correlMatrix) {
 
 \paragraph{}
 Dans la fonction
-\verb!void parseProcessFunc(ChSettings& gChSettings, const Parser& config, ProcessMultiCorrel *p, void *handle)!
-appelée dans le fichier \verb!main.cpp!, nous avons dû ajouter
-l'analyse de la fonction de mixage sur le modèle des analyses des
-trois autres fonctions de \textit{processing}.
+\verb!void parseProcessFunc(ChSettings& gChSettings, const!
+\\ \verb!Parser& config, ProcessMultiCorrel *p, void *handle)!
+  appelée dans le fichier \\ \verb!main.cpp!, nous avons dû ajouter
+  l'analyse de la fonction de mixage sur le modèle des analyses des
+  trois autres fonctions de \textit{processing}.
 
 \paragraph{}
 L'architecture de Bela a été conçue pour permettre la synthèse d'un
@@ -93,13 +95,19 @@ boucle de traitement principale. Nous avons déclaré un vecteur
 \verb!gMeanCorrel! dans \verb!render.cpp! ; initialisé avec une valeur
 de 1 pour tous les indices, il prend la valeur que retourne la
 fonction de mixage à l'intérieur du code de la fonction
-\verb!void ProcessMultiCorrel::process(const Matrix<float>& buffer, vector<float>& meanCorrelations, Connection conn)!
+\verb!void ProcessMultiCorrel::process(const Matrix<float>& buffer,! \\ \verb!vector<float>& meanCorrelations, Connection conn)!
 que nous avons modifiée et qui est appelée dans \verb!processBuffer!
 de \verb!render.cpp!.
 
 \subsection{L'interface de configuration utilisateur}
 \paragraph{}
-Afin d'implémenter l'interface de configuration utilisateur précédemment abordée mais également le nouvel affichage de la matrice via Qt, nous avons ajouté à l'architecture du programme un dossier \verb!GUI! (\textit{Graphic User Interface}) à la racine du programme. Le sous-répertoire contenant les fichiers relatifs à l'implémentation de l'interface de configuration se nomme \verb!settingWindow!.
+Afin d'implémenter l'interface de configuration utilisateur
+précédemment abordée mais également le nouvel affichage de la matrice
+via Qt, nous avons ajouté à l'architecture du programme un dossier
+\verb!GUI! (\textit{Graphic User Interface}) à la racine du
+programme. Le sous-répertoire contenant les fichiers relatifs à
+l'implémentation de l'interface de configuration se nomme
+\verb!settingWindow!.
 \paragraph{}
 
 \subsection{Autres ajouts mineurs sur le programme}
