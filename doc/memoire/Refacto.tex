@@ -75,13 +75,13 @@ l'organisation des fichiers.
     \end{center}    
 
     \item Nous avons de même effectué un découpage fonctionnel sur la
-      fonction \verb!setup(BelaContext *context, void *userData)! du
-      fichier \verb!render.cpp!. Ce dernier, qui présentait tout comme
-      \verb!main.cpp! une organisation assez confuse, ne pouvait pas
-      cependant être remanié autant en profondeur que le code
+      fonction \\ \verb!setup(BelaContext *context, void *userData)!
+      du fichier \verb!render.cpp!. Ce dernier, qui présentait tout
+      comme \verb!main.cpp! une organisation assez confuse, ne pouvait
+      pas cependant être remanié autant en profondeur que le code
       précédemment abordé. En effet, la fonction principale du
-      fichier,
-      \verb!void render(BelaContext * context, void *userData)!, ne
+      fichier, \verb!void!
+      \\ \verb!render(BelaContext * context, void *userData)!, ne
       pouvait être découpée de manière maintenable. En effet, elle
       exécute une boucle de traitement audio, en créant des taches
       auxiliaires exécutées par d'autres threads pour garantir un
