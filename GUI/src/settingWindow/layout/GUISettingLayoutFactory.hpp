@@ -19,28 +19,27 @@ using namespace std;
 
 /**
  * \class GUISettingLayoutFactory
- * \brief Class used to ***EXPLICATION***
+ * \brief Class used as a factory for the layout.
  *
- * ***EXPLICATIONS***
  */
 class GUISettingLayoutFactory {
 public:
 
   /**
    * \fn    static GUIInputSettingLayout* createGUIInputSettingLayout()
-   * \brief
+   * \brief create a input layout.
    */
   static GUIInputSettingLayout* createGUIInputSettingLayout();
 
   /**
    * \fn    static GUIProcessSettingLayout* createGUIProcessSettingLayout()
-   * \brief
+   * \brief create a process layout.
    */
   static GUIProcessSettingLayout* createGUIProcessSettingLayout();
 
   /**
    * \fn    static GUIWavFileSettingLayout* createGUIWavFileSettingLayout()
-   * \brief
+   * \brief create a wav file layout.
    */
   static GUIWavFileSettingLayout* createGUIWavFileSettingLayout();
 };

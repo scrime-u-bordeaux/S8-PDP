@@ -21,6 +21,11 @@
  */
 using namespace std;
 
+/**
+ * \class GUISettingLayoutFactory
+ * \brief Class used as an layout to choose the process functions.
+ *
+ */
 class GUIProcessSettingLayout : public QFormLayout, public GUISettingLayout {
 
   /**
@@ -38,15 +43,17 @@ public:
 
   /**
    * \fn    void addSetting(string name)
-   * \brief
+   * \brief Add a part for the "name" process function.
    *
-   * \param name
+   * \param name The name of the process function.
    */
   void addSetting(string name);
 
   /**
    * \fn    const QStringList getSettings()
-   * \brief
+   * \brief Return all the process function as a QStringList.
+   *
+   * \return Return the name of the process function.
    */
   const QStringList getSettings();
 
@@ -66,7 +73,7 @@ private:
 
   /**
    * \fn    QStringList getFilename(string nameFile)
-   * \brief
+   * \brief Get all the function in the directory with the name : nameFile.
    *
    * \param nameFile
    */

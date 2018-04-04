@@ -67,23 +67,23 @@ private slots:
 
  /**
   * \fn    void checkInput()
-  * \brief
+  * \brief check the number of input.
   */
   void checkInput();
 
 private:
 
   /**
-   * \fn    void checkInput()
-   * \brief
+   * \fn    void buildConfigFile()
+   * \brief builde the config file with all the settings.
    */
   void buildConfigFile();
 
   /**
-   * \fn    void checkInput()
-   * \brief
+   * \fn    void getNumInput()
+   * \brief compute the number of input.
    *
-   * \return
+   * \return return the number of input.
    */
   int getNumInput();
 

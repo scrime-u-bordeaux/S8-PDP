@@ -42,17 +42,17 @@ public:
 
   /**
    * \fn    void addSetting(string name, int min, int max)
-   * \brief
+   * \brief Add an input part with a name, a minimum and maximum.
    *
-   * \param name
-   * \param min
-   * \param max
+   * \param name The name of the part.
+   * \param min The minimum of the part.
+   * \param max The maximum of the part.
    */
   void addSetting(string name, int min, int max);
 
   /**
    * \fn    const QStringList getSettings()
-   * \brief
+   * \brief Return the value of each part of the layout.
    */
   const QStringList getSettings();
 
