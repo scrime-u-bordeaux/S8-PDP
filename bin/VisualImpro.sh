@@ -36,8 +36,7 @@ function cleanup_qt(){
   pkill GUI
   ssh root@192.168.7.2 'rm /root/Bela/projects/VisualImpro/wavfiles/tmp/*.wav'
   rm $CONFIGQTFILE
-  rm $CONFIGTMPFILE 
-  ./uninstallGUI.sh
+  rm $CONFIGTMPFILE
   cd ../bin/
   getCurrentDateTime
   if [ -d logs ] ; then
@@ -69,10 +68,15 @@ function qt_display(){
   ./installGUI.sh
   #Launch executable to start GUI
   ./bin/GUI &
+  pid=$!
   #Loop used to wait for the configuration file to be created through GUI
-  while ! test -f $CONFIGQTFILE; do
-    sleep 2
-    echo "Waiting for the configuration file to be created..."
+  while ! test -f $CONFIGQTFILE ; do
+    if kill -0 $pid 2> /dev/null; then
+      sleep 2
+      echo "Waiting for the configuration file to be created..."
+    else
+      exit 1
+    fi
   done
   #Copy .wav files into Bela
   awk -F" " -v wavpath="$WAVPATH" '$1 ==  "FILE" {system("scp "$2" root@192.168.7.2:"wavpath"")}' config_qt.cfg
