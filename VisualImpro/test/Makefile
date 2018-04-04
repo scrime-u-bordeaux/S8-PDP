@@ -5,7 +5,8 @@ EXEC= tests
 SRC= TestMain.cpp $(wildcard TestCoeff/*.cpp) $(wildcard TestMix/*.cpp)\
 $(wildcard TestPreproc/*.cpp) $(wildcard TestColor/*.cpp)\
 $(wildcard ../process/*/*.cpp) $(wildcard TestClasses/*.cpp)
-INC = ../Matrix.cpp ../RGB.cpp ../ProcessMultiCorrel.cpp ../Connection.cpp
+INC = ../src/Matrix.cpp ../src/RGB.cpp ../src/ProcessMultiCorrel.cpp\
+			../src/Connection.cpp
 OBJ= $(SRC:.cpp=.o) $(INC:.cpp=.o)
 
 all: $(EXEC)

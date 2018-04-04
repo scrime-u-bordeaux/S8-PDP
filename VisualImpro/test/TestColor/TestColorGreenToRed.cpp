@@ -37,7 +37,7 @@ void TestColorGreenToRed::testColor(){
   color1 = ColorGreenToRed(input1);
   color2 = ColorGreenToRed(input2);
   color3 = ColorGreenToRed(input3);
-  /*CPPUNIT_ASSERT(color1.toString() == "#0");
-  CPPUNIT_ASSERT(color2.toString() == "#16775700");
-  CPPUNIT_ASSERT(color3.toString() == "#1374740"); */
+  CPPUNIT_ASSERT(color1.toString() == "#000000");
+  CPPUNIT_ASSERT(color2.toString() == "#FFFA14");
+  CPPUNIT_ASSERT(color3.toString() == "#14FA14");
 }

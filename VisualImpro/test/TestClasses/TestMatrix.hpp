@@ -16,16 +16,25 @@ public:
   CPPUNIT_TEST(testConstructor);
   CPPUNIT_TEST(testSetCase);
   CPPUNIT_TEST(testGetCase);
+  CPPUNIT_TEST(testGetSize);
+  CPPUNIT_TEST(testGetRow);
+  CPPUNIT_TEST(testSetRow);
+  CPPUNIT_TEST(testSwap);
   CPPUNIT_TEST(testToString);
   CPPUNIT_TEST_SUITE_END();
 
 private:
   Matrix<int>* intMatrix;
   Matrix<float>* floatMatrix;
+  Matrix<float>* floatSwapMatrix;
   Matrix<RGB>* RGBmatrix;
   void testConstructor();
   void testSetCase();
   void testGetCase();
+  void testGetSize();
+  void testGetRow();
+  void testSetRow();
+  void testSwap();
   void testToString();
 };
 

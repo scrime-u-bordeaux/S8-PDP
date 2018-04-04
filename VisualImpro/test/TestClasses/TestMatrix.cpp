@@ -1,5 +1,5 @@
 /**
- *  \file    PreprocStrengthEnergy.cpp
+ *  \file    TestMatrix.cpp
  *  \author  Alexandre CASANOVA--FRANGER, Gauthier LARMARQUE, Paul SIMORRE,
  *            Lucas VIVAS
  *  \date    March 2018
@@ -8,7 +8,8 @@
  *
  *  This test is used to show us that our Matrix object if functionning as we
  *  intended. Our tests here stand for operations on cases, rows and columns.
- *  We either get or set values, and swap rows, columns, or the entire matrix.
+ *  We either get or set values and rows, get size, and swap rows or the entire
+ *  matrix.
  *
  */
 
@@ -17,7 +18,7 @@
 CPPUNIT_TEST_SUITE_REGISTRATION(TestMatrix);
 
 void TestMatrix::setUp(){
-  intMatrix = new Matrix<int>(5);
+  intMatrix = new Matrix<int>(3);
   floatMatrix = new Matrix<float>(5);
   RGBmatrix = new Matrix<RGB>(5);
 }
@@ -26,8 +27,7 @@ void TestMatrix::tearDown(){
   delete intMatrix;
 }
 
-void  TestMatrix::testConstructor()
-{
+void  TestMatrix::testConstructor(){
   intMatrix = new Matrix<int>(3);
 
   CPPUNIT_ASSERT_EQUAL(0,  intMatrix->getCase(0,0));
@@ -49,6 +49,36 @@ void TestMatrix::testGetCase(){
   CPPUNIT_ASSERT(floatMatrix->getCase(0,2) == 5.2f);
 }
 
+void TestMatrix::testGetSize(){
+  CPPUNIT_ASSERT(intMatrix->getSize() == 3);
+  CPPUNIT_ASSERT(floatMatrix->getSize() == 5);
+}
+
+void TestMatrix::testGetRow(){
+  vector<float> frow(5, 0.0f);
+  vector<int>   irow(3, 0);
+  CPPUNIT_ASSERT(floatMatrix->getRow(0) == frow);
+  CPPUNIT_ASSERT(intMatrix->getRow(0) == irow);
+}
+
+void TestMatrix::testSetRow(){
+  vector<float> frow(5, 1.0f);
+  vector<int>   irow(3, 2);
+  floatMatrix->setRow(0, frow);
+  intMatrix->setRow(0, irow);
+  CPPUNIT_ASSERT(floatMatrix->getRow(0) == frow);
+  CPPUNIT_ASSERT(intMatrix->getRow(0) == irow);
+}
+
+void TestMatrix::testSwap(){
+  vector<float> frow(5, 1.0f);
+  vector<int>   irow(3, 2);
+  floatSwapMatrix = new Matrix<float>(5);
+  floatSwapMatrix->setCase(1, 1, 7.0f);
+  floatMatrix->swap(*floatSwapMatrix);
+  CPPUNIT_ASSERT(floatMatrix->getCase(1,1) == 7.0f);
+}
+
 void TestMatrix::testToString(){
-  CPPUNIT_ASSERT(intMatrix->toString() == "Matrix");
+  CPPUNIT_ASSERT(intMatrix->toString() == "3-3000000000");
 }

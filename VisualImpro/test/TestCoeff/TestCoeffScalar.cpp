@@ -1,5 +1,5 @@
 /**
- *  \file    PreprocStrengthEnergy.cpp
+ *  \file    TestCoeffScalar.cpp
  *  \author  Alexandre CASANOVA--FRANGER, Gauthier LARMARQUE, Paul SIMORRE,
  *            Lucas VIVAS
  *  \date    March 2018
@@ -7,7 +7,8 @@
  *  \brief Test program of the CoeffScalar function.
  *
  *  This test is used to show us that our scalar correlation function is
- *  functionning well.
+ *  functionning well. The scalar correlation function works as the
+ *  operation given in an assertion in the testCoeff test function.
  *
  */
 
@@ -16,13 +17,8 @@
 CPPUNIT_TEST_SUITE_REGISTRATION(TestCoeffScalar);
 
 void TestCoeffScalar::setUp(){
-  s1 = vector<float>(300);
-  s2 = vector<float>(300);
-  for(unsigned int i=0; i<s1.size(); i++){
-    float randomval = rand()/(RAND_MAX);
-    s1[i] = randomval;
-    s2[i] = randomval;
-  }
+  s1 = vector<float>(100, 0.5f);
+  s2 = vector<float>(100, 1.0f);
 }
 
 void TestCoeffScalar::tearDown(){
@@ -31,14 +27,20 @@ void TestCoeffScalar::tearDown(){
   v.swap(s2);
 }
 
-void  TestCoeffScalar::testCoeff(){
+void TestCoeffScalar::testCoeff(){
   float result = 0.0f;
   result = CoeffScalar(s1,s2);
-  CPPUNIT_ASSERT(result == 0.0f);
-  CPPUNIT_ASSERT_EQUAL(result, 0.0f);
+  float norm1 = 0.0;
+  for (unsigned int i = 0; i < s1.size(); i++){
+    norm1 += s1[i]*s1[i];
+  }
+  float norm2 = 0.0;
+  for (unsigned int i = 0; i < s2.size(); i++){
+    norm2 += s2[i]*s2[i];
+  }
+  float scal = 0.0;
+  for (unsigned int i = 0; i < s1.size(); i++){
+    scal += s1[i]*s2[i];
+  }
+  CPPUNIT_ASSERT(result == fabs(scal)/sqrt(norm1*norm2));
 }
-
-/*BOOST_AUTO_TEST_CASE(coeff_scalar_test) {
-  std::vector<float> v(N, 1.0f);
-  BOOST_CHECK(CoeffScalar(v, v) == 1.0f);
-}*/

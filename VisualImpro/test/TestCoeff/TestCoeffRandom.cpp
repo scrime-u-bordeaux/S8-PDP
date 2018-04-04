@@ -1,5 +1,5 @@
 /**
- *  \file    PreprocStrengthEnergy.cpp
+ *  \file    TestCoeffRandom.cpp
  *  \author  Alexandre CASANOVA--FRANGER, Gauthier LARMARQUE, Paul SIMORRE,
  *            Lucas VIVAS
  *  \date    March 2018
@@ -9,7 +9,7 @@
  *  This test is used to show us that our random correlation function is
  *  functionning well. As we can't realy test precisely the result values, what
  *  we're doing here is that we verify if the returned value is in our range of
- *  expected output values.
+ *  expected output values for a thousand tests.
  *
  */
 
@@ -18,8 +18,8 @@
 CPPUNIT_TEST_SUITE_REGISTRATION(TestCoeffRandom);
 
 void TestCoeffRandom::setUp(){
-  s1 = vector<float>(300);
-  s2 = vector<float>(300);
+  s1 = vector<float>(5);
+  s2 = vector<float>(5);
   for(unsigned int i=0; i<s1.size(); i++){
     float randomval = rand()/(RAND_MAX);
     s1[i] = randomval;
@@ -35,7 +35,9 @@ void TestCoeffRandom::tearDown(){
 
 void  TestCoeffRandom::testCoeff(){
   float result;
-  result = CoeffRandom(s1,s2);
-  CPPUNIT_ASSERT(result >= 0.0f);
-  CPPUNIT_ASSERT(result <= 1.0f);
+  for(int i=0; i<1000; i++){
+    result = CoeffRandom(s1,s2);
+    CPPUNIT_ASSERT(result >= 0.0f);
+    CPPUNIT_ASSERT(result <= 1.0f);
+  }
 }
