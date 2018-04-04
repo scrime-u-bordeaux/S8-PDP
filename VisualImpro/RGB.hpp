@@ -10,6 +10,13 @@
  */
 using namespace std;
 
+/**
+ * \class RGB
+ * \brief Class used for RGB triplets
+ *
+ * This class is composed by three integers whose values are ranged between 0
+ * and 255 and respectively represents the red, green, and blue colors.
+ */
 class RGB {
 public:
   /**
@@ -23,7 +30,7 @@ public:
   RGB(int red, int green, int blue);
 
   RGB::RGB(string hexaCode);
-  
+
   /**
    * \fn     int getRed() const
    * \brief  Get the value of the red component.

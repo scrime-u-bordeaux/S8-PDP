@@ -1,16 +1,16 @@
 /**
- * @file GUITCPServer.cpp
- * @author  Alexandre CASANOVA--FRANGER, Gauthier LARMARQUE, Paul SIMORRE,
+ * \file GUITCPServer.cpp
+ * \author  Alexandre CASANOVA--FRANGER, Gauthier LARMARQUE, Paul SIMORRE,
 *            Lucas VIVAS
 */
 
-#include "GUITCPServer.hpp"
-
+#include <iostream>
 #include <QHostAddress>
 #include <QString>
 #include <QTcpSocket>
-#include <iostream>
 #include <string>
+
+#include "GUITCPServer.hpp"
 
 GUITCPServer::GUITCPServer(QObject *parent) : QTcpServer(parent) {
   QHostAddress address(IPADDRESS);
@@ -29,7 +29,7 @@ void GUITCPServer::onConnectionBela() {
 void GUITCPServer::readMatrix() {
   QString line;
   int length = 0, hexaStart = 0;
-  
+
   line = clientSock->readLine();
   if (line != NULL) {
     string str = line.toStdString();

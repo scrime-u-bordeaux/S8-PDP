@@ -1,5 +1,5 @@
 /**
- * @file TestMatrix.hpp
+ * \file TestMatrix.hpp
  * @author  Alexandre CASANOVA--FRANGER, Gauthier LARMARQUE, Paul SIMORRE,
 *            Lucas VIVAS
 */

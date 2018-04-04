@@ -1,14 +1,14 @@
 /**
- * @file GUIWavFileSettingLayout.cpp
- * @author  Alexandre CASANOVA--FRANGER, Gauthier LARMARQUE, Paul SIMORRE,
+ * \file GUIWavFileSettingLayout.cpp
+ * \author  Alexandre CASANOVA--FRANGER, Gauthier LARMARQUE, Paul SIMORRE,
 *            Lucas VIVAS
 */
 
-#include "GUIWavFileSettingLayout.hpp"
-
 #include <QString>
-#include <dirent.h>
 #include <string>
+#include <dirent.h>
+
+#include "GUIWavFileSettingLayout.hpp"
 
 GUIWavFileSettingLayout::GUIWavFileSettingLayout(QWidget *parent) : QGridLayout(parent) {
   leftLayout = new QVBoxLayout();
@@ -60,14 +60,14 @@ void GUIWavFileSettingLayout::loadWavFile() {
 }
 
 void GUIWavFileSettingLayout::removeWavFile() {
-  // remove from the list
+  // Remove from the list
   int ind = listView->currentIndex().row();
   nameFile->removeAt(ind);
   nameFileModel->removeRow(ind);
 }
 
 void GUIWavFileSettingLayout::clearWavFile() {
-  // remove everything from the list
+  // Remove everything from the list
   // int ind = listView->currentIndex().row();
   while (!nameFile->isEmpty()){
     nameFile->removeFirst();

@@ -1,23 +1,17 @@
 /**
- * @file GUIInputSettingLayout.cpp
- * @author  Alexandre CASANOVA--FRANGER, Gauthier LARMARQUE, Paul SIMORRE,
+ * \file GUIInputSettingLayout.cpp
+ * \author  Alexandre CASANOVA--FRANGER, Gauthier LARMARQUE, Paul SIMORRE,
 *            Lucas VIVAS
 */
 
+#include <Qt>
 #include "GUIInputSettingLayout.hpp"
 
-#include <Qt>
 
 template class QVector<QLabel *>;
 template class QVector<QSlider *>;
 template class QVector<QSpinBox *>;
 
-/**
- * @fn GUIInputSettingLayout::GUIInputSettingLayout(QWidget *parent)
- * @brief Constructor of the layout with all the input setting inside.
- *
- * @param parent parent of the layout.
- */
 GUIInputSettingLayout::GUIInputSettingLayout(QWidget *parent) :
   QGridLayout(parent),
   allLabel(new QVector<QLabel *>()),
@@ -25,12 +19,6 @@ GUIInputSettingLayout::GUIInputSettingLayout(QWidget *parent) :
   allSpinBox(new QVector<QSpinBox *>())
 {}
 
-  /**
-   * @fn
-   * @brief
-   *
-   * @param var description
-   */
 void GUIInputSettingLayout::addSetting(string name, int min, int max){
   allLabel->push_back(new QLabel(name.c_str()));
   allSlider->push_back(new QSlider(Qt::Horizontal));
@@ -52,13 +40,6 @@ void GUIInputSettingLayout::addSetting(string name, int min, int max){
   addWidget(allSpinBox->back(), pos + pos - 1, 1);
 }
 
-/**
- * @fn
- * @brief
- *
- * @param var description
- */
-
 const QStringList GUIInputSettingLayout::getSettings(){
     QStringList strList;
     for (int i = 0; i < allSpinBox->size(); i++) {
@@ -66,13 +47,6 @@ const QStringList GUIInputSettingLayout::getSettings(){
     }
     return strList;
 }
-
-/**
- * @fn
- * @brief
- *
- * @param var description
- */
 
 GUIInputSettingLayout::~GUIInputSettingLayout(){
     QLabel* label;
