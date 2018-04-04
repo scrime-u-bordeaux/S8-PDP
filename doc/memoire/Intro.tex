@@ -19,10 +19,8 @@ l'improvisation en musique.
 \subsection{Improvisation et corrélation}
 \paragraph{}
 
-% A DEBATTRE
 Il est essentiel de comprendre ces deux notions afin de bien situer
-l'intérêt du projet ; elles sont le c\oe ur de notre travail.
-% A DEBATTRE
+l'intérêt du projet.
 
 \paragraph{}
 Lors d'une improvisation en groupe, des musiciens jouent sans règles
@@ -35,26 +33,22 @@ qualité de leur accord porte un nom : c'est la corrélation.
 Au sens premier et basique du terme, la corrélation est le rapport
 réciproque entre deux éléments. En statistiques, on parle souvent de
 corrélation pour mesurer l'intensité de la liaison existant entre deux
-variables.
-
-% A DEBATTRE
- Dans le cadre de l'étude de signaux sonores, les
+variables. Dans le cadre de l'étude de signaux sonores, les
 traductions graphiques de ces signaux par transformée de Fourier
-peuvent jouer le rôle des courbes dont on mesure la corrélation.
-% A DEBATTRE
+peuvent jouer le rôle des courbes dont on mesure la corrélation. Tout
+au long du déroulement de notre projet, nous travaillons uniquement
+sur des fonctions de corrélation portant sur la comparaison des
+signaux graphiques obtenus à partir des pistes sonores.
 
 \paragraph{}
 En musique, il n'existe pas une mais un nombre indéfini de "fonctions
-de corrélation" potentiellement existantes, dont la complexité et les
-paramètres
-%LES RESULTATS
-varient. "Comprendre" la corrélation et l'improvisation,
-dans le cadre de ce projet, c'est aussi trouver, inventer la fonction
-de corrélation qui répond le mieux aux besoins d'un groupe
-d'improvisateurs. Une bonne fonction de corrélation, dans ce cadre
-spécifique, est une fonction qui fait en sorte qu'un groupe de
-musiciens joue un morceau plus satisfaisant lorsque ses membres sont
-davantage corrélés.
+de corrélation" potentiellement existantes, dont la complexité
+varie. "Comprendre" la corrélation et l'improvisation, dans le cadre
+de ce projet, c'est aussi trouver, inventer la fonction de corrélation
+qui répond le mieux aux besoins d'un groupe d'improvisateurs. Une
+bonne fonction de corrélation, dans ce cadre spécifique, est une
+fonction qui fait en sorte qu'un groupe de musiciens joue un morceau
+plus satisfaisant lorsque ses membres sont davantage corrélés.
 
 \subsection{L'existant}
 \paragraph{}
@@ -73,9 +67,7 @@ programme, prenant en entrées des pistes sonores, retourne une matrice
 graphique prenant les mêmes pistes en abscisses et en ordonnées et
 retournant pour chaque case une couleur permettant d'évaluer la
 corrélation existant entre les deux pistes correspondantes grâce à un
-code
-% COULEUR
-précis.
+code précis.
 
 \begin{figure}[h]
 	\centering
@@ -120,7 +112,16 @@ instruments seraient connectés à cet outil. Ce dernier dispose déjà de
 fonctions de traitement du son codées en C++, mais revêt surtout un intérêt
 pour les développeurs, qui peuvent librement modifier et enrichir son
 programme.
-% PLUS DE CHOSES A DIRE SUR LE BELA
+% PLUS DE CHOSES A DIRE SUR LE BELA, HISTOIRE DE LATENCES
+\paragraph{}
+Le dispositif externe BELA comprend huit entrées analogiques et deux
+entrées audio. Son architecture lui permet d'interpréter parallèlement
+jusqu'à seize fichiers audio numériques supplémentaires.
+\paragraph{}
+Le framework de BELA permet l'implémentation de programmes divers par
+son utilisateur à partir de deux fichiers sources codés en C++ : le
+"main" exécutant le programme principal et le "render" qui met à jour
+l'analyse des signaux reçus en entrée.
 
 \subsubsection{Un logiciel d'aide à l'improvisation musicale}
 \paragraph{}
@@ -144,7 +145,6 @@ branchés directement sur le système. Ce nouveau programme permet donc
 improvisation, et peut même comparer des pistes mono-instrumentales
 jouées en temps réel avec des fichiers sonores numériques déjà
 existant.
-%	
 
 \subsubsection{Détails sur le programme existant}
 \paragraph{}
