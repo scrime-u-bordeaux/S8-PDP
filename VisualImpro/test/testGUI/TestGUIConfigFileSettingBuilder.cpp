@@ -1,5 +1,5 @@
 /**
- * @file TestGUIConfigFileSettingBuilder.cpp
+ * \file TestGUIConfigFileSettingBuilder.cpp
  * @author  Alexandre CASANOVA--FRANGER, Gauthier LARMARQUE, Paul SIMORRE,
 *            Lucas VIVAS
 */

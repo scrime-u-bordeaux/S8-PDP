@@ -1,32 +1,20 @@
 /**
- * @file GUIProcessSettingLayout.cpp
- * @author  Alexandre CASANOVA--FRANGER, Gauthier LARMARQUE, Paul SIMORRE,
+ * \file GUIProcessSettingLayout.cpp
+ * \author  Alexandre CASANOVA--FRANGER, Gauthier LARMARQUE, Paul SIMORRE,
  *            Lucas VIVAS
  * @date    March 2018
 */
 
-#include <dirent.h>
 #include <string>
+#include <dirent.h>
 
 #include "GUIProcessSettingLayout.hpp"
 
-/**
- * @fn
- * @brief
- *
- * @param var description
- */
 GUIProcessSettingLayout::GUIProcessSettingLayout(QWidget *parent)
     : QFormLayout(parent) {
   allBox = new QVector<QComboBox *>();
 }
 
-/**
- * @fn
- * @brief
- *
- * @param var description
- */
 void GUIProcessSettingLayout::addSetting(string name) {
   allBox->push_back(new QComboBox(this->parentWidget()));
   QStringList str = getFilename(name);
@@ -36,12 +24,6 @@ void GUIProcessSettingLayout::addSetting(string name) {
   this->addRow(name.c_str(), allBox->back());
 }
 
-/**
- * @fn
- * @brief
- *
- * @param var description
- */
 const QStringList GUIProcessSettingLayout::getSettings(){
   QStringList str;
   for (int i = 0; i < allBox->size(); i++) {
@@ -50,12 +32,6 @@ const QStringList GUIProcessSettingLayout::getSettings(){
   return str;
 }
 
-/**
- * @fn
- * @brief
- *
- * @param var description
- */
 QStringList GUIProcessSettingLayout::getFilename(string nameFile) {
   QStringList strList;
   DIR *pDIR;
@@ -79,12 +55,6 @@ QStringList GUIProcessSettingLayout::getFilename(string nameFile) {
   return strList;
 }
 
-/**
- * @fn
- * @brief
- *
- * @param var description
- */
 GUIProcessSettingLayout::~GUIProcessSettingLayout() {
     QComboBox* box;
     while ( !allBox->isEmpty() && ( (box = allBox->first()) != 0 )) {

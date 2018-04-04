@@ -1,22 +1,21 @@
 /**
- * @file GUISettingWindow.cpp
- * @author  Alexandre CASANOVA--FRANGER, Gauthier LARMARQUE, Paul SIMORRE,
+ * \file GUISettingWindow.cpp
+ * \author  Alexandre CASANOVA--FRANGER, Gauthier LARMARQUE, Paul SIMORRE,
 *            Lucas VIVAS
 */
-
-#include "GUISettingWindow.hpp"
 
 #include <QPalette>
 #include <string>
 
 #include "GUIConfigFileSettingBuilder.hpp"
 #include "GUISettingLayoutFactory.hpp"
+#include "GUISettingWindow.hpp"
 
 /**
- * @fn GUISettingWindow(QWidget *parent)
- * @brief Constructor for GUISettingWindow class.
+ * \fn GUISettingWindow(QWidget *parent)
+ * \brief Constructor for GUISettingWindow class.
  *
- * @param parent the parent of this layout.
+ * \param parent the parent of this layout.
  */
 GUISettingWindow::GUISettingWindow(QWidget *parent) : QDialog(parent) {
   finishButton = new QPushButton("FIN");
@@ -60,12 +59,12 @@ GUISettingWindow::GUISettingWindow(QWidget *parent) : QDialog(parent) {
 }
 
 /**
- * @fn checkInput()
- * @brief Check if the number of inputs more then MIN_ENTRIES if it is not
+ * \fn checkInput()
+ * \brief Check if the number of inputs more then MIN_ENTRIES if it is not
  * print on the window a error message else build the config file and close
  * this window return the number of inputs.
  *
- * @param
+ * \param
  */
 void GUISettingWindow::checkInput() {
   int nbInput = getNumInput();
@@ -87,10 +86,10 @@ void GUISettingWindow::checkInput() {
 }
 
 /**
- * @fn buildConfigFile()
- * @brief Get all the settings and build the config file with its.
+ * \fn buildConfigFile()
+ * \brief Get all the settings and build the config file with its.
  *
- * @param
+ * \param
  */
 void GUISettingWindow::buildConfigFile() {
   /*get all the settings*/
@@ -119,11 +118,11 @@ void GUISettingWindow::buildConfigFile() {
 }
 
 /**
- * @fn getNumInput()
- * @brief Return the number of input which are the number of audio, analog
+ * \fn getNumInput()
+ * \brief Return the number of input which are the number of audio, analog
  * inputs and the number of wav files.
  *
- * @param
+ * \param
  */
 int GUISettingWindow::getNumInput() {
   int nbInput = 0;
@@ -139,10 +138,10 @@ int GUISettingWindow::getNumInput() {
 }
 
 /**
- * @fn ~GUISettingWindow()
- * @brief Destructor for GUISettingWindow class.
+ * \fn ~GUISettingWindow()
+ * \brief Destructor for GUISettingWindow class.
  *
- * @param
+ * \param
  */
 GUISettingWindow::~GUISettingWindow() {
   delete (finishButton);

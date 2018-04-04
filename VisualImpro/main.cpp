@@ -572,8 +572,9 @@ static void launch(int argc, char *argv[]){
  * \fn     int main(int argc, char *argv[])
  * \brief  The main function of the program.
  *
- * \param   argc The number of arguments given to the program.
- * \param   argv The list of arguments given to the program.
+ * \param  argc The number of arguments given to the program.
+ * \param  argv The list of arguments given to the program.
+ * \return An interger corresponding to EXIT_SUCCESS or EXIT_FAILURE.
  */
 int main(int argc, char *argv[]) {
   launch(argc, argv);
