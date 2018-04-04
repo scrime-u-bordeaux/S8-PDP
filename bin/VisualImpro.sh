@@ -89,7 +89,13 @@ function qt_display(){
   sleep 3
   #Launch VisualImpro
   ssh root@192.168.7.2 'cd /root/Bela/projects/VisualImpro && ./VisualImpro config/configtmp.cfg' &
-  while true; do sleep 2; done
+  while true; do 
+    if kill -0 $pid 2> /dev/null; then
+      sleep 2
+    else
+      cleanup_qt
+    fi
+  done
 }
 
 function default_display(){
