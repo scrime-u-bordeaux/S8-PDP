@@ -129,6 +129,56 @@ l'organisation des fichiers.
           un nouveau dossier \verb!bin!.
 \end{itemize}
 
+\subsubsection{Optimisation du code}
+\paragraph{}
+Afin de garantir un traitement rapide des informations par BELA et de
+produire un retour sonore sans risque de latence, nous avons dû
+optimiser certaines parties du code. Dans son rapport, Jérémy Lixandre
+avait précisé que le traitement de BELA occupait une part trop
+importante du CPU à partir de quinze fichiers \verb!.wav! traités
+simultanément ; ce constat nous a encouragés à optimiser le programme
+pour limiter le coût de son exécution.
+\paragraph{}
+L'implémentation de l'existant présentait notamment de nombreuses
+copies des matrices passées en paramètres. Ces matrices sont des
+éléments particulièrement lourds, contenant un nombre de données égal
+au produit du nombre de pistes sonores en entrée par 32768 (taille des
+buffers traités). Nous avons choisi de remplacer ces copies
+successives de matrices par le placement en paramètres de références
+constantes de ces matrices.
+
+\begin{lstlisting}
+void ProcessMultiCorrel::process(const Matrix<float>& buffer,
+                                 vector<float>& meanCorrelations,
+                                 Connection conn){
+  Matrix<float> copy = buffer;
+
+  // Processing functions
+  copy = _preprocess(buffer);
+  Matrix<float> correlMatrix = calcul_correl(copy);
+  process_volume(correlMatrix, meanCorrelations);
+  Matrix<RGB> mat = color_matrix(correlMatrix);
+
+  // Send data
+  string str = mat.toString();
+  conn.send(str);
+}
+\end{lstlisting}
+\begin{center}
+  \textit{Ci-dessus, la fonction principale de
+    \verb!ProcessMultiCorrel.cpp!. Son code témoigne de multiples
+    opérations de refactoring et d'optimisations du code ; en effet,
+    le nombre d'appels de fonctions auxiliaires témoigne du découpage
+    fonctionnel de la fonction d'origine, laquelle était autrement
+    plus dense. De plus, on peut observer dans les paramètres qu'une
+    matrice des moyennes de coefficients de corrélation a été ajoutée
+    pour permettre l'implémentation du mixage du retour sonore. Enfin,
+    la matrice de flottants "buffer" a été changée en sa référence
+    constante, afin d'éviter d'avoir à en faire une copie dans le
+    corps de la fonction.}
+  \end{center}
+
+
 \subsection{Les changements apportés à l'interface graphique}
 \paragraph{}
 Précédemment, nous parlions de la nécessité de modifier l'affichage de
