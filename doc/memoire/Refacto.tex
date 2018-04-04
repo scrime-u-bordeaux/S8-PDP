@@ -137,15 +137,22 @@ l'organisation des fichiers.
             programme VisualImpro.
 \end{itemize}
 \paragraph{}
-Dans la version précédente de l'exécutable (\verb!VisualImproExe!), les tâches réalisées par le code C++ étaient les suivantes :
+Dans la version précédente de l'exécutable (\verb!VisualImproExe!),
+les tâches réalisées par le code C++ étaient les suivantes :
 \begin{itemize}
-  \item Copier les fichiers \verb!.wav! indiqués dans le fichier de configuration dans Bela,
-  \item Créer une copie du fichier de configuration, et y modifier les chemins des fichiers \verb!.wav! pour que ceux ci correspondent au système de fichiers de Bela,
+  \item Copier les fichiers \verb!.wav! indiqués dans le fichier de
+    configuration dans Bela,
+  \item Créer une copie du fichier de configuration, et y modifier les
+    chemins des fichiers \verb!.wav! pour que ceux ci correspondent au
+    système de fichiers de Bela,
   \item Copier la copie du fichier de configuration dans Bela,
   \item Lancement du serveur NodeJS avec le fichier \verb!server.js!,
-  \item Ouverture d'un onglet (ou d'une nouvelle fenêtre) du navigateur Firefox,
-  \item Connexion à Bela (en ssh) et lancement du programme VisualImpro,
-  \item Si le programme reçoit un signal d'interruption (Ctrl-C), alors certaines tâches sont réalisées :
+  \item Ouverture d'un onglet (ou d'une nouvelle fenêtre) du
+    navigateur Firefox,
+  \item Connexion à Bela (en ssh) et lancement du programme
+    VisualImpro,
+  \item Si le programme reçoit un signal d'interruption (Ctrl-C),
+    alors certaines tâches sont réalisées :
   \begin{itemize}
     \item Arrêt du programme VisualImpro,
     \item Arrêt du serveur NodeJS,
@@ -156,12 +163,27 @@ Dans la version précédente de l'exécutable (\verb!VisualImproExe!), les tâch
   \end{itemize}
 \end{itemize}
 \paragraph{}
-Durant l'audit, le fait de réaliser des manipulations de fichiers de configuration, ainsi que des transferts de fichiers ou des connexions vers Bela
-à l'aide de fichiers C++ a été pointé du doigt. En effet, cette façon de faire reposait sur des classes C++ annexes qui effectuaient les manipulations de chaînes de caractères dans les fichiers de configuration, et pour ce qui concerne le transfert de fichiers et la connexion vers Bela, cela été réalisé à l'aide d'appels à la fonction C \verb!int system(const char *command)!.
+Durant l'audit, le fait de réaliser des manipulations de fichiers de
+configuration, ainsi que des transferts de fichiers ou des connexions
+vers Bela à l'aide de fichiers C++ a été pointé du doigt. En effet,
+cette façon de faire reposait sur des classes C++ annexes qui
+effectuaient les manipulations de chaînes de caractères dans les
+fichiers de configuration, et pour ce qui concerne le transfert de
+fichiers et la connexion vers Bela, cela été réalisé à l'aide d'appels
+à la fonction C \verb!int system(const char *command)!.
 \paragraph{}
-Réaliser toutes ces opérations à l'aide d'un script bash paraissait beaucoup plus pertinent. Cela permet de se passer des différents fichiers sources et d'en-tête C++, et de plus, il existe des commandes bash permettant de réaliser ces manipulations de chaînes de caractères de façon beaucoup moins lourde et fastidieuse.
+Réaliser toutes ces opérations à l'aide d'un script bash paraissait
+beaucoup plus pertinent. Cela permet de se passer des différents
+fichiers sources et d'en-tête C++, et de plus, il existe des commandes
+bash permettant de réaliser ces manipulations de chaînes de caractères
+de façon beaucoup moins lourde et fastidieuse.
 \paragraph{}
-En plus de reproduire le comportement de l'ancienne version de l'exécutable, notre script bash permet de choisir entre les deux versions graphiques maintenant disponibles. Il suffit de préciser à l'aide d'une option (\verb!qt! ou \verb!firefox!) quel affichage on souhaite avoir.  
+En plus de reproduire le comportement de l'ancienne version de
+l'exécutable, notre script bash permet de choisir entre les deux
+versions graphiques maintenant disponibles. Il suffit de préciser à
+l'aide d'une option (\verb!qt! ou \verb!firefox!) quel affichage on
+souhaite avoir.
+
 \subsubsection{Optimisation du code}
 \paragraph{}
 Afin de garantir un traitement rapide des informations par BELA et de
