@@ -80,11 +80,8 @@ void GUIConfigFileSettingBuilder::addMixFunction(string functionName) {
 
 void GUIConfigFileSettingBuilder::endFile() {}
 
-void GUIConfigFileSettingBuilder::getResult() {
-  ofstream configFile;
-  configFile.open("./config_qt.cfg");
-  configFile << fileBuffer->str();
-  configFile.close();
+string GUIConfigFileSettingBuilder::getResult() {
+  return fileBuffer->str();
 }
 
 GUIConfigFileSettingBuilder::~GUIConfigFileSettingBuilder() {

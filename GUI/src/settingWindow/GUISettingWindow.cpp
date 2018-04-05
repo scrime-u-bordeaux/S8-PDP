@@ -6,6 +6,7 @@
 
 #include <QPalette>
 #include <string>
+#include <fstream>
 
 #include "GUIConfigFileSettingBuilder.hpp"
 #include "GUISettingLayoutFactory.hpp"
@@ -114,7 +115,12 @@ void GUISettingWindow::buildConfigFile() {
   builder.addMixFunction(processList.at(3).toStdString());
   builder.endFile();
   /*create the config file*/
-  builder.getResult();
+  string fileStr = builder.getResult();
+  ofstream configFile;
+  configFile.open("./config_qt.cfg");
+  configFile << fileStr;
+  configFile.close();
+
 }
 
 /**

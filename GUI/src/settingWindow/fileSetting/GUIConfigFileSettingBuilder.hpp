@@ -8,7 +8,7 @@
 #define DEF_GUICONFIGFILESETTINGBUILDER
 
 #include <string>
-#include "sstream"
+#include <sstream>
 
 #include "GUIFileSettingBuilder.hpp"
 
@@ -142,7 +142,7 @@ public:
    * \fn    getResult()
    * \brief Print all the setting in a .cfg file format.
    */
-  void getResult();
+  string getResult();
 
   /**
    * \fn    ~GUIConfigFileSettingBuilder()

@@ -41,7 +41,7 @@ void GUITCPServer::readMatrix() {
     }
     /*if there is a decimal number*/
     else{
-      length = stoi(str.substr(0,2), nullptr, 10);
+    length = stoi(str.substr(0,2), nullptr, 10);
       hexaStart = 5;
     }
 
