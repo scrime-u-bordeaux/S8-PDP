@@ -54,27 +54,27 @@ l'organisation des fichiers.
        \verb!launch(int argc, char *argv[])! qui elle-même appelle
        d'autres fonctions (lesquelles, parfois, en appellent elles-mêmes
        de nouvelles).
-       
-       \begin{lstlisting}
-      static void launch(int argc, char *argv[]){
-        ChSettings gChSettings;
-        Parser config;
-        void *handle;
-        ProcessMultiCorrel *p;
-        config = initParser(argc, argv);
-        handle = initHandler();
-        p = initProcessMultiCorrel(handle);
-        setupSettings(gChSettings, config, p, handle);
-        initAndRun(gChSettings, config, argv);
-        stopAndCleanupAudio();
-        freeAndClose(gChSettings, config, p, handle);
-      }
- \end{lstlisting}
- 
+
+\begin{lstlisting}[language=C, frame=single, breaklines=true]
+static void launch(int argc, char *argv[]){
+  ChSettings gChSettings;
+  Parser config;
+  void *handle;
+  ProcessMultiCorrel *p;
+  config = initParser(argc, argv);
+  handle = initHandler();
+  p = initProcessMultiCorrel(handle);
+  setupSettings(gChSettings, config, p, handle);
+  initAndRun(gChSettings, config, argv);
+  stopAndCleanupAudio();
+  freeAndClose(gChSettings, config, p, handle);
+}
+\end{lstlisting}
+
  \begin{center}
   \textit{Ci-dessus, le code de la fonction launch}
  \end{center}
- 
+
  \item Nous avons de même effectué un découpage fonctionnel sur la
        fonction \\ \verb!bool setup!  du fichier \verb!render.cpp!. Ce
        fichier, qui présentait tout comme \verb!main.cpp! une
@@ -89,22 +89,22 @@ l'organisation des fichiers.
        pistes), et il n'était pas possible de la découper sans créer de
        conflits sur les variables enregistrant le nombre de tours de
        boucle ou les variables contenant les signaux audio par exemple.
-       
-       \begin{lstlisting}
-      bool setup(BelaContext *context, void *userData) {
-        gUserSet = *((ChSettings *)userData);
-        initUserSet(gUserSet);
-        initBuffers();
-        initSampleStreams(gUserSet);
-        printInfo();
-        return initAuxiliaryTasks();
-      }
- \end{lstlisting}
- 
+
+\begin{lstlisting}[language=C, frame=single, breaklines=true]
+bool setup(BelaContext *context, void *userData) {
+  gUserSet = *((ChSettings *)userData);
+  initUserSet(gUserSet);
+  initBuffers();
+  initSampleStreams(gUserSet);
+  printInfo();
+  return initAuxiliaryTasks();
+}
+\end{lstlisting}
+
  \begin{center}
   \textit{Ci-dessus, le code de la fonction setup}
  \end{center}
- 
+
  \item \`{A} l'intérieur du dossier \verb!process!, les
        différents fichiers de traitement ont été classés par
        fonctions en quatre dossiers \verb!Coeff!, \verb!Color!,
@@ -115,7 +115,7 @@ l'organisation des fichiers.
        de fichiers de test). Le fichier TestMain contenu à la racine du
        dossier test se chargera de récupérer le registre de l'ensemble
        des tests contenus dans les différents dossiers.
-       
+
  \item D'une manière générale, les fichiers ont été triés pour
        ordonner l'architecture proposée par Jérémy qui était un peu
        confuse ; des fichiers de code n'ayant rien à voir entre eux
@@ -128,7 +128,7 @@ l'organisation des fichiers.
        les fichiers Makefile en conséquence. Le fichier de
        configuration \verb!config.cfg! a notamment été déplacé dans
        un nouveau dossier \verb!bin!.
-       
+
  \item Dans le code livré par Jérémy Lixandre, un dossier
        \verb!VisualImproExe! regroupait un fichier de
        configurations, les fichiers relatifs à NodeJS, un fichier
@@ -255,7 +255,7 @@ buffers traités). Nous avons choisi de remplacer ces copies
 successives de matrices par le placement en paramètres de références
 constantes de ces matrices.
 
-\begin{lstlisting}
+\begin{lstlisting}[language=C, frame=single, breaklines=true]
 void ProcessMultiCorrel::process(const Matrix<float>& buffer,
                                  vector<float>& meanCorrelations,
                                  Connection conn){

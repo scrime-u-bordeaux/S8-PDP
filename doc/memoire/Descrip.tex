@@ -27,3 +27,26 @@ Par la suite, la fonction principale \verb!render()! va être appelée en chaîn
     \caption{Fonctionnement des fonctions principales de l'outil}
     \label{focntionnement main render}
 \end{figure}
+\subsection{La tâche auxiliaire de traitement}
+\paragraph{}
+Dans ce mémoire, on ne traitera que la tâche auxiliaire concernant le traitement, car la tâche auxiliaire de remplissage de tampon est réalisée par le code de la classe \verb!SampleStream! qui est une classe qui est fournie sur le site de Bela \cite{BELA}. Son contenu n'est pas voué à être modifié, mais il reste tout de même essentiel à la mécanique générale du programme.
+\paragraph{}
+La tâche auxiliaire de traitement du contenu audio est liée à une classe importante de notre outil, la classe \verb!ProcessMultiCorrel!. C'est cette classe qui va prendre un fragment des entrées, stocké dans un tampon, et qui va appliquer différents traitements sur ce tampon. Le traitement va se dérouler en 4 étapes exécutées séquentiellement.
+\subsubsection{Le pré-traitement}
+\paragraph{}
+La fonction de pré-traitement va servir à dégager une caractéristique du signal. Parmi les fonctions de pré-traitement dsiponibles, il y a la récupération de l'énergie du signal et le calcul de l'enveloppe du signal. Le graphique suivant représente l'enveloppe supérieure (en rouge) et l'enveloppe inférieure (en jaune) d'un signal (en bleu). \cite{ENV}
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=0.6]{assets/signal-enveloppe.png}
+    \caption{Représentation de l'enveloppe d'un signal}
+    \label{enveloppe signal}
+\end{figure}
+\paragraph{}
+Le bénéfice du calcul de l'enveloppe est d'avoir des valeurs plus stables, ce qui évite d'avoir en sortie des résultats extrêmement chaotiques.
+\paragraph{}
+En ce qui concerne l'énergie du signal, le principe est le suivant : on va découper le tampon en blocs, et pour chaque bloc, on va calculer la moyenne des valeurs du tampon assoicées au bloc au carré. Cela a pour but d'éliminer les valeurs négatives du signal et de réduire la taille de l'échantillon à traiter,
+ce qui va réduire les temps de calcul, donc les latences.
+\subsubsection{Le calcul du coeffcient de corrélation}
+\paragraph{}
+C'est à cette étape que l'on va calculer le coefficient de corrélation. Comme indiqué dans l'introduction de ce mémoire, la vision que l'on a d'une bonne improvisation est totalement 
+

@@ -53,7 +53,7 @@ public:
   /**
    * \fn    void process(const Matrix<float>& buffer,
    *                     vector<float>& meanCorrelations, Connection conn)
-   * \brief Finction calling sequentially every other processing function.
+   * \brief Function calling sequentially every other processing function.
    *
    * \param buffer The signals buffer.
    * \param meanCorrelations A vector given as a pointer to get the mix values.
