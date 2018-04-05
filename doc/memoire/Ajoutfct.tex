@@ -67,13 +67,11 @@ mixage sur le modèle des analyses des trois autres fonctions de
 
 \paragraph{}
 L'architecture de Bela a été conçue pour permettre la synthèse d'un
-retour sonore dans le corps de la fonction
-\verb!void render(BelaContext *context, void *userData)! du fichier
-éponyme. Grâce au code implémenté par notre prédécesseur au sein de
-cette fonction, Bela peut synthétiser un retour sonore modifié par
-notre fonction de mixage.
+retour sonore dans le corps de la fonction \verb!void render! du
+fichier éponyme. Grâce au code implémenté par notre prédécesseur au
+sein de cette fonction, Bela peut synthétiser un retour sonore modifié
+par notre fonction de mixage.
 
-% A MODIFIER
 \begin{lstlisting}
 for(unsigned int i=0; i<context->audioOutChannels; i++){
    if(gSampleFactor == STANDARD_SAMPLE_RATE){
@@ -84,17 +82,19 @@ for(unsigned int i=0; i<context->audioOutChannels; i++){
    }
 }
 \end{lstlisting} \begin{center} Ci-dessus, l'implémentation du retour sonore
-dans le corps de la fonction principale de \verb!render.cpp! \end{center}
+dans le corps de la fonction principale de \verb!render.cpp!. Via la
+fonction \verb!audioWrite!, la variable \verb!out! récupère un à un
+les signaux multipliés par la moyenne de leurs coefficients de
+corrélation par rapport aux autres signaux. \end{center}
 
-  - Ici c'est bien l'écriture du retour sonore, via la variable out, mais ce
-  qui est vraiment important c'est le comportement de la variable out. Elle
-  récupère les signaux un à un en les additionnant et les stockant dans sa
-  variable (c'est le cas de base), mais pour notre cas, elle récupère les
-  signaux multipliés par la moyenne de leur corrélation par rapport aux autres
-  instruments (valeur comprise entre 0 et 1). On peut voir ça dans les boucles
-  de chaque type de pistes (audio, analogique ou digitale--pour les fichiers--),
-  pour la boucle de traitement sans effets pour le moment.
-% A MODIFIER
+%  - Ici c'est bien l'écriture du retour sonore, via la variable out, mais ce
+ % qui est vraiment important c'est le comportement de la variable out. Elle
+%  récupère les signaux un à un en les additionnant et les stockant dans sa
+%  variable (c'est le cas de base), mais pour notre cas, elle récupère les
+%  signaux multipliés par la moyenne de leur corrélation par rapport aux autres
+%  instruments (valeur comprise entre 0 et 1). On peut voir ça dans les boucles
+%  de chaque type de pistes (audio, analogique ou digitale--pour les fichiers--)%,
+%  pour la boucle de traitement sans effets pour le moment.
 
 \paragraph{}
 Dans le fichier \verb!render.cpp!, la fonction
