@@ -13,8 +13,9 @@ l'architecture héritée de Jérémy Lixandre est son manque de clarté ;
 le code livré était trop peu commenté pour permettre à un programmeur
 de comprendre ne serait-ce que le rôle de chaque classe sans rentrer
 en détail dans l'intégralité de leur code. Pour cette raison, nous
-avons ajouté des commentaires d'en-tête à chaque début de fichier
-\verb!.cpp! afin d'expliquer le rôle de chacun de ces fichiers.
+avons abondemment commenté le code en rajoutant également de la documentation
+doxygen. Pour tous les fichiers sources, nous trouvons dans l'en-tête de chaque
+début de fichier \verb!.cpp! le rôle et le fonctionnement de ceux-là.
 \paragraph{}
 Des commentaires ont également été ajoutés massivement au niveau des
 fonctions principales du programme. En effet, la compréhension du
@@ -72,14 +73,14 @@ l'organisation des fichiers.
 
     \begin{center}
       \textit{Ci-dessus, le code de la fonction launch}
-    \end{center}    
+    \end{center}
 
     \item Nous avons de même effectué un découpage fonctionnel sur la
       fonction \\ \verb!setup(BelaContext *context, void *userData)!
-      du fichier \verb!render.cpp!. Ce dernier, qui présentait tout
-      comme \verb!main.cpp! une organisation assez confuse, ne pouvait
-      pas cependant être remanié autant en profondeur que le code
-      précédemment abordé. En effet, la fonction principale du
+      du fichier \verb!render.cpp!. Ce fichier, qui présentait tout
+      comme \verb!main.cpp! une organisation assez condensée, ne pouvait
+      pas cependant être remanié autant en profondeur dans son intégralité que
+      le code précédemment abordé. En effet, la fonction principale du
       fichier, \verb!void!
       \\ \verb!render(BelaContext * context, void *userData)!, ne
       pouvait être découpée de manière maintenable. En effet, elle
@@ -104,7 +105,7 @@ l'organisation des fichiers.
 
     \begin{center}
       \textit{Ci-dessus, le code de la fonction setup}
-    \end{center}    
+    \end{center}
 
       \item \`{A} l'intérieur du dossier \verb!process!, les
         différents fichiers de traitement ont été classés par
@@ -113,7 +114,9 @@ l'organisation des fichiers.
         \verb!test!, les fichiers que nous avons implémenté pour tester les
         différentes fonctions du programme ont été classés de la même
         manière (Jérémy Lixandre n'avait pour sa part pas implémenté
-        de fichiers de test).
+        de fichiers de test). Le fichier TestMain contenu à la racine du
+        dossier test se chargera de récupérer le registre de l'ensemble
+        des tests contenus dans les différents dossiers.
 
         \item D'une manière générale, les fichiers ont été triés pour
           ordonner l'architecture proposée par Jérémy qui était un peu
@@ -221,18 +224,76 @@ void ProcessMultiCorrel::process(const Matrix<float>& buffer,
 \end{lstlisting}
 \begin{center}
   \textit{Ci-dessus, la fonction principale de
-    \verb!ProcessMultiCorrel.cpp!. Son code témoigne de multiples
+    \verb!ProcessMultiCorrel.cpp!. Ce code témoigne de multiples
     opérations de refactoring et d'optimisations du code ; en effet,
-    le nombre d'appels de fonctions auxiliaires témoigne du découpage
-    fonctionnel de la fonction d'origine, laquelle était autrement
-    plus dense. De plus, on peut observer dans les paramètres qu'une
-    matrice des moyennes de coefficients de corrélation a été ajoutée
+    le nombre d'appels de fonctions au sein de la fonction process témoigne du
+    découpage fonctionnel de la fonction d'origine, laquelle était autrement
+    plus dense. De plus, on peut observer dans les paramètres qu'un
+    vecteur des moyennes de coefficients de corrélation a été ajoutée
     pour permettre l'implémentation du mixage du retour sonore. Enfin,
     la matrice de flottants "buffer" a été changée en sa référence
     constante, afin d'éviter d'avoir à en faire une copie dans le
     corps de la fonction.}
   \end{center}
 
+% A AJOUTER
+\subsubsection{Autres remarques}
+  - La classe utilities contenait un trop grand nombre de fonctions et était
+  utilisée comme la classe "fourre-tout" à inclure partout. On a donc réduit
+  au maximum son contenu pour qu'elle contienne le minimum de fonctions
+  possibles. Elle contient actuellement seulement 2 fonctions utilisées par le
+  main et le render, et joue vraiment le rôle de classe utilitaire pour les
+  fichiers principaux de notre programme. Pour la réduire au maximum, il fallait
+  dans un premier temps supprimmer les fonctions de traitement qu'elle contenait
+  (et qui faisait que cette classe devait être incluse dans tous les fichiers du
+  répertoire process), et les placer dans le code de manière stratégique pour
+  éviter cette inclusion systématique, et d'autre part il fallait
+  supprimer la structure Triplet qu'elle contenait, qui correspondait à un
+  triplet RGB, et nous avons créé une classe RGB en conséquence. Elle regroupe
+  les fonctions utilisées pour la classe triplet, refactorées pour la cette
+  nouvelle classe RGB en améliorant le code des fonctions initiales. Les
+  fonctions créées par le stagiaires pour passer d'entiers vers des valeurs
+  hexadecimales ont été refactorées de manière à les rendre plus simples tout
+  en gardant le même résultat en sortie.
+
+  - Nous avions beaucoup de traitements sur des matrices dans notre code, mais
+  nous ne disposions auparavant pas de classe pour répondre à ce besoin, ce qui
+  faisait que nous utilisions des vecteurs de vecteurs de flottants pour nos
+  traitements. Cela était très lourd d'écriture, et demandait d'écrire des
+  fonctions de traitement de vecteurs de vecteurs quelque part pour nos
+  opérations, et ces fonctions étaient donc définies dans le fichier utilities
+  avec le reste. Nous avons donc créé une classe Matrix correspondant à un
+  vecteur de vecteur et contenant toutes les opérations sur les matrices dont
+  nous avons besoins, en plus de nombreux constructeurs pour créer des matrices
+  de différents types, selon différents paramètres. Cette classe Matrix est une
+  classe template, et permet ici de créer des matrices d'entiers, de flottants,
+  ou bien de triplets RGB.
+
+  -Nous avons effectué des tests de ces deux nouvelles classes, Matrix et RGB,
+  dans le dossier de TestClasses lui même dans le dossier test, contenant
+  l'ensemble des dossiers de tests regroupés par cohérence de type.
+
+  - Les classes ProcessMultiCorrel et ProcessMultiWriteWav héritaient d'une
+  classe nommée ProcessMulti, mais l'héritage ici n'avait pas lieu d'être car
+  cette classe ProcessMulti définissait une fonction abstraite process,
+  redéfinie dans ses classes filles, et prenant en paramètre une matrice de
+  flottants (signaux) et une connexion. Or la classe ProcessMultiWriteWav sert
+  à créer des fichiers .wav, donc ne requiert aucune connexion. Ce paramètre
+  n'était donc pas utilisé dans la fonction process de la classe
+  ProcessMultiWriteWav, et comme l'on devait rajouter un paramètre pour notre
+  fonction process de la classe ProcessMultiCorrel, l'héritage n'était
+  clairement plus justifié. Nous avons donc cassé l'héritage entre ces classes
+  et supprimé la classe ProcessMulti.
+
+  - Ajout de fichiers header pour tous les fichiers source contenant les
+  fonctions de traitement. Cela permet de pouvoir utiliser chaque fonction en
+  incluant le fichier contenant la fonction dont nous avons besoin. Auparavant,
+  nous copions chaque fonction de traitement (ou du moins des parties "utiles"
+  des fonctions de traitement) dans la classe utilities, mais cette dernière
+  ayant été réusinée de manière à être cohérente et non un gros sac ignoble,
+  nous devons donc coder proprement et inclure le fichier header de la fonction
+  que nous voulons utiliser, comme par exemple pour nos fichiers de test.
+%A AJOUTER
 
 \subsection{Les changements apportés à l'interface graphique}
 \paragraph{}

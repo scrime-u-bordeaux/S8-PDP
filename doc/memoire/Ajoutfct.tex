@@ -26,10 +26,11 @@ Nous avons implémenté plusieurs fonctions de mixage. La fonction
 \verb!vector<float>!
 \\ \verb!MixMaxCorrelated(const Matrix<float>& correlMatrix)!, par
 exemple, renvoie un coefficient égal à la moyenne des coefficients de
-corrélation de la piste avec toutes les autres pistes. Tandis que la
-fonction de traduction du coefficient de corrélation en triplet RGB
-est dédiée uniquement au retour visuel, celle de mixage est dédiée
-uniquement au retour sonore.
+corrélation de la piste avec toutes les autres pistes. Les instruments
+les moins corrélés recevront ici un malus sur l'amplitude de leur signal.
+Tandis que la fonction de traduction du coefficient de corrélation en
+triplet RGB est dédiée uniquement au retour visuel, celle de mixage est
+dédiée uniquement au retour sonore.
 
 \begin{lstlisting}
 vector<float> MixMaxCorrelated(const Matrix<float>& correlMatrix) {
@@ -50,7 +51,6 @@ vector<float> MixMaxCorrelated(const Matrix<float>& correlMatrix) {
   }
 
   return meanCorrelations;
-}
 }
 \end{lstlisting}
 
@@ -74,11 +74,22 @@ retour sonore dans le corps de la fonction
 cette fonction, Bela peut synthétiser un retour sonore modifié par
 notre fonction de mixage.
 
+% A MODIFIER
 \begin{lstlisting} for(unsigned int i=0; i<context->audioOutChannels; i++){ if
 (gSampleFactor == STANDARD_SAMPLE_RATE) { audioWrite(context, 2 * n, i, out);
 audioWrite(context, 2 * n + 1, i, out); } else { audioWrite(context, n, i, out); } }
 \end{lstlisting} \begin{center} Ci-dessus, l'implémentation du retour sonore
 dans le corps de la fonction principale de \verb!render.cpp! \end{center}
+
+  - Ici c'est bien l'écriture du retour sonore, via la variable out, mais ce
+  qui est vraiment important c'est le comportement de la variable out. Elle
+  récupère les signaux un à un en les additionnant et les stockant dans sa
+  variable (c'est le cas de base), mais pour notre cas, elle récupère les
+  signaux multipliés par la moyenne de leur corrélation par rapport aux autres
+  instruments (valeur comprise entre 0 et 1). On peut voir ça dans les boucles
+  de chaque type de pistes (audio, analogique ou digitale--pour les fichiers--),
+  pour la boucle de traitement sans effets pour le moment.
+% A MODIFIER
 
 \paragraph{}
 Dans le fichier \verb!render.cpp!, la fonction
@@ -90,6 +101,39 @@ fonction de mixage à l'intérieur du code de la fonction
 \verb!void ProcessMultiCorrel::process(const Matrix<float>& buffer,! \\ \verb!vector<float>& meanCorrelations, Connection conn)!
 que nous avons modifiée et qui est appelée dans \verb!processBuffer!
 de \verb!render.cpp!.
+
+% A RAJOUTER
+  - Le traitement des tâches auxiliaires dans le render se faisant à sens
+  unique (le render exécute des taches auxiliaires sans renvoyer de valeur de
+  retour à la boucle de traitement principale), le moyen pour nous de récupérer
+  le résultat du traitement de la fonction de mix était de passer le vecteur
+  contenant les moyennes de corrélation, gMeanCorrel, par référence à la
+  fonction process. On accède ainsi à la case mémoire de la variable pour
+  permettre à la fonction de modifier son contenue et ainsi d'affecter les
+  valeurs de retour de la fonction de mixage à notre vecteur. C'est ainsi que
+  les modifications des volumes sont possibles dans notre programme.
+
+  - Lors de l'appel à la fonction process de la classe ProcessMultiCorrel,
+  nous exécutons une série de fonctions de traitement de manière séquentielle,
+  et nous avons donc défini une fonction process\_volume (go chopper le prototype
+  de la fonction pk pas) pour notre traitement des volumes sonores, altérant à
+  l'intérieur de cette dernière la valeur de notre vecteur des moyennes de
+  corrélation passée par référence en paramètre.
+
+  - Ajout d'une nouvelle fonction de corrélation aléatoire nommée CoeffRandom.
+  Nous avions déjà une première fonction de corrélation, basée sur le produit
+  scalaire de deux vecteurs, et donc le travail de parsing et d'implémentation
+  de ce type de fonction était déjà effectué, nous avons seulement pu rajouter
+  notre fonction de corrélation avec la première. Nous avons pour cela écrit
+  notre header CoeffRandom.hpp et notre fichier source CoeffRandom.cpp dans le
+  dossier Coeff contenant les fonctions de traitement de corrélation dans le
+  dossier process. Cette fonction de corrélation aléatoire renvoie un flottant
+  compris entre 0 et 1, comme le demande toute fonction de corrélation. Grâce à
+  l'ajout de cette dernière fonction, nous pouvons ainsi témoigner de la
+  généricité des fonctions de corrélation, en plus des autres types de fonctions
+  de traitements qui contiennent plus d'une version de traitement pour chaque
+  type.
+% A RAJOUTER
 
 \subsection{L'interface de configuration utilisateur}
 \paragraph{}
