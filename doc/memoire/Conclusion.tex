@@ -2,7 +2,7 @@
 \section{Conclusion}
 \subsection{Éléments manquants du projet}
 \paragraph{}
-Parmi les demandes de nos clients, il nous était demandé de fournir une nouvelle fonction de calcul de corrélation, basée sur l'auto-corrélation temporelle, qui pourrait retourner non plus un coefficient de corrélation, mais pour chaque paire d'entrées, un décalage auquel la paire est la plus corrélée. Seulement cette fonction de calcul a suscité chez nous quelques interrogations :
+Parmi les demandes de nos clients, il nous était demandé de fournir une nouvelle fonction de calcul de corrélation, basée sur l'auto-corrélation temporelle, qui pourrait retourner non plus un coefficient de corrélation, mais pour chaque paire d'entrées, un décalage avec lequel la paire est la plus corrélée. Seulement cette fonction de calcul a suscité chez nous quelques interrogations :
 \begin{itemize}
     \item Comment représenter visuellement un décalage temporel?
     \item Est-ce que la complexité d'une telle fonction ne créerait pas trop de latences?
@@ -17,5 +17,3 @@ Nous avions l'intention de tester Bela avec des musiciens (en "live"), mais nos 
 \subsection{Évolution de l'outil}
 \paragraph{}
 Dans une future itération de ce projet, on pourrait imaginer un changement des paramètres en pleine exécution au lieu de seulement les fixer avant. De plus, tous les éléments cités précédemment pourront être implémentés.
-\paragraph{}
-Une des raisons pour lesquelles nous avons opté pour un affichage graphique avec QT, c'est qu'à partir de ce code, il serait facile d'imaginer un portage de l'affichage sur mobile, dans un soucis de confort pour les musiciens.
