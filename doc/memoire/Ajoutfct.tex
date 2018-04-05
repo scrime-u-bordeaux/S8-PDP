@@ -90,7 +90,7 @@ for(unsigned int i=0; i<context->audioOutChannels; i++){
   (audio/analogique/digitale) multipliés par la moyenne de leurs
   coefficients de corrélation par rapport aux autres
   signaux.} \end{center}
-
+ 
  \paragraph{}
  Dans le fichier \verb!render.cpp!, la fonction
  \verb!void processBuffer()! est utilisée comme tâche auxiliaire de la
@@ -115,7 +115,7 @@ for(unsigned int i=0; i<context->audioOutChannels; i++){
  ainsi d'affecter les valeurs de retour de la fonction de mixage au
  vecteur ; c'est ainsi que la modification des volumes devient
  possible.
-
+ 
  \begin{lstlisting}
     void ProcessMultiCorrel::process(const Matrix<float>& buffer,
                                  vector<float>& meanCorrelations,
@@ -136,7 +136,7 @@ for(unsigned int i=0; i<context->audioOutChannels; i++){
  \begin{center}
   \textit{L'appel de la fonction \verb!process! ci-dessus exécute une série de fonctions de traitement de manière séquentielle.}
  \end{center}
-
+ 
  \begin{lstlisting}
     void ProcessMultiCorrel::process_volume(const Matrix<float>&
                                         correlMatrix,
@@ -148,10 +148,10 @@ for(unsigned int i=0; i<context->audioOutChannels; i++){
  \begin{center}
   \textit{Ci-dessus, la fonction appelée dans le corps de la fonction \verb!process!. Nous l'avons implémentée de sorte à altérer en son sein la valeur du vecteur des moyennes de corrélation passé par référence en paramètre.}
  \end{center}
-
+ 
  \subsection{L'interface de configuration utilisateur}
  \paragraph{}
-
+ 
  \subsubsection{Présentation de l'architecture}
  Afin d'implémenter l'interface de configuration utilisateur
  précédemment abordée nous avons ajouté à l'architecture du programme
@@ -159,15 +159,15 @@ for(unsigned int i=0; i<context->audioOutChannels; i++){
  du programme.  Le sous-répertoire contenant les fichiers relatifs à
  l'implémentation de l'interface de configuration se nomme
  \verb!settingWindow!.
-
+ 
  \begin{figure}[h]
   \centering
-  \includegraphics[scale=0.3]{umlSettingWindow.png}
+  \includegraphics[scale=0.3]{assets/umlSettingWindow.png}
   \caption{Schéma global du dispositif de VisualImpro}
   \label{schéma global}
  \end{figure}
-
-
+ 
+ 
  \paragraph{}
  La classe principale de cette interface de configuration est la
  classe \verb!settingWindow!. Elle constitue une fenêtre vide
@@ -178,22 +178,37 @@ for(unsigned int i=0; i<context->audioOutChannels; i++){
   \item Choix des fichiers audio \textit{.wav}.
  \end{itemize}
  Afin de créer de pouvoir créer ces parties, la fenêtre se sert d'une factory,
-  
-
+ % a AJOUTER
+ - la factory permet de créer toutes les parties.
+ -dans chaqu'un des layout la fenetre principale peut ajouter un paramètre a chaque
+ partie.
+ -chaqu'une des parties permet d'extraire un resultat precis : input pour recuperer un nombre
+ process pour nom de fonction,wav pour fichier wav.
+ -une fois que tout les paramètres , la fenetre va les recuperer et creer un
+ fichier de sortie a laide d'un builder.
+ -le builder sert a crée un fichier de sortie suivant un certains format. Dans le
+ futur on pourra s'en servir pour creer un nouveaux format de retour pour pouvoir
+ se passe du fichier config.
+ -dans notre cas le type de fichier est un fichier cfg qui sera envoyer a bela.
+ 
  \subsubsection{Fonctionnement de chaque classe}
  \paragraph{}
- classe
-
+ -classe setting window contient tout les layouts et un bouton fin quand tout les
+ parametre sont mis. le nombre d'input doit etre superieur ou egal a 2 car sinon pas de
+ correlation.
+ - toute les classes layout herite de GUISettingLayout qui possede la fonction
+ abstract getSettings qui permet de retourner tout les parametre selectionné dans le layout.
+ -inputSettinLayout   
  \begin{figure}[h]
   \centering
-  \includegraphics[scale=0.5]{umlBuilder.png}
+  \includegraphics[scale=0.5]{assets/umlBuilder.png}
   \caption{Schéma global du dispositif de VisualImpro}
   \label{schéma global}
  \end{figure}
-
+ 
  \paragraph{}
  La fenêtre de configuration%AJOUTER
-
+ 
  \subsection{Autres ajouts mineurs sur le programme}
  \paragraph{}
  Nous avons implémenté une nouvelle fonction de corrélation dédiée aux
