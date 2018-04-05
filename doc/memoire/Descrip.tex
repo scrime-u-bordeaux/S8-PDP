@@ -57,7 +57,18 @@ Après avoir obtenu un coefficient de corrélation (et quelque soit la manière)
 \subsubsection{La traduction en triplet RGB}
 \paragraph{}
 Pour obtenir un retour graphique pertinent, la matrice de coefficients de corrélation va être associée à une couleur dans une échelle indiquée en paramètre. Les échelles de couleur disponibles à ce jour sont l'échelle noire/blanche et l'échelle rouge/vert. Les coefficients vont alors être traduits en triplets RGB, afin qu'ils puissent être affichés simplement par la suite.
-%Screenshots matrice avec les deux échelles de couleur
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=0.3]{assets/captureBW.png}
+    \caption{Échelle de couleur Noir/Blanc}
+    \label{bw scale}
+\end{figure}
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=0.3]{assets/captureRGB.png}
+    \caption{Échelle de couleur Rouge/Vert}
+    \label{bw scale}
+\end{figure}
 \paragraph{}
 Enfin, après avoir réalisé ces 4 étapes, l'ultime travail de la tâche auxiliaire est d'envoyer la matrice de triplets RGB via une connexion TCP vers l'entité s'occupant de l'affichage (serveur NodeJS ou application QT).
 \begin{figure}[H]
