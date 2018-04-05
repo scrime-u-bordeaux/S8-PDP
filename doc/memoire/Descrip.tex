@@ -7,17 +7,17 @@ Dans cette partie, nous allons explorer la mécanique interne du programme Visua
 \paragraph{}
 Lorsque le programme est lancé via l'éxécutable, il se passe alors plusieurs choses :
 \begin{itemize}
-    \item Les paramètres sont chargés sur Bela à travers un fichier de configuration. Ce fichier contient les différentes entrées (audio, analogiques ou fichiers \verb!.wav!) que Bela va traiter ainsi que les différents traitements qui seront appliqués à ces entrées.
-    \item Si des fichiers \verb!.wav! sont indiqués dans le fichier de configuration, alors ceux ci seront aussi chargés sur Bela.
+    \item Les paramètres sont chargés sur BELA à travers un fichier de configuration. Ce fichier contient les différentes entrées (audio, analogiques ou fichiers \verb!.wav!) que Bela va traiter ainsi que les différents traitements qui seront appliqués à ces entrées.
+    \item Si des fichiers \verb!.wav! sont indiqués dans le fichier de configuration, alors ceux-ci seront aussi chargés sur BELA.
 \end{itemize}
 \paragraph{}
-Ensuite, le programme VisualImpro de Bela débute. La première tâche effectuée par la fonction \verb!main()! est de récupérer le fichier de configuration et de stocker les divers paramètres écrits à l'intérieur de celui-ci. Puis à l'aide des différents paramètres, la deuxième tâche de la fonction \verb!main()!
-va être d'initialiser les éléments correspondants. Enfin, la dernière tâche de la fonction \verb!main()! va être de donner la main à la fonction principale de traitement audio à travers l'appel \verb!Bela_startAudio()!. Avec cet appel, on passe à la fonction setup de \verb!render.cpp! les paramètre définis par l'utilisateur et les paramètres de fonctionnement du Bela. Ensuite, on passe à la boucle de traitement principale qui porte le nom de \verb!render()!.
+Ensuite, le programme VisualImpro de BELA débute. La première tâche effectuée par la fonction \verb!main! est de récupérer le fichier de configuration et de stocker les divers paramètres écrits à l'intérieur de celui-ci. Puis à l'aide des différents paramètres, la deuxième tâche de la fonction \verb!main!
+va être d'initialiser les éléments correspondants. Enfin, la dernière tâche de la fonction \verb!main! va être de donner la main à la fonction principale de traitement audio à travers l'appel \verb!Bela_startAudio!. Avec cet appel, on passe à la fonction principale qui se situe dans le fichier \verb!render.cpp! et qui porte le nom de \verb!render!.
 \subsection{La boucle de traitement principale}
 \paragraph{}
-Avant de passer directement à la fonction \verb!render()!, le programme va passer par la fonction \verb!setup()! qui va initialiser toutes les structures nécessaires au bon déroulement de la fonction \verb!render()!, ainsi qu'un autre élément central du programme, les tâches auxiliaires. Ces tâches auxiliaires, qui font partie des éléments fournis par le framework Bela, permettent au programmeur de créer des segments de code qui seront exécutés en parallèle, ce qui permet d'alléger le travail effectué dans la fonction \verb!render()!, et donc d'éviter de créer des latences qui pourraient perturber le retour en temps réel. C'est pour cela que l'on initialise des tâches auxiliaires dans la fonction \verb!setup()! en spécifiant le code qui sera éxécuté dans chacune d'entre elles. Parmi les 3 différentes tâches présentes dans le code, seules 2 sont nous intéressent pour notre travail : la tâche qui aura pour but de remplir les tampons, et celle qui traitera un tampon rempli. La troisième consiste à appliquer des effets sur un tampon, mais ce n'est pas un aspect du projet qui sera traité.
+Avant de passer directement à la fonction \verb!render!, le programme va passer par la fonction \verb!setup! qui va initialiser toutes les structures nécessaires au bon déroulement de la fonction \verb!render!, ainsi qu'un autre élément central du programme, les tâches auxiliaires. Ces tâches auxiliaires, qui font partie des éléments fournis par le framework Bela, permettent au programmeur de créer des segments de code qui seront exécutés en parallèle, ce qui permet d'alléger le travail effectué dans la fonction \verb!render!, et donc d'éviter de créer des latences qui pourraient perturber le retour en temps réel. C'est pour cela que l'on initialise des tâches auxiliaires dans la fonction \verb!setup! en spécifiant le code qui sera éxécuté dans chacune d'entre elles. Parmi les 3 différentes tâches présentes dans le code, seules 2 sont intéressantes : la tâche qui aura pour but de remplir les tampons, et celle qui traitera un tampon rempli. La troisième consiste à appliquer des effets sur un tampon, mais ce n'est pas un aspect du projet qui sera traité.
 \paragraph{}
-Par la suite, la fonction principale \verb!render()! va être appelée en boucle, jusqu'à ce qu'un signal de type Ctrl-C lui indique qu'elle peut s'arrêter. Dans cette fonction, il va se passer plusieurs choses :
+Par la suite, la fonction principale \verb!render! va être appelée en chaîne, jusqu'à ce qu'un signal lui indique qu'elle peut s'arrêter. Dans cette fonction, il va se passer plusieurs choses :
 \begin{itemize}
     \item Si les différents tampons ne sont pas tous remplis, alors on déclenche la tâche auxiliaire de remplissage,
     \item Une fois que les tampons sont remplis, on déclenche la tâche auxiliaire de traitement,
@@ -57,7 +57,18 @@ Après avoir obtenu un coefficient de corrélation (et quelque soit la manière)
 \subsubsection{La traduction en triplet RGB}
 \paragraph{}
 Pour obtenir un retour graphique pertinent, la matrice de coefficients de corrélation va être associée à une couleur dans une échelle indiquée en paramètre. Les échelles de couleur disponibles à ce jour sont l'échelle noire/blanche et l'échelle rouge/vert. Les coefficients vont alors être traduits en triplets RGB, afin qu'ils puissent être affichés simplement par la suite.
-%Screenshots matrice avec les deux échelles de couleur
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=0.3]{assets/captureBW.png}
+    \caption{Échelle de couleur Noir/Blanc}
+    \label{bw scale}
+\end{figure}
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=0.3]{assets/captureRGB.png}
+    \caption{Échelle de couleur Rouge/Vert}
+    \label{bw scale}
+\end{figure}
 \paragraph{}
 Enfin, après avoir réalisé ces 4 étapes, l'ultime travail de la tâche auxiliaire est d'envoyer la matrice de triplets RGB via une connexion TCP vers l'entité s'occupant de l'affichage (serveur NodeJS ou application QT).
 \begin{figure}[H]
