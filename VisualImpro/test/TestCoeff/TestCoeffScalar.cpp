@@ -7,8 +7,7 @@
  *  \brief Test program of the CoeffScalar function.
  *
  *  This test is used to show us that our scalar correlation function is
- *  functionning well. The scalar correlation function works as the
- *  operation given in an assertion in the testCoeff test function.
+ *  functionning well. We check if the tested function returns the right value   *  according to an assertion comparing it to the rough calculus.
  *
  */
 

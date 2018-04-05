@@ -7,7 +7,7 @@
  *  \brief Test program of the MixMaxCorrelated function.
  *
  *  This test is used to show us that our mix based on maximal correlations is
- *  functionning well. Indeed, here we setup a 3x3 matrix with a custom values
+ *  functionning well. Indeed, here we setup a 3x3 matrix with custom values
  *  on every case and we assure that the result is the same as expected for each
  *  case of our result vector in the testMix function.
  *
