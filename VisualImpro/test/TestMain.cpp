@@ -6,8 +6,8 @@
  *
  *  \brief The main test program.
  *
- *  The main function standing for all of out tests. It will get the registry
- *  of all of our cppunit testes contained in the Test* folders and print the
+ *  The main function standing for all of our tests. It will get the registry
+ *  of all of our cppunit testes from the Test* folders and print the
  *  results of our tests in the standard output.
  *
  */

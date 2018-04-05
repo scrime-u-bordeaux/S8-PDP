@@ -103,8 +103,8 @@ for(unsigned int i=0; i<context->audioOutChannels; i++){
  de \verb!render.cpp!.
  \paragraph{}
  Dans l'implémentation de Jérémy Lixandre, le traitement des tâches
- auxiliaires dans \verb!render.cpp! se faisait à sens unique (
- exécution de tâches auxiliaires sans retour de valeur dans la boucle
+ auxiliaires dans \verb!render.cpp! se faisait à sens unique
+ (exécution de tâches auxiliaires sans retour de valeur dans la boucle
  de traitement principale). Afin de récupérer le résultat du
  traitement de la fonction de mixage, nous avons passé la référence du
  vecteur contenant les moyennes de coefficients de corrélation,
