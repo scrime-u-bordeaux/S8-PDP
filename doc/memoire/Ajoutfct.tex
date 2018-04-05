@@ -83,13 +83,13 @@ for(unsigned int i=0; i<context->audioOutChannels; i++){
 }
 \end{lstlisting}
 
-\begin{center} \textit{Ci-dessus, l'implémentation du retour sonore
+\begin{center} Ci-dessus, l'implémentation du retour sonore
   dans le corps de la fonction principale de \verb!render.cpp!. Via la
   fonction \verb!audioWrite!, la variable \verb!out! récupère un à un
   les signaux de chaque type de piste sonore
   (audio/analogique/digitale) multipliés par la moyenne de leurs
   coefficients de corrélation par rapport aux autres
-  signaux.} \end{center}
+  signaux. \end{center}
 
  \paragraph{}
  Dans le fichier \verb!render.cpp!, la fonction
@@ -103,7 +103,7 @@ for(unsigned int i=0; i<context->audioOutChannels; i++){
  de \verb!render.cpp!.
  \paragraph{}
  Dans l'implémentation de Jérémy Lixandre, le traitement des tâches
- auxiliaires dans \verb!render.cpp! se faisait à sens unique
+ auxiliaires dans \verb!render.cpp! se fait à sens unique
  (exécution de tâches auxiliaires sans retour de valeur dans la boucle
  de traitement principale). Afin de récupérer le résultat du
  traitement de la fonction de mixage, nous avons passé la référence du
