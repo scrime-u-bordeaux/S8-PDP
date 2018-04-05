@@ -61,7 +61,7 @@ vector<float> MixMaxCorrelated(const Matrix<float>& correlMatrix) {
 
 \paragraph{}
 Dans la fonction \verb!void parseProcessFunc!  appelée dans le fichier
-\\ \verb!main.cpp!, nous avons dû ajouter l'analyse de la fonction de
+\verb!main.cpp!, nous avons dû ajouter l'analyse de la fonction de
 mixage sur le modèle des analyses des trois autres fonctions de
 \textit{processing}.
 
@@ -81,11 +81,13 @@ for(unsigned int i=0; i<context->audioOutChannels; i++){
       audioWrite(context, n, i, out);
    }
 }
-\end{lstlisting} \begin{center} Ci-dessus, l'implémentation du retour sonore
+\end{lstlisting}
+
+\begin{center} \textit{Ci-dessus, l'implémentation du retour sonore
 dans le corps de la fonction principale de \verb!render.cpp!. Via la
 fonction \verb!audioWrite!, la variable \verb!out! récupère un à un
 les signaux multipliés par la moyenne de leurs coefficients de
-corrélation par rapport aux autres signaux. \end{center}
+corrélation par rapport aux autres signaux.} \end{center}
 
 %  - Ici c'est bien l'écriture du retour sonore, via la variable out, mais ce
  % qui est vraiment important c'est le comportement de la variable out. Elle
@@ -103,11 +105,13 @@ boucle de traitement principale. Nous avons déclaré un vecteur
 \verb!gMeanCorrel! dans \verb!render.cpp! ; initialisé avec une valeur
 de 1 pour tous les indices, il prend la valeur que retourne la
 fonction de mixage à l'intérieur du code de la fonction
-\verb!void ProcessMultiCorrel::process(const Matrix<float>& buffer,! \\ \verb!vector<float>& meanCorrelations, Connection conn)!
+\verb!void ProcessMultiCorrel::process!
 que nous avons modifiée et qui est appelée dans \verb!processBuffer!
 de \verb!render.cpp!.
+\paragraph{}
+Dans l'implémentation de Jérémy Lixandre, le traitement des tâches auxiliaires dnas \verb!render.cpp! se faisait à sens unique : exécution de tâches auxiliaires sans retour de valeur dans la boucle de traitement principale. Afin de récupérer le résultat du traitement de la fonction de mixage, nous avons ajouté la référence du vecteur contenant les moyennes de coefficients de corrélation, \verb!gMeanCorrel!, %A FINIR DE REDIGER
 
-% A RAJOUTER
+% A expliquer j'ai pas pigé le lien entre gMeanCorrel et process
   - Le traitement des tâches auxiliaires dans le render se faisant à sens
   unique (le render exécute des taches auxiliaires sans renvoyer de valeur de
   retour à la boucle de traitement principale), le moyen pour nous de récupérer
@@ -118,27 +122,38 @@ de \verb!render.cpp!.
   valeurs de retour de la fonction de mixage à notre vecteur. C'est ainsi que
   les modifications des volumes sont possibles dans notre programme.
 
-  - Lors de l'appel à la fonction process de la classe ProcessMultiCorrel,
-  nous exécutons une série de fonctions de traitement de manière séquentielle,
-  et nous avons donc défini une fonction process\_volume (go chopper le prototype
-  de la fonction pk pas) pour notre traitement des volumes sonores, altérant à
-  l'intérieur de cette dernière la valeur de notre vecteur des moyennes de
-  corrélation passée par référence en paramètre.
+  \begin{lstlisting}
+    void ProcessMultiCorrel::process(const Matrix<float>& buffer,
+                                 vector<float>& meanCorrelations,
+                                 Connection conn){
+  Matrix<float> copy = buffer;
 
-  - Ajout d'une nouvelle fonction de corrélation aléatoire nommée CoeffRandom.
-  Nous avions déjà une première fonction de corrélation, basée sur le produit
-  scalaire de deux vecteurs, et donc le travail de parsing et d'implémentation
-  de ce type de fonction était déjà effectué, nous avons seulement pu rajouter
-  notre fonction de corrélation avec la première. Nous avons pour cela écrit
-  notre header CoeffRandom.hpp et notre fichier source CoeffRandom.cpp dans le
-  dossier Coeff contenant les fonctions de traitement de corrélation dans le
-  dossier process. Cette fonction de corrélation aléatoire renvoie un flottant
-  compris entre 0 et 1, comme le demande toute fonction de corrélation. Grâce à
-  l'ajout de cette dernière fonction, nous pouvons ainsi témoigner de la
-  généricité des fonctions de corrélation, en plus des autres types de fonctions
-  de traitements qui contiennent plus d'une version de traitement pour chaque
-  type.
-% A RAJOUTER
+  // Processing functions
+  copy = _preprocess(buffer);
+  Matrix<float> correlMatrix = calcul_correl(copy);
+  process_volume(correlMatrix, meanCorrelations);
+  Matrix<RGB> mat = color_matrix(correlMatrix);
+
+  // Send data
+  string str = mat.toString();
+  conn.send(str);
+}
+  \end{lstlisting}
+  \begin{center}
+    \textit{L'appel de la fonction \verb!process! ci-dessus exécute une série de fonctions de traitement de manière séquentielle.}
+  \end{center}
+
+  \begin{lstlisting}
+    void ProcessMultiCorrel::process_volume(const Matrix<float>&
+                                        correlMatrix,
+                                        vector<float>&
+                                        meanCorrelations){
+  meanCorrelations = this->_mixLevel(correlMatrix);
+}
+  \end{lstlisting}
+  \begin{center}
+    \textit{Ci-dessus, la fonction appelée dans le corps de la fonction \verb!process!. Nous l'avons implémenté de sorte à altérer en son sein la valeur du vecteur des moyennes de corrélation passé par référence en paramètre.}
+  \end{center}
 
 \subsection{L'interface de configuration utilisateur}
 \paragraph{}
@@ -175,6 +190,20 @@ En plus de toutes ces parties, la fenêtre principale possède (check la doc)
 \end{figure}
 
 \paragraph{}
-La fenêtre de configuration
+La fenêtre de configuration%AJOUTER
 
 \subsection{Autres ajouts mineurs sur le programme}
+\paragraph{}
+Nous avons implémenté une nouvelle fonction de corrélation dédiée aux
+tests : appelée \verb!CoeffRandom!, elle établit un coefficient de
+corrélation de manière aléatoire. La généricité de l'implémentation
+existante a rendu la tâche triviale, il nous a suffi d'écrire un
+fichier d'en-tête \verb!CoeffRandom.hpp! et un fichier source
+\verb!CoeffRandom.cpp! dans le dossier \verb!Coeff! contenant les
+fonctions de calcul du coefficient de corrélation (dossier
+\verb!process!). Cette fonction renvoie un flottant compris entre 0 et
+1, comme les autres fonctions de corrélation. L'accomplissement de
+cette tâche et la trivialité qu'il représente témoigne de la
+généricité des fonctions de corrélation, et des fonctions de
+traitement en général, qui possèdent désormais toutes plusieurs
+versions alternatives.
