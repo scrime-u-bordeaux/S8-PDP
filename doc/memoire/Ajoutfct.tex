@@ -86,17 +86,10 @@ for(unsigned int i=0; i<context->audioOutChannels; i++){
 \begin{center} \textit{Ci-dessus, l'implémentation du retour sonore
   dans le corps de la fonction principale de \verb!render.cpp!. Via la
   fonction \verb!audioWrite!, la variable \verb!out! récupère un à un
-  les signaux multipliés par la moyenne de leurs coefficients de
-  corrélation par rapport aux autres signaux.} \end{center}
-
- %  - Ici c'est bien l'écriture du retour sonore, via la variable out, mais ce
- % qui est vraiment important c'est le comportement de la variable out. Elle
- %  récupère les signaux un à un en les additionnant et les stockant dans sa
- %  variable (c'est le cas de base), mais pour notre cas, elle récupère les
- %  signaux multipliés par la moyenne de leur corrélation par rapport aux autres
- %  instruments (valeur comprise entre 0 et 1). On peut voir ça dans les boucles
- %  de chaque type de pistes (audio, analogique ou digitale--pour les fichiers--)%,
- %  pour la boucle de traitement sans effets pour le moment.
+  les signaux de chaque type de piste sonore
+  (audio/analogique/digitale) multipliés par la moyenne de leurs
+  coefficients de corrélation par rapport aux autres
+  signaux.} \end{center}
 
  \paragraph{}
  Dans le fichier \verb!render.cpp!, la fonction
@@ -109,18 +102,19 @@ for(unsigned int i=0; i<context->audioOutChannels; i++){
  que nous avons modifiée et qui est appelée dans \verb!processBuffer!
  de \verb!render.cpp!.
  \paragraph{}
- Dans l'implémentation de Jérémy Lixandre, le traitement des tâches auxiliaires dnas \verb!render.cpp! se faisait à sens unique : exécution de tâches auxiliaires sans retour de valeur dans la boucle de traitement principale. Afin de récupérer le résultat du traitement de la fonction de mixage, nous avons ajouté la référence du vecteur contenant les moyennes de coefficients de corrélation, \verb!gMeanCorrel!, %A FINIR DE REDIGER
-
- % A expliquer j'ai pas pigé le lien entre gMeanCorrel et process
- - Le traitement des tâches auxiliaires dans le render se faisant à sens
- unique (le render exécute des taches auxiliaires sans renvoyer de valeur de
- retour à la boucle de traitement principale), le moyen pour nous de récupérer
- le résultat du traitement de la fonction de mix était de passer le vecteur
- contenant les moyennes de corrélation, gMeanCorrel, par référence à la
- fonction process. On accède ainsi à la case mémoire de la variable pour
- permettre à la fonction de modifier son contenue et ainsi d'affecter les
- valeurs de retour de la fonction de mixage à notre vecteur. C'est ainsi que
- les modifications des volumes sont possibles dans notre programme.
+ Dans l'implémentation de Jérémy Lixandre, le traitement des tâches
+ auxiliaires dans \verb!render.cpp! se faisait à sens unique (
+ exécution de tâches auxiliaires sans retour de valeur dans la boucle
+ de traitement principale). Afin de récupérer le résultat du
+ traitement de la fonction de mixage, nous avons passé la référence du
+ vecteur contenant les moyennes de coefficients de corrélation,
+ \verb!gMeanCorrel!, en paramètre de la fonction
+ \verb!ProcessMultiCorrel::process! lors de son appel dans la fonction
+ principale de \verb!render.cpp!. On accède ainsi à la case mémoire de
+ la variable pour permettre à la fonction de modifier son contenu et
+ ainsi d'affecter les valeurs de retour de la fonction de mixage au
+ vecteur ; c'est ainsi que la modification des volumes devient
+ possible.
 
  \begin{lstlisting}
     void ProcessMultiCorrel::process(const Matrix<float>& buffer,
