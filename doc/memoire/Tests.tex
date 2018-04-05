@@ -84,3 +84,75 @@ de configuration.
 En effet, hormis en utilisant une capture d'écran de l'affichage voulu afin
 de la comparer à celle qui est affichée, il est difficile de tester
 une interface graphique.
+
+\subsection{Test globaux}
+\paragraph{}
+Pour tester l'outil dans son intégralité, i lfallait des échantillons pour lesquels nous connaissions les résultats à l'avance. Pour cela, nous avons généré des signaux sinusoïdaux et carrés, car ce sont les signaux les plus simples. Nous en avons généré plusieurs, et à chaque fois, nous avons décalé les phases pour pouvoir réaliser plusieurs tests. De plus, nous avons réalisé nos tests avec deux focntions de pré-traitement différentes : \verb!PreprocDefault! et \verb!PreprocStrengthEnergy!. La première ne touche pas au signal, la seconde transforme la composante négative en positive.
+\subsubsection{Avec PreprocDefault}
+\paragraph{}
+Les figures suivantes doivent être interprétées de la façon suivante : plus la couleur est verte, plus les signaux sont proches, plus on tend vers le rouge, plus les signaux sont différents.
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=0.3]{assets/Captures-sinus/PreprocDefaultnormal-normal.png}
+    \caption{Test avec deux sinus identiques}
+    \label{}
+\end{figure}
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=0.3]{assets/Captures-sinus/PreprocDefaultnormal-30.png}
+    \caption{Test avec deux sinus décalés de 30 degrés}
+    \label{}
+\end{figure}
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=0.3]{assets/Captures-sinus/PreprocDefaultnormal-60.png}
+    \caption{Test avec deux sinus décalés de 60 degrés}
+    \label{}
+\end{figure}
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=0.3]{assets/Captures-sinus/PreprocDefaultnormal-90.png}
+    \caption{Test avec deux sinus décalés de 90 degrés}
+    \label{}
+\end{figure}
+\paragraph{}
+À 90 degrés, les sinus sont inversées, d'où le fait que la corrélation soit nulle.
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=0.3]{assets/Captures-sinus/PreprocDefaultnormal-120.png}
+    \caption{Test avec deux sinus décalés de 120 degrés}
+    \label{}
+\end{figure}
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=0.3]{assets/Captures-sinus/PreprocDefaultnormal-150.png}
+    \caption{Test avec deux sinus décalés de 150 degrés}
+    \label{}
+\end{figure}
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=0.3]{assets/Captures-sinus/PreprocDefautnormal-180.png}
+    \caption{Test avec deux sinus décalés de 180 degrés}
+    \label{}
+\end{figure}
+\subsubsection{Avec PreprocStrenghtEnergy}
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=0.3]{assets/Captures-sinus/PreprocStrengthnormal-normal.png}
+    \caption{Test avec deux sinus identiques}
+    \label{}
+\end{figure}
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=0.3]{assets/Captures-sinus/PreprocStrengthnormal-90.png}
+    \caption{Test avec deux sinus décalés de 90 degrés}
+    \label{}
+\end{figure}
+\paragraph{}
+Avec PreprocStrenghtEnergy, comme il n'y a plus de valeurs négatives, la sinus décalée de 90 degrés est identique à la sinus normale.
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=0.3]{assets/Captures-sinus/PreprocStrenghtnormal-180.png}
+    \caption{Test avec deux sinus décalés de 180 degrés}
+    \label{}
+\end{figure}
