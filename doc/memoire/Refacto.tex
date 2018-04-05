@@ -215,7 +215,17 @@ différents types selon différents paramètres. Classe
 d'entiers, de flottants ou bien de triplets RGB.
 
 \paragraph{}
-L'implémentation de Jérémy Lixandre comportait une classe \verb!ProcessMulti! dont héritaient les classes \verb!ProcessMultiCorrel! et \verb!ProcessMultiWriteWav!, mais l'héritage n'avait pas lieu d'être puisque la classe \verb!ProcessMulti! en question définissait une fonction abstraite \verb!process!, redéfinie dans ses deux classes filles et prenant en paramètre une matrice de flottants (représentant les signaux d'entrée) et une connexion. Or, la classe \verb!ProcessMultiWriteWav! sert à créer des fichiers \verb!.wav! et ne recquiert aucune connexion. Nous avons donc cassé l'héritage entre ces classes et supprimé la classe \verb!ProcessMulti!.
+L'implémentation de Jérémy Lixandre comportait une classe
+\verb!ProcessMulti! dont héritaient les classes
+\verb!ProcessMultiCorrel! et \verb!ProcessMultiWriteWav!, mais
+l'héritage n'avait pas lieu d'être puisque la classe
+\verb!ProcessMulti! en question définissait une fonction abstraite
+\verb!process!, redéfinie dans ses deux classes filles et prenant en
+paramètre une matrice de flottants (représentant les signaux d'entrée)
+et une connexion. Or, la classe \verb!ProcessMultiWriteWav! sert à
+créer des fichiers \verb!.wav! et ne recquiert aucune connexion. Nous
+avons donc cassé l'héritage entre ces classes et supprimé la classe
+\verb!ProcessMulti!.
 
 \paragraph{}
 Nous avons ajouté des fichiers d'en-tête pour tous les fichiers source
@@ -301,21 +311,40 @@ l'affichage Qt et l'affichage sur navigateur au moment de lancer
 l'exécution du programme.
 
 \subsubsection{L'implémentation de la méthode d'affichage sous Qt}
-- window inclus un layout servant à afficher la matrice et un serveur servant a
-communiquer avec bela.
--window sert uniquement à afficher la matrice et update en temps réel.
--quand bela envoie un update window print automatiquement.
--window herite de QMainWindow ce qui permettra des menus afin de, par exemple,
-changer des parametres en route (exemple basique : les scale des colors).
+\paragraph{}
+\`{A} l'intérieur du dossier \verb!GUI! répertoriant les fonctions
+dédiées aux affichages graphiques, le dossier \verb!mainWindow!
+contient l'architecture propre à l'affichage de la matrice graphique
+via Qt. Elle contient une classe, \verb!GUIWindow!, et deux
+répertoires : \verb!layout! dédié à l'affichage de la matrice, et
+\verb!server! contenant le serveur établissant la communication avec
+BELA.
+\paragraph{}
+L'architecture \verb!mainWindow! a pour unique rôle d'afficher la
+matrice graphique de corrélations et de la mettre à jour en temps
+réel. Elle réagit aux mises à jour transmises par BELA via
+\verb!render.cpp! et hérite de la classe Qt \verb!QMainWindow! ce qui
+lui permet notamment d'afficher des menus. \`{A} l'avenir, ces menus
+pourront permettre à l'utilisateur de modifier des configurations du
+programme en temps réel si un successeur implémente cette
+fonctionnalité.
 
-- le layout principal contient uniquement une pixmap (en gros un gros tableau
-de pixel, c'est une image mais qui a pas le meme nom) est qui quand on a besoin
-de update les couleurs va dessiné des rectangle dessus pour chaque rect.
-- c'est tres facile et leger comme methode car c'est juste une petite image.
+%MATRICE QT SCREEN
 
--le server est un server tcp qui sert a communiquer avec bela.
--il se connecte avec bela et crée une socket, ensuite des que bela enverra
-un paquet avec une matrice a l'interieur, le serveur retraduit le string en
-matrice RGB
--ensuite  pour communiquer entre le layout et le server (emet un signal, c'est le truc technique de qt)
-envoie la matrice qu'il a recu au layout.
+\paragraph{}
+La classe \verb!GUIImageMatrix! du répertoire \verb!layout! contient
+un objet de type \verb!QPixMap! dont les couleurs sont mises à jour
+pour chaque rectangle le composant. Il s'agit d'une image de très
+petite taille (car contenant peu de pixels) et qui rend cette méthode
+d'affichage plus légère et performante que celle de notre
+prédécesseur.
+
+\paragraph{}
+La classe \verb!GUITCPServer! du répertoire \verb!server! constitue un
+serveur TCP permettant la communication avec BELA. Il se connecte au
+système embarqué et crée une socket ; les paquets transmis par BELA et
+contenant une matrice codée sous forme d'un objet de type
+\verb!string! sont retraduits en matrice RGB. Le framework Qt permet
+la communication entre le \textit{layout} et le \textit{server} via
+l'émission de signaux depuis le serveur, transmettant les données de
+la matrice.
