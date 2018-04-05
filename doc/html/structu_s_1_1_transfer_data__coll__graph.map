@@ -1,0 +1,7 @@
+<map id="uS::TransferData" name="uS::TransferData">
+<area shape="rect" id="node2" href="$structu_s_1_1_node_data.html" title="uS::NodeData" alt="" coords="111,260,216,287"/>
+<area shape="rect" id="node3" href="$struct_loop.html" title="Loop" alt="" coords="138,81,189,108"/>
+<area shape="rect" id="node6" href="$struct_async.html" title="Async" alt="" coords="57,171,115,197"/>
+<area shape="rect" id="node7" href="$struct_poll.html" title="Poll" alt="" coords="5,81,49,108"/>
+<area shape="rect" id="node8" href="$structu_s_1_1_context.html" title="uS::Context" alt="" coords="217,171,309,197"/>
+</map>

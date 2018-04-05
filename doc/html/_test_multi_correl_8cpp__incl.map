@@ -1,0 +1,16 @@
+<map id="VisualImpro/test/TestClasses/TestMultiCorrel.cpp" name="VisualImpro/test/TestClasses/TestMultiCorrel.cpp">
+<area shape="rect" id="node2" href="$_test_multi_correl_8hpp_source.html" title="TestMultiCorrel.hpp" alt="" coords="1948,95,2084,121"/>
+<area shape="rect" id="node6" href="$_matrix_8hpp_source.html" title="../../Matrix.hpp" alt="" coords="2233,266,2340,293"/>
+<area shape="rect" id="node9" href="$_r_g_b_8hpp_source.html" title="RGB.hpp" alt="" coords="2447,348,2523,375"/>
+<area shape="rect" id="node10" href="$_process_multi_correl_8hpp_source.html" title="../../ProcessMultiCorrel.hpp" alt="" coords="1145,177,1327,203"/>
+<area shape="rect" id="node28" href="$_coeff_scalar_8hpp_source.html" title="../../process/Coeff\l/CoeffScalar.hpp" alt="" coords="1617,259,1745,300"/>
+<area shape="rect" id="node31" href="$_coeff_random_8hpp_source.html" title="../../process/Coeff\l/CoeffRandom.hpp" alt="" coords="1461,259,1593,300"/>
+<area shape="rect" id="node33" href="$_color_green_to_red_8hpp_source.html" title="../../process/Color\l/ColorGreenToRed.hpp" alt="" coords="2625,259,2781,300"/>
+<area shape="rect" id="node34" href="$_color_black_to_white_8hpp_source.html" title="../../process/Color\l/ColorBlackToWhite.hpp" alt="" coords="2737,169,2901,211"/>
+<area shape="rect" id="node35" href="$_mix_max_correlated_8hpp_source.html" title="../../process/Mix/MixMax\lCorrelated.hpp" alt="" coords="2443,169,2610,211"/>
+<area shape="rect" id="node36" href="$_mix_min_correlated_8hpp_source.html" title="../../process/Mix/MixMin\lCorrelated.hpp" alt="" coords="2205,169,2368,211"/>
+<area shape="rect" id="node37" href="$_preproc_strength_energy_8hpp_source.html" title="../../process/Preproc\l/PreprocStrengthEnergy.hpp" alt="" coords="1829,169,2016,211"/>
+<area shape="rect" id="node39" href="$_preproc_energy_8hpp_source.html" title="../../process/Preproc\l/PreprocEnergy.hpp" alt="" coords="2040,169,2181,211"/>
+<area shape="rect" id="node15" href="$_connection_8hpp_source.html" title="Connection.hpp" alt="" coords="839,266,953,293"/>
+<area shape="rect" id="node38" href="$_energy_process_8hpp_source.html" title="EnergyProcess.hpp" alt="" coords="1871,266,2007,293"/>
+</map>

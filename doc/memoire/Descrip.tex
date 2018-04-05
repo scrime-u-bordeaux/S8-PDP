@@ -2,22 +2,22 @@
 
 \section{Description détaillée du nouveau logiciel}
 \paragraph{}
-Dans cette partie, nous allons explorer la mécanique interne du programme VisualImpro, tout d'abord de façon générale, puis nous allons entrer en détail dans les composantes principales de ce programme, afin que l'on puisse avoir une vision d'ensemble claire et précise des fonctionnalités. 
+Dans cette partie, nous allons explorer la mécanique interne du programme VisualImpro, tout d'abord de façon générale, puis nous allons entrer en détail dans les composantes principales de ce programme, afin que l'on puisse avoir une vision d'ensemble claire et précise des fonctionnalités.
 \subsection{Le point d'entrée du programme}
 \paragraph{}
 Lorsque le programme est lancé via l'éxécutable, il se passe alors plusieurs choses :
 \begin{itemize}
-    \item Les paramètres sont chargés sur Bela à travers un fichier de configuration. Ce fichier contient les différentes entrées (audio, analogiques ou fichiers \verb!.wav!) que Bela va traiter ainsi que les différents traitements qui seront appliqués à ces entrées. 
-    \item Si des fichiers \verb!.wav! sont indiqués dans le fichier de configuration, alors ceux ci seront aussi chargés sur Bela.
+    \item Les paramètres sont chargés sur BELA à travers un fichier de configuration. Ce fichier contient les différentes entrées (audio, analogiques ou fichiers \verb!.wav!) que Bela va traiter ainsi que les différents traitements qui seront appliqués à ces entrées.
+    \item Si des fichiers \verb!.wav! sont indiqués dans le fichier de configuration, alors ceux-ci seront aussi chargés sur BELA.
 \end{itemize}
 \paragraph{}
-Ensuite, le programme VisualImpro de Bela débute. La première tâche effectuée par la fonction \verb!main()! est de récupérer le fichier de configuration et de stocker les divers paramètres écrits à l'intérieur de celui-ci. Puis à l'aide des différents paramètres, la deuxième tâche de la fonction \verb!main()!
-va être d'initialiser les éléments correspondants. Enfin, la dernière tâche de la fonction \verb!main()! va être de donner la main à la fonction principale de traitement audio à travers l'appel \verb!Bela_startAudio()!. Avec cet appel, on passe à la fonction principale qui se situe dans le fichier \verb!render.cpp! et qui porte le nom de \verb!render()!.
+Ensuite, le programme VisualImpro de BELA débute. La première tâche effectuée par la fonction \verb!main! est de récupérer le fichier de configuration et de stocker les divers paramètres écrits à l'intérieur de celui-ci. Puis à l'aide des différents paramètres, la deuxième tâche de la fonction \verb!main!
+va être d'initialiser les éléments correspondants. Enfin, la dernière tâche de la fonction \verb!main! va être de donner la main à la fonction principale de traitement audio à travers l'appel \verb!Bela_startAudio!. Avec cet appel, on passe à la fonction principale qui se situe dans le fichier \verb!render.cpp! et qui porte le nom de \verb!render!.
 \subsection{La boucle de traitement principale}
 \paragraph{}
-Avant de passer directement à la fonction \verb!render()!, le programme va passer par la fonction \verb!setup()! qui va initialiser toutes les structures nécessaires au bon déroulement de la fonction \verb!render()!, ainsi qu'un autre élément central du programme, les tâches auxiliaires. Ces tâches auxiliaires, qui font partie des éléments fournis par le framework Bela, permettent au programmeur de créer des segments de code qui seront exécutés en parallèle, ce qui permet d'alléger le travail effectué dans la fonction \verb!render()!, et donc d'éviter de créer des latences qui pourraient perturber le retour en temps réel. C'est pour cela que l'on initialise des tâches auxiliaires dans la fonction \verb!setup()! en spécifiant le code qui sera éxécuté dans chacune d'entre elles. Parmi les 3 différentes tâches présentes dans le code, seules 2 sont intéressantes : la tâche qui aura pour but de remplir les tampons, et celle qui traitera un tampon rempli. La troisième consiste à appliquer des effets sur un tampon, mais ce n'est pas un aspect du projet qui sera traité.
+Avant de passer directement à la fonction \verb!render!, le programme va passer par la fonction \verb!setup! qui va initialiser toutes les structures nécessaires au bon déroulement de la fonction \verb!render!, ainsi qu'un autre élément central du programme, les tâches auxiliaires. Ces tâches auxiliaires, qui font partie des éléments fournis par le framework Bela, permettent au programmeur de créer des segments de code qui seront exécutés en parallèle, ce qui permet d'alléger le travail effectué dans la fonction \verb!render!, et donc d'éviter de créer des latences qui pourraient perturber le retour en temps réel. C'est pour cela que l'on initialise des tâches auxiliaires dans la fonction \verb!setup! en spécifiant le code qui sera éxécuté dans chacune d'entre elles. Parmi les 3 différentes tâches présentes dans le code, seules 2 sont intéressantes : la tâche qui aura pour but de remplir les tampons, et celle qui traitera un tampon rempli. La troisième consiste à appliquer des effets sur un tampon, mais ce n'est pas un aspect du projet qui sera traité.
 \paragraph{}
-Par la suite, la fonction principale \verb!render()! va être appelée en chaîne, jusqu'à ce qu'un signal lui indique qu'elle peut s'arrêter. Dans cette fonction, il va se passer plusieurs choses : 
+Par la suite, la fonction principale \verb!render! va être appelée en chaîne, jusqu'à ce qu'un signal lui indique qu'elle peut s'arrêter. Dans cette fonction, il va se passer plusieurs choses :
 \begin{itemize}
     \item Si les différents tampons ne sont pas tous remplis, alors on déclenche la tâche auxiliaire de remplissage,
     \item Une fois que les tampons sont remplis, on déclenche la tâche auxiliaire de traitement,
@@ -44,16 +44,16 @@ La fonction de pré-traitement va servir à dégager une caractéristique du sig
     \label{enveloppe signal}
 \end{figure}
 \paragraph{}
-Le bénéfice du calcul de l'enveloppe est d'avoir des valeurs plus stables, ce qui évite d'avoir en sortie des résultats extrêmement chaotiques.
+Le principal bénéfice du calcul de l'enveloppe est d'obtenir des valeurs de signaux plus stables.
 \paragraph{}
-En ce qui concerne l'énergie du signal, le principe est le suivant : on va découper le tampon en blocs, et pour chaque bloc, on va calculer la moyenne des valeurs du tampon assoicées au bloc au carré. Cela a pour but d'éliminer les valeurs négatives du signal et de réduire la taille de l'échantillon à traiter,
+En ce qui concerne l'énergie du signal, le principe est le suivant : on va découper le tampon en blocs, et pour chaque bloc, on va calculer la moyenne des valeurs du tampon associées au bloc au carré. Cela a pour but d'éliminer les valeurs négatives du signal et de réduire la taille de l'échantillon à traiter,
 ce qui va réduire les temps de calcul, donc les latences.
-\subsubsection{Le calcul du coeffcient de corrélation}
+\subsubsection{Le calcul du coefficient de corrélation}
 \paragraph{}
 C'est à cette étape que l'on va calculer le coefficient de corrélation. Les coefficients sont calculés pour chaque paire d'entrées, donc pour N entrées nous obtenons une matrice de coefficients $N \times N$ symétrique où la diagonale n'est significative. Comme indiqué dans l'introduction de ce mémoire, la vision que l'on a d'une bonne improvisation est totalement subjective. De ce fait, les fonctions calculant un coefficient de corrélation n'ont pas l'obligation d'être rigoureuses (physiquement et mathématiquement parlant). Pour illustrer notre propos, nous avons mis à disposition une fonction retournant des valeurs aléatoires (toujours comprises entre 0 et 1 dans un soucis de généricité), ce qui donnera un retour visuel et audio tout aussi aléatoire.
 \subsubsection{La modification du volume}
 \paragraph{}
-Après avoir obtenu un coefficient de corrélation (et quelque soit la manière), on va modifier les volumes des entrées en fonction des coefficients obtenus. À ce jour, il y a deux fonctions de mixage des volumes disponibles : une qui va augmenter le volume proportionnellement par rapport au  coeffcient de corrélation, et sa fonction de mixage complémentaire (qui va diminuer le volume d'une entrée proportionnellement à son coeffcient de corrélation). Pour chaque entrée, le résultat obtenu est la moyenne de ses coefficients de corrélation obtenus avec toutes les autres entrées.
+Après avoir obtenu un coefficient de corrélation (et quelque soit la manière), on va modifier les volumes des entrées en fonction des coefficients obtenus. À ce jour, il y a deux fonctions de mixage des volumes disponibles : une qui va augmenter le volume proportionnellement par rapport à la moyenne des coefficients de corrélation d'une piste par rapport aux autres, et sa fonction de mixage complémentaire.
 \subsubsection{La traduction en triplet RGB}
 \paragraph{}
 Pour obtenir un retour graphique pertinent, la matrice de coefficients de corrélation va être associée à une couleur dans une échelle indiquée en paramètre. Les échelles de couleur disponibles à ce jour sont l'échelle noire/blanche et l'échelle rouge/vert. Les coefficients vont alors être traduits en triplets RGB, afin qu'ils puissent être affichés simplement par la suite.
@@ -77,4 +77,3 @@ Enfin, après avoir réalisé ces 4 étapes, l'ultime travail de la tâche auxil
     \caption{Déroulement de la tâche auxiliaire de traitement}
     \label{aux task}
 \end{figure}
-

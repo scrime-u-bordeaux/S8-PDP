@@ -1,0 +1,56 @@
+\hypertarget{_process_multi_correl_8cpp}{}\section{Visual\+Impro/\+Process\+Multi\+Correl.cpp File Reference}
+\label{_process_multi_correl_8cpp}\index{Visual\+Impro/\+Process\+Multi\+Correl.\+cpp@{Visual\+Impro/\+Process\+Multi\+Correl.\+cpp}}
+
+
+Processing object composed by function pointers members.  
+
+
+{\ttfamily \#include $<$ctime$>$}\newline
+{\ttfamily \#include $<$iomanip$>$}\newline
+{\ttfamily \#include $<$sys/time.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}Matrix.\+hpp\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}Process\+Multi\+Correl.\+hpp\char`\"{}}\newline
+Include dependency graph for Process\+Multi\+Correl.\+cpp\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_process_multi_correl_8cpp__incl}
+\end{center}
+\end{figure}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{_process_multi_correl_8cpp_acdf73ae6ad3fe89b15d0c9b0cc57d080}\label{_process_multi_correl_8cpp_acdf73ae6ad3fe89b15d0c9b0cc57d080}} 
+struct timeval {\bfseries tv10}
+\item 
+\mbox{\Hypertarget{_process_multi_correl_8cpp_a136000a362f4c25994733b769ba26924}\label{_process_multi_correl_8cpp_a136000a362f4c25994733b769ba26924}} 
+struct timeval {\bfseries tv20}
+\item 
+\mbox{\Hypertarget{_process_multi_correl_8cpp_a84d611c6982fd09cb5772bb72a9784ea}\label{_process_multi_correl_8cpp_a84d611c6982fd09cb5772bb72a9784ea}} 
+struct timeval {\bfseries tv11}
+\item 
+\mbox{\Hypertarget{_process_multi_correl_8cpp_a06fa5d47074f46e59e1ebffd9a9d107a}\label{_process_multi_correl_8cpp_a06fa5d47074f46e59e1ebffd9a9d107a}} 
+struct timeval {\bfseries tv12}
+\item 
+\mbox{\Hypertarget{_process_multi_correl_8cpp_a700f6e433cc1fa2f1786465314d8d150}\label{_process_multi_correl_8cpp_a700f6e433cc1fa2f1786465314d8d150}} 
+struct timeval {\bfseries tv13}
+\item 
+\mbox{\Hypertarget{_process_multi_correl_8cpp_ac71acb4114271fcacf7a9b7380d742e1}\label{_process_multi_correl_8cpp_ac71acb4114271fcacf7a9b7380d742e1}} 
+struct timeval {\bfseries tv14}
+\item 
+\mbox{\Hypertarget{_process_multi_correl_8cpp_a4c5c13423c051a9dd71d1b5f0f66b0bb}\label{_process_multi_correl_8cpp_a4c5c13423c051a9dd71d1b5f0f66b0bb}} 
+struct timeval {\bfseries tv15}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Processing object composed by function pointers members. 
+
+\begin{DoxyAuthor}{Author}
+Jérémy L\+I\+X\+A\+N\+D\+RE 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+July 2017
+\end{DoxyDate}
+Here are the constructor and all the process functions used in our program. The render.\+cpp file will call the process function, as an auxiliary task accomplished by another thread than the master thread, every time the buffer is filled with signals of length given in parameter of the program. The process function will call sequentially every processing function one by one. 

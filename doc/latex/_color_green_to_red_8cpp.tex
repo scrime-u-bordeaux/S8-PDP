@@ -1,0 +1,63 @@
+\hypertarget{_color_green_to_red_8cpp}{}\section{Visual\+Impro/process/\+Color/\+Color\+Green\+To\+Red.cpp File Reference}
+\label{_color_green_to_red_8cpp}\index{Visual\+Impro/process/\+Color/\+Color\+Green\+To\+Red.\+cpp@{Visual\+Impro/process/\+Color/\+Color\+Green\+To\+Red.\+cpp}}
+
+
+Code containing the coloration from black to white function.  
+
+
+{\ttfamily \#include \char`\"{}Color\+Green\+To\+Red.\+hpp\char`\"{}}\newline
+Include dependency graph for Color\+Green\+To\+Red.\+cpp\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=223pt]{_color_green_to_red_8cpp__incl}
+\end{center}
+\end{figure}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_r_g_b}{R\+GB}} \mbox{\hyperlink{_color_green_to_red_8cpp_a091c6c4576a6721a255fdc7143b3882d}{Color\+Green\+To\+Red}} (float coeff)
+\begin{DoxyCompactList}\small\item\em The green to red coloration function. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Code containing the coloration from black to white function. 
+
+Code containing the coloration from green to red function.
+
+\begin{DoxyAuthor}{Author}
+Jérémy L\+I\+X\+A\+N\+D\+RE 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+July 2017
+\end{DoxyDate}
+This color function is used to compute, from a float representing the correlation between two instruments, the \mbox{\hyperlink{class_r_g_b}{R\+GB}} triplet corresponding to that value. The returned value will tend to be an \mbox{\hyperlink{class_r_g_b}{R\+GB}} triplet representing black if the correlation is minimal or an \mbox{\hyperlink{class_r_g_b}{R\+GB}} triplet representing white if the correlation is maximal.
+
+\begin{DoxyAuthor}{Author}
+Jérémy L\+I\+X\+A\+N\+D\+RE 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+July 2017
+\end{DoxyDate}
+This color function is used to compute, from a float representing the correlation between two instruments, the \mbox{\hyperlink{class_r_g_b}{R\+GB}} triplet corresponding to that value. The returned value will tend to be an \mbox{\hyperlink{class_r_g_b}{R\+GB}} triplet representing red if the correlation is minimal or an \mbox{\hyperlink{class_r_g_b}{R\+GB}} triplet representing green if the correlation is maximal. 
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{_color_green_to_red_8cpp_a091c6c4576a6721a255fdc7143b3882d}\label{_color_green_to_red_8cpp_a091c6c4576a6721a255fdc7143b3882d}} 
+\index{Color\+Green\+To\+Red.\+cpp@{Color\+Green\+To\+Red.\+cpp}!Color\+Green\+To\+Red@{Color\+Green\+To\+Red}}
+\index{Color\+Green\+To\+Red@{Color\+Green\+To\+Red}!Color\+Green\+To\+Red.\+cpp@{Color\+Green\+To\+Red.\+cpp}}
+\subsubsection{\texorpdfstring{Color\+Green\+To\+Red()}{ColorGreenToRed()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_r_g_b}{R\+GB}} Color\+Green\+To\+Red (\begin{DoxyParamCaption}\item[{float}]{coeff }\end{DoxyParamCaption})}
+
+
+
+The green to red coloration function. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em coeff} & A float coefficient corresponding to a correlation which has a value ranged between 0 and 1. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+An \mbox{\hyperlink{class_r_g_b}{R\+GB}} triplet corresponding to that coefficient. It tends to be more green if coeff is high or red if coeff is low. 
+\end{DoxyReturn}

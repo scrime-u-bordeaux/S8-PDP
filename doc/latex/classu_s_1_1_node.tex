@@ -1,0 +1,58 @@
+\hypertarget{classu_s_1_1_node}{}\section{uS\+:\+:Node Class Reference}
+\label{classu_s_1_1_node}\index{u\+S\+::\+Node@{u\+S\+::\+Node}}
+
+
+Inheritance diagram for uS\+:\+:Node\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=142pt]{classu_s_1_1_node__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for uS\+:\+:Node\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=333pt]{classu_s_1_1_node__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classu_s_1_1_node_a974a8ae656b79e60e49c6f5e4a8da30f}\label{classu_s_1_1_node_a974a8ae656b79e60e49c6f5e4a8da30f}} 
+{\bfseries Node} (int recv\+Length=1024, int pre\+Padding=0, int post\+Padding=0, bool use\+Default\+Loop=false)
+\item 
+\mbox{\Hypertarget{classu_s_1_1_node_a06830f1b69a628f897d34b1455768c67}\label{classu_s_1_1_node_a06830f1b69a628f897d34b1455768c67}} 
+void {\bfseries run} ()
+\item 
+\mbox{\Hypertarget{classu_s_1_1_node_a7d4bf86bb320e3e9d04ca8bc88934387}\label{classu_s_1_1_node_a7d4bf86bb320e3e9d04ca8bc88934387}} 
+\mbox{\hyperlink{struct_loop}{Loop}} $\ast$ {\bfseries get\+Loop} ()
+\item 
+\mbox{\Hypertarget{classu_s_1_1_node_a45614cbc70d9121b48738728f559cf4e}\label{classu_s_1_1_node_a45614cbc70d9121b48738728f559cf4e}} 
+{\footnotesize template$<$u\+S\+::\+Socket $\ast$ I, void  C$>$ }\\\mbox{\hyperlink{structu_s_1_1_socket}{Socket}} $\ast$ {\bfseries connect} (const char $\ast$hostname, int port, bool secure, \mbox{\hyperlink{structu_s_1_1_node_data}{Node\+Data}} $\ast$node\+Data)
+\item 
+\mbox{\Hypertarget{classu_s_1_1_node_a34fd54fc00bf444b9732265a0cf16651}\label{classu_s_1_1_node_a34fd54fc00bf444b9732265a0cf16651}} 
+{\footnotesize template$<$void  A$>$ }\\bool {\bfseries listen} (const char $\ast$host, int port, \mbox{\hyperlink{classu_s_1_1_t_l_s_1_1_context}{u\+S\+::\+T\+L\+S\+::\+Context}} ssl\+Context, int options, \mbox{\hyperlink{structu_s_1_1_node_data}{u\+S\+::\+Node\+Data}} $\ast$node\+Data, void $\ast$user)
+\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classu_s_1_1_node_a6ed3621e46f3d9906f547379acb6869d}\label{classu_s_1_1_node_a6ed3621e46f3d9906f547379acb6869d}} 
+\mbox{\hyperlink{struct_loop}{Loop}} $\ast$ {\bfseries loop}
+\item 
+\mbox{\Hypertarget{classu_s_1_1_node_a9a460187fa7f25b65f21d16eeea8e7da}\label{classu_s_1_1_node_a9a460187fa7f25b65f21d16eeea8e7da}} 
+\mbox{\hyperlink{structu_s_1_1_node_data}{Node\+Data}} $\ast$ {\bfseries node\+Data}
+\item 
+\mbox{\Hypertarget{classu_s_1_1_node_a952e66eabb6bc34299cc7804646ee019}\label{classu_s_1_1_node_a952e66eabb6bc34299cc7804646ee019}} 
+std\+::recursive\+\_\+mutex {\bfseries async\+Mutex}
+\end{DoxyCompactItemize}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+bin/node\+\_\+modules/socket.\+io/node\+\_\+modules/engine.\+io/node\+\_\+modules/uws/src/Node.\+h\item 
+bin/node\+\_\+modules/socket.\+io/node\+\_\+modules/engine.\+io/node\+\_\+modules/uws/src/Node.\+cpp\end{DoxyCompactItemize}

@@ -1,0 +1,164 @@
+\hypertarget{structu_s_1_1_socket}{}\section{uS\+:\+:Socket Struct Reference}
+\label{structu_s_1_1_socket}\index{u\+S\+::\+Socket@{u\+S\+::\+Socket}}
+
+
+Inheritance diagram for uS\+:\+:Socket\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{structu_s_1_1_socket__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for uS\+:\+:Socket\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{structu_s_1_1_socket__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structu_s_1_1_socket_1_1_address}{Address}}
+\item 
+struct \mbox{\hyperlink{structu_s_1_1_socket_1_1_queue}{Queue}}
+\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{structu_s_1_1_socket_af0382e650ead4694c8114c4b0b56743b}\label{structu_s_1_1_socket_af0382e650ead4694c8114c4b0b56743b}} 
+{\bfseries Socket} (\mbox{\hyperlink{structu_s_1_1_node_data}{Node\+Data}} $\ast$node\+Data, \mbox{\hyperlink{struct_loop}{Loop}} $\ast$loop, uv\+\_\+os\+\_\+sock\+\_\+t fd, S\+SL $\ast$ssl)
+\item 
+\mbox{\Hypertarget{structu_s_1_1_socket_ae41d00dd8888a37bf235d6e4c4dd3bef}\label{structu_s_1_1_socket_ae41d00dd8888a37bf235d6e4c4dd3bef}} 
+\mbox{\hyperlink{structu_s_1_1_node_data}{Node\+Data}} $\ast$ {\bfseries get\+Node\+Data} ()
+\item 
+\mbox{\Hypertarget{structu_s_1_1_socket_ab86ba43740c50f1a969917ee1105e55f}\label{structu_s_1_1_socket_ab86ba43740c50f1a969917ee1105e55f}} 
+void $\ast$ {\bfseries get\+User\+Data} ()
+\item 
+\mbox{\Hypertarget{structu_s_1_1_socket_a81edd7ed05f455899a09711e37fb2f42}\label{structu_s_1_1_socket_a81edd7ed05f455899a09711e37fb2f42}} 
+void {\bfseries set\+User\+Data} (void $\ast$user)
+\item 
+\mbox{\Hypertarget{structu_s_1_1_socket_af9f06bec0b50372e5df561ca47f7d6bf}\label{structu_s_1_1_socket_af9f06bec0b50372e5df561ca47f7d6bf}} 
+\mbox{\hyperlink{structu_s_1_1_socket_1_1_address}{Address}} {\bfseries get\+Address} ()
+\item 
+\mbox{\Hypertarget{structu_s_1_1_socket_a0d1b35a546a5afe214adf71a74b6abbf}\label{structu_s_1_1_socket_a0d1b35a546a5afe214adf71a74b6abbf}} 
+void {\bfseries set\+No\+Delay} (int enable)
+\item 
+\mbox{\Hypertarget{structu_s_1_1_socket_ab23d8de6bd87bdba787c2663390f1602}\label{structu_s_1_1_socket_ab23d8de6bd87bdba787c2663390f1602}} 
+void {\bfseries cork} (int enable)
+\item 
+\mbox{\Hypertarget{structu_s_1_1_socket_aa377349b17a65d9968f20b076db65858}\label{structu_s_1_1_socket_aa377349b17a65d9968f20b076db65858}} 
+void {\bfseries shutdown} ()
+\item 
+\mbox{\Hypertarget{structu_s_1_1_socket_a241d2ac2268d3a9fa3084cca32d218de}\label{structu_s_1_1_socket_a241d2ac2268d3a9fa3084cca32d218de}} 
+{\footnotesize template$<$class T $>$ }\\void {\bfseries close\+Socket} ()
+\item 
+\mbox{\Hypertarget{structu_s_1_1_socket_a9cbd30c06deb03c91fdbbe434d761875}\label{structu_s_1_1_socket_a9cbd30c06deb03c91fdbbe434d761875}} 
+bool {\bfseries is\+Shutting\+Down} ()
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{structu_s_1_1_socket_aece79bbb7913c1ebb7a5fad75b35a315}\label{structu_s_1_1_socket_aece79bbb7913c1ebb7a5fad75b35a315}} 
+\mbox{\hyperlink{struct_poll}{Poll}} $\ast$ {\bfseries next} = nullptr
+\item 
+\mbox{\Hypertarget{structu_s_1_1_socket_a954aacb6f92fd2d0eb7ad78c3e0dc913}\label{structu_s_1_1_socket_a954aacb6f92fd2d0eb7ad78c3e0dc913}} 
+\mbox{\hyperlink{struct_poll}{Poll}} $\ast$ {\bfseries prev} = nullptr
+\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{structu_s_1_1_socket_a555982b4927aa4fe93e34dc8708445ef}\label{structu_s_1_1_socket_a555982b4927aa4fe93e34dc8708445ef}} 
+int {\bfseries get\+Poll} ()
+\item 
+\mbox{\Hypertarget{structu_s_1_1_socket_ab11380927901b057825537ab0f153d20}\label{structu_s_1_1_socket_ab11380927901b057825537ab0f153d20}} 
+int {\bfseries set\+Poll} (int poll)
+\item 
+\mbox{\Hypertarget{structu_s_1_1_socket_acd05df2e4a97e47934a356213aefb792}\label{structu_s_1_1_socket_acd05df2e4a97e47934a356213aefb792}} 
+void {\bfseries set\+Shutting\+Down} (bool shutting\+Down)
+\item 
+\mbox{\Hypertarget{structu_s_1_1_socket_a7c87c8a0af2f52e3efd6b4cbca88bf61}\label{structu_s_1_1_socket_a7c87c8a0af2f52e3efd6b4cbca88bf61}} 
+void {\bfseries transfer} (\mbox{\hyperlink{structu_s_1_1_node_data}{Node\+Data}} $\ast$node\+Data, void($\ast$cb)(\mbox{\hyperlink{struct_poll}{Poll}} $\ast$))
+\item 
+\mbox{\Hypertarget{structu_s_1_1_socket_a0a6a0e4adbbd115c8e88a1a00be198e3}\label{structu_s_1_1_socket_a0a6a0e4adbbd115c8e88a1a00be198e3}} 
+void {\bfseries change\+Poll} (\mbox{\hyperlink{structu_s_1_1_socket}{Socket}} $\ast$socket)
+\item 
+\mbox{\Hypertarget{structu_s_1_1_socket_a97f8c1006871b3b39d66d85c7effa4d5}\label{structu_s_1_1_socket_a97f8c1006871b3b39d66d85c7effa4d5}} 
+{\footnotesize template$<$void  on\+Timeout$>$ }\\void {\bfseries start\+Timeout} (int timeout\+Ms=15000)
+\item 
+\mbox{\Hypertarget{structu_s_1_1_socket_a4ce1bf5d0098ad1346a99bd71530b7de}\label{structu_s_1_1_socket_a4ce1bf5d0098ad1346a99bd71530b7de}} 
+void {\bfseries cancel\+Timeout} ()
+\item 
+\mbox{\Hypertarget{structu_s_1_1_socket_a8a172747528e58a85c682abf483ed59a}\label{structu_s_1_1_socket_a8a172747528e58a85c682abf483ed59a}} 
+{\footnotesize template$<$class S\+T\+A\+TE $>$ }\\void {\bfseries set\+State} ()
+\item 
+\mbox{\Hypertarget{structu_s_1_1_socket_a4a6647b9d962984c23ecf89a3d5b6efd}\label{structu_s_1_1_socket_a4a6647b9d962984c23ecf89a3d5b6efd}} 
+bool {\bfseries has\+Empty\+Queue} ()
+\item 
+\mbox{\Hypertarget{structu_s_1_1_socket_a4d1bf51315b6dd297047b29a5a8db8fe}\label{structu_s_1_1_socket_a4d1bf51315b6dd297047b29a5a8db8fe}} 
+void {\bfseries enqueue} (\mbox{\hyperlink{structu_s_1_1_socket_1_1_queue_1_1_message}{Queue\+::\+Message}} $\ast$message)
+\item 
+\mbox{\Hypertarget{structu_s_1_1_socket_af3cccd4b155509ecbfdb6ebd5ad67f55}\label{structu_s_1_1_socket_af3cccd4b155509ecbfdb6ebd5ad67f55}} 
+\mbox{\hyperlink{structu_s_1_1_socket_1_1_queue_1_1_message}{Queue\+::\+Message}} $\ast$ {\bfseries alloc\+Message} (size\+\_\+t length, const char $\ast$data=0)
+\item 
+\mbox{\Hypertarget{structu_s_1_1_socket_a5e3d88792f59e861f61081eced2a77d3}\label{structu_s_1_1_socket_a5e3d88792f59e861f61081eced2a77d3}} 
+void {\bfseries free\+Message} (\mbox{\hyperlink{structu_s_1_1_socket_1_1_queue_1_1_message}{Queue\+::\+Message}} $\ast$message)
+\item 
+\mbox{\Hypertarget{structu_s_1_1_socket_ad5ef4e37198b1356fe1ad5deb5d66f1f}\label{structu_s_1_1_socket_ad5ef4e37198b1356fe1ad5deb5d66f1f}} 
+bool {\bfseries write} (\mbox{\hyperlink{structu_s_1_1_socket_1_1_queue_1_1_message}{Queue\+::\+Message}} $\ast$message, bool \&was\+Transferred)
+\item 
+\mbox{\Hypertarget{structu_s_1_1_socket_ab000a9d579baac719182074100133c21}\label{structu_s_1_1_socket_ab000a9d579baac719182074100133c21}} 
+{\footnotesize template$<$class T , class D $>$ }\\void {\bfseries send\+Transformed} (const char $\ast$message, size\+\_\+t length, void($\ast$callback)(void $\ast$socket, void $\ast$data, bool cancelled, void $\ast$reserved), void $\ast$callback\+Data, D transform\+Data)
+\end{DoxyCompactItemize}
+\subsection*{Static Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{structu_s_1_1_socket_aef1048dff6be13161695c1752e7a04b6}\label{structu_s_1_1_socket_aef1048dff6be13161695c1752e7a04b6}} 
+{\footnotesize template$<$class S\+T\+A\+TE $>$ }\\static void {\bfseries ssl\+Io\+Handler} (\mbox{\hyperlink{struct_poll}{Poll}} $\ast$p, int status, int events)
+\item 
+\mbox{\Hypertarget{structu_s_1_1_socket_a72efcc8bb407e6f313b6a14e7beaee62}\label{structu_s_1_1_socket_a72efcc8bb407e6f313b6a14e7beaee62}} 
+{\footnotesize template$<$class S\+T\+A\+TE $>$ }\\static void {\bfseries io\+Handler} (\mbox{\hyperlink{struct_poll}{Poll}} $\ast$p, int status, int events)
+\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{structu_s_1_1_socket_a08198a8f8ce327766548dbe865ad9abf}\label{structu_s_1_1_socket_a08198a8f8ce327766548dbe865ad9abf}} 
+\begin{tabbing}
+xx\=xx\=xx\=xx\=xx\=xx\=xx\=xx\=xx\=\kill
+struct \{\\
+\>int {\bfseries poll}: 4\\
+\>int {\bfseries shuttingDown}: 4\\
+\} {\bfseries state} = \{0, false\}\\
+
+\end{tabbing}\item 
+\mbox{\Hypertarget{structu_s_1_1_socket_a08a28a30f98242ff37fa1918e158218e}\label{structu_s_1_1_socket_a08a28a30f98242ff37fa1918e158218e}} 
+S\+SL $\ast$ {\bfseries ssl}
+\item 
+\mbox{\Hypertarget{structu_s_1_1_socket_a3d59d676b6334ab2a1e0e35a1221db5f}\label{structu_s_1_1_socket_a3d59d676b6334ab2a1e0e35a1221db5f}} 
+void $\ast$ {\bfseries user} = nullptr
+\item 
+\mbox{\Hypertarget{structu_s_1_1_socket_a2f4fc81e5838284b4bf8b36eeff2b501}\label{structu_s_1_1_socket_a2f4fc81e5838284b4bf8b36eeff2b501}} 
+\mbox{\hyperlink{structu_s_1_1_node_data}{Node\+Data}} $\ast$ {\bfseries node\+Data}
+\item 
+\mbox{\Hypertarget{structu_s_1_1_socket_aa4ed377f563ebf8361d23fa8ebe68398}\label{structu_s_1_1_socket_aa4ed377f563ebf8361d23fa8ebe68398}} 
+struct \mbox{\hyperlink{structu_s_1_1_socket_1_1_queue}{u\+S\+::\+Socket\+::\+Queue}} {\bfseries message\+Queue}
+\end{DoxyCompactItemize}
+\subsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{structu_s_1_1_socket_a6db9d28bd448a131448276ee03de1e6d}\label{structu_s_1_1_socket_a6db9d28bd448a131448276ee03de1e6d}} 
+class {\bfseries Node}
+\item 
+\mbox{\Hypertarget{structu_s_1_1_socket_ae39d0b60fda531523b009a9c5e234400}\label{structu_s_1_1_socket_ae39d0b60fda531523b009a9c5e234400}} 
+struct {\bfseries Node\+Data}
+\end{DoxyCompactItemize}
+
+
+The documentation for this struct was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+bin/node\+\_\+modules/socket.\+io/node\+\_\+modules/engine.\+io/node\+\_\+modules/uws/src/Socket.\+h\item 
+bin/node\+\_\+modules/socket.\+io/node\+\_\+modules/engine.\+io/node\+\_\+modules/uws/src/Socket.\+cpp\end{DoxyCompactItemize}

@@ -1,0 +1,77 @@
+\hypertarget{_preproc_strength_energy_8cpp}{}\section{Visual\+Impro/process/\+Preproc/\+Preproc\+Strength\+Energy.cpp File Reference}
+\label{_preproc_strength_energy_8cpp}\index{Visual\+Impro/process/\+Preproc/\+Preproc\+Strength\+Energy.\+cpp@{Visual\+Impro/process/\+Preproc/\+Preproc\+Strength\+Energy.\+cpp}}
+
+
+Code containing the preprocessing based on strength energy function.  
+
+
+{\ttfamily \#include \char`\"{}Preproc\+Strength\+Energy.\+hpp\char`\"{}}\newline
+Include dependency graph for Preproc\+Strength\+Energy.\+cpp\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_preproc_strength_energy_8cpp__incl}
+\end{center}
+\end{figure}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+vector$<$ float $>$ \mbox{\hyperlink{_preproc_strength_energy_8cpp_adde30b7f92c5e63fd3c0c4e0fed900f7}{strengthenergyenvelope}} (const vector$<$ float $>$ \&f1, int frame)
+\begin{DoxyCompactList}\small\item\em process a vector\textquotesingle{}s strength energy envelope \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_matrix}{Matrix}}$<$ float $>$ \mbox{\hyperlink{_preproc_strength_energy_8cpp_a507b584bf5bc26f3525d8330586bd00c}{Preproc\+Strength\+Energy}} (const \mbox{\hyperlink{class_matrix}{Matrix}}$<$ float $>$ \&input)
+\begin{DoxyCompactList}\small\item\em process a \mbox{\hyperlink{class_matrix}{Matrix}}\textquotesingle{}s strength energy envelope \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Code containing the preprocessing based on strength energy function. 
+
+\begin{DoxyAuthor}{Author}
+Jérémy L\+I\+X\+A\+N\+D\+RE 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+July 2017
+\end{DoxyDate}
+This is a preprocessing function returning a \mbox{\hyperlink{class_matrix}{Matrix}} witch has in every line the strength energy envelope of each instrument of the original \mbox{\hyperlink{class_matrix}{Matrix}} of signals given in parameter. It is almost the same as the energy enevelope process except that this functions returns, for each instrument, the difference of the energy process between two consecutives frames, or zero if the difference is negative. 
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{_preproc_strength_energy_8cpp_a507b584bf5bc26f3525d8330586bd00c}\label{_preproc_strength_energy_8cpp_a507b584bf5bc26f3525d8330586bd00c}} 
+\index{Preproc\+Strength\+Energy.\+cpp@{Preproc\+Strength\+Energy.\+cpp}!Preproc\+Strength\+Energy@{Preproc\+Strength\+Energy}}
+\index{Preproc\+Strength\+Energy@{Preproc\+Strength\+Energy}!Preproc\+Strength\+Energy.\+cpp@{Preproc\+Strength\+Energy.\+cpp}}
+\subsubsection{\texorpdfstring{Preproc\+Strength\+Energy()}{PreprocStrengthEnergy()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_matrix}{Matrix}}$<$ float $>$ Preproc\+Strength\+Energy (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_matrix}{Matrix}}$<$ float $>$ \&}]{input }\end{DoxyParamCaption})}
+
+
+
+process a \mbox{\hyperlink{class_matrix}{Matrix}}\textquotesingle{}s strength energy envelope 
+
+
+\begin{DoxyParams}{Parameters}
+{\em input} & The matrix to process \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A matrix corresponding to the strength energy envelope of input. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{_preproc_strength_energy_8cpp_adde30b7f92c5e63fd3c0c4e0fed900f7}\label{_preproc_strength_energy_8cpp_adde30b7f92c5e63fd3c0c4e0fed900f7}} 
+\index{Preproc\+Strength\+Energy.\+cpp@{Preproc\+Strength\+Energy.\+cpp}!strengthenergyenvelope@{strengthenergyenvelope}}
+\index{strengthenergyenvelope@{strengthenergyenvelope}!Preproc\+Strength\+Energy.\+cpp@{Preproc\+Strength\+Energy.\+cpp}}
+\subsubsection{\texorpdfstring{strengthenergyenvelope()}{strengthenergyenvelope()}}
+{\footnotesize\ttfamily vector$<$ float $>$ strengthenergyenvelope (\begin{DoxyParamCaption}\item[{const vector$<$ float $>$ \&}]{f1,  }\item[{int}]{frame }\end{DoxyParamCaption})}
+
+
+
+process a vector\textquotesingle{}s strength energy envelope 
+
+Cuts f1 in blocks of length \textquotesingle{}frame\textquotesingle{} and applies norm to get the energy of the signal
+
+
+\begin{DoxyParams}{Parameters}
+{\em f1} & The vector to process \\
+\hline
+{\em frame} & The length of one frame to process \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A vector corresponding to the strength energy envelope of f1. 
+\end{DoxyReturn}

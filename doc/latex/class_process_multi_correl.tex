@@ -1,0 +1,235 @@
+\hypertarget{class_process_multi_correl}{}\section{Process\+Multi\+Correl Class Reference}
+\label{class_process_multi_correl}\index{Process\+Multi\+Correl@{Process\+Multi\+Correl}}
+
+
+An object containing every processing function.  
+
+
+
+
+{\ttfamily \#include $<$Process\+Multi\+Correl.\+hpp$>$}
+
+
+
+Collaboration diagram for Process\+Multi\+Correl\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=180pt]{class_process_multi_correl__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_process_multi_correl_ab24bdd4426846c03e160ee418ef53962}{Process\+Multi\+Correl}} (float($\ast$coeffcorrel)(const vector$<$ float $>$ \&s1, const vector$<$ float $>$ \&s2)=N\+U\+LL, \mbox{\hyperlink{class_r_g_b}{R\+GB}}($\ast$colorscale)(float coeff)=N\+U\+LL, \mbox{\hyperlink{class_matrix}{Matrix}}$<$ float $>$($\ast$preproc)(const \mbox{\hyperlink{class_matrix}{Matrix}}$<$ float $>$ \&buff)=N\+U\+LL, vector$<$ float $>$($\ast$mix\+Level)(const \mbox{\hyperlink{class_matrix}{Matrix}}$<$ float $>$ \&correl\+Matrix)=N\+U\+LL)
+\begin{DoxyCompactList}\small\item\em Constructor of the \mbox{\hyperlink{class_process_multi_correl}{Process\+Multi\+Correl}} object. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_process_multi_correl_a3f8fed43cb4088f30ae575ff4b99db30}{process}} (const \mbox{\hyperlink{class_matrix}{Matrix}}$<$ float $>$ \&buffer, vector$<$ float $>$ \&mean\+Correlations, \mbox{\hyperlink{class_connection}{Connection}} conn)
+\begin{DoxyCompactList}\small\item\em Function calling sequentially every other processing function. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_process_multi_correl_a3e59014e6e62c9559507c2fc62c683a2}{set\+Color}} (\mbox{\hyperlink{class_r_g_b}{R\+GB}}($\ast$colorscale)(float coeff))
+\begin{DoxyCompactList}\small\item\em Set the coloration function. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_process_multi_correl_a60bb0450ffa0267f2a1cb74e617d06c5}{set\+Preproc}} (\mbox{\hyperlink{class_matrix}{Matrix}}$<$ float $>$($\ast$preprocess)(const \mbox{\hyperlink{class_matrix}{Matrix}}$<$ float $>$ \&buff))
+\begin{DoxyCompactList}\small\item\em Set the preprocessing function. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_process_multi_correl_aebafeaade18f20edb6d4f3cffa712543}{set\+Coeff}} (float($\ast$coeffcorrel)(const vector$<$ float $>$ \&s1, const vector$<$ float $>$ \&s2))
+\begin{DoxyCompactList}\small\item\em Set the correlation function. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_process_multi_correl_a59a1bce24ce64616e4c3e3f625313555}{set\+Mix}} (vector$<$ float $>$($\ast$mix\+Level)(const \mbox{\hyperlink{class_matrix}{Matrix}}$<$ float $>$ \&correl\+Matrix))
+\begin{DoxyCompactList}\small\item\em Set the mix function. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_matrix}{Matrix}}$<$ float $>$($\ast$)(const \mbox{\hyperlink{class_matrix}{Matrix}}$<$ float $>$ \&buff) \mbox{\hyperlink{class_process_multi_correl_ae2afc5446a944d835509a8cc68ba4d35}{get\+Preproc}} ()
+\begin{DoxyCompactList}\small\item\em Get the preprocessing function. \end{DoxyCompactList}\item 
+vector$<$ float $>$($\ast$)(const \mbox{\hyperlink{class_matrix}{Matrix}}$<$ float $>$ \&correl\+Matrix) \mbox{\hyperlink{class_process_multi_correl_a39a8d59325d79ad328036fd302070617}{get\+Mix}} ()
+\begin{DoxyCompactList}\small\item\em Get the mix function. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{class_process_multi_correl_a6ae612212661ea6b86fe1342581096cc}{$\sim$\+Process\+Multi\+Correl}} ()
+\begin{DoxyCompactList}\small\item\em Destructor. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_r_g_b}{R\+GB}}($\ast$)(float) \mbox{\hyperlink{class_process_multi_correl_a027833084b3b78a363c205ad1020ac8c}{get\+Color}} ()
+\begin{DoxyCompactList}\small\item\em Get the coloration function. \end{DoxyCompactList}\item 
+float($\ast$)(const vector$<$ float $>$ \&s1, const vector$<$ float $>$ \&s2) \mbox{\hyperlink{class_process_multi_correl_a5f932eae352e210a865fa7391ff0e06e}{get\+Coeff}} ()
+\begin{DoxyCompactList}\small\item\em Get the correlation function. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+An object containing every processing function. 
+
+This class is used to process signals sent from render.\+cpp 
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_process_multi_correl_ab24bdd4426846c03e160ee418ef53962}\label{class_process_multi_correl_ab24bdd4426846c03e160ee418ef53962}} 
+\index{Process\+Multi\+Correl@{Process\+Multi\+Correl}!Process\+Multi\+Correl@{Process\+Multi\+Correl}}
+\index{Process\+Multi\+Correl@{Process\+Multi\+Correl}!Process\+Multi\+Correl@{Process\+Multi\+Correl}}
+\subsubsection{\texorpdfstring{Process\+Multi\+Correl()}{ProcessMultiCorrel()}}
+{\footnotesize\ttfamily Process\+Multi\+Correl\+::\+Process\+Multi\+Correl (\begin{DoxyParamCaption}\item[{float($\ast$)(const vector$<$ float $>$ \&s1, const vector$<$ float $>$ \&s2)}]{coeffcorrel = {\ttfamily NULL},  }\item[{\mbox{\hyperlink{class_r_g_b}{R\+GB}}($\ast$)(float coeff)}]{colorscale = {\ttfamily NULL},  }\item[{\mbox{\hyperlink{class_matrix}{Matrix}}$<$ float $>$($\ast$)(const \mbox{\hyperlink{class_matrix}{Matrix}}$<$ float $>$ \&buff)}]{preproc = {\ttfamily NULL},  }\item[{vector$<$ float $>$($\ast$)(const \mbox{\hyperlink{class_matrix}{Matrix}}$<$ float $>$ \&correl\+Matrix)}]{mix\+Level = {\ttfamily NULL} }\end{DoxyParamCaption})}
+
+
+
+Constructor of the \mbox{\hyperlink{class_process_multi_correl}{Process\+Multi\+Correl}} object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em coeffcorrel} & The correlation process function. \\
+\hline
+{\em colorscale} & The coloration process function. \\
+\hline
+{\em preproc} & The preprocessing process function. \\
+\hline
+{\em mix\+Level} & The mix process function.\\
+\hline
+\end{DoxyParams}
+The constructor will set a pointer for every process function to its class members variables. \mbox{\Hypertarget{class_process_multi_correl_a6ae612212661ea6b86fe1342581096cc}\label{class_process_multi_correl_a6ae612212661ea6b86fe1342581096cc}} 
+\index{Process\+Multi\+Correl@{Process\+Multi\+Correl}!````~Process\+Multi\+Correl@{$\sim$\+Process\+Multi\+Correl}}
+\index{````~Process\+Multi\+Correl@{$\sim$\+Process\+Multi\+Correl}!Process\+Multi\+Correl@{Process\+Multi\+Correl}}
+\subsubsection{\texorpdfstring{$\sim$\+Process\+Multi\+Correl()}{~ProcessMultiCorrel()}}
+{\footnotesize\ttfamily Process\+Multi\+Correl\+::$\sim$\+Process\+Multi\+Correl (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Destructor. 
+
+Destructor for the \mbox{\hyperlink{class_process_multi_correl}{Process\+Multi\+Correl}} object. It will also close the logfile called matrixfile.
+
+Destructor of the \mbox{\hyperlink{class_process_multi_correl}{Process\+Multi\+Correl}} class. 
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_process_multi_correl_a39a8d59325d79ad328036fd302070617}\label{class_process_multi_correl_a39a8d59325d79ad328036fd302070617}} 
+\index{Process\+Multi\+Correl@{Process\+Multi\+Correl}!get\+Mix@{get\+Mix}}
+\index{get\+Mix@{get\+Mix}!Process\+Multi\+Correl@{Process\+Multi\+Correl}}
+\subsubsection{\texorpdfstring{get\+Mix()}{getMix()}}
+{\footnotesize\ttfamily vector$<$ float $>$($\ast$ Process\+Multi\+Correl\+::get\+Mix (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get the mix function. 
+
+\begin{DoxyReturn}{Returns}
+The actual mix function. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_process_multi_correl_ae2afc5446a944d835509a8cc68ba4d35}\label{class_process_multi_correl_ae2afc5446a944d835509a8cc68ba4d35}} 
+\index{Process\+Multi\+Correl@{Process\+Multi\+Correl}!get\+Preproc@{get\+Preproc}}
+\index{get\+Preproc@{get\+Preproc}!Process\+Multi\+Correl@{Process\+Multi\+Correl}}
+\subsubsection{\texorpdfstring{get\+Preproc()}{getPreproc()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_matrix}{Matrix}}$<$ float $>$($\ast$ Process\+Multi\+Correl\+::get\+Preproc (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get the preprocessing function. 
+
+\begin{DoxyReturn}{Returns}
+The actual preprocessing function. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_process_multi_correl_a3f8fed43cb4088f30ae575ff4b99db30}\label{class_process_multi_correl_a3f8fed43cb4088f30ae575ff4b99db30}} 
+\index{Process\+Multi\+Correl@{Process\+Multi\+Correl}!process@{process}}
+\index{process@{process}!Process\+Multi\+Correl@{Process\+Multi\+Correl}}
+\subsubsection{\texorpdfstring{process()}{process()}}
+{\footnotesize\ttfamily void Process\+Multi\+Correl\+::process (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_matrix}{Matrix}}$<$ float $>$ \&}]{buffer,  }\item[{vector$<$ float $>$ \&}]{mean\+Correlations,  }\item[{\mbox{\hyperlink{class_connection}{Connection}}}]{conn }\end{DoxyParamCaption})}
+
+
+
+Function calling sequentially every other processing function. 
+
+Calling every processing function sequentially.
+
+
+\begin{DoxyParams}{Parameters}
+{\em buffer} & The signals buffer. \\
+\hline
+{\em mean\+Correlations} & A vector given as a pointer to get the mix values. \\
+\hline
+{\em conn} & The object to send data to a Firefox web page. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_process_multi_correl_aebafeaade18f20edb6d4f3cffa712543}\label{class_process_multi_correl_aebafeaade18f20edb6d4f3cffa712543}} 
+\index{Process\+Multi\+Correl@{Process\+Multi\+Correl}!set\+Coeff@{set\+Coeff}}
+\index{set\+Coeff@{set\+Coeff}!Process\+Multi\+Correl@{Process\+Multi\+Correl}}
+\subsubsection{\texorpdfstring{set\+Coeff()}{setCoeff()}}
+{\footnotesize\ttfamily void Process\+Multi\+Correl\+::set\+Coeff (\begin{DoxyParamCaption}\item[{float($\ast$)(const vector$<$ float $>$ \&s1, const vector$<$ float $>$ \&s2)}]{coeffcorrel }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Set the correlation function. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em coeffcorrel} & The correlation function that will replace the actual one. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_process_multi_correl_a3e59014e6e62c9559507c2fc62c683a2}\label{class_process_multi_correl_a3e59014e6e62c9559507c2fc62c683a2}} 
+\index{Process\+Multi\+Correl@{Process\+Multi\+Correl}!set\+Color@{set\+Color}}
+\index{set\+Color@{set\+Color}!Process\+Multi\+Correl@{Process\+Multi\+Correl}}
+\subsubsection{\texorpdfstring{set\+Color()}{setColor()}}
+{\footnotesize\ttfamily void Process\+Multi\+Correl\+::set\+Color (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_r_g_b}{R\+GB}}($\ast$)(float coeff)}]{colorscale }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Set the coloration function. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em colorscale} & The coloration function that will replace the actual one. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_process_multi_correl_a59a1bce24ce64616e4c3e3f625313555}\label{class_process_multi_correl_a59a1bce24ce64616e4c3e3f625313555}} 
+\index{Process\+Multi\+Correl@{Process\+Multi\+Correl}!set\+Mix@{set\+Mix}}
+\index{set\+Mix@{set\+Mix}!Process\+Multi\+Correl@{Process\+Multi\+Correl}}
+\subsubsection{\texorpdfstring{set\+Mix()}{setMix()}}
+{\footnotesize\ttfamily void Process\+Multi\+Correl\+::set\+Mix (\begin{DoxyParamCaption}\item[{vector$<$ float $>$($\ast$)(const \mbox{\hyperlink{class_matrix}{Matrix}}$<$ float $>$ \&correl\+Matrix)}]{mix\+Level }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Set the mix function. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em mix\+Level} & The mix function that will replace the actual one. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_process_multi_correl_a60bb0450ffa0267f2a1cb74e617d06c5}\label{class_process_multi_correl_a60bb0450ffa0267f2a1cb74e617d06c5}} 
+\index{Process\+Multi\+Correl@{Process\+Multi\+Correl}!set\+Preproc@{set\+Preproc}}
+\index{set\+Preproc@{set\+Preproc}!Process\+Multi\+Correl@{Process\+Multi\+Correl}}
+\subsubsection{\texorpdfstring{set\+Preproc()}{setPreproc()}}
+{\footnotesize\ttfamily void Process\+Multi\+Correl\+::set\+Preproc (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_matrix}{Matrix}}$<$ float $>$($\ast$)(const \mbox{\hyperlink{class_matrix}{Matrix}}$<$ float $>$ \&buff)}]{preprocess }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Set the preprocessing function. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em preprocess} & The preprocessing function that will replace the actual one. \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{class_process_multi_correl_a5f932eae352e210a865fa7391ff0e06e}\label{class_process_multi_correl_a5f932eae352e210a865fa7391ff0e06e}} 
+\index{Process\+Multi\+Correl@{Process\+Multi\+Correl}!get\+Coeff@{get\+Coeff}}
+\index{get\+Coeff@{get\+Coeff}!Process\+Multi\+Correl@{Process\+Multi\+Correl}}
+\subsubsection{\texorpdfstring{get\+Coeff}{getCoeff}}
+{\footnotesize\ttfamily float($\ast$ Process\+Multi\+Correl\+::get\+Coeff\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get the correlation function. 
+
+\begin{DoxyReturn}{Returns}
+The actual correlation function. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_process_multi_correl_a027833084b3b78a363c205ad1020ac8c}\label{class_process_multi_correl_a027833084b3b78a363c205ad1020ac8c}} 
+\index{Process\+Multi\+Correl@{Process\+Multi\+Correl}!get\+Color@{get\+Color}}
+\index{get\+Color@{get\+Color}!Process\+Multi\+Correl@{Process\+Multi\+Correl}}
+\subsubsection{\texorpdfstring{get\+Color}{getColor}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_r_g_b}{R\+GB}}($\ast$ Process\+Multi\+Correl\+::get\+Color\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get the coloration function. 
+
+\begin{DoxyReturn}{Returns}
+The actual coloration function. 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Visual\+Impro/Process\+Multi\+Correl.\+hpp\item 
+Visual\+Impro/\mbox{\hyperlink{_process_multi_correl_8cpp}{Process\+Multi\+Correl.\+cpp}}\end{DoxyCompactItemize}

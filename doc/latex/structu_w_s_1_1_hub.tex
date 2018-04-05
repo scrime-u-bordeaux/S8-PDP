@@ -1,0 +1,100 @@
+\hypertarget{structu_w_s_1_1_hub}{}\section{u\+WS\+:\+:Hub Struct Reference}
+\label{structu_w_s_1_1_hub}\index{u\+W\+S\+::\+Hub@{u\+W\+S\+::\+Hub}}
+
+
+Inheritance diagram for u\+WS\+:\+:Hub\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{structu_w_s_1_1_hub__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for u\+WS\+:\+:Hub\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{structu_w_s_1_1_hub__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structu_w_s_1_1_hub_1_1_connection_data}{Connection\+Data}}
+\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{structu_w_s_1_1_hub_a1f98feae6a7a2f9247198a7358aa46e8}\label{structu_w_s_1_1_hub_a1f98feae6a7a2f9247198a7358aa46e8}} 
+{\footnotesize template$<$bool is\+Server$>$ }\\\mbox{\hyperlink{structu_w_s_1_1_group}{Group}}$<$ is\+Server $>$ $\ast$ {\bfseries create\+Group} (int extension\+Options=0, unsigned int max\+Payload=16777216)
+\item 
+\mbox{\Hypertarget{structu_w_s_1_1_hub_a49767f65b297dda718828d7c51bf783a}\label{structu_w_s_1_1_hub_a49767f65b297dda718828d7c51bf783a}} 
+{\footnotesize template$<$bool is\+Server$>$ }\\\mbox{\hyperlink{structu_w_s_1_1_group}{Group}}$<$ is\+Server $>$ \& {\bfseries get\+Default\+Group} ()
+\item 
+\mbox{\Hypertarget{structu_w_s_1_1_hub_a2066421be36412df352a2f8d19a40f2a}\label{structu_w_s_1_1_hub_a2066421be36412df352a2f8d19a40f2a}} 
+bool {\bfseries listen} (int port, \mbox{\hyperlink{classu_s_1_1_t_l_s_1_1_context}{u\+S\+::\+T\+L\+S\+::\+Context}} ssl\+Context=nullptr, int options=0, \mbox{\hyperlink{structu_w_s_1_1_group}{Group}}$<$ S\+E\+R\+V\+ER $>$ $\ast$eh=nullptr)
+\item 
+\mbox{\Hypertarget{structu_w_s_1_1_hub_afeabd683111877401446176ed6fa2168}\label{structu_w_s_1_1_hub_afeabd683111877401446176ed6fa2168}} 
+bool {\bfseries listen} (const char $\ast$host, int port, \mbox{\hyperlink{classu_s_1_1_t_l_s_1_1_context}{u\+S\+::\+T\+L\+S\+::\+Context}} ssl\+Context=nullptr, int options=0, \mbox{\hyperlink{structu_w_s_1_1_group}{Group}}$<$ S\+E\+R\+V\+ER $>$ $\ast$eh=nullptr)
+\item 
+\mbox{\Hypertarget{structu_w_s_1_1_hub_a15390dc9da51c0c00d3d05585b541be0}\label{structu_w_s_1_1_hub_a15390dc9da51c0c00d3d05585b541be0}} 
+void {\bfseries connect} (std\+::string uri, void $\ast$user=nullptr, std\+::map$<$ std\+::string, std\+::string $>$ extra\+Headers=\{\}, int timeout\+Ms=5000, \mbox{\hyperlink{structu_w_s_1_1_group}{Group}}$<$ C\+L\+I\+E\+NT $>$ $\ast$eh=nullptr)
+\item 
+\mbox{\Hypertarget{structu_w_s_1_1_hub_a423b9cf066ba3a8becf1cc1ec2c34108}\label{structu_w_s_1_1_hub_a423b9cf066ba3a8becf1cc1ec2c34108}} 
+void {\bfseries upgrade} (uv\+\_\+os\+\_\+sock\+\_\+t fd, const char $\ast$sec\+Key, S\+SL $\ast$ssl, const char $\ast$extensions, size\+\_\+t extensions\+Length, const char $\ast$subprotocol, size\+\_\+t subprotocol\+Length, \mbox{\hyperlink{structu_w_s_1_1_group}{Group}}$<$ S\+E\+R\+V\+ER $>$ $\ast$server\+Group=nullptr)
+\item 
+\mbox{\Hypertarget{structu_w_s_1_1_hub_a1ccbc2d39524e675affd22c851dffd4a}\label{structu_w_s_1_1_hub_a1ccbc2d39524e675affd22c851dffd4a}} 
+{\bfseries Hub} (int extension\+Options=0, bool use\+Default\+Loop=false, unsigned int max\+Payload=16777216)
+\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{structu_w_s_1_1_hub_a7b622380cf7b4f9d03d41848dbaab0d9}\label{structu_w_s_1_1_hub_a7b622380cf7b4f9d03d41848dbaab0d9}} 
+char $\ast$ {\bfseries inflate} (char $\ast$data, size\+\_\+t \&length, size\+\_\+t max\+Payload)
+\end{DoxyCompactItemize}
+\subsection*{Static Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{structu_w_s_1_1_hub_a994681f1492339cb94f7ba9c69724821}\label{structu_w_s_1_1_hub_a994681f1492339cb94f7ba9c69724821}} 
+static void {\bfseries on\+Server\+Accept} (\mbox{\hyperlink{structu_s_1_1_socket}{u\+S\+::\+Socket}} $\ast$s)
+\item 
+\mbox{\Hypertarget{structu_w_s_1_1_hub_a6f082fdce9ac8593c78c81ef5a9ac2b8}\label{structu_w_s_1_1_hub_a6f082fdce9ac8593c78c81ef5a9ac2b8}} 
+static void {\bfseries on\+Client\+Connection} (\mbox{\hyperlink{structu_s_1_1_socket}{u\+S\+::\+Socket}} $\ast$s, bool error)
+\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{structu_w_s_1_1_hub_abb90e7137aac2432cc1f1ba860e4850b}\label{structu_w_s_1_1_hub_abb90e7137aac2432cc1f1ba860e4850b}} 
+z\+\_\+stream {\bfseries inflation\+Stream} = \{\}
+\item 
+\mbox{\Hypertarget{structu_w_s_1_1_hub_a90554f551d9a0491fa1f961892cb2ad1}\label{structu_w_s_1_1_hub_a90554f551d9a0491fa1f961892cb2ad1}} 
+char $\ast$ {\bfseries inflation\+Buffer}
+\item 
+\mbox{\Hypertarget{structu_w_s_1_1_hub_a852d46f8481baccb0c596a3869fb6058}\label{structu_w_s_1_1_hub_a852d46f8481baccb0c596a3869fb6058}} 
+std\+::string {\bfseries dynamic\+Inflation\+Buffer}
+\end{DoxyCompactItemize}
+\subsection*{Static Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{structu_w_s_1_1_hub_abee117e7a2c7937edb2ef0f8eecade58}\label{structu_w_s_1_1_hub_abee117e7a2c7937edb2ef0f8eecade58}} 
+static const int {\bfseries L\+A\+R\+G\+E\+\_\+\+B\+U\+F\+F\+E\+R\+\_\+\+S\+I\+ZE} = 300 $\ast$ 1024
+\end{DoxyCompactItemize}
+\subsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{structu_w_s_1_1_hub_a59a072ca504bc988c166406901bdfacd}\label{structu_w_s_1_1_hub_a59a072ca504bc988c166406901bdfacd}} 
+struct {\bfseries Web\+Socket$<$ S\+E\+R\+V\+E\+R $>$}
+\item 
+\mbox{\Hypertarget{structu_w_s_1_1_hub_a6242a8d2f1a91f1c79adfda569fb7fc1}\label{structu_w_s_1_1_hub_a6242a8d2f1a91f1c79adfda569fb7fc1}} 
+struct {\bfseries Web\+Socket$<$ C\+L\+I\+E\+N\+T $>$}
+\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+The documentation for this struct was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+bin/node\+\_\+modules/socket.\+io/node\+\_\+modules/engine.\+io/node\+\_\+modules/uws/src/Hub.\+h\item 
+bin/node\+\_\+modules/socket.\+io/node\+\_\+modules/engine.\+io/node\+\_\+modules/uws/src/Hub.\+cpp\end{DoxyCompactItemize}

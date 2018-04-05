@@ -1,0 +1,77 @@
+\hypertarget{structu_w_s_1_1_http_socket}{}\section{u\+WS\+:\+:Http\+Socket$<$ is\+Server $>$ Struct Template Reference}
+\label{structu_w_s_1_1_http_socket}\index{u\+W\+S\+::\+Http\+Socket$<$ is\+Server $>$@{u\+W\+S\+::\+Http\+Socket$<$ is\+Server $>$}}
+
+
+Inheritance diagram for u\+WS\+:\+:Http\+Socket$<$ is\+Server $>$\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=228pt]{structu_w_s_1_1_http_socket__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for u\+WS\+:\+:Http\+Socket$<$ is\+Server $>$\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{structu_w_s_1_1_http_socket__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{structu_w_s_1_1_http_socket_a18eca91d175822bc50cccaead349e8d1}\label{structu_w_s_1_1_http_socket_a18eca91d175822bc50cccaead349e8d1}} 
+{\bfseries Http\+Socket} (\mbox{\hyperlink{structu_s_1_1_socket}{u\+S\+::\+Socket}} $\ast$socket)
+\item 
+\mbox{\Hypertarget{structu_w_s_1_1_http_socket_a771c9e94fc3722a260fe74f880a1c7d5}\label{structu_w_s_1_1_http_socket_a771c9e94fc3722a260fe74f880a1c7d5}} 
+void {\bfseries terminate} ()
+\item 
+\mbox{\Hypertarget{structu_w_s_1_1_http_socket_ab907cb5900ccba171456a2c146d48129}\label{structu_w_s_1_1_http_socket_ab907cb5900ccba171456a2c146d48129}} 
+void {\bfseries upgrade} (const char $\ast$sec\+Key, const char $\ast$extensions, size\+\_\+t extensions\+Length, const char $\ast$subprotocol, size\+\_\+t subprotocol\+Length, bool $\ast$per\+Message\+Deflate)
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{structu_w_s_1_1_http_socket_aff14ec1a076ddd32a8eb37f4471db2d5}\label{structu_w_s_1_1_http_socket_aff14ec1a076ddd32a8eb37f4471db2d5}} 
+void $\ast$ {\bfseries http\+User}
+\item 
+\mbox{\Hypertarget{structu_w_s_1_1_http_socket_ae9cc2d77c48468ea14609a071a86653d}\label{structu_w_s_1_1_http_socket_ae9cc2d77c48468ea14609a071a86653d}} 
+\mbox{\hyperlink{structu_w_s_1_1_http_response}{Http\+Response}} $\ast$ {\bfseries outstanding\+Responses\+Head} = nullptr
+\item 
+\mbox{\Hypertarget{structu_w_s_1_1_http_socket_a5ac3a523c28016cbf31a3a2a56561a06}\label{structu_w_s_1_1_http_socket_a5ac3a523c28016cbf31a3a2a56561a06}} 
+\mbox{\hyperlink{structu_w_s_1_1_http_response}{Http\+Response}} $\ast$ {\bfseries outstanding\+Responses\+Tail} = nullptr
+\item 
+\mbox{\Hypertarget{structu_w_s_1_1_http_socket_aa6aaabb48a64471b8fd1185a745e2dab}\label{structu_w_s_1_1_http_socket_aa6aaabb48a64471b8fd1185a745e2dab}} 
+\mbox{\hyperlink{structu_w_s_1_1_http_response}{Http\+Response}} $\ast$ {\bfseries pre\+Allocated\+Response} = nullptr
+\item 
+\mbox{\Hypertarget{structu_w_s_1_1_http_socket_a8b9905f5b2333d2e73681fb996e1e36a}\label{structu_w_s_1_1_http_socket_a8b9905f5b2333d2e73681fb996e1e36a}} 
+std\+::string {\bfseries http\+Buffer}
+\item 
+\mbox{\Hypertarget{structu_w_s_1_1_http_socket_a7743b5628fc48a5d795882d7a5fc9787}\label{structu_w_s_1_1_http_socket_a7743b5628fc48a5d795882d7a5fc9787}} 
+size\+\_\+t {\bfseries content\+Length} = 0
+\item 
+\mbox{\Hypertarget{structu_w_s_1_1_http_socket_a9063050af3c964c0f7639a8e6408553c}\label{structu_w_s_1_1_http_socket_a9063050af3c964c0f7639a8e6408553c}} 
+bool {\bfseries missed\+Deadline} = false
+\end{DoxyCompactItemize}
+\subsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{structu_w_s_1_1_http_socket_aa3516c90697652732deaa6ba9bfb375b}\label{structu_w_s_1_1_http_socket_aa3516c90697652732deaa6ba9bfb375b}} 
+struct {\bfseries u\+S\+::\+Socket}
+\item 
+\mbox{\Hypertarget{structu_w_s_1_1_http_socket_af0957378717f7133c9f634370cca6294}\label{structu_w_s_1_1_http_socket_af0957378717f7133c9f634370cca6294}} 
+struct {\bfseries Http\+Response}
+\item 
+\mbox{\Hypertarget{structu_w_s_1_1_http_socket_af20bcb1dd4e741f2423d470bb4cd994d}\label{structu_w_s_1_1_http_socket_af20bcb1dd4e741f2423d470bb4cd994d}} 
+struct {\bfseries Hub}
+\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+The documentation for this struct was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+bin/node\+\_\+modules/socket.\+io/node\+\_\+modules/engine.\+io/node\+\_\+modules/uws/src/H\+T\+T\+P\+Socket.\+h\item 
+bin/node\+\_\+modules/socket.\+io/node\+\_\+modules/engine.\+io/node\+\_\+modules/uws/src/H\+T\+T\+P\+Socket.\+cpp\end{DoxyCompactItemize}

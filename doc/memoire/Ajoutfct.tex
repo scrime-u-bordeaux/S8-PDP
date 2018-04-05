@@ -83,13 +83,13 @@ for(unsigned int i=0; i<context->audioOutChannels; i++){
 }
 \end{lstlisting}
 
-\begin{center} \textit{Ci-dessus, l'implémentation du retour sonore
+\begin{center} Ci-dessus, l'implémentation du retour sonore
   dans le corps de la fonction principale de \verb!render.cpp!. Via la
   fonction \verb!audioWrite!, la variable \verb!out! récupère un à un
   les signaux de chaque type de piste sonore
   (audio/analogique/digitale) multipliés par la moyenne de leurs
   coefficients de corrélation par rapport aux autres
-  signaux.} \end{center}
+  signaux. \end{center}
 
  \paragraph{}
  Dans le fichier \verb!render.cpp!, la fonction
@@ -103,7 +103,7 @@ for(unsigned int i=0; i<context->audioOutChannels; i++){
  de \verb!render.cpp!.
  \paragraph{}
  Dans l'implémentation de Jérémy Lixandre, le traitement des tâches
- auxiliaires dans \verb!render.cpp! se faisait à sens unique
+ auxiliaires dans \verb!render.cpp! se fait à sens unique
  (exécution de tâches auxiliaires sans retour de valeur dans la boucle
  de traitement principale). Afin de récupérer le résultat du
  traitement de la fonction de mixage, nous avons passé la référence du
@@ -150,7 +150,13 @@ void ProcessMultiCorrel::process(const Matrix<float>& buffer,
  \end{center}
 
  \subsection{L'interface de configuration utilisateur}
- \paragraph{}
+
+ \begin{figure}[H]
+  \centering
+  \includegraphics[scale=0.5]{assets/settingsWindow.png}
+  \caption{Fenêtre de configuration}
+  \label{schéma global}
+ \end{figure}
 
  \subsubsection{Présentation de l'architecture}
  Afin d'implémenter l'interface de configuration utilisateur
@@ -160,10 +166,10 @@ void ProcessMultiCorrel::process(const Matrix<float>& buffer,
  l'implémentation de l'interface de configuration se nomme
  \verb!settingWindow!.
 
- \begin{figure}[h]
+ \begin{figure}[H]
   \centering
   \includegraphics[scale=0.3]{assets/umlSettingWindow.png}
-  \caption{Schéma global du dispositif de VisualImpro}
+  \caption{Schéma UML de la fenêtre de configuration}
   \label{schéma global}
  \end{figure}
 
@@ -186,13 +192,26 @@ void ProcessMultiCorrel::process(const Matrix<float>& buffer,
  Chacune des autres classes du répertoire \verb!layout! représente un
  paramètre disposable dans la fenêtre principale de configuration.
  \begin{itemize}
- \item \verb!GUIInputSettingLayout.cpp! permet d'afficher le menu de sélection du nombre de pistes sonores en entrée
- \item \verb!GUIProcessSettingLayout.cpp! permet d'afficher le menu de sélection des fonctions de traitement que l'on souhaite employer
-   \item \verb!GUIWavFileSettingLayout.cpp! permet d'afficher le menu de sélection des fichiers numériques audio à ajouter au programme
+  \item \verb!GUIInputSettingLayout.cpp! permet d'afficher le menu de sélection du nombre d'entrées sonores en entrée
+  \item \verb!GUIProcessSettingLayout.cpp! permet d'afficher le menu de sélection des fonctions de traitement que l'on souhaite employer
+  \item \verb!GUIWavFileSettingLayout.cpp! permet d'afficher le menu de sélection des fichiers numériques audio à ajouter au programme
  \end{itemize}
- %SCREENSHOT MENU
+
+
+ \begin{figure}[H]
+  \centering
+  \includegraphics[scale=0.5]{assets/umlBuilder.png}
+  \caption{Diagramme UML du \textit{builder}}
+  \label{schéma global}
+ \end{figure}
+
  \paragraph{}
- Le répertoire \verb!fileSetting! contient un autre \textit{pattern} de conception, un \textit{builder} ou "monteur" générant un fichier de sortie au format particulier. L'implémentation du \textit{builder} a été pensée de sorte à ce qu'à l'avenir, un futur programmeur puisse modifier ce format de retour afin que le programme puisse se passer du fichier de configuration. Pour l'instant, le fichier de retour est un fichier de type \verb!.cfg! transmis à BELA.
+ Le répertoire \verb!fileSetting! contient un autre \textit{pattern} de
+ conception, un \textit{builder} ou "monteur" générant un fichier de sortie au
+ format particulier. L'implémentation du \textit{builder} a été pensée de
+ sorte à ce qu'à l'avenir, un futur programmeur puisse modifier ce format de
+ retour afin que le programme puisse se passer du fichier de configuration.
+ Pour l'instant, le fichier de retour est un fichier de type \verb!.cfg! transmis à BELA.
 
  \subsubsection{Détails de l'implémentation}
  \paragraph{}
@@ -217,12 +236,6 @@ void ProcessMultiCorrel::process(const Matrix<float>& buffer,
  fichiers identifiés comme correspondant au nom en question, afin de
  permettre le choix de la fonction de traitement.
 
- \begin{figure}[h]
-  \centering
-  \includegraphics[scale=0.5]{assets/umlBuilder.png}
-  \caption{Diagramme UML du \textit{builder} décrit plus haut}
-  \label{schéma global}
- \end{figure}
 
  \subsection{Autres ajouts mineurs sur le programme}
  \paragraph{}

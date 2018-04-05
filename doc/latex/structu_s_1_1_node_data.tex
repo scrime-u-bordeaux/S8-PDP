@@ -1,0 +1,100 @@
+\hypertarget{structu_s_1_1_node_data}{}\section{uS\+:\+:Node\+Data Struct Reference}
+\label{structu_s_1_1_node_data}\index{u\+S\+::\+Node\+Data@{u\+S\+::\+Node\+Data}}
+
+
+Inheritance diagram for uS\+:\+:Node\+Data\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{structu_s_1_1_node_data__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for uS\+:\+:Node\+Data\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=309pt]{structu_s_1_1_node_data__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{structu_s_1_1_node_data_a4392ca8c27b8f58e86721377da1dec49}\label{structu_s_1_1_node_data_a4392ca8c27b8f58e86721377da1dec49}} 
+char $\ast$ {\bfseries get\+Small\+Memory\+Block} (int index)
+\item 
+\mbox{\Hypertarget{structu_s_1_1_node_data_a7314b340328f78687bb3c5d86c500d95}\label{structu_s_1_1_node_data_a7314b340328f78687bb3c5d86c500d95}} 
+void {\bfseries free\+Small\+Memory\+Block} (char $\ast$memory, int index)
+\item 
+\mbox{\Hypertarget{structu_s_1_1_node_data_a1b8f1e1522c3c32318bbd57addc4c4ea}\label{structu_s_1_1_node_data_a1b8f1e1522c3c32318bbd57addc4c4ea}} 
+void {\bfseries add\+Async} ()
+\item 
+\mbox{\Hypertarget{structu_s_1_1_node_data_a0bca6b87451878a9d12bff04b6852eb5}\label{structu_s_1_1_node_data_a0bca6b87451878a9d12bff04b6852eb5}} 
+void {\bfseries clear\+Pending\+Poll\+Changes} (\mbox{\hyperlink{struct_poll}{Poll}} $\ast$p)
+\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{structu_s_1_1_node_data_a50ff099d8c7568657a50a54f73876be2}\label{structu_s_1_1_node_data_a50ff099d8c7568657a50a54f73876be2}} 
+static void {\bfseries async\+Callback} (\mbox{\hyperlink{struct_async}{Async}} $\ast$async)
+\item 
+\mbox{\Hypertarget{structu_s_1_1_node_data_a445a0a4183a8a06dd302bc9d8c5582f4}\label{structu_s_1_1_node_data_a445a0a4183a8a06dd302bc9d8c5582f4}} 
+static int {\bfseries get\+Memory\+Block\+Index} (size\+\_\+t length)
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{structu_s_1_1_node_data_a42f19adf217f324ceadddcca58b26786}\label{structu_s_1_1_node_data_a42f19adf217f324ceadddcca58b26786}} 
+char $\ast$ {\bfseries recv\+Buffer\+Memory\+Block}
+\item 
+\mbox{\Hypertarget{structu_s_1_1_node_data_a8c5219c155234ca3ec7635a5d34bb10d}\label{structu_s_1_1_node_data_a8c5219c155234ca3ec7635a5d34bb10d}} 
+char $\ast$ {\bfseries recv\+Buffer}
+\item 
+\mbox{\Hypertarget{structu_s_1_1_node_data_af1a37184845a5848af5a1281b93f02ad}\label{structu_s_1_1_node_data_af1a37184845a5848af5a1281b93f02ad}} 
+int {\bfseries recv\+Length}
+\item 
+\mbox{\Hypertarget{structu_s_1_1_node_data_a023bddf948a9016e8d84190fe55ecb69}\label{structu_s_1_1_node_data_a023bddf948a9016e8d84190fe55ecb69}} 
+\mbox{\hyperlink{struct_loop}{Loop}} $\ast$ {\bfseries loop}
+\item 
+\mbox{\Hypertarget{structu_s_1_1_node_data_aa817a2ac768f5dacc48d013e77eb3b65}\label{structu_s_1_1_node_data_aa817a2ac768f5dacc48d013e77eb3b65}} 
+\mbox{\hyperlink{structu_s_1_1_context}{u\+S\+::\+Context}} $\ast$ {\bfseries net\+Context}
+\item 
+\mbox{\Hypertarget{structu_s_1_1_node_data_ae50717e7e80ec0a1ab5f76633d8f7206}\label{structu_s_1_1_node_data_ae50717e7e80ec0a1ab5f76633d8f7206}} 
+void $\ast$ {\bfseries user} = nullptr
+\item 
+\mbox{\Hypertarget{structu_s_1_1_node_data_a79ff04caf65b1eeaa12631fcea195841}\label{structu_s_1_1_node_data_a79ff04caf65b1eeaa12631fcea195841}} 
+char $\ast$$\ast$ {\bfseries pre\+Alloc}
+\item 
+\mbox{\Hypertarget{structu_s_1_1_node_data_af98a51f708a740ab7e3a301e12b42f56}\label{structu_s_1_1_node_data_af98a51f708a740ab7e3a301e12b42f56}} 
+S\+S\+L\+\_\+\+C\+TX $\ast$ {\bfseries client\+Context}
+\item 
+\mbox{\Hypertarget{structu_s_1_1_node_data_a85e8e0e12215ee250a8f230c2ee383e8}\label{structu_s_1_1_node_data_a85e8e0e12215ee250a8f230c2ee383e8}} 
+\mbox{\hyperlink{struct_async}{Async}} $\ast$ {\bfseries async} = nullptr
+\item 
+\mbox{\Hypertarget{structu_s_1_1_node_data_a6a2a06208b4d64a5a8ef75a4bd3e34bd}\label{structu_s_1_1_node_data_a6a2a06208b4d64a5a8ef75a4bd3e34bd}} 
+pthread\+\_\+t {\bfseries tid}
+\item 
+\mbox{\Hypertarget{structu_s_1_1_node_data_a6e9f900bf9309cf3e77d12bbdf6ad09c}\label{structu_s_1_1_node_data_a6e9f900bf9309cf3e77d12bbdf6ad09c}} 
+std\+::recursive\+\_\+mutex $\ast$ {\bfseries async\+Mutex}
+\item 
+\mbox{\Hypertarget{structu_s_1_1_node_data_adb09878d7e90a0811755660277e1dd77}\label{structu_s_1_1_node_data_adb09878d7e90a0811755660277e1dd77}} 
+std\+::vector$<$ \mbox{\hyperlink{struct_poll}{Poll}} $\ast$ $>$ {\bfseries transfer\+Queue}
+\item 
+\mbox{\Hypertarget{structu_s_1_1_node_data_ad727b0db74cd9a912f3931d147837801}\label{structu_s_1_1_node_data_ad727b0db74cd9a912f3931d147837801}} 
+std\+::vector$<$ \mbox{\hyperlink{struct_poll}{Poll}} $\ast$ $>$ {\bfseries change\+Poll\+Queue}
+\end{DoxyCompactItemize}
+\subsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{structu_s_1_1_node_data_a535bc12e015b9d46c5da7a8bc57b2b5c}\label{structu_s_1_1_node_data_a535bc12e015b9d46c5da7a8bc57b2b5c}} 
+static const int {\bfseries pre\+Alloc\+Max\+Size} = 1024
+\end{DoxyCompactItemize}
+
+
+The documentation for this struct was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+bin/node\+\_\+modules/socket.\+io/node\+\_\+modules/engine.\+io/node\+\_\+modules/uws/src/Networking.\+h\item 
+bin/node\+\_\+modules/socket.\+io/node\+\_\+modules/engine.\+io/node\+\_\+modules/uws/src/Node.\+cpp\end{DoxyCompactItemize}

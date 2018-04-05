@@ -1,0 +1,75 @@
+\hypertarget{_g_u_i_8cpp}{}\section{G\+U\+I/src/\+G\+UI.cpp File Reference}
+\label{_g_u_i_8cpp}\index{G\+U\+I/src/\+G\+U\+I.\+cpp@{G\+U\+I/src/\+G\+U\+I.\+cpp}}
+
+
+The main G\+UI class.  
+
+
+{\ttfamily \#include $<$Q\+Application$>$}\newline
+{\ttfamily \#include $<$vector$>$}\newline
+{\ttfamily \#include \char`\"{}G\+U\+I\+Setting\+Window.\+hpp\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}G\+U\+I\+Window.\+hpp\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}R\+G\+B.\+hpp\char`\"{}}\newline
+Include dependency graph for G\+U\+I.\+cpp\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_g_u_i_8cpp__incl}
+\end{center}
+\end{figure}
+\subsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+ \mbox{\hyperlink{namespacestd}{std}}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{_g_u_i_8cpp_a0ddf1224851353fc92bfbff6f499fa97}{main}} (int argc, char $\ast$argv\mbox{[}$\,$\mbox{]})
+\begin{DoxyCompactList}\small\item\em Create a setting\+Window and a main\+Window. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+The main G\+UI class. 
+
+\begin{DoxyAuthor}{Author}
+Alexandre C\+A\+S\+A\+N\+O\+VA--F\+R\+A\+N\+G\+ER, Gauthier L\+A\+R\+M\+A\+R\+Q\+UE, Paul S\+I\+M\+O\+R\+RE, Lucas V\+I\+V\+AS The G\+UI main will create all the windows, one for the settings and one for printing the colored matrix. 
+\end{DoxyAuthor}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{_g_u_i_8cpp_a0ddf1224851353fc92bfbff6f499fa97}\label{_g_u_i_8cpp_a0ddf1224851353fc92bfbff6f499fa97}} 
+\index{G\+U\+I.\+cpp@{G\+U\+I.\+cpp}!main@{main}}
+\index{main@{main}!G\+U\+I.\+cpp@{G\+U\+I.\+cpp}}
+\subsubsection{\texorpdfstring{main()}{main()}}
+{\footnotesize\ttfamily int main (\begin{DoxyParamCaption}\item[{int}]{argc,  }\item[{char $\ast$}]{argv\mbox{[}$\,$\mbox{]} }\end{DoxyParamCaption})}
+
+
+
+Create a setting\+Window and a main\+Window. 
+
+The main function of the program.
+
+
+\begin{DoxyParams}{Parameters}
+{\em argc} & The number of arguments given to the program. \\
+\hline
+{\em argv} & The list of arguments given to the program. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+An interger corresponding to E\+X\+I\+T\+\_\+\+S\+U\+C\+C\+E\+SS or E\+X\+I\+T\+\_\+\+F\+A\+I\+L\+U\+RE.
+\end{DoxyReturn}
+The main function will create a settings window and wait for the user to give input settings. Once the user has defined the settings a G\+UI window will appear on screen with the matrix created of size equals to the total number of inputs.
+
+
+\begin{DoxyParams}{Parameters}
+{\em argc} & The number of arguments given to the program. \\
+\hline
+{\em argv} & The list of arguments given to the program. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+An interger corresponding to E\+X\+I\+T\+\_\+\+S\+U\+C\+C\+E\+SS or E\+X\+I\+T\+\_\+\+F\+A\+I\+L\+U\+RE. 
+\end{DoxyReturn}

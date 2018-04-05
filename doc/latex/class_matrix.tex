@@ -1,0 +1,287 @@
+\hypertarget{class_matrix}{}\section{Matrix$<$ T $>$ Class Template Reference}
+\label{class_matrix}\index{Matrix$<$ T $>$@{Matrix$<$ T $>$}}
+
+
+Class representing a matrix with rows and columns.  
+
+
+
+
+{\ttfamily \#include $<$Matrix.\+hpp$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_matrix_a9d567e3a121b1be0c3f9c461cab524fe}{Matrix}} ()
+\begin{DoxyCompactList}\small\item\em Constructor of an empty matrix. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_matrix_a7ba0bf11676bcda31c984a960dd0ced5}{Matrix}} (int size\+Matix)
+\begin{DoxyCompactList}\small\item\em Constructor of a squared matrix with default values. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_matrix_ab2de60d5fd982131f2c83f2e0a935538}{Matrix}} (int size\+Matix, vector$<$ T $>$ vec)
+\begin{DoxyCompactList}\small\item\em Constructor of a matrix. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_matrix_a4acc237a876c994c947079f7a0b9a148}{Matrix}} (int size\+Matix, T value)
+\begin{DoxyCompactList}\small\item\em Constructor of a squared matrix with a specified value. \end{DoxyCompactList}\item 
+T \mbox{\hyperlink{class_matrix_afc8b612ca8e7afb5466a516694d4227b}{get\+Case}} (int x, int y) const
+\begin{DoxyCompactList}\small\item\em Get the case at coordonates (x,y). \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_matrix_a84a92f3cf3e0555ef871c6e676c12e38}{set\+Case}} (int x, int y, T val)
+\begin{DoxyCompactList}\small\item\em Set the case at coordonates (x,y). \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_matrix_ad51826b8a17c6c58df6b580893754543}{get\+Size}} () const
+\begin{DoxyCompactList}\small\item\em Get the size of the matrix. \end{DoxyCompactList}\item 
+vector$<$ T $>$ \mbox{\hyperlink{class_matrix_ac7ba1c9a4c54c456542906d7c7aaba58}{get\+Row}} (int index) const
+\begin{DoxyCompactList}\small\item\em Get the row number index. \end{DoxyCompactList}\item 
+vector$<$ T $>$ \& \mbox{\hyperlink{class_matrix_ae94e4cab3fb53678a7994f605f606595}{get\+Row\+Ref}} (int index)
+\begin{DoxyCompactList}\small\item\em Get the reference of the row number index. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_matrix_ad594e62f75a6dd6d1bcd903b33a09e61}{set\+Row}} (int index, vector$<$ T $>$ row)
+\begin{DoxyCompactList}\small\item\em Set the row number index with another vector. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_matrix_a39fc509f53b388925f388a66010da58a}{swap}} (\mbox{\hyperlink{class_matrix}{Matrix}}$<$ T $>$ \&mat)
+\begin{DoxyCompactList}\small\item\em Swap the matrix with another one. \end{DoxyCompactList}\item 
+string \mbox{\hyperlink{class_matrix_af097d64195b0bfa5842d9ee39b448297}{to\+String}} ()
+\begin{DoxyCompactList}\small\item\em Print the content of the matrix. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{class_matrix_a91aa704de674203e96aece9e1955ccd3}{$\sim$\+Matrix}} ()
+\begin{DoxyCompactList}\small\item\em Destructor. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$class T$>$\newline
+class Matrix$<$ T $>$}
+
+Class representing a matrix with rows and columns. 
+
+This class is used several times for processing buffers of signals. 
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_matrix_a9d567e3a121b1be0c3f9c461cab524fe}\label{class_matrix_a9d567e3a121b1be0c3f9c461cab524fe}} 
+\index{Matrix@{Matrix}!Matrix@{Matrix}}
+\index{Matrix@{Matrix}!Matrix@{Matrix}}
+\subsubsection{\texorpdfstring{Matrix()}{Matrix()}\hspace{0.1cm}{\footnotesize\ttfamily [1/4]}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+\mbox{\hyperlink{class_matrix}{Matrix}}$<$ T $>$\+::\mbox{\hyperlink{class_matrix}{Matrix}} (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Constructor of an empty matrix. 
+
+Constructs a squared matrix with size equals to size\+Matix.
+
+Constructor of the \mbox{\hyperlink{class_matrix}{Matrix}} class for an empty matrix. \mbox{\Hypertarget{class_matrix_a7ba0bf11676bcda31c984a960dd0ced5}\label{class_matrix_a7ba0bf11676bcda31c984a960dd0ced5}} 
+\index{Matrix@{Matrix}!Matrix@{Matrix}}
+\index{Matrix@{Matrix}!Matrix@{Matrix}}
+\subsubsection{\texorpdfstring{Matrix()}{Matrix()}\hspace{0.1cm}{\footnotesize\ttfamily [2/4]}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+\mbox{\hyperlink{class_matrix}{Matrix}}$<$ T $>$\+::\mbox{\hyperlink{class_matrix}{Matrix}} (\begin{DoxyParamCaption}\item[{int}]{size\+Matix }\end{DoxyParamCaption})}
+
+
+
+Constructor of a squared matrix with default values. 
+
+Constructs a squared matrix with size equals to size\+Matix.
+
+
+\begin{DoxyParams}{Parameters}
+{\em size\+Matix} & The matrix\textquotesingle{}s size.\\
+\hline
+\end{DoxyParams}
+Basic constructor of the \mbox{\hyperlink{class_matrix}{Matrix}} class. \mbox{\Hypertarget{class_matrix_ab2de60d5fd982131f2c83f2e0a935538}\label{class_matrix_ab2de60d5fd982131f2c83f2e0a935538}} 
+\index{Matrix@{Matrix}!Matrix@{Matrix}}
+\index{Matrix@{Matrix}!Matrix@{Matrix}}
+\subsubsection{\texorpdfstring{Matrix()}{Matrix()}\hspace{0.1cm}{\footnotesize\ttfamily [3/4]}}
+{\footnotesize\ttfamily template$<$class T$>$ \\
+\mbox{\hyperlink{class_matrix}{Matrix}}$<$ T $>$\+::\mbox{\hyperlink{class_matrix}{Matrix}} (\begin{DoxyParamCaption}\item[{int}]{size\+Matix,  }\item[{vector$<$ T $>$}]{vec }\end{DoxyParamCaption})}
+
+
+
+Constructor of a matrix. 
+
+Constructs a matrix with size equals to size\+Matix and each line equals to the vector vec.
+
+
+\begin{DoxyParams}{Parameters}
+{\em size\+Matix,vec} & The number of rows and the value of each row.\\
+\hline
+\end{DoxyParams}
+Constructor of the \mbox{\hyperlink{class_matrix}{Matrix}} class with a size and a vector. \mbox{\Hypertarget{class_matrix_a4acc237a876c994c947079f7a0b9a148}\label{class_matrix_a4acc237a876c994c947079f7a0b9a148}} 
+\index{Matrix@{Matrix}!Matrix@{Matrix}}
+\index{Matrix@{Matrix}!Matrix@{Matrix}}
+\subsubsection{\texorpdfstring{Matrix()}{Matrix()}\hspace{0.1cm}{\footnotesize\ttfamily [4/4]}}
+{\footnotesize\ttfamily template$<$class T$>$ \\
+\mbox{\hyperlink{class_matrix}{Matrix}}$<$ T $>$\+::\mbox{\hyperlink{class_matrix}{Matrix}} (\begin{DoxyParamCaption}\item[{int}]{size\+Matix,  }\item[{T}]{value }\end{DoxyParamCaption})}
+
+
+
+Constructor of a squared matrix with a specified value. 
+
+Constructs a squared matrix with size equals to size\+Matix and each case Initialized with the value value.
+
+
+\begin{DoxyParams}{Parameters}
+{\em size\+Matix,value} & The matrix\textquotesingle{}s size and the value for each case.\\
+\hline
+\end{DoxyParams}
+Constructor of the \mbox{\hyperlink{class_matrix}{Matrix}} class with a size and a value assigned to each case of the constructed squared matrix. \mbox{\Hypertarget{class_matrix_a91aa704de674203e96aece9e1955ccd3}\label{class_matrix_a91aa704de674203e96aece9e1955ccd3}} 
+\index{Matrix@{Matrix}!````~Matrix@{$\sim$\+Matrix}}
+\index{````~Matrix@{$\sim$\+Matrix}!Matrix@{Matrix}}
+\subsubsection{\texorpdfstring{$\sim$\+Matrix()}{~Matrix()}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+\mbox{\hyperlink{class_matrix}{Matrix}}$<$ T $>$\+::$\sim$\mbox{\hyperlink{class_matrix}{Matrix}} (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Destructor. 
+
+Destrucs the matrix and free the memory by swapping our matrix by another empty matrix.
+
+Destructor of the \mbox{\hyperlink{class_matrix}{Matrix}} class. 
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_matrix_afc8b612ca8e7afb5466a516694d4227b}\label{class_matrix_afc8b612ca8e7afb5466a516694d4227b}} 
+\index{Matrix@{Matrix}!get\+Case@{get\+Case}}
+\index{get\+Case@{get\+Case}!Matrix@{Matrix}}
+\subsubsection{\texorpdfstring{get\+Case()}{getCase()}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+T \mbox{\hyperlink{class_matrix}{Matrix}}$<$ T $>$\+::get\+Case (\begin{DoxyParamCaption}\item[{int}]{x,  }\item[{int}]{y }\end{DoxyParamCaption}) const}
+
+
+
+Get the case at coordonates (x,y). 
+
+Returns the value of the case of coordonates (x,y) in the matrix.
+
+
+\begin{DoxyParams}{Parameters}
+{\em x,y} & The coordonates of the matrix\textquotesingle{}s case. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The value of the case of coordonates (x,y). 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_matrix_ac7ba1c9a4c54c456542906d7c7aaba58}\label{class_matrix_ac7ba1c9a4c54c456542906d7c7aaba58}} 
+\index{Matrix@{Matrix}!get\+Row@{get\+Row}}
+\index{get\+Row@{get\+Row}!Matrix@{Matrix}}
+\subsubsection{\texorpdfstring{get\+Row()}{getRow()}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+vector$<$ T $>$ \mbox{\hyperlink{class_matrix}{Matrix}}$<$ T $>$\+::get\+Row (\begin{DoxyParamCaption}\item[{int}]{index }\end{DoxyParamCaption}) const}
+
+
+
+Get the row number index. 
+
+Returns the row number index of the matrix.
+
+
+\begin{DoxyParams}{Parameters}
+{\em index} & The index from where to return the vector of the matrix\textquotesingle{}s row. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The vector corresponding to the row at the index given in parameter. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_matrix_ae94e4cab3fb53678a7994f605f606595}\label{class_matrix_ae94e4cab3fb53678a7994f605f606595}} 
+\index{Matrix@{Matrix}!get\+Row\+Ref@{get\+Row\+Ref}}
+\index{get\+Row\+Ref@{get\+Row\+Ref}!Matrix@{Matrix}}
+\subsubsection{\texorpdfstring{get\+Row\+Ref()}{getRowRef()}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+vector$<$ T $>$ \& \mbox{\hyperlink{class_matrix}{Matrix}}$<$ T $>$\+::get\+Row\+Ref (\begin{DoxyParamCaption}\item[{int}]{index }\end{DoxyParamCaption})}
+
+
+
+Get the reference of the row number index. 
+
+Returns a reference to the row number index of the matrix.
+
+
+\begin{DoxyParams}{Parameters}
+{\em index} & The index from where to return the reference of the vector of the matrix\textquotesingle{}s row. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The vector corresponding to the reference of the row at the index given in parameter. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_matrix_ad51826b8a17c6c58df6b580893754543}\label{class_matrix_ad51826b8a17c6c58df6b580893754543}} 
+\index{Matrix@{Matrix}!get\+Size@{get\+Size}}
+\index{get\+Size@{get\+Size}!Matrix@{Matrix}}
+\subsubsection{\texorpdfstring{get\+Size()}{getSize()}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+int \mbox{\hyperlink{class_matrix}{Matrix}}$<$ T $>$\+::get\+Size (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Get the size of the matrix. 
+
+Returns the size of the matrix.
+
+\begin{DoxyReturn}{Returns}
+An integer corresponding to the matrix\textquotesingle{}s size. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_matrix_a84a92f3cf3e0555ef871c6e676c12e38}\label{class_matrix_a84a92f3cf3e0555ef871c6e676c12e38}} 
+\index{Matrix@{Matrix}!set\+Case@{set\+Case}}
+\index{set\+Case@{set\+Case}!Matrix@{Matrix}}
+\subsubsection{\texorpdfstring{set\+Case()}{setCase()}}
+{\footnotesize\ttfamily template$<$class T$>$ \\
+void \mbox{\hyperlink{class_matrix}{Matrix}}$<$ T $>$\+::set\+Case (\begin{DoxyParamCaption}\item[{int}]{x,  }\item[{int}]{y,  }\item[{T}]{val }\end{DoxyParamCaption})}
+
+
+
+Set the case at coordonates (x,y). 
+
+Set the value of the case of coordonates (x,y) in the matrix with val.
+
+
+\begin{DoxyParams}{Parameters}
+{\em x,y,val} & The coordonates of the matrix\textquotesingle{}s case and a value.\\
+\hline
+\end{DoxyParams}
+Assign the value val to the case of coordonates (x,y). \mbox{\Hypertarget{class_matrix_ad594e62f75a6dd6d1bcd903b33a09e61}\label{class_matrix_ad594e62f75a6dd6d1bcd903b33a09e61}} 
+\index{Matrix@{Matrix}!set\+Row@{set\+Row}}
+\index{set\+Row@{set\+Row}!Matrix@{Matrix}}
+\subsubsection{\texorpdfstring{set\+Row()}{setRow()}}
+{\footnotesize\ttfamily template$<$class T$>$ \\
+void \mbox{\hyperlink{class_matrix}{Matrix}}$<$ T $>$\+::set\+Row (\begin{DoxyParamCaption}\item[{int}]{index,  }\item[{vector$<$ T $>$}]{row }\end{DoxyParamCaption})}
+
+
+
+Set the row number index with another vector. 
+
+Set the row number index of the matrix with row.
+
+
+\begin{DoxyParams}{Parameters}
+{\em index,row} & The index from where to set the row of the matrix with the vector called row. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_matrix_a39fc509f53b388925f388a66010da58a}\label{class_matrix_a39fc509f53b388925f388a66010da58a}} 
+\index{Matrix@{Matrix}!swap@{swap}}
+\index{swap@{swap}!Matrix@{Matrix}}
+\subsubsection{\texorpdfstring{swap()}{swap()}}
+{\footnotesize\ttfamily template$<$class T$>$ \\
+void \mbox{\hyperlink{class_matrix}{Matrix}}$<$ T $>$\+::swap (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_matrix}{Matrix}}$<$ T $>$ \&}]{mat }\end{DoxyParamCaption})}
+
+
+
+Swap the matrix with another one. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em mat} & The matrix to swap with our matrix. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_matrix_af097d64195b0bfa5842d9ee39b448297}\label{class_matrix_af097d64195b0bfa5842d9ee39b448297}} 
+\index{Matrix@{Matrix}!to\+String@{to\+String}}
+\index{to\+String@{to\+String}!Matrix@{Matrix}}
+\subsubsection{\texorpdfstring{to\+String()}{toString()}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+string \mbox{\hyperlink{class_matrix}{Matrix}}$<$ T $>$\+::to\+String (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Print the content of the matrix. 
+
+Returns a string corresponding to the dimension and the matrix values of each case.
+
+\begin{DoxyReturn}{Returns}
+The content of the matrix into a string. 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Visual\+Impro/Matrix.\+hpp\item 
+Visual\+Impro/\mbox{\hyperlink{_matrix_8cpp}{Matrix.\+cpp}}\end{DoxyCompactItemize}

@@ -1,0 +1,5 @@
+<map id="GUISettingLayout" name="GUISettingLayout">
+<area shape="rect" id="node2" href="$class_g_u_i_input_setting_layout.html" title="GUIInputSettingLayout" alt="" coords="5,80,160,107"/>
+<area shape="rect" id="node3" href="$class_g_u_i_process_setting_layout.html" title="GUIProcessSettingLayout" alt="" coords="185,80,359,107"/>
+<area shape="rect" id="node4" href="$class_g_u_i_wav_file_setting_layout.html" title="Class used to create the layout for the wav file. " alt="" coords="383,80,558,107"/>
+</map>

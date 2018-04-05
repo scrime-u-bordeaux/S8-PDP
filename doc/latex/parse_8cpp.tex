@@ -1,0 +1,98 @@
+\hypertarget{parse_8cpp}{}\section{Visual\+Impro/parse.cpp File Reference}
+\label{parse_8cpp}\index{Visual\+Impro/parse.\+cpp@{Visual\+Impro/parse.\+cpp}}
+
+
+Code used by the parser object.  
+
+
+{\ttfamily \#include $<$cctype$>$}\newline
+{\ttfamily \#include $<$cstring$>$}\newline
+{\ttfamily \#include \char`\"{}parse.\+hpp\char`\"{}}\newline
+Include dependency graph for parse.\+cpp\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=294pt]{parse_8cpp__incl}
+\end{center}
+\end{figure}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{parse_8cpp_a52cb3c16b71e24fcb6d647e7a107d26d}\label{parse_8cpp_a52cb3c16b71e24fcb6d647e7a107d26d}} 
+string {\bfseries get\+\_\+next\+\_\+word} (string\+::iterator $\ast$it)
+\item 
+\mbox{\Hypertarget{parse_8cpp_aed0ef3e1b158b43f112ad8fc7b0e1f2b}\label{parse_8cpp_aed0ef3e1b158b43f112ad8fc7b0e1f2b}} 
+string {\bfseries get\+\_\+next} (string\+::iterator $\ast$it)
+\item 
+\mbox{\Hypertarget{parse_8cpp_aee4de9298e8999561aea5d788fe5a77f}\label{parse_8cpp_aee4de9298e8999561aea5d788fe5a77f}} 
+string {\bfseries get\+\_\+current} (string\+::iterator $\ast$it)
+\item 
+string \mbox{\hyperlink{parse_8cpp_a7cd0fd09f02cdb1a394e018bd95a0566}{get\+\_\+next\+\_\+by\+\_\+name}} (string\+::iterator $\ast$it, string name)
+\begin{DoxyCompactList}\small\item\em Check if the next string is equals to \char`\"{}name\char`\"{}. \end{DoxyCompactList}\item 
+string \mbox{\hyperlink{parse_8cpp_a21f8d663dd85cbb29b7402f7fa90c1c5}{get\+\_\+next\+\_\+name}} (string\+::iterator $\ast$it)
+\begin{DoxyCompactList}\small\item\em Get a name or empty string. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{parse_8cpp_a023a5c6fa42981cbd7b582ee1b214e7b}\label{parse_8cpp_a023a5c6fa42981cbd7b582ee1b214e7b}} 
+bool {\bfseries is\+\_\+number} (string str)
+\item 
+\mbox{\Hypertarget{parse_8cpp_ad5d09ba3406c5b8ab3370ea0580b8c8a}\label{parse_8cpp_ad5d09ba3406c5b8ab3370ea0580b8c8a}} 
+bool {\bfseries is\+\_\+name} (string str)
+\item 
+\mbox{\Hypertarget{parse_8cpp_a608d9101f5785d3ee308d94beb92f584}\label{parse_8cpp_a608d9101f5785d3ee308d94beb92f584}} 
+bool {\bfseries is\+\_\+end} (string\+::iterator $\ast$it)
+\item 
+\mbox{\Hypertarget{parse_8cpp_a4670a29f13823c8c6ce6dda32443beb1}\label{parse_8cpp_a4670a29f13823c8c6ce6dda32443beb1}} 
+bool {\bfseries is\+\_\+ip} (const string addr)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Code used by the parser object. 
+
+\begin{DoxyAuthor}{Author}
+Jérémy L\+I\+X\+A\+N\+D\+RE 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+July 2017
+\end{DoxyDate}
+This code contains functions used by the \mbox{\hyperlink{class_parser}{Parser}} object to iterate through string parameters given to the program. 
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{parse_8cpp_a7cd0fd09f02cdb1a394e018bd95a0566}\label{parse_8cpp_a7cd0fd09f02cdb1a394e018bd95a0566}} 
+\index{parse.\+cpp@{parse.\+cpp}!get\+\_\+next\+\_\+by\+\_\+name@{get\+\_\+next\+\_\+by\+\_\+name}}
+\index{get\+\_\+next\+\_\+by\+\_\+name@{get\+\_\+next\+\_\+by\+\_\+name}!parse.\+cpp@{parse.\+cpp}}
+\subsubsection{\texorpdfstring{get\+\_\+next\+\_\+by\+\_\+name()}{get\_next\_by\_name()}}
+{\footnotesize\ttfamily string get\+\_\+next\+\_\+by\+\_\+name (\begin{DoxyParamCaption}\item[{string\+::iterator $\ast$}]{it,  }\item[{string}]{name }\end{DoxyParamCaption})}
+
+
+
+Check if the next string is equals to \char`\"{}name\char`\"{}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em it} & An iterator iterating through names \\
+\hline
+{\em name} & A string for checking purposes \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\char`\"{}name\char`\"{} if the next string after it is \char`\"{}name\char`\"{}, or an empty string if not. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{parse_8cpp_a21f8d663dd85cbb29b7402f7fa90c1c5}\label{parse_8cpp_a21f8d663dd85cbb29b7402f7fa90c1c5}} 
+\index{parse.\+cpp@{parse.\+cpp}!get\+\_\+next\+\_\+name@{get\+\_\+next\+\_\+name}}
+\index{get\+\_\+next\+\_\+name@{get\+\_\+next\+\_\+name}!parse.\+cpp@{parse.\+cpp}}
+\subsubsection{\texorpdfstring{get\+\_\+next\+\_\+name()}{get\_next\_name()}}
+{\footnotesize\ttfamily string get\+\_\+next\+\_\+name (\begin{DoxyParamCaption}\item[{string\+::iterator $\ast$}]{it }\end{DoxyParamCaption})}
+
+
+
+Get a name or empty string. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em it} & An iterator iterating through names \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A string corresponding to the next name the iterator goes on, can be an empty string if there is no name after. 
+\end{DoxyReturn}

@@ -1,0 +1,7 @@
+<map id="uS::Socket" name="uS::Socket">
+<area shape="rect" id="node3" href="$structu_w_s_1_1_http_socket.html" title="uWS::HttpSocket\&lt; true \&gt;" alt="" coords="246,5,417,32"/>
+<area shape="rect" id="node4" href="$structu_s_1_1_listen_socket.html" title="uS::ListenSocket" alt="" coords="270,56,393,83"/>
+<area shape="rect" id="node5" href="$structu_w_s_1_1_http_socket.html" title="uWS::HttpSocket\&lt; isServer \&gt;" alt="" coords="233,107,430,133"/>
+<area shape="rect" id="node6" href="$structu_w_s_1_1_web_socket.html" title="uWS::WebSocket\&lt; isServer \&gt;" alt="" coords="232,157,431,184"/>
+<area shape="rect" id="node2" href="$struct_poll.html" title="Poll" alt="" coords="5,81,49,108"/>
+</map>

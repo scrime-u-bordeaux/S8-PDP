@@ -1,0 +1,77 @@
+\hypertarget{_coeff_scalar_8cpp}{}\section{Visual\+Impro/process/\+Coeff/\+Coeff\+Scalar.cpp File Reference}
+\label{_coeff_scalar_8cpp}\index{Visual\+Impro/process/\+Coeff/\+Coeff\+Scalar.\+cpp@{Visual\+Impro/process/\+Coeff/\+Coeff\+Scalar.\+cpp}}
+
+
+Code containing the scalar correlation function.  
+
+
+{\ttfamily \#include \char`\"{}Coeff\+Scalar.\+hpp\char`\"{}}\newline
+Include dependency graph for Coeff\+Scalar.\+cpp\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=318pt]{_coeff_scalar_8cpp__incl}
+\end{center}
+\end{figure}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+float \mbox{\hyperlink{_coeff_scalar_8cpp_a1c594044b6567855f4f271014f1b11a9}{correlatescalar}} (const vector$<$ float $>$ \&s1, const vector$<$ float $>$ \&s2)
+\begin{DoxyCompactList}\small\item\em Process the scalar products of s1 and s2. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{_coeff_scalar_8cpp_ad10f6cbb0e9accc6a1725fff36c6b8fd}{Coeff\+Scalar}} (const vector$<$ float $>$ \&s1, const vector$<$ float $>$ \&s2)
+\begin{DoxyCompactList}\small\item\em The scalar correlation function. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Code containing the scalar correlation function. 
+
+\begin{DoxyAuthor}{Author}
+Jérémy L\+I\+X\+A\+N\+D\+RE 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+July 2017
+\end{DoxyDate}
+This is a correlation function used to return a correlation value corresponding of the scalar product of the two buffers containing the signals of two differents instruments for one frame of data. The volume and the coloration matrix will be affected by this value. 
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{_coeff_scalar_8cpp_ad10f6cbb0e9accc6a1725fff36c6b8fd}\label{_coeff_scalar_8cpp_ad10f6cbb0e9accc6a1725fff36c6b8fd}} 
+\index{Coeff\+Scalar.\+cpp@{Coeff\+Scalar.\+cpp}!Coeff\+Scalar@{Coeff\+Scalar}}
+\index{Coeff\+Scalar@{Coeff\+Scalar}!Coeff\+Scalar.\+cpp@{Coeff\+Scalar.\+cpp}}
+\subsubsection{\texorpdfstring{Coeff\+Scalar()}{CoeffScalar()}}
+{\footnotesize\ttfamily float Coeff\+Scalar (\begin{DoxyParamCaption}\item[{const vector$<$ float $>$ \&}]{s1,  }\item[{const vector$<$ float $>$ \&}]{s2 }\end{DoxyParamCaption})}
+
+
+
+The scalar correlation function. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em s1} & The first vector to process \\
+\hline
+{\em s2} & The second vector to process \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A float corresponding to the correlation ranged between 0 and 1 of s1 and s2. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{_coeff_scalar_8cpp_a1c594044b6567855f4f271014f1b11a9}\label{_coeff_scalar_8cpp_a1c594044b6567855f4f271014f1b11a9}} 
+\index{Coeff\+Scalar.\+cpp@{Coeff\+Scalar.\+cpp}!correlatescalar@{correlatescalar}}
+\index{correlatescalar@{correlatescalar}!Coeff\+Scalar.\+cpp@{Coeff\+Scalar.\+cpp}}
+\subsubsection{\texorpdfstring{correlatescalar()}{correlatescalar()}}
+{\footnotesize\ttfamily float correlatescalar (\begin{DoxyParamCaption}\item[{const vector$<$ float $>$ \&}]{s1,  }\item[{const vector$<$ float $>$ \&}]{s2 }\end{DoxyParamCaption})}
+
+
+
+Process the scalar products of s1 and s2. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em s1} & The first vector to process \\
+\hline
+{\em s2} & The second vector to process \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A float containing the sum of the index of s1 multiplied to the same index of s2 for every indices. 
+\end{DoxyReturn}

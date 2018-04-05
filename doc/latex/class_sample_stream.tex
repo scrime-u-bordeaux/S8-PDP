@@ -1,0 +1,58 @@
+\hypertarget{class_sample_stream}{}\section{Sample\+Stream Class Reference}
+\label{class_sample_stream}\index{Sample\+Stream@{Sample\+Stream}}
+
+
+Class used to contain wavefiles.  
+
+
+
+
+{\ttfamily \#include $<$Sample\+Stream.\+hpp$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_sample_stream_aa725535c36cb17417a49d3bf85fc2b11}\label{class_sample_stream_aa725535c36cb17417a49d3bf85fc2b11}} 
+{\bfseries Sample\+Stream} (const char $\ast$filename, int num\+Channels, int buffer\+Length)
+\item 
+\mbox{\Hypertarget{class_sample_stream_a6842a7de97533d9a1f5c00f3a40abf22}\label{class_sample_stream_a6842a7de97533d9a1f5c00f3a40abf22}} 
+int {\bfseries open\+File} (const char $\ast$filename, int num\+Channels, int buffer\+Length)
+\item 
+\mbox{\Hypertarget{class_sample_stream_a732619a980e61fbc8d2470e77e44ad62}\label{class_sample_stream_a732619a980e61fbc8d2470e77e44ad62}} 
+void {\bfseries fill\+Buffer} ()
+\item 
+\mbox{\Hypertarget{class_sample_stream_a20072eef6ad40286cded88b57b3d6fc4}\label{class_sample_stream_a20072eef6ad40286cded88b57b3d6fc4}} 
+void {\bfseries process\+Frame} ()
+\item 
+\mbox{\Hypertarget{class_sample_stream_a2f0476f31bd7301beb6b8c511b72ca11}\label{class_sample_stream_a2f0476f31bd7301beb6b8c511b72ca11}} 
+float {\bfseries get\+Sample} (int channel)
+\item 
+\mbox{\Hypertarget{class_sample_stream_ada68993caf94bfa0e5d951c7245bb7e9}\label{class_sample_stream_ada68993caf94bfa0e5d951c7245bb7e9}} 
+int {\bfseries buffer\+Needs\+Filled} ()
+\item 
+\mbox{\Hypertarget{class_sample_stream_a1f1ea856ea91d20b6c9343ea0b8d87ab}\label{class_sample_stream_a1f1ea856ea91d20b6c9343ea0b8d87ab}} 
+void {\bfseries toggle\+Playback} ()
+\item 
+\mbox{\Hypertarget{class_sample_stream_a6fea98dbac202f83cd00187de33cb23b}\label{class_sample_stream_a6fea98dbac202f83cd00187de33cb23b}} 
+void {\bfseries toggle\+Playback\+With\+Fade} (float fade\+Length\+In\+Seconds)
+\item 
+\mbox{\Hypertarget{class_sample_stream_ac88f4965128c5842b989d6c07bec4cd1}\label{class_sample_stream_ac88f4965128c5842b989d6c07bec4cd1}} 
+void {\bfseries toggle\+Playback} (int toggle)
+\item 
+\mbox{\Hypertarget{class_sample_stream_a782316681eec29a483a537388b3e2ecc}\label{class_sample_stream_a782316681eec29a483a537388b3e2ecc}} 
+void {\bfseries toggle\+Playback\+With\+Fade} (int toggle, float fade\+Length\+In\+Seconds)
+\item 
+\mbox{\Hypertarget{class_sample_stream_a3e4689ad7cbde4e182a4839a194636a1}\label{class_sample_stream_a3e4689ad7cbde4e182a4839a194636a1}} 
+int {\bfseries is\+Playing} ()
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Class used to contain wavefiles. 
+
+This class will contain the wavefiles used in the program. A \mbox{\hyperlink{class_sample_stream}{Sample\+Stream}} array is declared in render.\+cpp and is representing our wavefiles. 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Visual\+Impro/Sample\+Stream.\+hpp\item 
+Visual\+Impro/\mbox{\hyperlink{_sample_stream_8cpp}{Sample\+Stream.\+cpp}}\end{DoxyCompactItemize}

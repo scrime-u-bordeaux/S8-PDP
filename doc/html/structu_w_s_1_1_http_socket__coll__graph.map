@@ -1,0 +1,11 @@
+<map id="uWS::HttpSocket&lt; isServer &gt;" name="uWS::HttpSocket&lt; isServer &gt;">
+<area shape="rect" id="node2" href="$structu_s_1_1_socket.html" title="uS::Socket" alt="" coords="45,379,131,405"/>
+<area shape="rect" id="node3" href="$struct_poll.html" title="Poll" alt="" coords="33,81,77,108"/>
+<area shape="rect" id="node8" href="$struct_async.html" title="Async" alt="" coords="92,178,151,205"/>
+<area shape="rect" id="node4" href="$structu_s_1_1_node_data.html" title="uS::NodeData" alt="" coords="119,289,225,316"/>
+<area shape="rect" id="node5" href="$struct_loop.html" title="Loop" alt="" coords="169,81,220,108"/>
+<area shape="rect" id="node9" href="$structu_s_1_1_context.html" title="uS::Context" alt="" coords="253,178,345,205"/>
+<area shape="rect" id="node10" href="$structu_s_1_1_socket_1_1_queue.html" title="uS::Socket::Queue" alt="" coords="291,289,424,316"/>
+<area shape="rect" id="node11" href="$structu_s_1_1_socket_1_1_queue_1_1_message.html" title="uS::Socket::Queue::\lMessage" alt="" coords="369,171,511,212"/>
+<area shape="rect" id="node12" href="$structu_w_s_1_1_http_response.html" title="uWS::HttpResponse" alt="" coords="155,379,298,405"/>
+</map>

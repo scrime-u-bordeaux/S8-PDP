@@ -1,0 +1,53 @@
+\hypertarget{_mix_neutral_8cpp}{}\section{Visual\+Impro/process/\+Mix/\+Mix\+Neutral.cpp File Reference}
+\label{_mix_neutral_8cpp}\index{Visual\+Impro/process/\+Mix/\+Mix\+Neutral.\+cpp@{Visual\+Impro/process/\+Mix/\+Mix\+Neutral.\+cpp}}
+
+
+Code containing the mix neutral function/.  
+
+
+{\ttfamily \#include \char`\"{}Mix\+Neutral.\+hpp\char`\"{}}\newline
+Include dependency graph for Mix\+Neutral.\+cpp\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=308pt]{_mix_neutral_8cpp__incl}
+\end{center}
+\end{figure}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+vector$<$ float $>$ \mbox{\hyperlink{_mix_neutral_8cpp_a72bd75fe8a90853505fcb36fc7f4730c}{Mix\+Neutral}} (const \mbox{\hyperlink{class_matrix}{Matrix}}$<$ float $>$ \&correl\+Matrix)
+\begin{DoxyCompactList}\small\item\em The neutral mix function. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Code containing the mix neutral function/. 
+
+\begin{DoxyAuthor}{Author}
+Alexandre C\+A\+S\+A\+N\+O\+VA--F\+R\+A\+N\+G\+ER, Gauthier L\+A\+R\+M\+A\+R\+Q\+UE, Paul S\+I\+M\+O\+R\+RE, Lucas V\+I\+V\+AS 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+March 2018
+\end{DoxyDate}
+This function is used for returning a neutral mix on each instrument. We can use this function if we don\textquotesingle{}t want any changes of the mix volume during the process. 
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{_mix_neutral_8cpp_a72bd75fe8a90853505fcb36fc7f4730c}\label{_mix_neutral_8cpp_a72bd75fe8a90853505fcb36fc7f4730c}} 
+\index{Mix\+Neutral.\+cpp@{Mix\+Neutral.\+cpp}!Mix\+Neutral@{Mix\+Neutral}}
+\index{Mix\+Neutral@{Mix\+Neutral}!Mix\+Neutral.\+cpp@{Mix\+Neutral.\+cpp}}
+\subsubsection{\texorpdfstring{Mix\+Neutral()}{MixNeutral()}}
+{\footnotesize\ttfamily vector$<$ float $>$ Mix\+Neutral (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_matrix}{Matrix}}$<$ float $>$ \&}]{correl\+Matrix }\end{DoxyParamCaption})}
+
+
+
+The neutral mix function. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em correl\+Matrix} & The correlation matrix of signals \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A vector composed of floats equals 1.\+0 
+\end{DoxyReturn}
