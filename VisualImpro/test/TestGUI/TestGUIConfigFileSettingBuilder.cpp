@@ -30,11 +30,25 @@ void TestGUIConfigFileSettingBuilder::setUp(){
 }
 
 void TestGUIConfigFileSettingBuilder::tearDown(){
-   delete builder;
+  
 }
 
 void  TestGUIConfigFileSettingBuilder::testBuilder()
 {
    string strResult = builder->getResult();
-  // CPPUNIT_ASSERT(intMatrix->toString() == "Matrix");
+   string strExpected = "# Configuration file for ./VisualImpro\n\
+PORT 12345\n\
+ADDRESS 192.168.7.1\n\
+PROCESSLEN 32768\n\
+EFFECTS N\n\
+EFFECT_BUFFER_LEN 32\n\
+ANALOG 5\n\
+AUDIO 1\n\
+FILE /dir/wav1.wav\n\
+FILE /dir/wav2.wav\n\
+COEFF functionCoeff\n\
+PREPROC functionPreProc\n\
+COLOR functionColor\n\
+MIX functionMix\n";
+   CPPUNIT_ASSERT_EQUAL(strResult, strExpected);
 }
