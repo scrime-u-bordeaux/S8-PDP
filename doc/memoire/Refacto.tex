@@ -44,18 +44,18 @@ plus compréhensible et claire possible aux yeux d'un potentiel futur
 programmeur, nous avons apporté plusieurs révisions liées à
 l'organisation des fichiers.
 \begin{itemize}
-  \item Le code de \verb!main.cpp! a été entièrement révisé. En effet,
-    il contenait une unique fonction
-    \verb!main(int argc, char *argv[])! qui nous paraissait bien trop
-    dense. Afin de faciliter la compréhension du lecteur et de mieux
-    correspondre aux conventions, nous avons effectué un découpage
-    fonctionnel de cette fonction en plusieurs fonctions. La fonction
-    \verb!main! appelle une fonction
-    \verb!launch(int argc, char *argv[])! qui elle-même appelle
-    d'autres fonctions (lesquelles, parfois, en appellent elles-mêmes
-    de nouvelles).
-
-    \begin{lstlisting}
+ \item Le code de \verb!main.cpp! a été entièrement révisé. En effet,
+       il contenait une unique fonction
+       \verb!main(int argc, char *argv[])! qui nous paraissait bien trop
+       dense. Afin de faciliter la compréhension du lecteur et de mieux
+       correspondre aux conventions, nous avons effectué un découpage
+       fonctionnel de cette fonction en plusieurs fonctions. La fonction
+       \verb!main! appelle une fonction
+       \verb!launch(int argc, char *argv[])! qui elle-même appelle
+       d'autres fonctions (lesquelles, parfois, en appellent elles-mêmes
+       de nouvelles).
+       
+       \begin{lstlisting}
       static void launch(int argc, char *argv[]){
         ChSettings gChSettings;
         Parser config;
@@ -69,28 +69,28 @@ l'organisation des fichiers.
         stopAndCleanupAudio();
         freeAndClose(gChSettings, config, p, handle);
       }
-    \end{lstlisting}
-
-    \begin{center}
-      \textit{Ci-dessus, le code de la fonction launch}
-    \end{center}
-
-    \item Nous avons de même effectué un découpage fonctionnel sur la
-      fonction \\ \verb!bool setup!  du fichier \verb!render.cpp!. Ce
-      fichier, qui présentait tout comme \verb!main.cpp! une
-      organisation assez condensée, ne pouvait pas cependant être
-      remanié autant en profondeur dans son intégralité que le code
-      précédemment abordé. En effet, la fonction principale du
-      fichier, \verb!void!  \verb!render!, ne pouvait être découpée de
-      manière maintenable. En effet, elle exécute une boucle de
-      traitement audio, en créant des taches auxiliaires exécutées par
-      d'autres threads pour garantir un traitement rapide (qui doit
-      être au minimum plus rapide que la vitesse de lecture des
-      pistes), et il n'était pas possible de la découper sans créer de
-      conflits sur les variables enregistrant le nombre de tours de
-      boucle ou les variables contenant les signaux audio par exemple.
-
-      \begin{lstlisting}
+ \end{lstlisting}
+ 
+ \begin{center}
+  \textit{Ci-dessus, le code de la fonction launch}
+ \end{center}
+ 
+ \item Nous avons de même effectué un découpage fonctionnel sur la
+       fonction \\ \verb!bool setup!  du fichier \verb!render.cpp!. Ce
+       fichier, qui présentait tout comme \verb!main.cpp! une
+       organisation assez condensée, ne pouvait pas cependant être
+       remanié autant en profondeur dans son intégralité que le code
+       précédemment abordé. En effet, la fonction principale du
+       fichier, \verb!void!  \verb!render!, ne pouvait être découpée de
+       manière maintenable. En effet, elle exécute une boucle de
+       traitement audio, en créant des taches auxiliaires exécutées par
+       d'autres threads pour garantir un traitement rapide (qui doit
+       être au minimum plus rapide que la vitesse de lecture des
+       pistes), et il n'était pas possible de la découper sans créer de
+       conflits sur les variables enregistrant le nombre de tours de
+       boucle ou les variables contenant les signaux audio par exemple.
+       
+       \begin{lstlisting}
       bool setup(BelaContext *context, void *userData) {
         gUserSet = *((ChSettings *)userData);
         initUserSet(gUserSet);
@@ -99,72 +99,72 @@ l'organisation des fichiers.
         printInfo();
         return initAuxiliaryTasks();
       }
-    \end{lstlisting}
-
-    \begin{center}
-      \textit{Ci-dessus, le code de la fonction setup}
-    \end{center}
-
-      \item \`{A} l'intérieur du dossier \verb!process!, les
-        différents fichiers de traitement ont été classés par
-        fonctions en quatre dossiers \verb!Coeff!, \verb!Color!,
-        \verb!Preproc! et \verb!Mix!. \`{A} l'intérieur du dossier
-        \verb!test!, les fichiers que nous avons implémenté pour tester les
-        différentes fonctions du programme ont été classés de la même
-        manière (Jérémy Lixandre n'avait pour sa part pas implémenté
-        de fichiers de test). Le fichier TestMain contenu à la racine du
-        dossier test se chargera de récupérer le registre de l'ensemble
-        des tests contenus dans les différents dossiers.
-
-        \item D'une manière générale, les fichiers ont été triés pour
-          ordonner l'architecture proposée par Jérémy qui était un peu
-          confuse ; des fichiers de code n'ayant rien à voir entre eux
-          se côtoyaient au sein d'un même dossier, et l'architecture
-          présentait une hiérarchie n'étant pas toujours en rapport
-          avec celle que présente le logiciel. Pour ces raisons, nous
-          avons partagé les fichiers en plusieurs sous-dossiers,
-          notamment les fichiers sources et les fichiers d'en-tête au
-          sein du dossier \verb!VisualImpro!, et nous avons modifié
-          les fichiers Makefile en conséquence. Le fichier de
-          configuration \verb!config.cfg! a notamment été déplacé dans
-          un nouveau dossier \verb!bin!.
-
-          \item Dans le code livré par Jérémy Lixandre, un dossier
-            \verb!VisualImproExe! regroupait un fichier de
-            configurations, les fichiers relatifs à NodeJS, un fichier
-            html lié à l'affichage de la matrice graphique via le
-            navigateur Mozilla Firefox et les fichiers sources C++
-            permettant les manipulations nécessaires au lancement du
-            programme VisualImpro. Nous avons implémenté un script
-            bash voué à remplacer la majeure partie de cette
-            architecture, le fichier \verb!VisualImpro.sh! placé dans
-            le dossier \verb!bin!.
+ \end{lstlisting}
+ 
+ \begin{center}
+  \textit{Ci-dessus, le code de la fonction setup}
+ \end{center}
+ 
+ \item \`{A} l'intérieur du dossier \verb!process!, les
+       différents fichiers de traitement ont été classés par
+       fonctions en quatre dossiers \verb!Coeff!, \verb!Color!,
+       \verb!Preproc! et \verb!Mix!. \`{A} l'intérieur du dossier
+       \verb!test!, les fichiers que nous avons implémenté pour tester les
+       différentes fonctions du programme ont été classés de la même
+       manière (Jérémy Lixandre n'avait pour sa part pas implémenté
+       de fichiers de test). Le fichier TestMain contenu à la racine du
+       dossier test se chargera de récupérer le registre de l'ensemble
+       des tests contenus dans les différents dossiers.
+       
+ \item D'une manière générale, les fichiers ont été triés pour
+       ordonner l'architecture proposée par Jérémy qui était un peu
+       confuse ; des fichiers de code n'ayant rien à voir entre eux
+       se côtoyaient au sein d'un même dossier, et l'architecture
+       présentait une hiérarchie n'étant pas toujours en rapport
+       avec celle que présente le logiciel. Pour ces raisons, nous
+       avons partagé les fichiers en plusieurs sous-dossiers,
+       notamment les fichiers sources et les fichiers d'en-tête au
+       sein du dossier \verb!VisualImpro!, et nous avons modifié
+       les fichiers Makefile en conséquence. Le fichier de
+       configuration \verb!config.cfg! a notamment été déplacé dans
+       un nouveau dossier \verb!bin!.
+       
+ \item Dans le code livré par Jérémy Lixandre, un dossier
+       \verb!VisualImproExe! regroupait un fichier de
+       configurations, les fichiers relatifs à NodeJS, un fichier
+       html lié à l'affichage de la matrice graphique via le
+       navigateur Mozilla Firefox et les fichiers sources C++
+       permettant les manipulations nécessaires au lancement du
+       programme VisualImpro. Nous avons implémenté un script
+       bash voué à remplacer la majeure partie de cette
+       architecture, le fichier \verb!VisualImpro.sh! placé dans
+       le dossier \verb!bin!.
 \end{itemize}
 \paragraph{}
 Dans la version précédente de l'exécutable (\verb!VisualImproExe!),
 les tâches réalisées par le code C++ étaient les suivantes :
 \begin{itemize}
-  \item Copier les fichiers \verb!.wav! indiqués dans le fichier de
-    configuration dans Bela,
-  \item Créer une copie du fichier de configuration, et y modifier les
-    chemins des fichiers \verb!.wav! pour que ceux-ci correspondent au
-    système de fichiers de Bela,
-  \item Copier la copie du fichier de configuration dans Bela,
-  \item Lancement du serveur NodeJS avec le fichier \verb!server.js!,
-  \item Ouverture d'un onglet (ou d'une nouvelle fenêtre) du
-    navigateur Firefox,
-  \item Connexion à Bela (en ssh) et lancement du programme
-    VisualImpro,
-  \item Si le programme reçoit un signal d'interruption (Ctrl-C),
-    alors certaines tâches sont réalisées :
-  \begin{itemize}
-    \item Arrêt du programme VisualImpro,
-    \item Arrêt du serveur NodeJS,
-    \item Suppression des fichiers \verb!.wav! sur Bela,
-    \item Rapatriement des logs vers le dossier \verb!VisualImproExe!,
-    \item Suppression de la copie modifiée du fichier de configuration,
-    \item Arrêt de l'éxécutable.
-  \end{itemize}
+ \item Copier les fichiers \verb!.wav! indiqués dans le fichier de
+       configuration dans Bela,
+ \item Créer une copie du fichier de configuration, et y modifier les
+       chemins des fichiers \verb!.wav! pour que ceux-ci correspondent au
+       système de fichiers de Bela,
+ \item Copier la copie du fichier de configuration dans Bela,
+ \item Lancement du serveur NodeJS avec le fichier \verb!server.js!,
+ \item Ouverture d'un onglet (ou d'une nouvelle fenêtre) du
+       navigateur Firefox,
+ \item Connexion à Bela (en ssh) et lancement du programme
+       VisualImpro,
+ \item Si le programme reçoit un signal d'interruption (Ctrl-C),
+       alors certaines tâches sont réalisées :
+       \begin{itemize}
+        \item Arrêt du programme VisualImpro,
+        \item Arrêt du serveur NodeJS,
+        \item Suppression des fichiers \verb!.wav! sur Bela,
+        \item Rapatriement des logs vers le dossier \verb!VisualImproExe!,
+        \item Suppression de la copie modifiée du fichier de configuration,
+        \item Arrêt de l'éxécutable.
+       \end{itemize}
 \end{itemize}
 \paragraph{}
 Durant l'audit, le fait de réaliser des manipulations de fichiers de
@@ -201,10 +201,41 @@ répertoire \verb!process! ont été déplacées et réparties dans le code
 pour éviter ces inclusions systématiques. Nous avons également crée
 une classe \verb!RGB! en remplacement de la structure \verb!RGB! que
 contenait \verb!utilities!. Elle regroupe également les fonctions
-refactorées de l'ancienne classe \verb!triplet!. Parmi celles-ci,
-certains calculs notamment ceux permettant la conversion d'entiers en
-valeurs hexadécimales ont été simplifiés.
+refactorées de l'ancienne classe \verb!triplet!.
 \paragraph{}
+Face au grand nombre de traitements de matrices dans le code, nous
+avons choisi d'implémenter une classe \verb!Matrix.cpp! afin d'éviter
+d'utiliser systématiquement des vecteurs de vecteurs de flottants,
+procédé lourd en écriture et exigeant l'écriture de fonctions de
+traitement de vecteurs de vecteurs. La nouvelle classe \verb!Matrix!
+rassemble toutes les opérations sur les matrices nécessaires au
+programme, en plus de divers constructeurs pour créer des matrices de
+différents types selon différents paramètres. Classe
+\textit{template}, \verb!Matrix! permet de créer des matrices
+d'entiers, de flottants ou bien de triplets RGB.
+
+\paragraph{}
+L'implémentation de Jérémy Lixandre comportait une classe
+\verb!ProcessMulti! dont héritaient les classes
+\verb!ProcessMultiCorrel! et \verb!ProcessMultiWriteWav!, mais
+l'héritage n'avait pas lieu d'être puisque la classe
+\verb!ProcessMulti! en question définissait une fonction abstraite
+\verb!process!, redéfinie dans ses deux classes filles et prenant en
+paramètre une matrice de flottants (représentant les signaux d'entrée)
+et une connexion. Or, la classe \verb!ProcessMultiWriteWav! sert à
+créer des fichiers \verb!.wav! et ne recquiert aucune connexion. Nous
+avons donc cassé l'héritage entre ces classes et supprimé la classe
+\verb!ProcessMulti!.
+
+\paragraph{}
+Nous avons ajouté des fichiers d'en-tête pour tous les fichiers source
+contenant les fonctions de traitement, afin de pouvoir utiliser ces
+fonctions, dans les fichiers de test notamment, en incluant les fichiers
+nécessaires. Les fonctions de traitement étaient auparavant copiées
+dans la classe \verb!utilities!, mais lors du refactoring de cette
+dernière, nous avons réalisé que cette solution n'était pas très
+conventionnelle.
+
 
 \subsubsection{Optimisation du code}
 \paragraph{}
@@ -242,64 +273,21 @@ void ProcessMultiCorrel::process(const Matrix<float>& buffer,
 }
 \end{lstlisting}
 \begin{center}
-  \textit{Ci-dessus, la fonction principale de
-    \verb!ProcessMultiCorrel.cpp!. Ce code témoigne de multiples
-    opérations de refactoring et d'optimisations du code ; en effet,
-    le nombre d'appels de fonctions au sein de la fonction process témoigne du
-    découpage fonctionnel de la fonction d'origine, laquelle était autrement
-    plus dense. De plus, on peut observer dans les paramètres qu'un
-    vecteur des moyennes de coefficients de corrélation a été ajoutée
-    pour permettre l'implémentation du mixage du retour sonore. Enfin,
-    la matrice de flottants "buffer" a été changée en sa référence
-    constante, afin d'éviter d'avoir à en faire une copie dans le
-    corps de la fonction.}
+ \textit{Ci-dessus, la fonction principale de
+  \verb!ProcessMultiCorrel.cpp!. Ce code témoigne de multiples
+  opérations de refactoring et d'optimisations du code ; en effet,
+  le nombre d'appels de fonctions au sein de la fonction process témoigne du
+  découpage fonctionnel de la fonction d'origine, laquelle était autrement
+  plus dense. De plus, on peut observer dans les paramètres qu'un
+  vecteur des moyennes de coefficients de corrélation a été ajoutée
+  pour permettre l'implémentation du mixage du retour sonore. Enfin,
+  la matrice de flottants "buffer" a été changée en sa référence
+  constante, afin d'éviter d'avoir à en faire une copie dans le
+ corps de la fonction.}
 \end{center}
 
 \paragraph{}
 Au sein de la nouvelle classe \verb!RGB!, de nombreux calculs notamment ceux permettant la conversion d'entiers en valeurs hexadécimales ont été simplifiés.
-
-% A AJOUTER
-\subsubsection{Autres remarques}
-  
-
-  - Nous avions beaucoup de traitements sur des matrices dans notre code, mais
-  nous ne disposions auparavant pas de classe pour répondre à ce besoin, ce qui
-  faisait que nous utilisions des vecteurs de vecteurs de flottants pour nos
-  traitements. Cela était très lourd d'écriture, et demandait d'écrire des
-  fonctions de traitement de vecteurs de vecteurs quelque part pour nos
-  opérations, et ces fonctions étaient donc définies dans le fichier utilities
-  avec le reste. Nous avons donc créé une classe Matrix correspondant à un
-  vecteur de vecteur et contenant toutes les opérations sur les matrices dont
-  nous avons besoins, en plus de nombreux constructeurs pour créer des matrices
-  de différents types, selon différents paramètres. Cette classe Matrix est une
-  classe template, et permet ici de créer des matrices d'entiers, de flottants,
-  ou bien de triplets RGB.
-
-  -Nous avons effectué des tests de ces deux nouvelles classes, Matrix et RGB,
-  dans le dossier de TestClasses lui même dans le dossier test, contenant
-  l'ensemble des dossiers de tests regroupés par cohérence de type.
-
-  - Les classes ProcessMultiCorrel et ProcessMultiWriteWav héritaient d'une
-  classe nommée ProcessMulti, mais l'héritage ici n'avait pas lieu d'être car
-  cette classe ProcessMulti définissait une fonction abstraite process,
-  redéfinie dans ses classes filles, et prenant en paramètre une matrice de
-  flottants (signaux) et une connexion. Or la classe ProcessMultiWriteWav sert
-  à créer des fichiers .wav, donc ne requiert aucune connexion. Ce paramètre
-  n'était donc pas utilisé dans la fonction process de la classe
-  ProcessMultiWriteWav, et comme l'on devait rajouter un paramètre pour notre
-  fonction process de la classe ProcessMultiCorrel, l'héritage n'était
-  clairement plus justifié. Nous avons donc cassé l'héritage entre ces classes
-  et supprimé la classe ProcessMulti.
-
-  - Ajout de fichiers header pour tous les fichiers source contenant les
-  fonctions de traitement. Cela permet de pouvoir utiliser chaque fonction en
-  incluant le fichier contenant la fonction dont nous avons besoin. Auparavant,
-  nous copions chaque fonction de traitement (ou du moins des parties "utiles"
-  des fonctions de traitement) dans la classe utilities, mais cette dernière
-  ayant été réusinée de manière à être cohérente et non un gros sac ignoble,
-  nous devons donc coder proprement et inclure le fichier header de la fonction
-  que nous voulons utiliser, comme par exemple pour nos fichiers de test.
-%A AJOUTER
 
 \subsection{Les changements apportés à l'interface graphique}
 \paragraph{}
@@ -323,3 +311,40 @@ l'affichage Qt et l'affichage sur navigateur au moment de lancer
 l'exécution du programme.
 
 \subsubsection{L'implémentation de la méthode d'affichage sous Qt}
+\paragraph{}
+\`{A} l'intérieur du dossier \verb!GUI! répertoriant les fonctions
+dédiées aux affichages graphiques, le dossier \verb!mainWindow!
+contient l'architecture propre à l'affichage de la matrice graphique
+via Qt. Elle contient une classe, \verb!GUIWindow!, et deux
+répertoires : \verb!layout! dédié à l'affichage de la matrice, et
+\verb!server! contenant le serveur établissant la communication avec
+BELA.
+\paragraph{}
+L'architecture \verb!mainWindow! a pour unique rôle d'afficher la
+matrice graphique de corrélations et de la mettre à jour en temps
+réel. Elle réagit aux mises à jour transmises par BELA via
+\verb!render.cpp! et hérite de la classe Qt \verb!QMainWindow! ce qui
+lui permet notamment d'afficher des menus. \`{A} l'avenir, ces menus
+pourront permettre à l'utilisateur de modifier des configurations du
+programme en temps réel si un successeur implémente cette
+fonctionnalité.
+
+%MATRICE QT SCREEN
+
+\paragraph{}
+La classe \verb!GUIImageMatrix! du répertoire \verb!layout! contient
+un objet de type \verb!QPixMap! dont les couleurs sont mises à jour
+pour chaque rectangle le composant. Il s'agit d'une image de très
+petite taille (car contenant peu de pixels) et qui rend cette méthode
+d'affichage plus légère et performante que celle de notre
+prédécesseur.
+
+\paragraph{}
+La classe \verb!GUITCPServer! du répertoire \verb!server! constitue un
+serveur TCP permettant la communication avec BELA. Il se connecte au
+système embarqué et crée une socket ; les paquets transmis par BELA et
+contenant une matrice codée sous forme d'un objet de type
+\verb!string! sont retraduits en matrice RGB. Le framework Qt permet
+la communication entre le \textit{layout} et le \textit{server} via
+l'émission de signaux depuis le serveur, transmettant les données de
+la matrice.

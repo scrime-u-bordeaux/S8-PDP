@@ -38,8 +38,8 @@ Il est essentiel de comprendre ces deux notions afin de bien situer
 l'intérêt du projet.
 
 \paragraph{}
-Lors d'une improvisation en groupe, des musiciens jouent sans règles
-établies ; ils cherchent alors à fournir à leur auditoire une
+Lors d'une improvisation en groupe, des musiciens jouent sans règle
+établie ; ils cherchent alors à fournir à leur auditoire une
 production cohérente, ou du moins au sein de laquelle chaque musicien
 joue un rôle dans l'harmonie du morceau en s'accordant avec ses
 pairs. La relation qui unit le jeu de deux musiciens et évalue la
@@ -49,34 +49,32 @@ Au sens premier et basique du terme, la corrélation est le rapport
 réciproque entre deux éléments. En statistiques, on parle souvent de
 corrélation pour mesurer l'intensité de la liaison existant entre deux
 variables.
-Dans le cadre de l'étude de signaux sonores, nous faisons le calcul de
-corrélation entre deux signaux. Cette corrélation cherche à mesurer
-la similarité entre ces deux signaux suivant
-différents critères, par exemple la longueur d'onde.
 \paragraph{}
 En musique, il n'existe pas une mais un nombre indéfini de "fonctions
-de corrélation" potentiellement existantes, dont la complexité
-varie.
-Un exemple de fontion de corrélation assez parlant serait une corrélation
-rythmique qui comparerait le tempo de chacun des deux signaux.
+de corrélation" potentiellement existantes, dont la complexité et les
+paramètres varient. Pour établir ce "rapport réciproque" entre deux
+signaux sonores, on pourrait comparer leurs tempos, leurs amplitudes,
+leurs volumes sonores... "Comprendre" la corrélation et
+l'improvisation, dans le cadre de ce projet, c'est aussi trouver,
+inventer la fonction de corrélation qui répond le mieux aux besoins
+d'un groupe d'improvisateurs. Une bonne fonction de corrélation, dans
+ce cadre spécifique, est une fonction qui fait en sorte qu'un groupe
+de musiciens joue un morceau plus satisfaisant lorsque ses membres
+sont davantage corrélés ("découvrir" la fonction de corrélation relève
+ici du rôle de l'utilisateur ou du physicien, le logiciel que nous
+implémentons n'étant qu'un assistant dans cette démarche).
+\paragraph{}
+Les traductions graphiques de signaux sonores par transformée de
+Fourier peuvent jouer le rôle des courbes dont on mesure la
+corrélation. Tout au long du déroulement de notre projet, nous
+travaillons uniquement sur des fonctions de corrélation portant sur la
+comparaison des signaux graphiques obtenus à partir des pistes
+sonores.
 
-
-% les
-% traductions graphiques de ces signaux par transformée de Fourier
-% peuvent jouer le rôle des courbes dont on mesure la corrélation. Tout
-% au long du déroulement de notre projet, nous travaillons uniquement
-% sur des fonctions de corrélation portant sur la comparaison des
-% signaux graphiques obtenus à partir des pistes sonores.
-
-% \paragraph{}
-% En musique, il n'existe pas une mais un nombre indéfini de "fonctions
-% de corrélation" potentiellement existantes, dont la complexité
-% varie. "Comprendre" la corrélation et l'improvisation, dans le cadre
-% de ce projet, c'est aussi trouver, inventer la fonction de corrélation
-% qui répond le mieux aux besoins d'un groupe d'improvisateurs. Une
-% bonne fonction de corrélation, dans ce cadre spécifique, est une
-% fonction qui fait en sorte qu'un groupe de musiciens joue un morceau
-% plus satisfaisant lorsque ses membres sont davantage corrélés.
+%Dans le cadre de l'étude de signaux sonores, nous faisons le calcul de
+%corrélation entre deux signaux. Cette corrélation cherche à mesurer
+%la similarité entre ces deux signaux suivant
+%différents critères, par exemple la longueur d'onde.
 
 \subsection{L'existant}
 \paragraph{}
@@ -119,17 +117,16 @@ systématiquement symétrique.
 \subsubsection{Le système embarqué BELA}
 \paragraph{}
 Avant de confier la suite du projet à d'autres étudiants, nos clients
-ont choisi de changer de support et sont donc passé à un système
-embarqué particulier : BELA.\cite{BELA}
-% Avant de confier la suite du projet à d'autres étudiants, nos clients
-% ont choisi de le rendre plus fonctionnel grâce à l'emploi d'un système
-% embarqué particulier : BELA.
+ont choisi de changer de support et ont opté pour l'utilisation d'un
+système embarqué particulier : BELA.\cite{BELA}
 
 \paragraph{}
-Ce changement de support est dû au fait que, premièrement ce système est
-largement plus portable par rapport à un ordinateur ce qui est un avantage,
-mais la raison principale est que BELA est basé sur un système appelé Xenomai Linux, un framework qui ajoute au noyau Linux des éléments permettant de traiter des opérations en temps réel.\cite{XENOMAI}
-Cela permet au système de faire du traitement audio en temps réel avec un temps de latence extrêmement faible (100 microsecondes).
+Ce choix s'explique par la mobilité du support, mais également par le
+fait que BELA est basé sur un système appelé Xenomai Linux, un
+framework qui ajoute au noyau Linux des éléments permettant de traiter
+des opérations en temps réel.\cite{XENOMAI} Cela permet au système de
+faire du traitement audio en temps réel avec un temps de latence
+extrêmement faible (100 microsecondes).
 
 \begin{figure}[H]
  \centering
@@ -139,7 +136,7 @@ Cela permet au système de faire du traitement audio en temps réel avec un temp
 \end{figure}
 
 \paragraph{}
-L'aperçu du dispositif externe de BELA présenté ci-dessus témoigne
+L'aperçu du dispositif externe de BELA présenté ci-après témoigne
 notamment de la présence d'entrées analogiques pour connecter des
 instruments électriques ou enregistreurs sonores. On comprend alors
 que le rôle de BELA au sein de ce projet est l'utilisation d'un
@@ -227,8 +224,8 @@ fichier de configuration permet d'écrire quel fichier choisir pour
 chacune des trois fonctions.
 
 \paragraph{}
-Le seul fichier imposé par le framework Bela se nomme \verb!render.cpp!. Il
-contient lui-même trois fonctions :
+Le seul fichier du programme VisualImpro imposé par le framework BELA
+se nomme \verb!render.cpp!. Il contient lui-même trois fonctions :
 \begin{itemize}
  \item La fonction \verb!setup()! initialise et prépare les ressources de
        traitement du son.
@@ -241,13 +238,15 @@ contient lui-même trois fonctions :
 
 \paragraph{}
 Une structure \verb!AuxiliaryTask! est mise à la disposition du
-programmeur et est destinée à éxécuter de façon parallèle du code spécifié
+programmeur et est destinée à exécuter de façon parallèle du code spécifié
 en amont et considéré comme trop coûteux (dans le programme, il s'agit du
 traitement des données), afin de soulager l'éxécution de \verb!render.cpp!.
 
+%%INCLUDEGRAPHICS:MATRICEJEREM
+
 \paragraph{}
 Le fichier \verb!main.cpp! lance le programme. Le fichier de
-configuration se nomme \verb!config.cfg!, placé dans le dossier
+configuration se nomme \\\verb!config.cfg!, placé dans le dossier
 principal \verb!VisualImpro!.  L'utilisateur peut y entrer les noms
 des fonctions de \textit{pre-processing}/calcul de coefficient/calcul
 de triplet RGB de son choix. D'autres configurations purement
