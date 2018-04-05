@@ -24,7 +24,7 @@ diminuée en volume sonore dans le retour audio.
 \paragraph{}
 Nous avons implémenté plusieurs fonctions de mixage. La fonction
 \verb!vector<float>!
-\\ \verb!MixMaxCorrelated(const Matrix<float>& correlMatrix)!, par
+\\ \verb!MixMaxCorrelated!, par
 exemple, renvoie un coefficient égal à la moyenne des coefficients de
 corrélation de la piste avec toutes les autres pistes. Les instruments
 les moins corrélés recevront ici un malus sur l'amplitude de leur signal.
@@ -60,12 +60,10 @@ vector<float> MixMaxCorrelated(const Matrix<float>& correlMatrix) {
 \end{center}
 
 \paragraph{}
-Dans la fonction
-\verb!void parseProcessFunc(ChSettings& gChSettings, const!
-\\ \verb!Parser& config, ProcessMultiCorrel *p, void *handle)!
-appelée dans le fichier \\ \verb!main.cpp!, nous avons dû ajouter
-l'analyse de la fonction de mixage sur le modèle des analyses des
-trois autres fonctions de \textit{processing}.
+Dans la fonction \verb!void parseProcessFunc!  appelée dans le fichier
+\\ \verb!main.cpp!, nous avons dû ajouter l'analyse de la fonction de
+mixage sur le modèle des analyses des trois autres fonctions de
+\textit{processing}.
 
 \paragraph{}
 L'architecture de Bela a été conçue pour permettre la synthèse d'un
