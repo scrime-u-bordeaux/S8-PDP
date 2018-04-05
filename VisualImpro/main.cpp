@@ -291,8 +291,8 @@ static void parseTracks(ChSettings& gChSettings, const Parser& config){
     if (check_extension(file, "wav") && access(file.c_str(), F_OK) != -1) {
       gChSettings.filenames.push_back(file);
     } else {
-      fprintf(stderr, "%s n'est pas un fichier wav existant, il n'a pas été" +
-              "chargé\n", file.c_str());
+      fprintf(stderr, "%s n'est pas un fichier wav existant, il n'a pas été\
+              chargé\n", file.c_str());
     }
   }
   gChSettings.nb_files = gChSettings.filenames.size();

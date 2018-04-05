@@ -46,7 +46,7 @@ Parser::Parser(string file) : _file(file), port(0), analog(0), audio(0),
       mix = word;
     }
     else if (line.find("ADDRESS ") == 0
-             && (is_ip(word = get_word(line))){
+             && (is_ip(word = get_word(line)))){
       addr = word;
     }
     else if (line.find("PROCESSLEN ") == 0
