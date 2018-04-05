@@ -76,21 +76,19 @@ l'organisation des fichiers.
     \end{center}
 
     \item Nous avons de même effectué un découpage fonctionnel sur la
-      fonction \\ \verb!setup(BelaContext *context, void *userData)!
-      du fichier \verb!render.cpp!. Ce fichier, qui présentait tout
-      comme \verb!main.cpp! une organisation assez condensée, ne pouvait
-      pas cependant être remanié autant en profondeur dans son intégralité que
-      le code précédemment abordé. En effet, la fonction principale du
-      fichier, \verb!void!
-      \\ \verb!render(BelaContext * context, void *userData)!, ne
-      pouvait être découpée de manière maintenable. En effet, elle
-      exécute une boucle de traitement audio, en créant des taches
-      auxiliaires exécutées par d'autres threads pour garantir un
-      traitement rapide (qui doit être au minimum plus rapide que la
-      vitesse de lecture des pistes), et il n'était pas possible de la
-      découper sans créer de conflits sur les variables enregistrant
-      le nombre de tours de boucle ou les variables contenant les
-      signaux audio par exemple.
+      fonction \\ \verb!bool setup!  du fichier \verb!render.cpp!. Ce
+      fichier, qui présentait tout comme \verb!main.cpp! une
+      organisation assez condensée, ne pouvait pas cependant être
+      remanié autant en profondeur dans son intégralité que le code
+      précédemment abordé. En effet, la fonction principale du
+      fichier, \verb!void!  \verb!render!, ne pouvait être découpée de
+      manière maintenable. En effet, elle exécute une boucle de
+      traitement audio, en créant des taches auxiliaires exécutées par
+      d'autres threads pour garantir un traitement rapide (qui doit
+      être au minimum plus rapide que la vitesse de lecture des
+      pistes), et il n'était pas possible de la découper sans créer de
+      conflits sur les variables enregistrant le nombre de tours de
+      boucle ou les variables contenant les signaux audio par exemple.
 
       \begin{lstlisting}
       bool setup(BelaContext *context, void *userData) {
@@ -137,7 +135,10 @@ l'organisation des fichiers.
             html lié à l'affichage de la matrice graphique via le
             navigateur Mozilla Firefox et les fichiers sources C++
             permettant les manipulations nécessaires au lancement du
-            programme VisualImpro.
+            programme VisualImpro. Nous avons implémenté un script
+            bash voué à remplacer la majeure partie de cette
+            architecture, le fichier \verb!VisualImpro.sh! placé dans
+            le dossier \verb!bin!.
 \end{itemize}
 \paragraph{}
 Dans la version précédente de l'exécutable (\verb!VisualImproExe!),
@@ -146,7 +147,7 @@ les tâches réalisées par le code C++ étaient les suivantes :
   \item Copier les fichiers \verb!.wav! indiqués dans le fichier de
     configuration dans Bela,
   \item Créer une copie du fichier de configuration, et y modifier les
-    chemins des fichiers \verb!.wav! pour que ceux ci correspondent au
+    chemins des fichiers \verb!.wav! pour que ceux-ci correspondent au
     système de fichiers de Bela,
   \item Copier la copie du fichier de configuration dans Bela,
   \item Lancement du serveur NodeJS avec le fichier \verb!server.js!,
@@ -182,10 +183,10 @@ bash permettant de réaliser ces manipulations de chaînes de caractères
 de façon beaucoup moins lourde et fastidieuse.
 \paragraph{}
 En plus de reproduire le comportement de l'ancienne version de
-l'exécutable, notre script bash permet de choisir entre les deux
-versions graphiques maintenant disponibles. Il suffit de préciser à
-l'aide d'une option (\verb!qt! ou \verb!firefox!) quel affichage on
-souhaite avoir.
+l'exécutable, notre script bash \verb!VisualImpro.sh! permet de
+choisir entre les deux versions graphiques maintenant disponibles. Il
+suffit de préciser à l'aide d'une option (\verb!qt! ou \verb!firefox!)
+quel affichage on souhaite obtenir.
 
 \subsubsection{Optimisation du code}
 \paragraph{}
