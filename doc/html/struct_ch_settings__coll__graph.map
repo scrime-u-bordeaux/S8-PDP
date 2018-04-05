@@ -1,0 +1,5 @@
+<map id="ChSettings" name="ChSettings">
+<area shape="rect" id="node2" href="$class_connection.html" title="Class representing the connection object. " alt="" coords="5,95,93,121"/>
+<area shape="rect" id="node3" href="$class_process_multi_correl.html" title="An object containing every processing function. " alt="" coords="117,95,251,121"/>
+<area shape="rect" id="node4" href="$class_r_g_b.html" title="Class used for RGB triplets. " alt="" coords="159,5,209,32"/>
+</map>

@@ -1,0 +1,9 @@
+<map id="uS::Socket" name="uS::Socket">
+<area shape="rect" id="node2" href="$struct_poll.html" title="Poll" alt="" coords="34,81,78,108"/>
+<area shape="rect" id="node7" href="$struct_async.html" title="Async" alt="" coords="93,178,152,205"/>
+<area shape="rect" id="node3" href="$structu_s_1_1_node_data.html" title="uS::NodeData" alt="" coords="120,289,226,316"/>
+<area shape="rect" id="node4" href="$struct_loop.html" title="Loop" alt="" coords="170,81,221,108"/>
+<area shape="rect" id="node8" href="$structu_s_1_1_context.html" title="uS::Context" alt="" coords="254,178,346,205"/>
+<area shape="rect" id="node9" href="$structu_s_1_1_socket_1_1_queue.html" title="uS::Socket::Queue" alt="" coords="301,289,434,316"/>
+<area shape="rect" id="node10" href="$structu_s_1_1_socket_1_1_queue_1_1_message.html" title="uS::Socket::Queue::\lMessage" alt="" coords="370,171,512,212"/>
+</map>

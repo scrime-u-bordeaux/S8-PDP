@@ -1,0 +1,48 @@
+\hypertarget{classu_w_s_1_1_web_socket_protocol}{}\section{u\+WS\+:\+:Web\+Socket\+Protocol$<$ is\+Server, Impl $>$ Class Template Reference}
+\label{classu_w_s_1_1_web_socket_protocol}\index{u\+W\+S\+::\+Web\+Socket\+Protocol$<$ is\+Server, Impl $>$@{u\+W\+S\+::\+Web\+Socket\+Protocol$<$ is\+Server, Impl $>$}}
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structu_w_s_1_1_web_socket_protocol_1_1_close_frame}{Close\+Frame}}
+\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classu_w_s_1_1_web_socket_protocol_abf8aa08ec0de37968aaf2f3eb330f110}\label{classu_w_s_1_1_web_socket_protocol_abf8aa08ec0de37968aaf2f3eb330f110}} 
+static bool {\bfseries is\+Valid\+Utf8} (unsigned char $\ast$s, size\+\_\+t length)
+\item 
+\mbox{\Hypertarget{classu_w_s_1_1_web_socket_protocol_a46b8ca9b46dae8d7a412ebe555cff5ea}\label{classu_w_s_1_1_web_socket_protocol_a46b8ca9b46dae8d7a412ebe555cff5ea}} 
+static \mbox{\hyperlink{structu_w_s_1_1_web_socket_protocol_1_1_close_frame}{Close\+Frame}} {\bfseries parse\+Close\+Payload} (char $\ast$src, size\+\_\+t length)
+\item 
+\mbox{\Hypertarget{classu_w_s_1_1_web_socket_protocol_aa1cf9f0be083546c8e127c47d9f2b01c}\label{classu_w_s_1_1_web_socket_protocol_aa1cf9f0be083546c8e127c47d9f2b01c}} 
+static size\+\_\+t {\bfseries format\+Close\+Payload} (char $\ast$dst, uint16\+\_\+t code, const char $\ast$message, size\+\_\+t length)
+\item 
+\mbox{\Hypertarget{classu_w_s_1_1_web_socket_protocol_af72deddb4854c043e9a1441b5de317b9}\label{classu_w_s_1_1_web_socket_protocol_af72deddb4854c043e9a1441b5de317b9}} 
+static size\+\_\+t {\bfseries format\+Message} (char $\ast$dst, const char $\ast$src, size\+\_\+t length, Op\+Code op\+Code, size\+\_\+t reported\+Length, bool compressed)
+\item 
+\mbox{\Hypertarget{classu_w_s_1_1_web_socket_protocol_a5efcc4356e0f4c87daab552c4f6b137c}\label{classu_w_s_1_1_web_socket_protocol_a5efcc4356e0f4c87daab552c4f6b137c}} 
+static void {\bfseries consume} (char $\ast$src, unsigned int length, \mbox{\hyperlink{structu_w_s_1_1_web_socket_state}{Web\+Socket\+State}}$<$ is\+Server $>$ $\ast$w\+State)
+\end{DoxyCompactItemize}
+\subsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classu_w_s_1_1_web_socket_protocol_a1328256200e755c4b15530601fd3c006}\label{classu_w_s_1_1_web_socket_protocol_a1328256200e755c4b15530601fd3c006}} 
+static const unsigned int {\bfseries S\+H\+O\+R\+T\+\_\+\+M\+E\+S\+S\+A\+G\+E\+\_\+\+H\+E\+A\+D\+ER} = is\+Server ? 6 \+: 2
+\item 
+\mbox{\Hypertarget{classu_w_s_1_1_web_socket_protocol_ab07d1e59ca08f662b9d6d5a7ee75b2f3}\label{classu_w_s_1_1_web_socket_protocol_ab07d1e59ca08f662b9d6d5a7ee75b2f3}} 
+static const unsigned int {\bfseries M\+E\+D\+I\+U\+M\+\_\+\+M\+E\+S\+S\+A\+G\+E\+\_\+\+H\+E\+A\+D\+ER} = is\+Server ? 8 \+: 4
+\item 
+\mbox{\Hypertarget{classu_w_s_1_1_web_socket_protocol_a1926228cac4dbda73d2f45133c90a9bd}\label{classu_w_s_1_1_web_socket_protocol_a1926228cac4dbda73d2f45133c90a9bd}} 
+static const unsigned int {\bfseries L\+O\+N\+G\+\_\+\+M\+E\+S\+S\+A\+G\+E\+\_\+\+H\+E\+A\+D\+ER} = is\+Server ? 14 \+: 10
+\item 
+\mbox{\Hypertarget{classu_w_s_1_1_web_socket_protocol_aa3474c509de3db9b61c90f36d8b3fbf8}\label{classu_w_s_1_1_web_socket_protocol_aa3474c509de3db9b61c90f36d8b3fbf8}} 
+static const int {\bfseries C\+O\+N\+S\+U\+M\+E\+\_\+\+P\+O\+S\+T\+\_\+\+P\+A\+D\+D\+I\+NG} = 4
+\item 
+\mbox{\Hypertarget{classu_w_s_1_1_web_socket_protocol_a832e0833581ff3d41fba8fbb3326d8c3}\label{classu_w_s_1_1_web_socket_protocol_a832e0833581ff3d41fba8fbb3326d8c3}} 
+static const int {\bfseries C\+O\+N\+S\+U\+M\+E\+\_\+\+P\+R\+E\+\_\+\+P\+A\+D\+D\+I\+NG} = L\+O\+N\+G\+\_\+\+M\+E\+S\+S\+A\+G\+E\+\_\+\+H\+E\+A\+D\+ER -\/ 1
+\end{DoxyCompactItemize}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+bin/node\+\_\+modules/socket.\+io/node\+\_\+modules/engine.\+io/node\+\_\+modules/uws/src/Web\+Socket\+Protocol.\+h\end{DoxyCompactItemize}

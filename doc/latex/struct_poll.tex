@@ -1,0 +1,173 @@
+\hypertarget{struct_poll}{}\section{Poll Struct Reference}
+\label{struct_poll}\index{Poll@{Poll}}
+
+
+Inheritance diagram for Poll\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{struct_poll__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Poll\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=161pt]{struct_poll__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{struct_poll_aade8fc2874809b30916f01da7f25e311}\label{struct_poll_aade8fc2874809b30916f01da7f25e311}} 
+{\bfseries Poll} (\mbox{\hyperlink{struct_loop}{Loop}} $\ast$loop, uv\+\_\+os\+\_\+sock\+\_\+t fd)
+\item 
+\mbox{\Hypertarget{struct_poll_a613e86c977bb7ea71eacfb5568bc2138}\label{struct_poll_a613e86c977bb7ea71eacfb5568bc2138}} 
+bool {\bfseries is\+Closed} ()
+\item 
+\mbox{\Hypertarget{struct_poll_a87103417a8c87caa8351edb45d8f55ea}\label{struct_poll_a87103417a8c87caa8351edb45d8f55ea}} 
+boost\+::asio\+::ip\+::tcp\+::socket\+::native\+\_\+type {\bfseries get\+Fd} ()
+\item 
+\mbox{\Hypertarget{struct_poll_a3ddbb71196969fe413d3cf1839614007}\label{struct_poll_a3ddbb71196969fe413d3cf1839614007}} 
+void {\bfseries set\+Cb} (void($\ast$cb)(\mbox{\hyperlink{struct_poll}{Poll}} $\ast$p, int status, int events))
+\item 
+\mbox{\Hypertarget{struct_poll_aee1dc4611ed13e45815e9f6f5e9c8de6}\label{struct_poll_aee1dc4611ed13e45815e9f6f5e9c8de6}} 
+void {\bfseries re\+Init} (\mbox{\hyperlink{struct_loop}{Loop}} $\ast$loop, uv\+\_\+os\+\_\+sock\+\_\+t fd)
+\item 
+\mbox{\Hypertarget{struct_poll_a3268413bab124a7cd0858cc829f4677e}\label{struct_poll_a3268413bab124a7cd0858cc829f4677e}} 
+void {\bfseries start} (\mbox{\hyperlink{struct_loop}{Loop}} $\ast$, \mbox{\hyperlink{struct_poll}{Poll}} $\ast$self, int events)
+\item 
+\mbox{\Hypertarget{struct_poll_a1d04ee5275507b8c02b6f10d31acfb2c}\label{struct_poll_a1d04ee5275507b8c02b6f10d31acfb2c}} 
+void {\bfseries change} (\mbox{\hyperlink{struct_loop}{Loop}} $\ast$, \mbox{\hyperlink{struct_poll}{Poll}} $\ast$self, int events)
+\item 
+\mbox{\Hypertarget{struct_poll_af924777c7d22e9b178f1e466e61d18ba}\label{struct_poll_af924777c7d22e9b178f1e466e61d18ba}} 
+bool {\bfseries fast\+Transfer} (\mbox{\hyperlink{struct_loop}{Loop}} $\ast$loop, \mbox{\hyperlink{struct_loop}{Loop}} $\ast$new\+Loop, int events)
+\item 
+\mbox{\Hypertarget{struct_poll_a5ba94f676bdf1f2dc2bbdab1b222aad5}\label{struct_poll_a5ba94f676bdf1f2dc2bbdab1b222aad5}} 
+bool {\bfseries thread\+Safe\+Change} (\mbox{\hyperlink{struct_loop}{Loop}} $\ast$loop, \mbox{\hyperlink{struct_poll}{Poll}} $\ast$self, int events)
+\item 
+\mbox{\Hypertarget{struct_poll_a817979c43bf628ef4a12e11d0a87988c}\label{struct_poll_a817979c43bf628ef4a12e11d0a87988c}} 
+void {\bfseries stop} (\mbox{\hyperlink{struct_loop}{Loop}} $\ast$)
+\item 
+\mbox{\Hypertarget{struct_poll_ac300fe377eb859743d91014acedd3168}\label{struct_poll_ac300fe377eb859743d91014acedd3168}} 
+void {\bfseries close} (\mbox{\hyperlink{struct_loop}{Loop}} $\ast$loop, void($\ast$cb)(\mbox{\hyperlink{struct_poll}{Poll}} $\ast$))
+\item 
+\mbox{\Hypertarget{struct_poll_a613e86c977bb7ea71eacfb5568bc2138}\label{struct_poll_a613e86c977bb7ea71eacfb5568bc2138}} 
+bool {\bfseries is\+Closed} ()
+\item 
+\mbox{\Hypertarget{struct_poll_a60c488e68925693818f25dfe55dc8541}\label{struct_poll_a60c488e68925693818f25dfe55dc8541}} 
+uv\+\_\+os\+\_\+sock\+\_\+t {\bfseries get\+Fd} ()
+\item 
+\mbox{\Hypertarget{struct_poll_aade8fc2874809b30916f01da7f25e311}\label{struct_poll_aade8fc2874809b30916f01da7f25e311}} 
+{\bfseries Poll} (\mbox{\hyperlink{struct_loop}{Loop}} $\ast$loop, uv\+\_\+os\+\_\+sock\+\_\+t fd)
+\item 
+\mbox{\Hypertarget{struct_poll_a4161e1405b5bdad948147a5114aeaf23}\label{struct_poll_a4161e1405b5bdad948147a5114aeaf23}} 
+{\bfseries Poll} (\mbox{\hyperlink{struct_poll}{Poll}} \&\&other)
+\item 
+\mbox{\Hypertarget{struct_poll_a1b229e0f705d78582a9e4ccb2e5faecf}\label{struct_poll_a1b229e0f705d78582a9e4ccb2e5faecf}} 
+{\bfseries Poll} (const \mbox{\hyperlink{struct_poll}{Poll}} \&other)=delete
+\item 
+\mbox{\Hypertarget{struct_poll_a613e86c977bb7ea71eacfb5568bc2138}\label{struct_poll_a613e86c977bb7ea71eacfb5568bc2138}} 
+bool {\bfseries is\+Closed} ()
+\item 
+\mbox{\Hypertarget{struct_poll_a60c488e68925693818f25dfe55dc8541}\label{struct_poll_a60c488e68925693818f25dfe55dc8541}} 
+uv\+\_\+os\+\_\+sock\+\_\+t {\bfseries get\+Fd} ()
+\item 
+\mbox{\Hypertarget{struct_poll_a3ddbb71196969fe413d3cf1839614007}\label{struct_poll_a3ddbb71196969fe413d3cf1839614007}} 
+void {\bfseries set\+Cb} (void($\ast$cb)(\mbox{\hyperlink{struct_poll}{Poll}} $\ast$p, int status, int events))
+\item 
+\mbox{\Hypertarget{struct_poll_aee1dc4611ed13e45815e9f6f5e9c8de6}\label{struct_poll_aee1dc4611ed13e45815e9f6f5e9c8de6}} 
+void {\bfseries re\+Init} (\mbox{\hyperlink{struct_loop}{Loop}} $\ast$loop, uv\+\_\+os\+\_\+sock\+\_\+t fd)
+\item 
+\mbox{\Hypertarget{struct_poll_a3268413bab124a7cd0858cc829f4677e}\label{struct_poll_a3268413bab124a7cd0858cc829f4677e}} 
+void {\bfseries start} (\mbox{\hyperlink{struct_loop}{Loop}} $\ast$, \mbox{\hyperlink{struct_poll}{Poll}} $\ast$self, int events)
+\item 
+\mbox{\Hypertarget{struct_poll_a1d04ee5275507b8c02b6f10d31acfb2c}\label{struct_poll_a1d04ee5275507b8c02b6f10d31acfb2c}} 
+void {\bfseries change} (\mbox{\hyperlink{struct_loop}{Loop}} $\ast$, \mbox{\hyperlink{struct_poll}{Poll}} $\ast$self, int events)
+\item 
+\mbox{\Hypertarget{struct_poll_af77fdd073ba25acdff5455fe04d4377b}\label{struct_poll_af77fdd073ba25acdff5455fe04d4377b}} 
+void {\bfseries stop} (\mbox{\hyperlink{struct_loop}{Loop}} $\ast$loop)
+\item 
+\mbox{\Hypertarget{struct_poll_af924777c7d22e9b178f1e466e61d18ba}\label{struct_poll_af924777c7d22e9b178f1e466e61d18ba}} 
+bool {\bfseries fast\+Transfer} (\mbox{\hyperlink{struct_loop}{Loop}} $\ast$loop, \mbox{\hyperlink{struct_loop}{Loop}} $\ast$new\+Loop, int events)
+\item 
+\mbox{\Hypertarget{struct_poll_aaf1f84a41b94385b7f967254416735ae}\label{struct_poll_aaf1f84a41b94385b7f967254416735ae}} 
+bool {\bfseries thread\+Safe\+Change} (\mbox{\hyperlink{struct_loop}{Loop}} $\ast$, \mbox{\hyperlink{struct_poll}{Poll}} $\ast$self, int events)
+\item 
+\mbox{\Hypertarget{struct_poll_ac300fe377eb859743d91014acedd3168}\label{struct_poll_ac300fe377eb859743d91014acedd3168}} 
+void {\bfseries close} (\mbox{\hyperlink{struct_loop}{Loop}} $\ast$loop, void($\ast$cb)(\mbox{\hyperlink{struct_poll}{Poll}} $\ast$))
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{struct_poll_acd3909f3114818e3d6f05119def97152}\label{struct_poll_acd3909f3114818e3d6f05119def97152}} 
+boost\+::asio\+::posix\+::stream\+\_\+descriptor $\ast$ {\bfseries socket}
+\item 
+\mbox{\Hypertarget{struct_poll_a8babf1d31fb8f0396dcd81d54c06f6b5}\label{struct_poll_a8babf1d31fb8f0396dcd81d54c06f6b5}} 
+void($\ast$ {\bfseries cb} )(\mbox{\hyperlink{struct_poll}{Poll}} $\ast$p, int status, int events)
+\item 
+\mbox{\Hypertarget{struct_poll_a77e70c7d0ac563de8193c39feeccc860}\label{struct_poll_a77e70c7d0ac563de8193c39feeccc860}} 
+void($\ast$)(\mbox{\hyperlink{struct_poll}{Poll}} $\ast$, int, int) {\bfseries get\+Cb} ()
+\item 
+\mbox{\Hypertarget{struct_poll_aaa351dbeceda08d7c74c994407500101}\label{struct_poll_aaa351dbeceda08d7c74c994407500101}} 
+uv\+\_\+poll\+\_\+t $\ast$ {\bfseries uv\+\_\+poll}
+\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{struct_poll_aade8fc2874809b30916f01da7f25e311}\label{struct_poll_aade8fc2874809b30916f01da7f25e311}} 
+{\bfseries Poll} (\mbox{\hyperlink{struct_loop}{Loop}} $\ast$loop, uv\+\_\+os\+\_\+sock\+\_\+t fd)
+\item 
+\mbox{\Hypertarget{struct_poll_a3ddbb71196969fe413d3cf1839614007}\label{struct_poll_a3ddbb71196969fe413d3cf1839614007}} 
+void {\bfseries set\+Cb} (void($\ast$cb)(\mbox{\hyperlink{struct_poll}{Poll}} $\ast$p, int status, int events))
+\item 
+\mbox{\Hypertarget{struct_poll_aee1dc4611ed13e45815e9f6f5e9c8de6}\label{struct_poll_aee1dc4611ed13e45815e9f6f5e9c8de6}} 
+void {\bfseries re\+Init} (\mbox{\hyperlink{struct_loop}{Loop}} $\ast$loop, uv\+\_\+os\+\_\+sock\+\_\+t fd)
+\item 
+\mbox{\Hypertarget{struct_poll_a05f8cda6c9c0cc93a72d839ffaf0bc0f}\label{struct_poll_a05f8cda6c9c0cc93a72d839ffaf0bc0f}} 
+void {\bfseries start} (\mbox{\hyperlink{struct_loop}{Loop}} $\ast$loop, \mbox{\hyperlink{struct_poll}{Poll}} $\ast$self, int events)
+\item 
+\mbox{\Hypertarget{struct_poll_a2f7e7dff4de0c28ab149e06c5bcc4a68}\label{struct_poll_a2f7e7dff4de0c28ab149e06c5bcc4a68}} 
+void {\bfseries change} (\mbox{\hyperlink{struct_loop}{Loop}} $\ast$loop, \mbox{\hyperlink{struct_poll}{Poll}} $\ast$self, int events)
+\item 
+\mbox{\Hypertarget{struct_poll_af77fdd073ba25acdff5455fe04d4377b}\label{struct_poll_af77fdd073ba25acdff5455fe04d4377b}} 
+void {\bfseries stop} (\mbox{\hyperlink{struct_loop}{Loop}} $\ast$loop)
+\item 
+\mbox{\Hypertarget{struct_poll_af924777c7d22e9b178f1e466e61d18ba}\label{struct_poll_af924777c7d22e9b178f1e466e61d18ba}} 
+bool {\bfseries fast\+Transfer} (\mbox{\hyperlink{struct_loop}{Loop}} $\ast$loop, \mbox{\hyperlink{struct_loop}{Loop}} $\ast$new\+Loop, int events)
+\item 
+\mbox{\Hypertarget{struct_poll_a5ba94f676bdf1f2dc2bbdab1b222aad5}\label{struct_poll_a5ba94f676bdf1f2dc2bbdab1b222aad5}} 
+bool {\bfseries thread\+Safe\+Change} (\mbox{\hyperlink{struct_loop}{Loop}} $\ast$loop, \mbox{\hyperlink{struct_poll}{Poll}} $\ast$self, int events)
+\item 
+\mbox{\Hypertarget{struct_poll_ac300fe377eb859743d91014acedd3168}\label{struct_poll_ac300fe377eb859743d91014acedd3168}} 
+void {\bfseries close} (\mbox{\hyperlink{struct_loop}{Loop}} $\ast$loop, void($\ast$cb)(\mbox{\hyperlink{struct_poll}{Poll}} $\ast$))
+\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{struct_poll_a69e3da91d4536a6fcd81e385a46badad}\label{struct_poll_a69e3da91d4536a6fcd81e385a46badad}} 
+\begin{tabbing}
+xx\=xx\=xx\=xx\=xx\=xx\=xx\=xx\=xx\=\kill
+struct \{\\
+\>int {\bfseries fd}: 28\\
+\>unsigned int {\bfseries cbIndex}: 4\\
+\} {\bfseries state} = \{-\/1, 0\}\\
+
+\end{tabbing}\end{DoxyCompactItemize}
+\subsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{struct_poll_acf1b6f7eea81ff820e64b77581772ed6}\label{struct_poll_acf1b6f7eea81ff820e64b77581772ed6}} 
+struct {\bfseries Loop}
+\end{DoxyCompactItemize}
+
+
+The documentation for this struct was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+bin/node\+\_\+modules/socket.\+io/node\+\_\+modules/engine.\+io/node\+\_\+modules/uws/src/Asio.\+h\item 
+bin/node\+\_\+modules/socket.\+io/node\+\_\+modules/engine.\+io/node\+\_\+modules/uws/src/Epoll.\+h\item 
+bin/node\+\_\+modules/socket.\+io/node\+\_\+modules/engine.\+io/node\+\_\+modules/uws/src/Libuv.\+h\end{DoxyCompactItemize}

@@ -1,0 +1,12 @@
+<map id="uWS::Hub::ConnectionData" name="uWS::Hub::ConnectionData">
+<area shape="rect" id="node2" href="$structu_w_s_1_1_group.html" title="uWS::Group\&lt; CLIENT \&gt;" alt="" coords="252,364,419,391"/>
+<area shape="rect" id="node10" href="$structu_w_s_1_1_hub.html" title="uWS::Hub" alt="" coords="150,468,233,495"/>
+<area shape="rect" id="node3" href="$structu_s_1_1_node_data.html" title="uS::NodeData" alt="" coords="175,260,280,287"/>
+<area shape="rect" id="node11" href="$classu_s_1_1_node.html" title="uS::Node" alt="" coords="151,364,229,391"/>
+<area shape="rect" id="node12" href="$structu_w_s_1_1_group.html" title="uWS::Group\&lt; SERVER \&gt;" alt="" coords="103,557,277,584"/>
+<area shape="rect" id="node4" href="$struct_loop.html" title="Loop" alt="" coords="265,81,315,108"/>
+<area shape="rect" id="node7" href="$struct_async.html" title="Async" alt="" coords="215,171,274,197"/>
+<area shape="rect" id="node13" href="$struct_timer.html" title="Timer" alt="" coords="372,260,427,287"/>
+<area shape="rect" id="node8" href="$struct_poll.html" title="Poll" alt="" coords="5,81,49,108"/>
+<area shape="rect" id="node9" href="$structu_s_1_1_context.html" title="uS::Context" alt="" coords="99,171,191,197"/>
+</map>

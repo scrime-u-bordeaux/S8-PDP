@@ -1,0 +1,258 @@
+\hypertarget{class_g_u_i_file_setting_builder}{}\section{G\+U\+I\+File\+Setting\+Builder Class Reference}
+\label{class_g_u_i_file_setting_builder}\index{G\+U\+I\+File\+Setting\+Builder@{G\+U\+I\+File\+Setting\+Builder}}
+
+
+Class used as a builder for the exit file.  
+
+
+
+
+{\ttfamily \#include $<$G\+U\+I\+File\+Setting\+Builder.\+hpp$>$}
+
+
+
+Inheritance diagram for G\+U\+I\+File\+Setting\+Builder\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=220pt]{class_g_u_i_file_setting_builder__inherit__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_g_u_i_file_setting_builder_ac8e6636b1a2691d9299cd2e9b1e57ba3}\label{class_g_u_i_file_setting_builder_ac8e6636b1a2691d9299cd2e9b1e57ba3}} 
+virtual void \mbox{\hyperlink{class_g_u_i_file_setting_builder_ac8e6636b1a2691d9299cd2e9b1e57ba3}{begin\+File}} ()=0
+\begin{DoxyCompactList}\small\item\em Add the beginning of the file. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_g_u_i_file_setting_builder_a7af95f9102bb6b78f6f0b8827b19b286}{add\+Port}} (int port)=0
+\begin{DoxyCompactList}\small\item\em Add the port. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_g_u_i_file_setting_builder_a4dff49cea1e4861e66ed57e258b702da}{add\+Address}} (string address)=0
+\begin{DoxyCompactList}\small\item\em Add the ip adress. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_g_u_i_file_setting_builder_a958259a35215b686477839872752a0dc}{add\+Process\+Len}} (int length)=0
+\begin{DoxyCompactList}\small\item\em Add the length of the process length. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_g_u_i_file_setting_builder_aac6a7c5d7d56144ad40e9dcacb4b17d6}{add\+Effect}} (bool effect, int buffer\+Len)=0
+\begin{DoxyCompactList}\small\item\em Enable effectes if the \char`\"{}effect\char`\"{} var is true and add the effect process length to the configuration file. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_g_u_i_file_setting_builder_ac219ca2fecb545689b3e06857d77be73}{add\+Analog\+Input}} (int nb)=0
+\begin{DoxyCompactList}\small\item\em Add the number of analog inputs to the configuration file. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_g_u_i_file_setting_builder_adf0f3d72bbc03dd11d4914410e6bee3b}{add\+Audio\+Input}} (int nb)=0
+\begin{DoxyCompactList}\small\item\em Add the number of audio inputs to the configuration file. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_g_u_i_file_setting_builder_ac18e732eac07a5d2e5146273d60e7655}{add\+Wav\+File}} (string path)=0
+\begin{DoxyCompactList}\small\item\em add a wav file to the config file. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_g_u_i_file_setting_builder_a640a258d617394edf010da3feaf80e11}{add\+Color\+Function}} (string function\+Name)=0
+\begin{DoxyCompactList}\small\item\em Add the name of the color function selected to the config file. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_g_u_i_file_setting_builder_a03833a30982887633f6b9d0e3d71e1f8}{add\+Coeff\+Function}} (string function\+Name)=0
+\begin{DoxyCompactList}\small\item\em Add the name of the correlation function selected. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_g_u_i_file_setting_builder_ad1b6098cd9d6f18d1aaf4ab3af87d9df}{add\+Pre\+Proc\+Function}} (string function\+Name)=0
+\begin{DoxyCompactList}\small\item\em Add the name of the preprocessing function selected. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_g_u_i_file_setting_builder_a741009c6cb5a945582ba24b5324aef66}\label{class_g_u_i_file_setting_builder_a741009c6cb5a945582ba24b5324aef66}} 
+virtual void {\bfseries add\+Mix\+Function} (string function\+Name)=0
+\item 
+\mbox{\Hypertarget{class_g_u_i_file_setting_builder_a991798f7939014dd275c1ea4eefceb6d}\label{class_g_u_i_file_setting_builder_a991798f7939014dd275c1ea4eefceb6d}} 
+virtual void \mbox{\hyperlink{class_g_u_i_file_setting_builder_a991798f7939014dd275c1ea4eefceb6d}{end\+File}} ()=0
+\begin{DoxyCompactList}\small\item\em Add the end of file. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Class used as a builder for the exit file. 
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_g_u_i_file_setting_builder_a4dff49cea1e4861e66ed57e258b702da}\label{class_g_u_i_file_setting_builder_a4dff49cea1e4861e66ed57e258b702da}} 
+\index{G\+U\+I\+File\+Setting\+Builder@{G\+U\+I\+File\+Setting\+Builder}!add\+Address@{add\+Address}}
+\index{add\+Address@{add\+Address}!G\+U\+I\+File\+Setting\+Builder@{G\+U\+I\+File\+Setting\+Builder}}
+\subsubsection{\texorpdfstring{add\+Address()}{addAddress()}}
+{\footnotesize\ttfamily void G\+U\+I\+File\+Setting\+Builder\+::add\+Address (\begin{DoxyParamCaption}\item[{string}]{address }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Add the ip adress. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em address} & The ip adress in string format. \\
+\hline
+\end{DoxyParams}
+
+
+Implemented in \mbox{\hyperlink{class_g_u_i_config_file_setting_builder_abbaa15d81d247c3bca68a03e31b78e3e}{G\+U\+I\+Config\+File\+Setting\+Builder}}.
+
+\mbox{\Hypertarget{class_g_u_i_file_setting_builder_ac219ca2fecb545689b3e06857d77be73}\label{class_g_u_i_file_setting_builder_ac219ca2fecb545689b3e06857d77be73}} 
+\index{G\+U\+I\+File\+Setting\+Builder@{G\+U\+I\+File\+Setting\+Builder}!add\+Analog\+Input@{add\+Analog\+Input}}
+\index{add\+Analog\+Input@{add\+Analog\+Input}!G\+U\+I\+File\+Setting\+Builder@{G\+U\+I\+File\+Setting\+Builder}}
+\subsubsection{\texorpdfstring{add\+Analog\+Input()}{addAnalogInput()}}
+{\footnotesize\ttfamily G\+U\+I\+File\+Setting\+Builder\+::add\+Analog\+Input (\begin{DoxyParamCaption}\item[{int}]{nb }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Add the number of analog inputs to the configuration file. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em nb} & Number of analog input. \\
+\hline
+\end{DoxyParams}
+
+
+Implemented in \mbox{\hyperlink{class_g_u_i_config_file_setting_builder_ae59473c0fb774b24b6a96a1b6e371dd1}{G\+U\+I\+Config\+File\+Setting\+Builder}}.
+
+\mbox{\Hypertarget{class_g_u_i_file_setting_builder_adf0f3d72bbc03dd11d4914410e6bee3b}\label{class_g_u_i_file_setting_builder_adf0f3d72bbc03dd11d4914410e6bee3b}} 
+\index{G\+U\+I\+File\+Setting\+Builder@{G\+U\+I\+File\+Setting\+Builder}!add\+Audio\+Input@{add\+Audio\+Input}}
+\index{add\+Audio\+Input@{add\+Audio\+Input}!G\+U\+I\+File\+Setting\+Builder@{G\+U\+I\+File\+Setting\+Builder}}
+\subsubsection{\texorpdfstring{add\+Audio\+Input()}{addAudioInput()}}
+{\footnotesize\ttfamily G\+U\+I\+File\+Setting\+Builder\+::add\+Audio\+Input (\begin{DoxyParamCaption}\item[{int}]{nb }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Add the number of audio inputs to the configuration file. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em nb} & Number of audio input. \\
+\hline
+\end{DoxyParams}
+
+
+Implemented in \mbox{\hyperlink{class_g_u_i_config_file_setting_builder_adedbf3183bfae8c718f22ea704ac3074}{G\+U\+I\+Config\+File\+Setting\+Builder}}.
+
+\mbox{\Hypertarget{class_g_u_i_file_setting_builder_a03833a30982887633f6b9d0e3d71e1f8}\label{class_g_u_i_file_setting_builder_a03833a30982887633f6b9d0e3d71e1f8}} 
+\index{G\+U\+I\+File\+Setting\+Builder@{G\+U\+I\+File\+Setting\+Builder}!add\+Coeff\+Function@{add\+Coeff\+Function}}
+\index{add\+Coeff\+Function@{add\+Coeff\+Function}!G\+U\+I\+File\+Setting\+Builder@{G\+U\+I\+File\+Setting\+Builder}}
+\subsubsection{\texorpdfstring{add\+Coeff\+Function()}{addCoeffFunction()}}
+{\footnotesize\ttfamily G\+U\+I\+File\+Setting\+Builder\+::add\+Coeff\+Function (\begin{DoxyParamCaption}\item[{string}]{function\+Name }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Add the name of the correlation function selected. 
+
+Add the name of the mix function selected.
+
+
+\begin{DoxyParams}{Parameters}
+{\em function\+Name} & The name of the function. \\
+\hline
+\end{DoxyParams}
+
+
+Implemented in \mbox{\hyperlink{class_g_u_i_config_file_setting_builder_a66c807146e8d76be96b8ad2c5088779f}{G\+U\+I\+Config\+File\+Setting\+Builder}}.
+
+\mbox{\Hypertarget{class_g_u_i_file_setting_builder_a640a258d617394edf010da3feaf80e11}\label{class_g_u_i_file_setting_builder_a640a258d617394edf010da3feaf80e11}} 
+\index{G\+U\+I\+File\+Setting\+Builder@{G\+U\+I\+File\+Setting\+Builder}!add\+Color\+Function@{add\+Color\+Function}}
+\index{add\+Color\+Function@{add\+Color\+Function}!G\+U\+I\+File\+Setting\+Builder@{G\+U\+I\+File\+Setting\+Builder}}
+\subsubsection{\texorpdfstring{add\+Color\+Function()}{addColorFunction()}}
+{\footnotesize\ttfamily G\+U\+I\+File\+Setting\+Builder\+::add\+Color\+Function (\begin{DoxyParamCaption}\item[{string}]{function\+Name }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Add the name of the color function selected to the config file. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em function\+Name} & The name of the function. \\
+\hline
+\end{DoxyParams}
+
+
+Implemented in \mbox{\hyperlink{class_g_u_i_config_file_setting_builder_a5275c0c1258a3088674bc1ef009e1ea3}{G\+U\+I\+Config\+File\+Setting\+Builder}}.
+
+\mbox{\Hypertarget{class_g_u_i_file_setting_builder_aac6a7c5d7d56144ad40e9dcacb4b17d6}\label{class_g_u_i_file_setting_builder_aac6a7c5d7d56144ad40e9dcacb4b17d6}} 
+\index{G\+U\+I\+File\+Setting\+Builder@{G\+U\+I\+File\+Setting\+Builder}!add\+Effect@{add\+Effect}}
+\index{add\+Effect@{add\+Effect}!G\+U\+I\+File\+Setting\+Builder@{G\+U\+I\+File\+Setting\+Builder}}
+\subsubsection{\texorpdfstring{add\+Effect()}{addEffect()}}
+{\footnotesize\ttfamily G\+U\+I\+File\+Setting\+Builder\+::add\+Effect (\begin{DoxyParamCaption}\item[{bool}]{effect,  }\item[{int}]{buffer\+Len }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Enable effectes if the \char`\"{}effect\char`\"{} var is true and add the effect process length to the configuration file. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em effect} & A boolean to tell to enable effects or not. \\
+\hline
+{\em buffer\+Len} & The length of the effect buffer. \\
+\hline
+\end{DoxyParams}
+
+
+Implemented in \mbox{\hyperlink{class_g_u_i_config_file_setting_builder_ac7f7238c200dc4000951b24ead586847}{G\+U\+I\+Config\+File\+Setting\+Builder}}.
+
+\mbox{\Hypertarget{class_g_u_i_file_setting_builder_a7af95f9102bb6b78f6f0b8827b19b286}\label{class_g_u_i_file_setting_builder_a7af95f9102bb6b78f6f0b8827b19b286}} 
+\index{G\+U\+I\+File\+Setting\+Builder@{G\+U\+I\+File\+Setting\+Builder}!add\+Port@{add\+Port}}
+\index{add\+Port@{add\+Port}!G\+U\+I\+File\+Setting\+Builder@{G\+U\+I\+File\+Setting\+Builder}}
+\subsubsection{\texorpdfstring{add\+Port()}{addPort()}}
+{\footnotesize\ttfamily void G\+U\+I\+File\+Setting\+Builder\+::add\+Port (\begin{DoxyParamCaption}\item[{int}]{port }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Add the port. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em port} & The port. \\
+\hline
+\end{DoxyParams}
+
+
+Implemented in \mbox{\hyperlink{class_g_u_i_config_file_setting_builder_aadf2b48c000de4e7dc8d060d486a81b7}{G\+U\+I\+Config\+File\+Setting\+Builder}}.
+
+\mbox{\Hypertarget{class_g_u_i_file_setting_builder_ad1b6098cd9d6f18d1aaf4ab3af87d9df}\label{class_g_u_i_file_setting_builder_ad1b6098cd9d6f18d1aaf4ab3af87d9df}} 
+\index{G\+U\+I\+File\+Setting\+Builder@{G\+U\+I\+File\+Setting\+Builder}!add\+Pre\+Proc\+Function@{add\+Pre\+Proc\+Function}}
+\index{add\+Pre\+Proc\+Function@{add\+Pre\+Proc\+Function}!G\+U\+I\+File\+Setting\+Builder@{G\+U\+I\+File\+Setting\+Builder}}
+\subsubsection{\texorpdfstring{add\+Pre\+Proc\+Function()}{addPreProcFunction()}}
+{\footnotesize\ttfamily G\+U\+I\+File\+Setting\+Builder\+::add\+Pre\+Proc\+Function (\begin{DoxyParamCaption}\item[{string}]{function\+Name }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Add the name of the preprocessing function selected. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em function\+Name} & The name of the function. \\
+\hline
+\end{DoxyParams}
+
+
+Implemented in \mbox{\hyperlink{class_g_u_i_config_file_setting_builder_afc97c2bd21304022f9a658325b58bf27}{G\+U\+I\+Config\+File\+Setting\+Builder}}.
+
+\mbox{\Hypertarget{class_g_u_i_file_setting_builder_a958259a35215b686477839872752a0dc}\label{class_g_u_i_file_setting_builder_a958259a35215b686477839872752a0dc}} 
+\index{G\+U\+I\+File\+Setting\+Builder@{G\+U\+I\+File\+Setting\+Builder}!add\+Process\+Len@{add\+Process\+Len}}
+\index{add\+Process\+Len@{add\+Process\+Len}!G\+U\+I\+File\+Setting\+Builder@{G\+U\+I\+File\+Setting\+Builder}}
+\subsubsection{\texorpdfstring{add\+Process\+Len()}{addProcessLen()}}
+{\footnotesize\ttfamily void G\+U\+I\+File\+Setting\+Builder\+::add\+Process\+Len (\begin{DoxyParamCaption}\item[{int}]{length }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Add the length of the process length. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em length} & The length of the process\textquotesingle{} buffer. \\
+\hline
+\end{DoxyParams}
+
+
+Implemented in \mbox{\hyperlink{class_g_u_i_config_file_setting_builder_a889dd395439312fa995862319327e425}{G\+U\+I\+Config\+File\+Setting\+Builder}}.
+
+\mbox{\Hypertarget{class_g_u_i_file_setting_builder_ac18e732eac07a5d2e5146273d60e7655}\label{class_g_u_i_file_setting_builder_ac18e732eac07a5d2e5146273d60e7655}} 
+\index{G\+U\+I\+File\+Setting\+Builder@{G\+U\+I\+File\+Setting\+Builder}!add\+Wav\+File@{add\+Wav\+File}}
+\index{add\+Wav\+File@{add\+Wav\+File}!G\+U\+I\+File\+Setting\+Builder@{G\+U\+I\+File\+Setting\+Builder}}
+\subsubsection{\texorpdfstring{add\+Wav\+File()}{addWavFile()}}
+{\footnotesize\ttfamily G\+U\+I\+File\+Setting\+Builder\+::add\+Wav\+File (\begin{DoxyParamCaption}\item[{string}]{path }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+add a wav file to the config file. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em path} & The absolute path to the wav file on the computer. \\
+\hline
+\end{DoxyParams}
+
+
+Implemented in \mbox{\hyperlink{class_g_u_i_config_file_setting_builder_a70e28ae5643efaec463e58b9bfc0d440}{G\+U\+I\+Config\+File\+Setting\+Builder}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+G\+U\+I/src/setting\+Window/file\+Setting/\mbox{\hyperlink{_g_u_i_file_setting_builder_8hpp}{G\+U\+I\+File\+Setting\+Builder.\+hpp}}\end{DoxyCompactItemize}

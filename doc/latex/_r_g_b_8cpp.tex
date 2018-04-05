@@ -1,0 +1,60 @@
+\hypertarget{_r_g_b_8cpp}{}\section{Visual\+Impro/\+R\+GB.cpp File Reference}
+\label{_r_g_b_8cpp}\index{Visual\+Impro/\+R\+G\+B.\+cpp@{Visual\+Impro/\+R\+G\+B.\+cpp}}
+
+
+\mbox{\hyperlink{class_r_g_b}{R\+GB}} triplet composed by three integers.  
+
+
+{\ttfamily \#include $<$iomanip$>$}\newline
+{\ttfamily \#include $<$iostream$>$}\newline
+{\ttfamily \#include $<$sstream$>$}\newline
+{\ttfamily \#include \char`\"{}R\+G\+B.\+hpp\char`\"{}}\newline
+Include dependency graph for R\+G\+B.\+cpp\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=348pt]{_r_g_b_8cpp__incl}
+\end{center}
+\end{figure}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+ostream \& \mbox{\hyperlink{_r_g_b_8cpp_a02df8e9f88890237beea14f45248e75c}{operator$<$$<$}} (ostream \&flux, const \mbox{\hyperlink{class_r_g_b}{R\+GB}} \&rgb)
+\begin{DoxyCompactList}\small\item\em Overload the operator$<$$<$. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\mbox{\hyperlink{class_r_g_b}{R\+GB}} triplet composed by three integers. 
+
+\begin{DoxyAuthor}{Author}
+Alexandre C\+A\+S\+A\+N\+O\+VA--F\+R\+A\+N\+G\+ER, Gauthier L\+A\+R\+M\+A\+R\+Q\+UE, Paul S\+I\+M\+O\+R\+RE, Lucas V\+I\+V\+AS 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+March 2018
+\end{DoxyDate}
+The \mbox{\hyperlink{class_r_g_b}{R\+GB}} object is an int triplet and used for processing colors for the output matrix we obtain at the end of our processing function chain. 
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{_r_g_b_8cpp_a02df8e9f88890237beea14f45248e75c}\label{_r_g_b_8cpp_a02df8e9f88890237beea14f45248e75c}} 
+\index{R\+G\+B.\+cpp@{R\+G\+B.\+cpp}!operator$<$$<$@{operator$<$$<$}}
+\index{operator$<$$<$@{operator$<$$<$}!R\+G\+B.\+cpp@{R\+G\+B.\+cpp}}
+\subsubsection{\texorpdfstring{operator$<$$<$()}{operator<<()}}
+{\footnotesize\ttfamily ostream \& operator$<$$<$ (\begin{DoxyParamCaption}\item[{ostream \&}]{flux,  }\item[{const \mbox{\hyperlink{class_r_g_b}{R\+GB}} \&}]{rgb }\end{DoxyParamCaption})}
+
+
+
+Overload the operator$<$$<$. 
+
+Operator overloading to print the \mbox{\hyperlink{class_r_g_b}{R\+GB}} matrix to the corresponding ostream flux.
+
+
+\begin{DoxyParams}{Parameters}
+{\em flux} & The flux where the content will be written. \\
+\hline
+{\em rgb} & The \mbox{\hyperlink{class_r_g_b}{R\+GB}} triplet to print into the flux. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+An ostream containing the value of the \mbox{\hyperlink{class_r_g_b}{R\+GB}} components. 
+\end{DoxyReturn}

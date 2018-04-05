@@ -1,0 +1,47 @@
+\hypertarget{_effect_managing_8hpp}{}\section{Visual\+Impro/\+Effect\+Managing.hpp File Reference}
+\label{_effect_managing_8hpp}\index{Visual\+Impro/\+Effect\+Managing.\+hpp@{Visual\+Impro/\+Effect\+Managing.\+hpp}}
+
+
+Code containing the function to apply any effect.  
+
+
+{\ttfamily \#include $<$vector$>$}\newline
+{\ttfamily \#include $<$assert.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}Matrix.\+hpp\char`\"{}}\newline
+Include dependency graph for Effect\+Managing.\+hpp\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=320pt]{_effect_managing_8hpp__incl}
+\end{center}
+\end{figure}
+\subsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+ \mbox{\hyperlink{namespacestd}{std}}
+\end{DoxyCompactItemize}
+\subsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{_effect_managing_8hpp_a07e449e242adeecd832b5522c7720134}\label{_effect_managing_8hpp_a07e449e242adeecd832b5522c7720134}} 
+typedef void($\ast$ {\bfseries effectprocess}) (\mbox{\hyperlink{class_matrix}{Matrix}}$<$ float $>$ \&, \mbox{\hyperlink{class_matrix}{Matrix}}$<$ float $>$ \&)
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{_effect_managing_8hpp_af38dcca0ce9b0f44d10eab0a61217e10}\label{_effect_managing_8hpp_af38dcca0ce9b0f44d10eab0a61217e10}} 
+void {\bfseries gen\+Effect} (\mbox{\hyperlink{class_matrix}{Matrix}}$<$ float $>$ \&In, int ind\+In, \mbox{\hyperlink{class_matrix}{Matrix}}$<$ float $>$ \&Out, int ind\+Out, int size, int globsize, effectprocess effect)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Code containing the function to apply any effect. 
+
+\begin{DoxyAuthor}{Author}
+Jérémy L\+I\+X\+A\+N\+D\+RE 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+July 2017
+\end{DoxyDate}
+Effect\+Managing only contais the method gen\+Effect, used in render.\+cpp, and takes as parameter a buffer in (pre effect) and a buffer out (post effect), their indicies, sizes, and an effect function. The used of the gen\+Effect function stand for generate the effect given through the function effect given in parameter on the buffer In and the result will be contained in the Out buffer. 

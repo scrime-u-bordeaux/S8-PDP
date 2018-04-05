@@ -1,0 +1,63 @@
+\hypertarget{_connection_8cpp}{}\section{Visual\+Impro/\+Connection.cpp File Reference}
+\label{_connection_8cpp}\index{Visual\+Impro/\+Connection.\+cpp@{Visual\+Impro/\+Connection.\+cpp}}
+
+
+\mbox{\hyperlink{class_connection}{Connection}} object to send data on a web page.  
+
+
+{\ttfamily \#include $<$arpa/inet.\+h$>$}\newline
+{\ttfamily \#include $<$netinet/in.\+h$>$}\newline
+{\ttfamily \#include $<$sys/socket.\+h$>$}\newline
+{\ttfamily \#include $<$sys/types.\+h$>$}\newline
+{\ttfamily \#include $<$netdb.\+h$>$}\newline
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$string.\+h$>$}\newline
+{\ttfamily \#include $<$unistd.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}Connection.\+hpp\char`\"{}}\newline
+Include dependency graph for Connection.\+cpp\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_connection_8cpp__incl}
+\end{center}
+\end{figure}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{_connection_8cpp_a81dafca58703df7bfac2b86f900eb5cb}{S\+Y\+S\+C\+A\+LL}}(call,  val,  msg)~if ((call) == (val)) \{perror(msg); return -\/1;\}
+\item 
+\mbox{\Hypertarget{_connection_8cpp_a45ba202b05caf39795aeca91b0ae547e}\label{_connection_8cpp_a45ba202b05caf39795aeca91b0ae547e}} 
+\#define {\bfseries T\+I\+M\+E\+O\+UT}~1
+\item 
+\mbox{\Hypertarget{_connection_8cpp_a05b49c662c073f89e86804f7856622a0}\label{_connection_8cpp_a05b49c662c073f89e86804f7856622a0}} 
+\#define {\bfseries L\+EN}~256
+\item 
+\mbox{\Hypertarget{_connection_8cpp_a82eea6ad0216485180f53098ea6834ab}\label{_connection_8cpp_a82eea6ad0216485180f53098ea6834ab}} 
+\#define {\bfseries P\+O\+R\+T\+NO}~12345
+\item 
+\mbox{\Hypertarget{_connection_8cpp_ac9f31f726d2933782e2efda7136a25fd}\label{_connection_8cpp_ac9f31f726d2933782e2efda7136a25fd}} 
+\#define {\bfseries A\+D\+DR}~\char`\"{}192.\+168.\+7.\+1\char`\"{}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\mbox{\hyperlink{class_connection}{Connection}} object to send data on a web page. 
+
+\begin{DoxyAuthor}{Author}
+Jérémy L\+I\+X\+A\+N\+D\+RE 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+July 2017
+\end{DoxyDate}
+The \mbox{\hyperlink{class_connection}{Connection}} object is used, after finishing the processing operations, to send the processed data to a web page on Firefox. 
+
+\subsection{Macro Definition Documentation}
+\mbox{\Hypertarget{_connection_8cpp_a81dafca58703df7bfac2b86f900eb5cb}\label{_connection_8cpp_a81dafca58703df7bfac2b86f900eb5cb}} 
+\index{Connection.\+cpp@{Connection.\+cpp}!S\+Y\+S\+C\+A\+LL@{S\+Y\+S\+C\+A\+LL}}
+\index{S\+Y\+S\+C\+A\+LL@{S\+Y\+S\+C\+A\+LL}!Connection.\+cpp@{Connection.\+cpp}}
+\subsubsection{\texorpdfstring{S\+Y\+S\+C\+A\+LL}{SYSCALL}}
+{\footnotesize\ttfamily \#define S\+Y\+S\+C\+A\+LL(\begin{DoxyParamCaption}\item[{}]{call,  }\item[{}]{val,  }\item[{}]{msg }\end{DoxyParamCaption})~if ((call) == (val)) \{perror(msg); return -\/1;\}}
+
+Check if the the return value of the call is equals to val, returns -\/1 if so. 

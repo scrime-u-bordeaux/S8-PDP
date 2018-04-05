@@ -1,0 +1,139 @@
+\hypertarget{structu_w_s_1_1_web_socket}{}\section{u\+WS\+:\+:Web\+Socket$<$ is\+Server $>$ Struct Template Reference}
+\label{structu_w_s_1_1_web_socket}\index{u\+W\+S\+::\+Web\+Socket$<$ is\+Server $>$@{u\+W\+S\+::\+Web\+Socket$<$ is\+Server $>$}}
+
+
+Inheritance diagram for u\+WS\+:\+:Web\+Socket$<$ is\+Server $>$\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=282pt]{structu_w_s_1_1_web_socket__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for u\+WS\+:\+:Web\+Socket$<$ is\+Server $>$\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{structu_w_s_1_1_web_socket__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structu_w_s_1_1_web_socket_1_1_prepared_message}{Prepared\+Message}}
+\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{structu_w_s_1_1_web_socket_a4fa18c2eb79a51f5059156d4671addb4}\label{structu_w_s_1_1_web_socket_a4fa18c2eb79a51f5059156d4671addb4}} 
+void {\bfseries send\+Prepared} (\mbox{\hyperlink{structu_w_s_1_1_web_socket_1_1_prepared_message}{Prepared\+Message}} $\ast$prepared\+Message, void $\ast$callback\+Data=nullptr)
+\item 
+\mbox{\Hypertarget{structu_w_s_1_1_web_socket_aadbc54e4cbf356b2f5108a04aac59565}\label{structu_w_s_1_1_web_socket_aadbc54e4cbf356b2f5108a04aac59565}} 
+void {\bfseries close} (int code=1000, const char $\ast$message=nullptr, size\+\_\+t length=0)
+\item 
+\mbox{\Hypertarget{structu_w_s_1_1_web_socket_ae0b13c1510caf30553aa5acb91642ec0}\label{structu_w_s_1_1_web_socket_ae0b13c1510caf30553aa5acb91642ec0}} 
+void {\bfseries transfer} (\mbox{\hyperlink{structu_w_s_1_1_group}{Group}}$<$ is\+Server $>$ $\ast$group)
+\item 
+\mbox{\Hypertarget{structu_w_s_1_1_web_socket_aaac83d1bb89b4b88adc38405b7cd2235}\label{structu_w_s_1_1_web_socket_aaac83d1bb89b4b88adc38405b7cd2235}} 
+void {\bfseries terminate} ()
+\item 
+\mbox{\Hypertarget{structu_w_s_1_1_web_socket_a12879c4cd8fcff77d902f051f4cbbcab}\label{structu_w_s_1_1_web_socket_a12879c4cd8fcff77d902f051f4cbbcab}} 
+void {\bfseries ping} (const char $\ast$message)
+\item 
+\mbox{\Hypertarget{structu_w_s_1_1_web_socket_aa39139f5c8fcdc1f5cd31261060e4a16}\label{structu_w_s_1_1_web_socket_aa39139f5c8fcdc1f5cd31261060e4a16}} 
+void {\bfseries send} (const char $\ast$message, Op\+Code op\+Code=Op\+Code\+::\+T\+E\+XT)
+\item 
+\mbox{\Hypertarget{structu_w_s_1_1_web_socket_a5d647cc961468a19e03f5402bc8fe292}\label{structu_w_s_1_1_web_socket_a5d647cc961468a19e03f5402bc8fe292}} 
+void {\bfseries send} (const char $\ast$message, size\+\_\+t length, Op\+Code op\+Code, void($\ast$callback)(\mbox{\hyperlink{structu_w_s_1_1_web_socket}{Web\+Socket}}$<$ is\+Server $>$ $\ast$web\+Socket, void $\ast$data, bool cancelled, void $\ast$reserved)=nullptr, void $\ast$callback\+Data=nullptr)
+\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{structu_w_s_1_1_web_socket_a92209f53234a84b326f3e58cdd029a7a}\label{structu_w_s_1_1_web_socket_a92209f53234a84b326f3e58cdd029a7a}} 
+static void {\bfseries finalize\+Message} (\mbox{\hyperlink{structu_w_s_1_1_web_socket_1_1_prepared_message}{Prepared\+Message}} $\ast$prepared\+Message)
+\item 
+\mbox{\Hypertarget{structu_w_s_1_1_web_socket_af57c28b7a655f112eed1d295ebe718d9}\label{structu_w_s_1_1_web_socket_af57c28b7a655f112eed1d295ebe718d9}} 
+static \mbox{\hyperlink{structu_w_s_1_1_web_socket_1_1_prepared_message}{Prepared\+Message}} $\ast$ {\bfseries prepare\+Message} (char $\ast$data, size\+\_\+t length, Op\+Code op\+Code, bool compressed, void($\ast$callback)(\mbox{\hyperlink{structu_w_s_1_1_web_socket}{Web\+Socket}}$<$ is\+Server $>$ $\ast$web\+Socket, void $\ast$data, bool cancelled, void $\ast$reserved)=nullptr)
+\item 
+\mbox{\Hypertarget{structu_w_s_1_1_web_socket_a7ed175a5270b2b213b4be76be291e71e}\label{structu_w_s_1_1_web_socket_a7ed175a5270b2b213b4be76be291e71e}} 
+static \mbox{\hyperlink{structu_w_s_1_1_web_socket_1_1_prepared_message}{Prepared\+Message}} $\ast$ {\bfseries prepare\+Message\+Batch} (std\+::vector$<$ std\+::string $>$ \&messages, std\+::vector$<$ int $>$ \&excluded\+Messages, Op\+Code op\+Code, bool compressed, void($\ast$callback)(\mbox{\hyperlink{structu_w_s_1_1_web_socket}{Web\+Socket}}$<$ is\+Server $>$ $\ast$web\+Socket, void $\ast$data, bool cancelled, void $\ast$reserved)=nullptr)
+\end{DoxyCompactItemize}
+\subsection*{Protected Types}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{structu_w_s_1_1_web_socket_a48b8c02c020918efad93ae4ae2d79c41}\label{structu_w_s_1_1_web_socket_a48b8c02c020918efad93ae4ae2d79c41}} 
+enum {\bfseries Compression\+Status} \+: char \{ {\bfseries D\+I\+S\+A\+B\+L\+ED}, 
+{\bfseries E\+N\+A\+B\+L\+ED}, 
+{\bfseries C\+O\+M\+P\+R\+E\+S\+S\+E\+D\+\_\+\+F\+R\+A\+ME}
+ \}
+\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{structu_w_s_1_1_web_socket_a37d2d26365abc721fd28a328410de016}\label{structu_w_s_1_1_web_socket_a37d2d26365abc721fd28a328410de016}} 
+{\bfseries Web\+Socket} (bool per\+Message\+Deflate, \mbox{\hyperlink{structu_s_1_1_socket}{u\+S\+::\+Socket}} $\ast$socket)
+\end{DoxyCompactItemize}
+\subsection*{Static Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{structu_w_s_1_1_web_socket_a255a3ee0ad980aa7b367e638d7884abe}\label{structu_w_s_1_1_web_socket_a255a3ee0ad980aa7b367e638d7884abe}} 
+static \mbox{\hyperlink{structu_s_1_1_socket}{u\+S\+::\+Socket}} $\ast$ {\bfseries on\+Data} (\mbox{\hyperlink{structu_s_1_1_socket}{u\+S\+::\+Socket}} $\ast$s, char $\ast$data, size\+\_\+t length)
+\item 
+\mbox{\Hypertarget{structu_w_s_1_1_web_socket_aa29241e250a9897464814d09d58a22cc}\label{structu_w_s_1_1_web_socket_aa29241e250a9897464814d09d58a22cc}} 
+static void {\bfseries on\+End} (\mbox{\hyperlink{structu_s_1_1_socket}{u\+S\+::\+Socket}} $\ast$s)
+\item 
+\mbox{\Hypertarget{structu_w_s_1_1_web_socket_a011523be4a9dd4f5e2d7c0fec62accad}\label{structu_w_s_1_1_web_socket_a011523be4a9dd4f5e2d7c0fec62accad}} 
+static bool {\bfseries refuse\+Payload\+Length} (uint64\+\_\+t length, \mbox{\hyperlink{structu_w_s_1_1_web_socket_state}{Web\+Socket\+State}}$<$ is\+Server $>$ $\ast$web\+Socket\+State)
+\item 
+\mbox{\Hypertarget{structu_w_s_1_1_web_socket_adbfe05565fb3d6d345b003bab8c1b1b0}\label{structu_w_s_1_1_web_socket_adbfe05565fb3d6d345b003bab8c1b1b0}} 
+static bool {\bfseries set\+Compressed} (\mbox{\hyperlink{structu_w_s_1_1_web_socket_state}{Web\+Socket\+State}}$<$ is\+Server $>$ $\ast$web\+Socket\+State)
+\item 
+\mbox{\Hypertarget{structu_w_s_1_1_web_socket_af8f1b59dac62f4a3a8ce6f4c5ebbf5e4}\label{structu_w_s_1_1_web_socket_af8f1b59dac62f4a3a8ce6f4c5ebbf5e4}} 
+static void {\bfseries force\+Close} (\mbox{\hyperlink{structu_w_s_1_1_web_socket_state}{Web\+Socket\+State}}$<$ is\+Server $>$ $\ast$web\+Socket\+State)
+\item 
+\mbox{\Hypertarget{structu_w_s_1_1_web_socket_ac010910abc21d49391ca890b0eba18c4}\label{structu_w_s_1_1_web_socket_ac010910abc21d49391ca890b0eba18c4}} 
+static bool {\bfseries handle\+Fragment} (char $\ast$data, size\+\_\+t length, unsigned int remaining\+Bytes, int op\+Code, bool fin, \mbox{\hyperlink{structu_w_s_1_1_web_socket_state}{Web\+Socket\+State}}$<$ is\+Server $>$ $\ast$web\+Socket\+State)
+\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{structu_w_s_1_1_web_socket_afff2c1e107c502cd56e4c6ebc91e6cd2}\label{structu_w_s_1_1_web_socket_afff2c1e107c502cd56e4c6ebc91e6cd2}} 
+std\+::string {\bfseries fragment\+Buffer}
+\item 
+\mbox{\Hypertarget{structu_w_s_1_1_web_socket_a71d49fc7a0c7707f4575a7c30aaea290}\label{structu_w_s_1_1_web_socket_a71d49fc7a0c7707f4575a7c30aaea290}} 
+enum u\+W\+S\+::\+Web\+Socket\+::\+Compression\+Status {\bfseries compression\+Status}
+\item 
+\mbox{\Hypertarget{structu_w_s_1_1_web_socket_a4bca0616dbb70137c6af4b624a1dd1b7}\label{structu_w_s_1_1_web_socket_a4bca0616dbb70137c6af4b624a1dd1b7}} 
+unsigned char {\bfseries control\+Tip\+Length} = 0
+\item 
+\mbox{\Hypertarget{structu_w_s_1_1_web_socket_aa5ef47d960be42371c55730c8e02c0bd}\label{structu_w_s_1_1_web_socket_aa5ef47d960be42371c55730c8e02c0bd}} 
+unsigned char {\bfseries has\+Outstanding\+Pong} = false
+\end{DoxyCompactItemize}
+\subsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{structu_w_s_1_1_web_socket_af20bcb1dd4e741f2423d470bb4cd994d}\label{structu_w_s_1_1_web_socket_af20bcb1dd4e741f2423d470bb4cd994d}} 
+struct {\bfseries Hub}
+\item 
+\mbox{\Hypertarget{structu_w_s_1_1_web_socket_affca6387c623de2a14b35a1906d4c67e}\label{structu_w_s_1_1_web_socket_affca6387c623de2a14b35a1906d4c67e}} 
+struct {\bfseries Group$<$ is\+Server $>$}
+\item 
+\mbox{\Hypertarget{structu_w_s_1_1_web_socket_adfdd169bc01521a773f206faec86954e}\label{structu_w_s_1_1_web_socket_adfdd169bc01521a773f206faec86954e}} 
+struct {\bfseries Http\+Socket$<$ is\+Server $>$}
+\item 
+\mbox{\Hypertarget{structu_w_s_1_1_web_socket_aa3516c90697652732deaa6ba9bfb375b}\label{structu_w_s_1_1_web_socket_aa3516c90697652732deaa6ba9bfb375b}} 
+struct {\bfseries u\+S\+::\+Socket}
+\item 
+\mbox{\Hypertarget{structu_w_s_1_1_web_socket_a66b6fc0432352dbcdd08ff562d68b81b}\label{structu_w_s_1_1_web_socket_a66b6fc0432352dbcdd08ff562d68b81b}} 
+class {\bfseries Web\+Socket\+Protocol$<$ is\+Server, Web\+Socket$<$ is\+Server $>$ $>$}
+\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+The documentation for this struct was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+bin/node\+\_\+modules/socket.\+io/node\+\_\+modules/engine.\+io/node\+\_\+modules/uws/src/Web\+Socket.\+h\item 
+bin/node\+\_\+modules/socket.\+io/node\+\_\+modules/engine.\+io/node\+\_\+modules/uws/src/Web\+Socket.\+cpp\end{DoxyCompactItemize}

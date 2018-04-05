@@ -1,0 +1,37 @@
+\hypertarget{class_effect}{}\section{Effect Class Reference}
+\label{class_effect}\index{Effect@{Effect}}
+
+
+Abstract class for every effect.  
+
+
+
+
+{\ttfamily \#include $<$Effect.\+hpp$>$}
+
+
+
+Inheritance diagram for Effect\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=123pt]{class_effect__inherit__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_effect_af8aa91c55bf4d6651e5aec73e0741379}\label{class_effect_af8aa91c55bf4d6651e5aec73e0741379}} 
+virtual void {\bfseries apply} (vector$<$ float $>$ \&in, vector$<$ float $>$ \&out)=0
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Abstract class for every effect. 
+
+This abstract class is used to process effects on our signals. It works as the parent class for any effect class, with the apply method consisting on applying an effect from the In buffer to the Out buffer. 
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Visual\+Impro/Effect.\+hpp\end{DoxyCompactItemize}

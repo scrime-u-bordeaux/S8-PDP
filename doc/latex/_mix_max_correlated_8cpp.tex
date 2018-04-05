@@ -1,0 +1,53 @@
+\hypertarget{_mix_max_correlated_8cpp}{}\section{Visual\+Impro/process/\+Mix/\+Mix\+Max\+Correlated.cpp File Reference}
+\label{_mix_max_correlated_8cpp}\index{Visual\+Impro/process/\+Mix/\+Mix\+Max\+Correlated.\+cpp@{Visual\+Impro/process/\+Mix/\+Mix\+Max\+Correlated.\+cpp}}
+
+
+Code containing the mix based on maximal correlations function.  
+
+
+{\ttfamily \#include \char`\"{}Mix\+Max\+Correlated.\+hpp\char`\"{}}\newline
+Include dependency graph for Mix\+Max\+Correlated.\+cpp\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=320pt]{_mix_max_correlated_8cpp__incl}
+\end{center}
+\end{figure}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+vector$<$ float $>$ \mbox{\hyperlink{_mix_max_correlated_8cpp_a5b5aeea23378fd93f3cb4ce4992d6bc2}{Mix\+Max\+Correlated}} (const \mbox{\hyperlink{class_matrix}{Matrix}}$<$ float $>$ \&correl\+Matrix)
+\begin{DoxyCompactList}\small\item\em The maximal correlation based function. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Code containing the mix based on maximal correlations function. 
+
+\begin{DoxyAuthor}{Author}
+Alexandre C\+A\+S\+A\+N\+O\+VA--F\+R\+A\+N\+G\+ER, Gauthier L\+A\+R\+M\+A\+R\+Q\+UE, Paul S\+I\+M\+O\+R\+RE, Lucas V\+I\+V\+AS 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+March 2018
+\end{DoxyDate}
+This function is used to process the mean correlation of each instrument. We will use it to mix the volume of each instrument depending on the correlation it has with others instruments. Here the most correlated instruments are played louder. 
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{_mix_max_correlated_8cpp_a5b5aeea23378fd93f3cb4ce4992d6bc2}\label{_mix_max_correlated_8cpp_a5b5aeea23378fd93f3cb4ce4992d6bc2}} 
+\index{Mix\+Max\+Correlated.\+cpp@{Mix\+Max\+Correlated.\+cpp}!Mix\+Max\+Correlated@{Mix\+Max\+Correlated}}
+\index{Mix\+Max\+Correlated@{Mix\+Max\+Correlated}!Mix\+Max\+Correlated.\+cpp@{Mix\+Max\+Correlated.\+cpp}}
+\subsubsection{\texorpdfstring{Mix\+Max\+Correlated()}{MixMaxCorrelated()}}
+{\footnotesize\ttfamily vector$<$ float $>$ Mix\+Max\+Correlated (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_matrix}{Matrix}}$<$ float $>$ \&}]{correl\+Matrix }\end{DoxyParamCaption})}
+
+
+
+The maximal correlation based function. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em correl\+Matrix} & The correlation matrix of signals \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A vector composed of values of the mean correlations of every instrument. 
+\end{DoxyReturn}

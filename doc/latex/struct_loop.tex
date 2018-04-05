@@ -1,0 +1,107 @@
+\hypertarget{struct_loop}{}\section{Loop Struct Reference}
+\label{struct_loop}\index{Loop@{Loop}}
+
+
+Inheritance diagram for Loop\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=272pt]{struct_loop__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Loop\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=272pt]{struct_loop__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{struct_loop_a0e4f4edfc717987a9dc16b4659511a75}\label{struct_loop_a0e4f4edfc717987a9dc16b4659511a75}} 
+void {\bfseries destroy} ()
+\item 
+\mbox{\Hypertarget{struct_loop_a65a5e4ff7f3a6be83f62270b5ef3c6a0}\label{struct_loop_a65a5e4ff7f3a6be83f62270b5ef3c6a0}} 
+void {\bfseries run} ()
+\item 
+\mbox{\Hypertarget{struct_loop_aaf7ca7ed2b9aeae8c6fb572b25c79759}\label{struct_loop_aaf7ca7ed2b9aeae8c6fb572b25c79759}} 
+{\bfseries Loop} (bool default\+Loop)
+\item 
+\mbox{\Hypertarget{struct_loop_a0e4f4edfc717987a9dc16b4659511a75}\label{struct_loop_a0e4f4edfc717987a9dc16b4659511a75}} 
+void {\bfseries destroy} ()
+\item 
+\mbox{\Hypertarget{struct_loop_a65a5e4ff7f3a6be83f62270b5ef3c6a0}\label{struct_loop_a65a5e4ff7f3a6be83f62270b5ef3c6a0}} 
+void {\bfseries run} ()
+\item 
+\mbox{\Hypertarget{struct_loop_acc2e05f20340b629f214ecd97f76fb7b}\label{struct_loop_acc2e05f20340b629f214ecd97f76fb7b}} 
+int {\bfseries get\+Epoll\+Fd} ()
+\item 
+\mbox{\Hypertarget{struct_loop_a0e4f4edfc717987a9dc16b4659511a75}\label{struct_loop_a0e4f4edfc717987a9dc16b4659511a75}} 
+void {\bfseries destroy} ()
+\item 
+\mbox{\Hypertarget{struct_loop_a65a5e4ff7f3a6be83f62270b5ef3c6a0}\label{struct_loop_a65a5e4ff7f3a6be83f62270b5ef3c6a0}} 
+void {\bfseries run} ()
+\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{struct_loop_a3ae389e2eb54a4df8ee9c8db0cec824c}\label{struct_loop_a3ae389e2eb54a4df8ee9c8db0cec824c}} 
+static \mbox{\hyperlink{struct_loop}{Loop}} $\ast$ {\bfseries create\+Loop} (bool default\+Loop=true)
+\item 
+\mbox{\Hypertarget{struct_loop_a3ae389e2eb54a4df8ee9c8db0cec824c}\label{struct_loop_a3ae389e2eb54a4df8ee9c8db0cec824c}} 
+static \mbox{\hyperlink{struct_loop}{Loop}} $\ast$ {\bfseries create\+Loop} (bool default\+Loop=true)
+\item 
+\mbox{\Hypertarget{struct_loop_a3ae389e2eb54a4df8ee9c8db0cec824c}\label{struct_loop_a3ae389e2eb54a4df8ee9c8db0cec824c}} 
+static \mbox{\hyperlink{struct_loop}{Loop}} $\ast$ {\bfseries create\+Loop} (bool default\+Loop=true)
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{struct_loop_a077b987eafb8df92652644f5805d2a18}\label{struct_loop_a077b987eafb8df92652644f5805d2a18}} 
+int {\bfseries epfd}
+\item 
+\mbox{\Hypertarget{struct_loop_afea5243a49f2850dc3112f33727bb21d}\label{struct_loop_afea5243a49f2850dc3112f33727bb21d}} 
+int {\bfseries num\+Polls} = 0
+\item 
+\mbox{\Hypertarget{struct_loop_aff667f9128bdec659ed794b7a7681eab}\label{struct_loop_aff667f9128bdec659ed794b7a7681eab}} 
+bool {\bfseries cancelled\+Last\+Timer}
+\item 
+\mbox{\Hypertarget{struct_loop_a72fd8d2054b50d375bdf0dc4343c3526}\label{struct_loop_a72fd8d2054b50d375bdf0dc4343c3526}} 
+int {\bfseries delay} = -\/1
+\item 
+\mbox{\Hypertarget{struct_loop_a1dccc690d15c5cfaaff5966cb28c6ad4}\label{struct_loop_a1dccc690d15c5cfaaff5966cb28c6ad4}} 
+epoll\+\_\+event {\bfseries ready\+Events} \mbox{[}1024\mbox{]}
+\item 
+\mbox{\Hypertarget{struct_loop_a500ad2e79ebc1f24e395b3bd65e02959}\label{struct_loop_a500ad2e79ebc1f24e395b3bd65e02959}} 
+std\+::chrono\+::system\+\_\+clock\+::time\+\_\+point {\bfseries timepoint}
+\item 
+\mbox{\Hypertarget{struct_loop_a11f8229ab398d876a31d6013624c41d3}\label{struct_loop_a11f8229ab398d876a31d6013624c41d3}} 
+std\+::vector$<$ \mbox{\hyperlink{struct_timepoint}{Timepoint}} $>$ {\bfseries timers}
+\item 
+\mbox{\Hypertarget{struct_loop_ad40c991d48075dee0964b84d1d0368d4}\label{struct_loop_ad40c991d48075dee0964b84d1d0368d4}} 
+std\+::vector$<$ std\+::pair$<$ \mbox{\hyperlink{struct_poll}{Poll}} $\ast$, void($\ast$)(\mbox{\hyperlink{struct_poll}{Poll}} $\ast$)$>$ $>$ {\bfseries closing}
+\item 
+\mbox{\Hypertarget{struct_loop_a710414a00809103997df767407b88b41}\label{struct_loop_a710414a00809103997df767407b88b41}} 
+void($\ast$ {\bfseries pre\+Cb} )(void $\ast$) = nullptr
+\item 
+\mbox{\Hypertarget{struct_loop_a547efe453e2ed50f459505c5bba4f95d}\label{struct_loop_a547efe453e2ed50f459505c5bba4f95d}} 
+void($\ast$ {\bfseries post\+Cb} )(void $\ast$) = nullptr
+\item 
+\mbox{\Hypertarget{struct_loop_a012a840c9d70042d9798c388549e74d7}\label{struct_loop_a012a840c9d70042d9798c388549e74d7}} 
+void $\ast$ {\bfseries pre\+Cb\+Data}
+\item 
+\mbox{\Hypertarget{struct_loop_a5d71f572548faedd2b0b558bb1795f37}\label{struct_loop_a5d71f572548faedd2b0b558bb1795f37}} 
+void $\ast$ {\bfseries post\+Cb\+Data}
+\end{DoxyCompactItemize}
+
+
+The documentation for this struct was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+bin/node\+\_\+modules/socket.\+io/node\+\_\+modules/engine.\+io/node\+\_\+modules/uws/src/Asio.\+h\item 
+bin/node\+\_\+modules/socket.\+io/node\+\_\+modules/engine.\+io/node\+\_\+modules/uws/src/Epoll.\+h\item 
+bin/node\+\_\+modules/socket.\+io/node\+\_\+modules/engine.\+io/node\+\_\+modules/uws/src/Libuv.\+h\end{DoxyCompactItemize}

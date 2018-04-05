@@ -1,0 +1,77 @@
+\hypertarget{_preproc_energy_8cpp}{}\section{Visual\+Impro/process/\+Preproc/\+Preproc\+Energy.cpp File Reference}
+\label{_preproc_energy_8cpp}\index{Visual\+Impro/process/\+Preproc/\+Preproc\+Energy.\+cpp@{Visual\+Impro/process/\+Preproc/\+Preproc\+Energy.\+cpp}}
+
+
+Code containing the preprocessing based on energy function.  
+
+
+{\ttfamily \#include \char`\"{}Preproc\+Energy.\+hpp\char`\"{}}\newline
+Include dependency graph for Preproc\+Energy.\+cpp\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_preproc_energy_8cpp__incl}
+\end{center}
+\end{figure}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+vector$<$ float $>$ \mbox{\hyperlink{_preproc_energy_8cpp_a99a7f7b621cd520f4f1e4ef1dc949e5d}{energyenvelope}} (const vector$<$ float $>$ \&f1, int frame)
+\begin{DoxyCompactList}\small\item\em process a vector\textquotesingle{}s energy envelope \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_matrix}{Matrix}}$<$ float $>$ \mbox{\hyperlink{_preproc_energy_8cpp_a56bc637e687109e0ebd16837981d010b}{Preproc\+Energy}} (const \mbox{\hyperlink{class_matrix}{Matrix}}$<$ float $>$ \&input)
+\begin{DoxyCompactList}\small\item\em process a \mbox{\hyperlink{class_matrix}{Matrix}}\textquotesingle{}s energy envelope \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Code containing the preprocessing based on energy function. 
+
+\begin{DoxyAuthor}{Author}
+Jérémy L\+I\+X\+A\+N\+D\+RE 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+July 2017
+\end{DoxyDate}
+This is a preprocessing function returning a \mbox{\hyperlink{class_matrix}{Matrix}} which has in every line the energy envelope of each instrument of the original \mbox{\hyperlink{class_matrix}{Matrix}} of signals given in parameter. 
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{_preproc_energy_8cpp_a99a7f7b621cd520f4f1e4ef1dc949e5d}\label{_preproc_energy_8cpp_a99a7f7b621cd520f4f1e4ef1dc949e5d}} 
+\index{Preproc\+Energy.\+cpp@{Preproc\+Energy.\+cpp}!energyenvelope@{energyenvelope}}
+\index{energyenvelope@{energyenvelope}!Preproc\+Energy.\+cpp@{Preproc\+Energy.\+cpp}}
+\subsubsection{\texorpdfstring{energyenvelope()}{energyenvelope()}}
+{\footnotesize\ttfamily vector$<$ float $>$ energyenvelope (\begin{DoxyParamCaption}\item[{const vector$<$ float $>$ \&}]{f1,  }\item[{int}]{frame }\end{DoxyParamCaption})}
+
+
+
+process a vector\textquotesingle{}s energy envelope 
+
+Cuts f1 in blocks of length \textquotesingle{}frame\textquotesingle{} and applies norm to get the energy of the signal
+
+
+\begin{DoxyParams}{Parameters}
+{\em f1} & The vector to process \\
+\hline
+{\em frame} & The length of one frame to process \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A vector corresponding to the energy envelope of f1. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{_preproc_energy_8cpp_a56bc637e687109e0ebd16837981d010b}\label{_preproc_energy_8cpp_a56bc637e687109e0ebd16837981d010b}} 
+\index{Preproc\+Energy.\+cpp@{Preproc\+Energy.\+cpp}!Preproc\+Energy@{Preproc\+Energy}}
+\index{Preproc\+Energy@{Preproc\+Energy}!Preproc\+Energy.\+cpp@{Preproc\+Energy.\+cpp}}
+\subsubsection{\texorpdfstring{Preproc\+Energy()}{PreprocEnergy()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_matrix}{Matrix}}$<$ float $>$ Preproc\+Energy (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_matrix}{Matrix}}$<$ float $>$ \&}]{input }\end{DoxyParamCaption})}
+
+
+
+process a \mbox{\hyperlink{class_matrix}{Matrix}}\textquotesingle{}s energy envelope 
+
+
+\begin{DoxyParams}{Parameters}
+{\em input} & The matrix to process \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A matrix corresponding to the energy envelope of input. 
+\end{DoxyReturn}
