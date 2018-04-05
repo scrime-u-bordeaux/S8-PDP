@@ -48,5 +48,15 @@ En ce qui concerne l'énergie du signal, le principe est le suivant : on va déc
 ce qui va réduire les temps de calcul, donc les latences.
 \subsubsection{Le calcul du coeffcient de corrélation}
 \paragraph{}
-C'est à cette étape que l'on va calculer le coefficient de corrélation. Comme indiqué dans l'introduction de ce mémoire, la vision que l'on a d'une bonne improvisation est totalement 
+C'est à cette étape que l'on va calculer le coefficient de corrélation. Les coefficients sont calculés pour chaque paire d'entrées, donc pour N entrées nous obtenons une matrice de coefficients $N \times N$ symétrique où la diagonale n'est significative. Comme indiqué dans l'introduction de ce mémoire, la vision que l'on a d'une bonne improvisation est totalement subjective. De ce fait, les fonctions calculant un coefficient de corrélation n'ont pas l'obligation d'être rigoureuses (physiquement et mathématiquement parlant). Pour illustrer notre propos, nous avons mis à disposition une fonction retournant des valeurs aléatoires (toujours comprises entre 0 et 1 dans un soucis de généricité), ce qui donnera un retour visuel et audio tout aussi aléatoire.
+\subsubsection{La modification du volume}
+\paragraph{}
+Après avoir obtenu un coefficient de corrélation (et quelque soit la manière), on va modifier les volumes des entrées en fonction des coefficients obtenus. À ce jour, il y a deux fonctions de mixage des volumes disponibles : une qui va augmenter le volume proportionnellement par rapport au  coeffcient de corrélation, et sa fonction de mixage complémentaire (qui va diminuer le volume d'une entrée proportionnellement à son coeffcient de corrélation). Pour chaque entrée, le résultat obtenu est la moyenne de ses coefficients de corrélation obtenus avec toutes les autres entrées.
+\subsubsection{La traduction en triplet RGB}
+\paragraph{}
+Pour obtenir un retour graphique pertinent, la matrice de coefficients de corrélation va être associée à une couleur dans une échelle indiquée en paramètre. Les échelles de couleur disponibles à ce jour sont l'échelle noire/blanche et l'échelle rouge/vert. Les coefficients vont alors être traduits en triplets RGB, afin qu'ils puissent être affichés simplement par la suite.
+%Screenshots matrice avec les deux échelles de couleur
+\paragraph{}
+Enfin, après avoir réalisé ces 4 étapes, l'ultime travail de la tâche auxiliaire est d'envoyer la matrice de triplets RGB via une connexion TCP vers l'entité s'occupant de l'affichage (serveur NodeJS ou application QT).
+%schéma maggle
 

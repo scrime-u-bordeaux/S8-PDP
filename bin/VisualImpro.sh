@@ -102,9 +102,13 @@ function default_display(){
   #Catch Ctrl-C signal to do cleanup and saves.
   trap cleanup_firefox SIGINT
   #Copy .wav files into Bela
-  awk -F" " -v wavpath="$WAVPATH" '$1 ==  "FILE" {system("scp "$2" root@192.168.7.2:"wavpath"")}' config.cfg
+  awk -F" " -v wavpath="$WAVPATH" '$1 ==  "FILE" {system("scp -r "$2" root@192.168.7.2:"wavpath"")}' config.cfg
   #Modifying configuration file to match Bela path to .wav files
-  awk -F" " -v wavpath="$WAVPATH" '$1=="FILE" {gsub("tracks/", ""); gsub($2, ""wavpath""$2"")};1' config.cfg > configtmp.cfg
+  # awk -F" " -v wavpath="$WAVPATH" '$1=="FILE" {gsub("tracks/", ""); gsub($2, ""wavpath""$2"")};1' config.cfg > configtmp.cfg
+
+  path=($(awk -F" " '$1=="FILE" {print $2};' config.cfg))
+  change_path $path
+  awk -F" " -v PATH="${path[*]}" 'BEGIN {split(PATH, path, / /); i=1;} $1=="FILE" {gsub($2, ""path[i]""); i++;};1' $CONFIGFILE > $CONFIGTMPFILE
   #Copy configuration file into Bela
   scp configtmp.cfg root@192.168.7.2:/root/Bela/projects/VisualImpro/config/
   sleep 3
