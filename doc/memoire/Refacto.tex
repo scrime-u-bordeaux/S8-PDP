@@ -201,10 +201,19 @@ répertoire \verb!process! ont été déplacées et réparties dans le code
 pour éviter ces inclusions systématiques. Nous avons également crée
 une classe \verb!RGB! en remplacement de la structure \verb!RGB! que
 contenait \verb!utilities!. Elle regroupe également les fonctions
-refactorées de l'ancienne classe \verb!triplet!. Parmi celles-ci,
-certains calculs notamment ceux permettant la conversion d'entiers en
-valeurs hexadécimales ont été simplifiés.
+refactorées de l'ancienne classe \verb!triplet!.
 \paragraph{}
+Face au grand nombre de traitements de matrices dans le code, nous
+avons choisi d'implémenter une classe \verb!Matrix.cpp! afin d'éviter
+d'utiliser systématiquement des vecteurs de vecteurs de flottants,
+procédé lourd en écriture et exigeant l'écriture de fonctions de
+traitement de vecteurs de vecteurs. La nouvelle classe \verb!Matrix!
+rassemble toutes les opérations sur les matrices nécessaires au
+programme, en plus de divers constructeurs pour créer des matrices de
+différents types selon différents paramètres. Classe
+\textit{template}, \verb!Matrix! permet de créer des matrices
+d'entiers, de flottants ou bien de triplets RGB.
+
 
 \subsubsection{Optimisation du code}
 \paragraph{}
@@ -262,18 +271,7 @@ Au sein de la nouvelle classe \verb!RGB!, de nombreux calculs notamment ceux per
 \subsubsection{Autres remarques}
   
 
-  - Nous avions beaucoup de traitements sur des matrices dans notre code, mais
-  nous ne disposions auparavant pas de classe pour répondre à ce besoin, ce qui
-  faisait que nous utilisions des vecteurs de vecteurs de flottants pour nos
-  traitements. Cela était très lourd d'écriture, et demandait d'écrire des
-  fonctions de traitement de vecteurs de vecteurs quelque part pour nos
-  opérations, et ces fonctions étaient donc définies dans le fichier utilities
-  avec le reste. Nous avons donc créé une classe Matrix correspondant à un
-  vecteur de vecteur et contenant toutes les opérations sur les matrices dont
-  nous avons besoins, en plus de nombreux constructeurs pour créer des matrices
-  de différents types, selon différents paramètres. Cette classe Matrix est une
-  classe template, et permet ici de créer des matrices d'entiers, de flottants,
-  ou bien de triplets RGB.
+ 
 
   -Nous avons effectué des tests de ces deux nouvelles classes, Matrix et RGB,
   dans le dossier de TestClasses lui même dans le dossier test, contenant
