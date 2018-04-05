@@ -54,8 +54,8 @@ l'organisation des fichiers.
        \verb!launch(int argc, char *argv[])! qui elle-même appelle
        d'autres fonctions (lesquelles, parfois, en appellent elles-mêmes
        de nouvelles).
-
-\begin{lstlisting}[language=C, frame=single, breaklines=true]
+       
+       \begin{lstlisting}[language=C, frame=single, breaklines=true]
 static void launch(int argc, char *argv[]){
   ChSettings gChSettings;
   Parser config;
@@ -69,12 +69,12 @@ static void launch(int argc, char *argv[]){
   stopAndCleanupAudio();
   freeAndClose(gChSettings, config, p, handle);
 }
-\end{lstlisting}
-
+ \end{lstlisting}
+ 
  \begin{center}
   \textit{Ci-dessus, le code de la fonction launch}
  \end{center}
-
+ 
  \item Nous avons de même effectué un découpage fonctionnel sur la
        fonction \\ \verb!bool setup!  du fichier \verb!render.cpp!. Ce
        fichier, qui présentait tout comme \verb!main.cpp! une
@@ -89,8 +89,8 @@ static void launch(int argc, char *argv[]){
        pistes), et il n'était pas possible de la découper sans créer de
        conflits sur les variables enregistrant le nombre de tours de
        boucle ou les variables contenant les signaux audio par exemple.
-
-\begin{lstlisting}[language=C, frame=single, breaklines=true]
+       
+       \begin{lstlisting}[language=C, frame=single, breaklines=true]
 bool setup(BelaContext *context, void *userData) {
   gUserSet = *((ChSettings *)userData);
   initUserSet(gUserSet);
@@ -99,12 +99,12 @@ bool setup(BelaContext *context, void *userData) {
   printInfo();
   return initAuxiliaryTasks();
 }
-\end{lstlisting}
-
+ \end{lstlisting}
+ 
  \begin{center}
   \textit{Ci-dessus, le code de la fonction setup}
  \end{center}
-
+ 
  \item \`{A} l'intérieur du dossier \verb!process!, les
        différents fichiers de traitement ont été classés par
        fonctions en quatre dossiers \verb!Coeff!, \verb!Color!,
@@ -115,7 +115,7 @@ bool setup(BelaContext *context, void *userData) {
        de fichiers de test). Le fichier TestMain contenu à la racine du
        dossier test se chargera de récupérer le registre de l'ensemble
        des tests contenus dans les différents dossiers.
-
+       
  \item D'une manière générale, les fichiers ont été triés pour
        ordonner l'architecture proposée par Jérémy qui était un peu
        confuse ; des fichiers de code n'ayant rien à voir entre eux
@@ -128,7 +128,7 @@ bool setup(BelaContext *context, void *userData) {
        les fichiers Makefile en conséquence. Le fichier de
        configuration \verb!config.cfg! a notamment été déplacé dans
        un nouveau dossier \verb!bin!.
-
+       
  \item Dans le code livré par Jérémy Lixandre, un dossier
        \verb!VisualImproExe! regroupait un fichier de
        configurations, les fichiers relatifs à NodeJS, un fichier
@@ -312,7 +312,7 @@ l'exécution du programme.
 
 \subsubsection{L'implémentation de la méthode d'affichage sous Qt}
 \paragraph{}
-\`{A} l'intérieur du dossier \verb!GUI! répertoriant les fonctions
+\`{A} l'intérieur du dossier \verb!GUI! répertoriant les classes
 dédiées aux affichages graphiques, le dossier \verb!mainWindow!
 contient l'architecture propre à l'affichage de la matrice graphique
 via Qt. Elle contient une classe, \verb!GUIWindow!, et deux
@@ -323,7 +323,8 @@ BELA.
 L'architecture \verb!mainWindow! a pour unique rôle d'afficher la
 matrice graphique de corrélations et de la mettre à jour en temps
 réel. Elle réagit aux mises à jour transmises par BELA via
-\verb!render.cpp! et hérite de la classe Qt \verb!QMainWindow! ce qui
+\verb!render.cpp! à l'aide de d'une connection TCP
+et hérite de la classe Qt \verb!QMainWindow! ce qui
 lui permet notamment d'afficher des menus. \`{A} l'avenir, ces menus
 pourront permettre à l'utilisateur de modifier des configurations du
 programme en temps réel si un successeur implémente cette
@@ -334,17 +335,20 @@ fonctionnalité.
 \paragraph{}
 La classe \verb!GUIImageMatrix! du répertoire \verb!layout! contient
 un objet de type \verb!QPixMap! dont les couleurs sont mises à jour
-pour chaque rectangle le composant. Il s'agit d'une image de très
-petite taille (car contenant peu de pixels) et qui rend cette méthode
-d'affichage plus légère et performante que celle de notre
-prédécesseur.
+pour chaque rectangle le composant.
 
 \paragraph{}
 La classe \verb!GUITCPServer! du répertoire \verb!server! constitue un
-serveur TCP permettant la communication avec BELA. Il se connecte au
-système embarqué et crée une socket ; les paquets transmis par BELA et
+serveur TCP permettant la communication avec BELA. BELA se connecte a ce
+serveur et crée une socket ; les paquets transmis par BELA et
 contenant une matrice codée sous forme d'un objet de type
 \verb!string! sont retraduits en matrice RGB. Le framework Qt permet
 la communication entre le \textit{layout} et le \textit{server} via
 l'émission de signaux depuis le serveur, transmettant les données de
-la matrice.
+la matrice à \textit{layout}.
+
+\paragraph{}
+Comme cette méthode affichage contient uniquement un serveur et un affichage
+de matrice via une image, le programme se retrouve
+extrêment allégé par rapport au programme de notre prédécesseur qui utilisais
+Firefox ainsi que NodeJS.
