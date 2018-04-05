@@ -83,14 +83,14 @@ for(unsigned int i=0; i<context->audioOutChannels; i++){
 }
 \end{lstlisting}
 
-\begin{center} \textit{Ci-dessus, l'implémentation du retour sonore
+\begin{center} Ci-dessus, l'implémentation du retour sonore
   dans le corps de la fonction principale de \verb!render.cpp!. Via la
   fonction \verb!audioWrite!, la variable \verb!out! récupère un à un
   les signaux de chaque type de piste sonore
   (audio/analogique/digitale) multipliés par la moyenne de leurs
   coefficients de corrélation par rapport aux autres
-  signaux.} \end{center}
- 
+  signaux. \end{center}
+
  \paragraph{}
  Dans le fichier \verb!render.cpp!, la fonction
  \verb!void processBuffer()! est utilisée comme tâche auxiliaire de la
@@ -103,7 +103,7 @@ for(unsigned int i=0; i<context->audioOutChannels; i++){
  de \verb!render.cpp!.
  \paragraph{}
  Dans l'implémentation de Jérémy Lixandre, le traitement des tâches
- auxiliaires dans \verb!render.cpp! se faisait à sens unique
+ auxiliaires dans \verb!render.cpp! se fait à sens unique
  (exécution de tâches auxiliaires sans retour de valeur dans la boucle
  de traitement principale). Afin de récupérer le résultat du
  traitement de la fonction de mixage, nous avons passé la référence du
@@ -115,7 +115,7 @@ for(unsigned int i=0; i<context->audioOutChannels; i++){
  ainsi d'affecter les valeurs de retour de la fonction de mixage au
  vecteur ; c'est ainsi que la modification des volumes devient
  possible.
- 
+
  \begin{lstlisting}[language=C, frame=single, breaklines=true]
 void ProcessMultiCorrel::process(const Matrix<float>& buffer,
                                  vector<float>& meanCorrelations,
@@ -136,7 +136,7 @@ void ProcessMultiCorrel::process(const Matrix<float>& buffer,
  \begin{center}
   \textit{L'appel de la fonction \verb!process! ci-dessus exécute une série de fonctions de traitement de manière séquentielle.}
  \end{center}
- 
+
  \begin{lstlisting}[language=C, frame=single, breaklines=true]
   void ProcessMultiCorrel::process_volume(const Matrix<float>&
                                             correlMatrix,
@@ -148,16 +148,16 @@ void ProcessMultiCorrel::process(const Matrix<float>& buffer,
  \begin{center}
   \textit{Ci-dessus, la fonction appelée dans le corps de la fonction \verb!process!. Nous l'avons implémentée de sorte à altérer en son sein la valeur du vecteur des moyennes de corrélation passé par référence en paramètre.}
  \end{center}
- 
+
  \subsection{L'interface de configuration utilisateur}
- 
+
  \begin{figure}[H]
   \centering
   \includegraphics[scale=0.5]{assets/settingsWindow.png}
   \caption{Fenêtre de configuration}
   \label{schéma global}
  \end{figure}
- 
+
  \subsubsection{Présentation de l'architecture}
  Afin d'implémenter l'interface de configuration utilisateur
  précédemment abordée nous avons ajouté à l'architecture du programme
@@ -165,14 +165,14 @@ void ProcessMultiCorrel::process(const Matrix<float>& buffer,
  du programme.  Le sous-répertoire contenant les fichiers relatifs à
  l'implémentation de l'interface de configuration se nomme
  \verb!settingWindow!.
- 
+
  \begin{figure}[H]
   \centering
   \includegraphics[scale=0.3]{assets/umlSettingWindow.png}
   \caption{Schéma UML de la fenêtre de configuration}
   \label{schéma global}
  \end{figure}
- 
+
  \paragraph{}
  La classe principale de cette interface de configuration est la
  classe \verb!settingWindow!. Elle constitue une fenêtre vide destinée
@@ -196,15 +196,15 @@ void ProcessMultiCorrel::process(const Matrix<float>& buffer,
   \item \verb!GUIProcessSettingLayout.cpp! permet d'afficher le menu de sélection des fonctions de traitement que l'on souhaite employer
   \item \verb!GUIWavFileSettingLayout.cpp! permet d'afficher le menu de sélection des fichiers numériques audio à ajouter au programme
  \end{itemize}
- 
- 
+
+
  \begin{figure}[H]
   \centering
   \includegraphics[scale=0.5]{assets/umlBuilder.png}
   \caption{Diagramme UML du \textit{builder}}
   \label{schéma global}
  \end{figure}
- 
+
  \paragraph{}
  Le répertoire \verb!fileSetting! contient un autre \textit{pattern} de
  conception, un \textit{builder} ou "monteur" générant un fichier de sortie au
@@ -212,7 +212,7 @@ void ProcessMultiCorrel::process(const Matrix<float>& buffer,
  sorte à ce qu'à l'avenir, un futur programmeur puisse modifier ce format de
  retour afin que le programme puisse se passer du fichier de configuration.
  Pour l'instant, le fichier de retour est un fichier de type \verb!.cfg! transmis à BELA.
- 
+
  \subsubsection{Détails de l'implémentation}
  \paragraph{}
  \textbf{La classe GUISettingWindow} contient tous les
@@ -235,8 +235,8 @@ void ProcessMultiCorrel::process(const Matrix<float>& buffer,
  chercher, dans un dossier portant le nom donné en paramètre, les
  fichiers identifiés comme correspondant au nom en question, afin de
  permettre le choix de la fonction de traitement.
- 
- 
+
+
  \subsection{Autres ajouts mineurs sur le programme}
  \paragraph{}
  Nous avons implémenté une nouvelle fonction de corrélation dédiée aux
