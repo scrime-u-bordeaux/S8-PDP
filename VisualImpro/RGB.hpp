@@ -1,7 +1,6 @@
 #ifndef DEF_RGB
 #define DEF_RGB
 
-#include <iostream>
 #include <string>
 
 /**

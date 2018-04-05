@@ -12,7 +12,6 @@
 
 #include <cctype>
 #include <cstring>
-#include <iostream>
 #include "parse.hpp"
 
 string get_next_word(string::iterator * it){
