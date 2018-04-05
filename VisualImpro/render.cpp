@@ -343,7 +343,7 @@ bool setup(BelaContext *context, void *userData) {
  * The second primary Bela function used in this file.
  * The render function is called recursively until it is told to stop by a
  * signal. We use this function to launch auxiliary task, executed by other
- * threads, and write the audio frames in the audio standar output.
+ * threads, and write the audio frames in the audio standard output.
  */
 void render(BelaContext *context, void *userData) {
 
