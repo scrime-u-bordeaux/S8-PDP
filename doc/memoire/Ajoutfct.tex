@@ -166,57 +166,62 @@ void ProcessMultiCorrel::process(const Matrix<float>& buffer,
   \label{schéma global}
  \end{figure}
 
-
  \paragraph{}
  La classe principale de cette interface de configuration est la
- classe \verb!settingWindow!. Elle constitue une fenêtre vide
- destinée à afficher les données suivantes via un layout principale :
+ classe \verb!settingWindow!. Elle constitue une fenêtre vide destinée
+ à afficher les données suivantes via les fichiers du répertoire
+ \verb!layout! :
  \begin{itemize}
-  \item Paramètres de fonction de traitement.
-  \item Paramètres du nombre d'entrées audio et analog.
+  \item Paramètres des fonctions de traitement.
+  \item Paramètres du nombre d'entrées audio et analogiques.
   \item Choix des fichiers audio \textit{.wav}.
  \end{itemize}
- Afin de créer de pouvoir créer ces parties, la fenêtre se sert d'une factory,
- % a AJOUTER
- - la factory permet de créer toutes les parties.
- -dans chaqu'un des layout la fenetre principale peut ajouter un paramètre a chaque
- partie.
- -chaqu'une des parties permet d'extraire un resultat precis : input pour recuperer un nombre
- process pour nom de fonction,wav pour fichier wav.
- -une fois que tout les paramètres , la fenetre va les recuperer et creer un
- fichier de sortie a laide d'un builder.
- -le builder sert a crée un fichier de sortie suivant un certains format. Dans le
- futur on pourra s'en servir pour creer un nouveaux format de retour pour pouvoir
- se passe du fichier config.
- -dans notre cas le type de fichier est un fichier cfg qui sera envoyer a bela.
-
- \subsubsection{Fonctionnement de chaque classe}
+ Afin de pouvoir créer ces parties, on utilise le \textit{pattern} de
+ conception \textit{factory}, ou "fabrique". Une seule fabrique,
+ implémentée dans l'architecture du sous-répertoire \verb!layout! à
+ partir de la classe \verb!GUISettingLayoutFactory! permet de réunir
+ l'ensemble des données exposées ci-dessus dans la fenêtre graphique.
  \paragraph{}
- -classe setting window contient tout les layouts et un bouton fin quand tout les
- parametre sont mis. le nombre d'input doit etre superieur ou egal a 2 car sinon pas de
- correlation.
- - toute les classes layout herite de GUISettingLayout qui possede la fonction
- abstract getSettings qui permet de retourner tout les parametre selectionné dans le layout.
- -inputSettinLayout contient pour chacune de ses sous parties un slider et une box
- pour pouvoir selectionné un nombre. Le nombre selectionné est compris entre un
- minimum et un maximum initialisé a la creation de la partie.
- -wavfilesetting permet de chercher des fichiers wav et de stocker leurs chemin
- absolut
- -processSetting va chercher, dans un dossier portant un nom egale au nom données
- en paramètre, les fichiers portant le nom de ce dossier, ou il y a une fonction
- et permettra de choisir la fonction que l'utilisateur voudra.
+ Chacune des autres classes du répertoire \verb!layout! représente un
+ paramètre disposable dans la fenêtre principale de configuration.
+ \begin{itemize}
+ \item \verb!GUIInputSettingLayout.cpp! permet d'afficher le menu de sélection du nombre de pistes sonores en entrée
+ \item \verb!GUIProcessSettingLayout.cpp! permet d'afficher le menu de sélection des fonctions de traitement que l'on souhaite employer
+   \item \verb!GUIWavFileSettingLayout.cpp! permet d'afficher le menu de sélection des fichiers numériques audio à ajouter au programme
+ \end{itemize}
+ %SCREENSHOT MENU
+ \paragraph{}
+ Le répertoire \verb!fileSetting! contient un autre \textit{pattern} de conception, un \textit{builder} ou "monteur" générant un fichier de sortie au format particulier. L'implémentation du \textit{builder} a été pensée de sorte à ce qu'à l'avenir, un futur programmeur puisse modifier ce format de retour afin que le programme puisse se passer du fichier de configuration. Pour l'instant, le fichier de retour est un fichier de type \verb!.cfg! transmis à BELA.
 
-
+ \subsubsection{Détails de l'implémentation}
+ \paragraph{}
+ \textbf{La classe GUISettingWindow} contient tous les
+ \textit{layouts} et un bouton "fin" quand tous les paramètres sont
+ rassemblés. Elle garantit que le nombre de pistes sonores en entrée
+ (\textit{inputs}) est supérieur ou égal à 2 ; dans le cas contraire,
+ on ne peut pas calculer de corrélation.
+ \paragraph{}
+ \textbf{Les classes du dossier layout} héritent toutes de la classe
+ \verb!GUISettingLayout! qui, grâce à la fonction abstraite
+ \verb!virtual const QStringList getSettings!, peut retourner tous les
+ paramètres sélectionnés dans la fenêtre graphique.
+ \paragraph{}
+ Parmi celles-ci, \textbf{la classe GUIInputSettingLayout} implémente
+ un menu déroulant et une boîte dans laquelle l'utilisateur peut
+ sélectionner un nombre compris entre un et maximum initialisé à la
+ création de la fenêtre. \textbf{La classe GUIWavFileSettingLayout}
+ stocke le chemin absolu des fichers \verb!.wav! sélectionnés par
+ l'utilisateur. Enfin, \textbf{la classe GUIProcessSettingLayout} va
+ chercher, dans un dossier portant le nom donné en paramètre, les
+ fichiers identifiés comme correspondant au nom en question, afin de
+ permettre le choix de la fonction de traitement.
 
  \begin{figure}[h]
   \centering
   \includegraphics[scale=0.5]{assets/umlBuilder.png}
-  \caption{Schéma global du dispositif de VisualImpro}
+  \caption{Diagramme UML du \textit{builder} décrit plus haut}
   \label{schéma global}
  \end{figure}
-
- \paragraph{}
- La fenêtre de configuration%AJOUTER
 
  \subsection{Autres ajouts mineurs sur le programme}
  \paragraph{}
