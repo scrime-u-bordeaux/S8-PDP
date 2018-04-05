@@ -11,7 +11,9 @@
 #include <QtGui>
 #include <QWidget>
 #include <vector>
+
 #include "RGB.hpp"
+#include "Matrix.hpp"
 
 #define SQUARE_SIZE 200
 
@@ -53,12 +55,12 @@ public:
 
 public slots:
  /**
-  * \fn    void updateColor(const vector<vector<RGB> >& matrixRGB)
+  * \fn    void updateColor(const Matrix<RGB>& matrixRGB)
   * \brief Update the colors of the matrix
   *
   * \param matrixRGB The RGB matrix with the fresh colors to update.
   */
-  void updateColor(const vector<vector<RGB> > &matrixRGB);
+  void updateColor(const Matrix<RGB> &matrixRGB);
 private:
 
   /**

@@ -13,14 +13,14 @@ GUIImageMatrix::GUIImageMatrix(int sizeMatrix, QWidget *parent) : QGraphicsView(
   setScene(scene);
 }
 
-void GUIImageMatrix::updateColor(const vector<vector<RGB> > &matrixRGB) {
-  int sizeMatrix = matrixRGB.size();
+void GUIImageMatrix::updateColor(const Matrix<RGB> &matrixRGB) {
+  int sizeMatrix = matrixRGB.getSize();
   QPainter *paint = new QPainter(imagePix);
 
   paint->setPen(*(new QColor(255, 255, 255)));
   for (int x = 0; x < sizeMatrix; x++) {
     for (int y = 0; y < sizeMatrix; y++) {
-      const RGB &color = matrixRGB[x][y];
+      const RGB &color = matrixRGB.getCase(x,y);
       paint->setBrush(
           *(new QColor(color.getRed(), color.getGreen(), color.getBlue())));
       paint->drawRect(x * SQUARE_SIZE, y * SQUARE_SIZE, SQUARE_SIZE,

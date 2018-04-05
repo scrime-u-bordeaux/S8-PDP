@@ -9,6 +9,9 @@ qmake-qt4 "QMAKE_CXXFLAGS += -std=c++11 -Wall" \
  "DEPENDPATH += ../VisualImpro/" \
  "INCLUDEPATH += ../VisualImpro/" \
  "SOURCES += RGB.cpp" \
- "HEADERS += RGB.hpp"
+ "HEADERS += RGB.hpp" \
+ "SOURCES += Matrix.cpp" \
+ "HEADERS += Matrix.hpp"
+
   GUI.pro
 make
