@@ -10,6 +10,7 @@ all: $(PDF)
 
 $(PDF): $(TEXFILE)
 	@$(TEX) $^
+	$(BIB) memoire
 	@$(TEX) $^	#This command is used twice to solve tableofcontents issues
 
 .PHONY: clean
