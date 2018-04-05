@@ -214,6 +214,18 @@ différents types selon différents paramètres. Classe
 \textit{template}, \verb!Matrix! permet de créer des matrices
 d'entiers, de flottants ou bien de triplets RGB.
 
+\paragraph{}
+L'implémentation de Jérémy Lixandre comportait une classe \verb!ProcessMulti! dont héritaient les classes \verb!ProcessMultiCorrel! et \verb!ProcessMultiWriteWav!, mais l'héritage n'avait pas lieu d'être puisque la classe \verb!ProcessMulti! en question définissait une fonction abstraite \verb!process!, redéfinie dans ses deux classes filles et prenant en paramètre une matrice de flottants (représentant les signaux d'entrée) et une connexion. Or, la classe \verb!ProcessMultiWriteWav! sert à créer des fichiers \verb!.wav! et ne recquiert aucune connexion. Nous avons donc cassé l'héritage entre ces classes et supprimé la classe \verb!ProcessMulti!.
+
+\paragraph{}
+Nous avons ajouté des fichiers d'en-tête pour tous les fichiers source
+contenant les fonctions de traitement, afin de pouvoir utiliser ces
+fonctions, dans les fichiers de test notamment, en incluant les fichiers
+nécessaires. Les fonctions de traitement étaient auparavant copiées
+dans la classe \verb!utilities!, mais lors du refactoring de cette
+dernière, nous avons réalisé que cette solution n'était pas très
+conventionnelle.
+
 
 \subsubsection{Optimisation du code}
 \paragraph{}
@@ -266,38 +278,6 @@ void ProcessMultiCorrel::process(const Matrix<float>& buffer,
 
 \paragraph{}
 Au sein de la nouvelle classe \verb!RGB!, de nombreux calculs notamment ceux permettant la conversion d'entiers en valeurs hexadécimales ont été simplifiés.
-
-% A AJOUTER
-\subsubsection{Autres remarques}
-  
-
- 
-
-  -Nous avons effectué des tests de ces deux nouvelles classes, Matrix et RGB,
-  dans le dossier de TestClasses lui même dans le dossier test, contenant
-  l'ensemble des dossiers de tests regroupés par cohérence de type.
-
-  - Les classes ProcessMultiCorrel et ProcessMultiWriteWav héritaient d'une
-  classe nommée ProcessMulti, mais l'héritage ici n'avait pas lieu d'être car
-  cette classe ProcessMulti définissait une fonction abstraite process,
-  redéfinie dans ses classes filles, et prenant en paramètre une matrice de
-  flottants (signaux) et une connexion. Or la classe ProcessMultiWriteWav sert
-  à créer des fichiers .wav, donc ne requiert aucune connexion. Ce paramètre
-  n'était donc pas utilisé dans la fonction process de la classe
-  ProcessMultiWriteWav, et comme l'on devait rajouter un paramètre pour notre
-  fonction process de la classe ProcessMultiCorrel, l'héritage n'était
-  clairement plus justifié. Nous avons donc cassé l'héritage entre ces classes
-  et supprimé la classe ProcessMulti.
-
-  - Ajout de fichiers header pour tous les fichiers source contenant les
-  fonctions de traitement. Cela permet de pouvoir utiliser chaque fonction en
-  incluant le fichier contenant la fonction dont nous avons besoin. Auparavant,
-  nous copions chaque fonction de traitement (ou du moins des parties "utiles"
-  des fonctions de traitement) dans la classe utilities, mais cette dernière
-  ayant été réusinée de manière à être cohérente et non un gros sac ignoble,
-  nous devons donc coder proprement et inclure le fichier header de la fonction
-  que nous voulons utiliser, comme par exemple pour nos fichiers de test.
-%A AJOUTER
 
 \subsection{Les changements apportés à l'interface graphique}
 \paragraph{}
