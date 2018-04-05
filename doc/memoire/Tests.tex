@@ -1,5 +1,62 @@
 \section{Tests du logiciel}
 
+\subsection{Tests unitaires}
+
+\paragraph{}
+Les tests, absents de la version du logiciel VisualImpro livrée par
+Jérémy Lixandre, ont été entièrement implémentés par nos soins. Nous
+les avons regroupés dans un dossier \verb!Tests! qui comprend un
+fichier source \verb!TestMain.cpp!, lequel affiche les résultats de
+tous les autres fichiers de test sur la sortie standard, et six
+répertoires contenant ces fichiers de test. Il contient également un
+\verb!Makefile! et un répertoire \verb!Sine-samples! contenant des
+signaux sinusoïdaux à tester.
+
+\subsubsection{Tests de classes}
+\paragraph{}
+Le répertoire \verb!TestClasses! vérifie le bon fonctionnement de
+certaines classes.
+
+\paragraph{}
+Le fichier \verb!TestMatrix.cpp! est implémenté dans le but de
+démontrer le correct fonctionnement de la classe codant l'objet
+matrice, de la classe \verb!Matrix.cpp!. Il teste des opérations
+portant sur des matrices, sur des cases, des lignes et des colonnes
+spécifiques de matrices.
+
+\paragraph{}
+Le fichier \verb!TestMultiCorrel.cpp! teste des opérations de base sur
+l'objet permettant de traiter le retour sonore,
+\verb!ProcessMultiCorrel.cpp!, telles que des opérations d'accès et
+d'écriture basiques \textit{getter/setter} aux données membres de la
+classe.
+
+\subsubsection{Tests de la fonction de traduction du coefficient de corrélation en triplets RGB}
+\paragraph{}
+Le répertoire \verb!TestColor! contient deux fichiers de test testant
+chacun le bon fonctionnement des deux fonctions de traduction du
+coefficient de corrélation en triplet RGB (la première établit un code
+couleur allant du rouge au vert, la seconde un code couleur en niveaux
+de gris allant du noir au blanc). Ces tests fonctionnent en vérifiant
+que des flottants ayant des valeurs extrêmes et une valeur
+intermédiaire retournent bien les couleurs attendues, par exemple :
+une couleur rouge pour un coefficient de 0 avec la première fonction.
+
+\subsubsection{Tests de la fonction de pré-traitement}
+\paragraph{}
+Le répertoire \verb!TestPreproc! contient trois fichiers de test, un
+pour chacune des trois fonctions de pré-traitement
+existantes. L'implémentation de \verb!TestPreprocDefault.cpp!,
+\verb!TestPreprocEnergy.cpp! et \verb!TestPreprocStrenghtEnergy.cpp!
+permet de comparer le résultat des fonctions de pré-traitement
+correspondantes, prenant des matrices simples en paramètres, avec les
+résultats attendus.
+
+\subsubsection{Tests de la fonction de calcul de coefficient de corrélation}
+\paragraph{}
+Le répertoire \verb!TestCoeff!
+
+
 % A RAJOUTER
   - Des informations sur les tests sont disponibles dans les en-têtes des
   fichiers sources des fichiers de tests.
