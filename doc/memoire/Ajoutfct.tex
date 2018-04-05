@@ -86,18 +86,11 @@ for(unsigned int i=0; i<context->audioOutChannels; i++){
 \begin{center} \textit{Ci-dessus, l'implémentation du retour sonore
   dans le corps de la fonction principale de \verb!render.cpp!. Via la
   fonction \verb!audioWrite!, la variable \verb!out! récupère un à un
-  les signaux multipliés par la moyenne de leurs coefficients de
-  corrélation par rapport aux autres signaux.} \end{center}
-
- %  - Ici c'est bien l'écriture du retour sonore, via la variable out, mais ce
- % qui est vraiment important c'est le comportement de la variable out. Elle
- %  récupère les signaux un à un en les additionnant et les stockant dans sa
- %  variable (c'est le cas de base), mais pour notre cas, elle récupère les
- %  signaux multipliés par la moyenne de leur corrélation par rapport aux autres
- %  instruments (valeur comprise entre 0 et 1). On peut voir ça dans les boucles
- %  de chaque type de pistes (audio, analogique ou digitale--pour les fichiers--)%,
- %  pour la boucle de traitement sans effets pour le moment.
-
+  les signaux de chaque type de piste sonore
+  (audio/analogique/digitale) multipliés par la moyenne de leurs
+  coefficients de corrélation par rapport aux autres
+  signaux.} \end{center}
+ 
  \paragraph{}
  Dans le fichier \verb!render.cpp!, la fonction
  \verb!void processBuffer()! est utilisée comme tâche auxiliaire de la
@@ -109,19 +102,20 @@ for(unsigned int i=0; i<context->audioOutChannels; i++){
  que nous avons modifiée et qui est appelée dans \verb!processBuffer!
  de \verb!render.cpp!.
  \paragraph{}
- Dans l'implémentation de Jérémy Lixandre, le traitement des tâches auxiliaires dnas \verb!render.cpp! se faisait à sens unique : exécution de tâches auxiliaires sans retour de valeur dans la boucle de traitement principale. Afin de récupérer le résultat du traitement de la fonction de mixage, nous avons ajouté la référence du vecteur contenant les moyennes de coefficients de corrélation, \verb!gMeanCorrel!, %A FINIR DE REDIGER
-
- % A expliquer j'ai pas pigé le lien entre gMeanCorrel et process
- - Le traitement des tâches auxiliaires dans le render se faisant à sens
- unique (le render exécute des taches auxiliaires sans renvoyer de valeur de
- retour à la boucle de traitement principale), le moyen pour nous de récupérer
- le résultat du traitement de la fonction de mix était de passer le vecteur
- contenant les moyennes de corrélation, gMeanCorrel, par référence à la
- fonction process. On accède ainsi à la case mémoire de la variable pour
- permettre à la fonction de modifier son contenue et ainsi d'affecter les
- valeurs de retour de la fonction de mixage à notre vecteur. C'est ainsi que
- les modifications des volumes sont possibles dans notre programme.
-
+ Dans l'implémentation de Jérémy Lixandre, le traitement des tâches
+ auxiliaires dans \verb!render.cpp! se faisait à sens unique
+ (exécution de tâches auxiliaires sans retour de valeur dans la boucle
+ de traitement principale). Afin de récupérer le résultat du
+ traitement de la fonction de mixage, nous avons passé la référence du
+ vecteur contenant les moyennes de coefficients de corrélation,
+ \verb!gMeanCorrel!, en paramètre de la fonction
+ \verb!ProcessMultiCorrel::process! lors de son appel dans la fonction
+ principale de \verb!render.cpp!. On accède ainsi à la case mémoire de
+ la variable pour permettre à la fonction de modifier son contenu et
+ ainsi d'affecter les valeurs de retour de la fonction de mixage au
+ vecteur ; c'est ainsi que la modification des volumes devient
+ possible.
+ 
  \begin{lstlisting}
     void ProcessMultiCorrel::process(const Matrix<float>& buffer,
                                  vector<float>& meanCorrelations,
@@ -142,7 +136,7 @@ for(unsigned int i=0; i<context->audioOutChannels; i++){
  \begin{center}
   \textit{L'appel de la fonction \verb!process! ci-dessus exécute une série de fonctions de traitement de manière séquentielle.}
  \end{center}
-
+ 
  \begin{lstlisting}
     void ProcessMultiCorrel::process_volume(const Matrix<float>&
                                         correlMatrix,
@@ -150,59 +144,93 @@ for(unsigned int i=0; i<context->audioOutChannels; i++){
                                         meanCorrelations){
   meanCorrelations = this->_mixLevel(correlMatrix);
 }
-  \end{lstlisting}
-  \begin{center}
-    \textit{Ci-dessus, la fonction appelée dans le corps de la fonction \verb!process!. Nous l'avons implémenté de sorte à altérer en son sein la valeur du vecteur des moyennes de corrélation passé par référence en paramètre.}
-  \end{center}
-
-\subsection{L'interface de configuration utilisateur}
-\paragraph{}
-Afin d'implémenter l'interface de configuration utilisateur précédemment abordée
-nous avons ajouté à l'architecture du programme un dossier
-\verb!GUI! (\textit{Graphic User Interface}) à la racine du programme.
-Le sous-répertoire contenant les fichiers relatifs à l'implémentation de
-l'interface de configuration se nomme \verb!settingWindow!.
-
-\begin{figure}[h]
- \centering
- \includegraphics[scale=0.3]{assets/umlSettingWindow.png}
- \caption{Schéma global du dispositif de VisualImpro}
- \label{schéma global}
-\end{figure}
-
-\paragraph{}
-La classe principale de cette interface de configuration est la
-classe \verb!settingWindow!. Elle constitue une fenêtre vide
-destinée à afficher les données suivantes :
-\begin{itemize}
- \item Paramètres de fonction de traitement.
- \item Paramètres du nombre d'entrées audio et analog.
- \item Choix des fichiers audio \textit{.wav}.
-\end{itemize}
-En plus de toutes ces parties, la fenêtre principale possède (check la doc)
-
-\begin{figure}[h]
- \centering
- \includegraphics[scale=0.5]{assets/umlBuilder.png}
- \caption{Schéma global du dispositif de VisualImpro}
- \label{schéma global}
-\end{figure}
-
-\paragraph{}
-La fenêtre de configuration%AJOUTER
-
-\subsection{Autres ajouts mineurs sur le programme}
-\paragraph{}
-Nous avons implémenté une nouvelle fonction de corrélation dédiée aux
-tests : appelée \verb!CoeffRandom!, elle établit un coefficient de
-corrélation de manière aléatoire. La généricité de l'implémentation
-existante a rendu la tâche triviale, il nous a suffi d'écrire un
-fichier d'en-tête \verb!CoeffRandom.hpp! et un fichier source
-\verb!CoeffRandom.cpp! dans le dossier \verb!Coeff! contenant les
-fonctions de calcul du coefficient de corrélation (dossier
-\verb!process!). Cette fonction renvoie un flottant compris entre 0 et
-1, comme les autres fonctions de corrélation. L'accomplissement de
-cette tâche et la trivialité qu'il représente témoigne de la
-généricité des fonctions de corrélation, et des fonctions de
-traitement en général, qui possèdent désormais toutes plusieurs
-versions alternatives.
+ \end{lstlisting}
+ \begin{center}
+  \textit{Ci-dessus, la fonction appelée dans le corps de la fonction \verb!process!. Nous l'avons implémentée de sorte à altérer en son sein la valeur du vecteur des moyennes de corrélation passé par référence en paramètre.}
+ \end{center}
+ 
+ \subsection{L'interface de configuration utilisateur}
+ \paragraph{}
+ 
+ \subsubsection{Présentation de l'architecture}
+ Afin d'implémenter l'interface de configuration utilisateur
+ précédemment abordée nous avons ajouté à l'architecture du programme
+ un dossier \verb!GUI! (\textit{Graphic User Interface}) à la racine
+ du programme.  Le sous-répertoire contenant les fichiers relatifs à
+ l'implémentation de l'interface de configuration se nomme
+ \verb!settingWindow!.
+ 
+ \begin{figure}[h]
+  \centering
+  \includegraphics[scale=0.3]{assets/umlSettingWindow.png}
+  \caption{Schéma global du dispositif de VisualImpro}
+  \label{schéma global}
+ \end{figure}
+ 
+ 
+ \paragraph{}
+ La classe principale de cette interface de configuration est la
+ classe \verb!settingWindow!. Elle constitue une fenêtre vide
+ destinée à afficher les données suivantes via un layout principale :
+ \begin{itemize}
+  \item Paramètres de fonction de traitement.
+  \item Paramètres du nombre d'entrées audio et analog.
+  \item Choix des fichiers audio \textit{.wav}.
+ \end{itemize}
+ Afin de créer de pouvoir créer ces parties, la fenêtre se sert d'une factory,
+ % a AJOUTER
+ - la factory permet de créer toutes les parties.
+ -dans chaqu'un des layout la fenetre principale peut ajouter un paramètre a chaque
+ partie.
+ -chaqu'une des parties permet d'extraire un resultat precis : input pour recuperer un nombre
+ process pour nom de fonction,wav pour fichier wav.
+ -une fois que tout les paramètres , la fenetre va les recuperer et creer un
+ fichier de sortie a laide d'un builder.
+ -le builder sert a crée un fichier de sortie suivant un certains format. Dans le
+ futur on pourra s'en servir pour creer un nouveaux format de retour pour pouvoir
+ se passe du fichier config.
+ -dans notre cas le type de fichier est un fichier cfg qui sera envoyer a bela.
+ 
+ \subsubsection{Fonctionnement de chaque classe}
+ \paragraph{}
+ -classe setting window contient tout les layouts et un bouton fin quand tout les
+ parametre sont mis. le nombre d'input doit etre superieur ou egal a 2 car sinon pas de
+ correlation.
+ - toute les classes layout herite de GUISettingLayout qui possede la fonction
+ abstract getSettings qui permet de retourner tout les parametre selectionné dans le layout.
+ -inputSettinLayout contient pour chacune de ses sous parties un slider et une box
+ pour pouvoir selectionné un nombre. Le nombre selectionné est compris entre un
+ minimum et un maximum initialisé a la creation de la partie.
+ -wavfilesetting permet de chercher des fichiers wav et de stocker leurs chemin
+ absolut
+ -processSetting va chercher, dans un dossier portant un nom egale au nom données
+ en paramètre, les fichiers portant le nom de ce dossier, ou il y a une fonction
+ et permettra de choisir la fonction que l'utilisateur voudra.
+ 
+ 
+ 
+ \begin{figure}[h]
+  \centering
+  \includegraphics[scale=0.5]{assets/umlBuilder.png}
+  \caption{Schéma global du dispositif de VisualImpro}
+  \label{schéma global}
+ \end{figure}
+ 
+ \paragraph{}
+ La fenêtre de configuration%AJOUTER
+ 
+ \subsection{Autres ajouts mineurs sur le programme}
+ \paragraph{}
+ Nous avons implémenté une nouvelle fonction de corrélation dédiée aux
+ tests : appelée \verb!CoeffRandom!, elle établit un coefficient de
+ corrélation de manière aléatoire. La généricité de l'implémentation
+ existante a rendu la tâche triviale, il nous a suffi d'écrire un
+ fichier d'en-tête \verb!CoeffRandom.hpp! et un fichier source
+ \verb!CoeffRandom.cpp! dans le dossier \verb!Coeff! contenant les
+ fonctions de calcul du coefficient de corrélation (dossier
+ \verb!process!). Cette fonction renvoie un flottant compris entre 0 et
+ 1, comme les autres fonctions de corrélation. L'accomplissement de
+ cette tâche et la trivialité qu'il représente témoigne de la
+ généricité des fonctions de corrélation, et des fonctions de
+ traitement en général, qui possèdent désormais toutes plusieurs
+ versions alternatives.
