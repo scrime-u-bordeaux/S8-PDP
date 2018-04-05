@@ -187,6 +187,33 @@ l'exécutable, notre script bash \verb!VisualImpro.sh! permet de
 choisir entre les deux versions graphiques maintenant disponibles. Il
 suffit de préciser à l'aide d'une option (\verb!qt! ou \verb!firefox!)
 quel affichage on souhaite obtenir.
+\paragraph{}
+Parmi les autres aspects de l'existant que nous avons tenu à réviser,
+la classe utilities posait problème dans le sens où elle contenait un
+trop grand nombre de fonctions n'ayant rien à voir entre elles. Nous
+avons tâché de réduire son contenu au maximum, et actuellement, elle
+ne contient plus que deux fonctions utilisées par les fichiers
+\verb!main.cpp! et \verb!render.cpp!, et son rôle est véritablement
+celui d'une classe utilitaire pour les fichiers principaux du
+programme.
+
+- La classe utilities contenait un trop grand nombre de fonctions et était
+  utilisée comme la classe "fourre-tout" à inclure partout. On a donc réduit
+  au maximum son contenu pour qu'elle contienne le minimum de fonctions
+  possibles. Elle contient actuellement seulement 2 fonctions utilisées par le
+  main et le render, et joue vraiment le rôle de classe utilitaire pour les
+  fichiers principaux de notre programme. Pour la réduire au maximum, il fallait
+  dans un premier temps supprimmer les fonctions de traitement qu'elle contenait
+  (et qui faisait que cette classe devait être incluse dans tous les fichiers du
+  répertoire process), et les placer dans le code de manière stratégique pour
+  éviter cette inclusion systématique, et d'autre part il fallait
+  supprimer la structure Triplet qu'elle contenait, qui correspondait à un
+  triplet RGB, et nous avons créé une classe RGB en conséquence. Elle regroupe
+  les fonctions utilisées pour la classe triplet, refactorées pour la cette
+  nouvelle classe RGB en améliorant le code des fonctions initiales. Les
+  fonctions créées par le stagiaires pour passer d'entiers vers des valeurs
+  hexadecimales ont été refactorées de manière à les rendre plus simples tout
+  en gardant le même résultat en sortie.
 
 \subsubsection{Optimisation du code}
 \paragraph{}
@@ -239,23 +266,7 @@ void ProcessMultiCorrel::process(const Matrix<float>& buffer,
 
 % A AJOUTER
 \subsubsection{Autres remarques}
-  - La classe utilities contenait un trop grand nombre de fonctions et était
-  utilisée comme la classe "fourre-tout" à inclure partout. On a donc réduit
-  au maximum son contenu pour qu'elle contienne le minimum de fonctions
-  possibles. Elle contient actuellement seulement 2 fonctions utilisées par le
-  main et le render, et joue vraiment le rôle de classe utilitaire pour les
-  fichiers principaux de notre programme. Pour la réduire au maximum, il fallait
-  dans un premier temps supprimmer les fonctions de traitement qu'elle contenait
-  (et qui faisait que cette classe devait être incluse dans tous les fichiers du
-  répertoire process), et les placer dans le code de manière stratégique pour
-  éviter cette inclusion systématique, et d'autre part il fallait
-  supprimer la structure Triplet qu'elle contenait, qui correspondait à un
-  triplet RGB, et nous avons créé une classe RGB en conséquence. Elle regroupe
-  les fonctions utilisées pour la classe triplet, refactorées pour la cette
-  nouvelle classe RGB en améliorant le code des fonctions initiales. Les
-  fonctions créées par le stagiaires pour passer d'entiers vers des valeurs
-  hexadecimales ont été refactorées de manière à les rendre plus simples tout
-  en gardant le même résultat en sortie.
+  
 
   - Nous avions beaucoup de traitements sur des matrices dans notre code, mais
   nous ne disposions auparavant pas de classe pour répondre à ce besoin, ce qui
