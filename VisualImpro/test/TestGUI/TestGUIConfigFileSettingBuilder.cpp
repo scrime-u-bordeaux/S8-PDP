@@ -7,7 +7,6 @@
 #include "TestGUIConfigFileSettingBuilder.hpp"
 
 #include <string>
-#include <iostream>
 
 CPPUNIT_TEST_SUITE_REGISTRATION(TestGUIConfigFileSettingBuilder);
 
@@ -30,7 +29,7 @@ void TestGUIConfigFileSettingBuilder::setUp(){
 }
 
 void TestGUIConfigFileSettingBuilder::tearDown(){
-  
+
 }
 
 void  TestGUIConfigFileSettingBuilder::testBuilder()

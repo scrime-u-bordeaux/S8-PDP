@@ -2,7 +2,6 @@
 #define CORREL_HPP
 
 #include <fstream>
-#include <iostream>
 #include <queue>
 #include <string>
 #include <vector>
