@@ -6,27 +6,35 @@
 
 #include "TestGUIConfigFileSettingBuilder.hpp"
 
+#include <string>
+#include <iostream>
+
 CPPUNIT_TEST_SUITE_REGISTRATION(TestGUIConfigFileSettingBuilder);
 
 void TestGUIConfigFileSettingBuilder::setUp(){
     builder = new GUIConfigFileSettingBuilder();
+    builder->beginFile();
+  builder->addPort(12345);
+  builder->addAddress("192.168.7.1");
+  builder->addProcessLen(32768);
+  builder->addEffect(false, 32);
+  builder->addAnalogInput(5);
+  builder->addAudioInput(1);
+  builder->addWavFile("/dir/wav1.wav");
+  builder->addWavFile("/dir/wav2.wav");
+  builder->addCoeffFunction("functionCoeff");
+  builder->addPreProcFunction("functionPreProc");
+  builder->addColorFunction("functionColor");
+  builder->addMixFunction("functionMix");
+  builder->endFile();
 }
 
 void TestGUIConfigFileSettingBuilder::tearDown(){
-  // delete intMatrix;
+   delete builder;
 }
 
-void  TestGUIConfigFileSettingBuilder::testBeginFile()
+void  TestGUIConfigFileSettingBuilder::testBuilder()
 {
-
-}
-
-void TestGUIConfigFileSettingBuilder::testAddSetting(){
-  // CPPUNIT_ASSERT_EQUAL(0,  intMatrix->getCase(0,0));
-  // intMatrix->setCase(0,0,3);
-  // CPPUNIT_ASSERT_EQUAL(3,  intMatrix->getCase(0,0));
-}
-
-void TestGUIConfigFileSettingBuilder::testEndFile(){
+   string strResult = builder->getResult();
   // CPPUNIT_ASSERT(intMatrix->toString() == "Matrix");
 }

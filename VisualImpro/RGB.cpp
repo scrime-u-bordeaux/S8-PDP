@@ -43,18 +43,14 @@ void RGB::setBlue(int blue) { _blue = blue; }
 /**
   * Returns the color RGB triplet to a string corresponding to its RGB values.
   */
-string RGB::toString(){
-  stringstream stream;
-  stream << "#";
-  if(this->getRed() == 0 && this->getGreen() == 0 && this->getBlue() == 0){
-    stream << "000000";
-  }else{
-    stream << hex << uppercase << this->getRed();
-    stream << hex << uppercase << this->getGreen();
-    stream << hex << uppercase << this->getBlue();
+  string RGB::toString(){
+    stringstream stream;
+    stream << "#";
+    stream << setw(2) << setfill('0') << hex << uppercase << this->getRed();
+    stream << setw(2) << setfill('0') << hex << uppercase << this->getGreen();
+    stream << setw(2) << setfill('0') << hex << uppercase << this->getBlue();
+    return stream.str();
   }
-  return stream.str();
-}
 
 
 RGB::~RGB() {}

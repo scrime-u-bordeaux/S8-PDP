@@ -54,15 +54,26 @@ résultats attendus.
 
 \subsubsection{Tests de la fonction de calcul de coefficient de corrélation}
 \paragraph{}
-Le répertoire \verb!TestCoeff!
+Le répertoire \verb!TestCoeff! contient deux fichiers testant chacun
+l'une de nos deux fonctions de calcul de coefficient de
+corrélation. Le premier, \verb!TestCoeffScalar.cpp!, vérifie que la
+fonction testée renvoie bien la bonne valeur en comparant son résultat
+pour deux vecteurs arbitraires passés en paramètre avec le résutat du
+calcul brut du produit scalaire de ces deux mêmes vecteurs, qui
+doivent être égaux. Le second fichier de test unitaire,
+\verb!TestCoeffRandom!, teste que pour mille itérations, le résultat
+de la fonction testée est toujours compris dans l'ensemble de valeur
+attendu (entre 0 et 1).
 
+\subsubsection{Tests de la fonction de mixage}
+\paragraph{}
+Les fichiers contenus dans le répertoire \verb!TestMix! s'assurent
+pour chaque fonction de mixage existante que le résultat obtenu pour
+une matrice passée en paramètre de la fonction est égal à celui
+attendu. Par exemple, la fonction de \verb!MixNeutral.cpp!, qui simule
+l'absence de fonction de mixage, doit renvoyer 1 comme coefficient de
+modification du volume sonore quelque soit la matrice d'entrée ; on
+s'en assure dans le fichier de test \verb!TestMixNeutral.cpp!.
 
-% A RAJOUTER
-  - Des informations sur les tests sont disponibles dans les en-têtes des
-  fichiers sources des fichiers de tests.
-  - Les tests sur la GUI sont à finir demain.
-  
-% A RAJOUTER
- -Nous avons effectué des tests de ces deux nouvelles classes, Matrix et RGB,
-  dans le dossier de TestClasses lui même dans le dossier test, contenant
-  l'ensemble des dossiers de tests regroupés par cohérence de type.
+\subsubsection{Test de l'interface graphique utilisateur}
+%A COMPLETER

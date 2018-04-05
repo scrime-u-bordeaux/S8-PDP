@@ -4,9 +4,10 @@ CXXFLAGS = -std=c++11 -ldl -lsndfile -lcppunit -Wall -Wextra
 EXEC= tests
 SRC= TestMain.cpp $(wildcard TestCoeff/*.cpp) $(wildcard TestMix/*.cpp)\
 $(wildcard TestPreproc/*.cpp) $(wildcard TestColor/*.cpp)\
-$(wildcard ../process/*/*.cpp) $(wildcard TestClasses/*.cpp)
-INC = ../src/Matrix.cpp ../src/RGB.cpp ../src/ProcessMultiCorrel.cpp\
-			../src/Connection.cpp
+$(wildcard ../process/*/*.cpp) $(wildcard TestClasses/*.cpp)\
+$(wildcard ../TestGUI/*.cpp)
+INC = ../Matrix.cpp ../RGB.cpp ../ProcessMultiCorrel.cpp\
+			../Connection.cpp ../../GUI/src/settingWindow/fileSetting/GUIConfigFileSettingBuilder.cpp
 OBJ= $(SRC:.cpp=.o) $(INC:.cpp=.o)
 
 all: $(EXEC)

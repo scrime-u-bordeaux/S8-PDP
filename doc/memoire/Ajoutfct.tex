@@ -32,8 +32,8 @@ Tandis que la fonction de traduction du coefficient de corrélation en
 triplet RGB est dédiée uniquement au retour visuel, celle de mixage est
 dédiée uniquement au retour sonore.
 
-\begin{lstlisting}
-vector<float> MixMaxCorrelated(const Matrix<float>& correlMatrix) {
+\begin{lstlisting}[language=C, frame=single, breaklines=true]
+vector<float> MixMaxCorrelated(const Matrix<float>& correlMatrix){
 
   int row = correlMatrix.getSize();
   int col = correlMatrix.getRow(0).size();
@@ -50,7 +50,6 @@ vector<float> MixMaxCorrelated(const Matrix<float>& correlMatrix) {
     }
     meanCorrelations[i] /= (float)row-1;
   }
-
   return meanCorrelations;
 }
 \end{lstlisting}
@@ -72,7 +71,7 @@ fichier éponyme. Grâce au code implémenté par notre prédécesseur au
 sein de cette fonction, Bela peut synthétiser un retour sonore modifié
 par notre fonction de mixage.
 
-\begin{lstlisting}
+\begin{lstlisting}[language=C, frame=single, breaklines=true]
 for(unsigned int i=0; i<context->audioOutChannels; i++){
    if(gSampleFactor == STANDARD_SAMPLE_RATE){
       audioWrite(context, 2 * n, i, out);
@@ -90,7 +89,7 @@ for(unsigned int i=0; i<context->audioOutChannels; i++){
   (audio/analogique/digitale) multipliés par la moyenne de leurs
   coefficients de corrélation par rapport aux autres
   signaux.} \end{center}
- 
+
  \paragraph{}
  Dans le fichier \verb!render.cpp!, la fonction
  \verb!void processBuffer()! est utilisée comme tâche auxiliaire de la
@@ -115,9 +114,9 @@ for(unsigned int i=0; i<context->audioOutChannels; i++){
  ainsi d'affecter les valeurs de retour de la fonction de mixage au
  vecteur ; c'est ainsi que la modification des volumes devient
  possible.
- 
- \begin{lstlisting}
-    void ProcessMultiCorrel::process(const Matrix<float>& buffer,
+
+ \begin{lstlisting}[language=C, frame=single, breaklines=true]
+void ProcessMultiCorrel::process(const Matrix<float>& buffer,
                                  vector<float>& meanCorrelations,
                                  Connection conn){
   Matrix<float> copy = buffer;
@@ -136,22 +135,22 @@ for(unsigned int i=0; i<context->audioOutChannels; i++){
  \begin{center}
   \textit{L'appel de la fonction \verb!process! ci-dessus exécute une série de fonctions de traitement de manière séquentielle.}
  \end{center}
- 
- \begin{lstlisting}
-    void ProcessMultiCorrel::process_volume(const Matrix<float>&
-                                        correlMatrix,
-                                        vector<float>&
-                                        meanCorrelations){
-  meanCorrelations = this->_mixLevel(correlMatrix);
-}
+
+ \begin{lstlisting}[language=C, frame=single, breaklines=true]
+  void ProcessMultiCorrel::process_volume(const Matrix<float>&
+                                            correlMatrix,
+                                            vector<float>&
+                                            meanCorrelations){
+    meanCorrelations = this->_mixLevel(correlMatrix);
+  }
  \end{lstlisting}
  \begin{center}
   \textit{Ci-dessus, la fonction appelée dans le corps de la fonction \verb!process!. Nous l'avons implémentée de sorte à altérer en son sein la valeur du vecteur des moyennes de corrélation passé par référence en paramètre.}
  \end{center}
- 
+
  \subsection{L'interface de configuration utilisateur}
  \paragraph{}
- 
+
  \subsubsection{Présentation de l'architecture}
  Afin d'implémenter l'interface de configuration utilisateur
  précédemment abordée nous avons ajouté à l'architecture du programme
@@ -159,15 +158,15 @@ for(unsigned int i=0; i<context->audioOutChannels; i++){
  du programme.  Le sous-répertoire contenant les fichiers relatifs à
  l'implémentation de l'interface de configuration se nomme
  \verb!settingWindow!.
- 
+
  \begin{figure}[h]
   \centering
   \includegraphics[scale=0.3]{assets/umlSettingWindow.png}
   \caption{Schéma global du dispositif de VisualImpro}
   \label{schéma global}
  \end{figure}
- 
- 
+
+
  \paragraph{}
  La classe principale de cette interface de configuration est la
  classe \verb!settingWindow!. Elle constitue une fenêtre vide
@@ -190,7 +189,7 @@ for(unsigned int i=0; i<context->audioOutChannels; i++){
  futur on pourra s'en servir pour creer un nouveaux format de retour pour pouvoir
  se passe du fichier config.
  -dans notre cas le type de fichier est un fichier cfg qui sera envoyer a bela.
- 
+
  \subsubsection{Fonctionnement de chaque classe}
  \paragraph{}
  -classe setting window contient tout les layouts et un bouton fin quand tout les
@@ -206,19 +205,19 @@ for(unsigned int i=0; i<context->audioOutChannels; i++){
  -processSetting va chercher, dans un dossier portant un nom egale au nom données
  en paramètre, les fichiers portant le nom de ce dossier, ou il y a une fonction
  et permettra de choisir la fonction que l'utilisateur voudra.
- 
- 
- 
+
+
+
  \begin{figure}[h]
   \centering
   \includegraphics[scale=0.5]{assets/umlBuilder.png}
   \caption{Schéma global du dispositif de VisualImpro}
   \label{schéma global}
  \end{figure}
- 
+
  \paragraph{}
  La fenêtre de configuration%AJOUTER
- 
+
  \subsection{Autres ajouts mineurs sur le programme}
  \paragraph{}
  Nous avons implémenté une nouvelle fonction de corrélation dédiée aux
