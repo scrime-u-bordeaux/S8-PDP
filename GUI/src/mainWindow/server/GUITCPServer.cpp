@@ -46,14 +46,14 @@ void GUITCPServer::readMatrix() {
     }
 
     string hexa;
-    vector<vector<RGB>> colorMatrix(length,
+    Matrix<RGB> colorMatrix(length,
                                     vector<RGB>(length, RGB(0, 0, 0)));
 
     for (int x = 0; x < length; x++) {
       for (int y = 0; y < length; y++, hexaStart += 7) {
         hexa = str.substr(hexaStart, 7);
         RGB color(hexa);
-        colorMatrix[x][y] = color;
+        colorMatrix.setCase(x, y, color);
       }
     }
     emit sendToGUI(colorMatrix);

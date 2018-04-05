@@ -10,7 +10,9 @@
 #include <QObject>
 #include <QTcpServer>
 #include <vector>
+
 #include "RGB.hpp"
+#include "Matrix.hpp"
 
 #define PORT 12345
 #define IPADDRESS "192.168.7.1"
@@ -48,12 +50,12 @@ public:
 
 signals :
   /**
-   * \fn    void sendToGUI(const vector<vector<RGB> >& matrixRGB)
+   * \fn    void sendToGUI(const Matrix<RGB>& matrixRGB)
    * \brief send a signal corresponding to an RGB matrix to the GUI
    *
    * \param matrixRGB The RGB matrix to send.
    */
-  void sendToGUI(const vector<vector<RGB> >& matrixRGB);
+  void sendToGUI(const Matrix<RGB>& matrixRGB);
 
 private slots:
 

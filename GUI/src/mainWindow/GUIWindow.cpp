@@ -12,8 +12,8 @@ GUIWindow::GUIWindow(int sizeMatrix, QWidget *parent)
   setWindowTitle("Matrice");
   setCentralWidget(view);
   resize((SQUARE_SIZE * sizeMatrix) + 2, (SQUARE_SIZE * sizeMatrix) + 2);
-  connect(server, SIGNAL(sendToGUI(vector<vector<RGB>>)), view,
-          SLOT(updateColor(vector<vector<RGB>>)));
+  connect(server, SIGNAL(sendToGUI(Matrix<RGB>)), view,
+          SLOT(updateColor(Matrix<RGB>)));
 }
 
 GUIWindow::~GUIWindow() { delete view; }
