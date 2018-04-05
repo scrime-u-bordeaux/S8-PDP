@@ -198,7 +198,17 @@ for(unsigned int i=0; i<context->audioOutChannels; i++){
  correlation.
  - toute les classes layout herite de GUISettingLayout qui possede la fonction
  abstract getSettings qui permet de retourner tout les parametre selectionné dans le layout.
- -inputSettinLayout   
+ -inputSettinLayout contient pour chacune de ses sous parties un slider et une box
+ pour pouvoir selectionné un nombre. Le nombre selectionné est compris entre un
+ minimum et un maximum initialisé a la creation de la partie.
+ -wavfilesetting permet de chercher des fichiers wav et de stocker leurs chemin
+ absolut
+ -processSetting va chercher, dans un dossier portant un nom egale au nom données
+ en paramètre, les fichiers portant le nom de ce dossier, ou il y a une fonction
+ et permettra de choisir la fonction que l'utilisateur voudra.
+ 
+ 
+ 
  \begin{figure}[h]
   \centering
   \includegraphics[scale=0.5]{assets/umlBuilder.png}
