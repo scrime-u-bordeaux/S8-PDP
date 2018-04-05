@@ -5,7 +5,7 @@
  *
  *  \brief Code containing the preprocessing based on energy function.
  *
- *  This is a preprocessing function returning a Matrix witch has in every line
+ *  This is a preprocessing function returning a Matrix which has in every line
  *  the energy envelope of each instrument of the original Matrix of signals
  *  given in parameter.
  *
