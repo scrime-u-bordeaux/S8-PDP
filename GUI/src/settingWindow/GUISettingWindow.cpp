@@ -104,8 +104,8 @@ void GUISettingWindow::buildConfigFile() {
   builder.addAddress(IPADDRESS);
   builder.addProcessLen(PROCESSLEN);
   builder.addEffect(false, EFFECTBUFFERLEN);
-  builder.addAnalogInput(inputList.at(0).toInt());
-  builder.addAudioInput(inputList.at(1).toInt());
+  builder.addAnalogInput(inputList.at(1).toInt());
+  builder.addAudioInput(inputList.at(0).toInt());
   for (int i = 0; i < wavList.size(); i++) {
     builder.addWavFile(wavList.at(i).toStdString());
   }

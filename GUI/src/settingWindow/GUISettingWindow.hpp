@@ -22,6 +22,7 @@
 #define MAX_AUDIO_INPUT 2
 #define MIN_ANALOG_INPUT 0
 #define MAX_ANALOG_INPUT 8
+
 #define PORT 12345
 #define IPADDRESS "192.168.7.1"
 #define PROCESSLEN 32768
