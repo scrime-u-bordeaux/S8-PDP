@@ -41,7 +41,7 @@ Matrix<float> PreprocEnergy(const Matrix<float>& input){
   int size = input.getSize();
 	Matrix<float> buffer(size);
 	for (int i = 0 ; i < size; i++){
-		buffer.setRow(i, energyenvelope(input.getRow(i), 1024));
+		buffer.setRow(i, energyenvelope(input.getRow(i), 64));
 	}
 	return buffer;
 }

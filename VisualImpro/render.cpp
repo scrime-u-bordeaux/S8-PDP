@@ -27,6 +27,7 @@ The Bela software is distributed under the GNU Lesser General Public License
 #include <sys/time.h>
 #include <time.h>
 #include <SampleStream.hpp>
+#include <csignal>
 #include "ChannelsSettings.h"
 #include "Echo.hpp"
 #include "EffectManaging.hpp"
@@ -51,7 +52,7 @@ using namespace std;
 ChSettings gUserSet;
 int gTotalTracks = 0;
 int gSampleFactor = 1;
-
+bool startRender = false;
 SampleStream *sampleStream[NB_FILES_MAX];
 AuxiliaryTask gFillBuffersTask;
 
@@ -129,7 +130,7 @@ void effect(Matrix<float> &In, Matrix<float> &Out){
  * \brief  Auxiliary task used to call the effect function and update effect
  *         parameters.
  */
-void processEffect() {
+void processEffect(void* arg) {
   // This function is located in EffectManaging.hpp
   genEffect(*gEffectBufferInCopy, gIndIn, *gEffectBufferOut, gIndOut, gCopySize,
             2 * gEffSize, effect);
@@ -182,7 +183,7 @@ int fillcount = 10;
  * \fn     void fillBuffers()
  * \brief  Auxiliary Ttsk for filling sample buffers.
  */
-void fillBuffers() {
+void fillBuffers(void* arg) {
   for (int i = 0; i < gUserSet.nb_files; i++) {
     if (sampleStream[i]->bufferNeedsFilled())
       sampleStream[i]->fillBuffer();
@@ -193,9 +194,9 @@ void fillBuffers() {
  * \fn     void processBuffer()
  * \brief  Auxiliary task for processing with the ProcessMultiCorrel functions.
  */
-void processBuffer() {
+void processBuffer(void* arg) {
   if (gBufferProcessed == 0) {
-    p->process(*gProcessBufferCopy, gMeanCorrel, gUserSet.conn);
+    p->process(*gProcessBufferCopy, gMeanCorrel, gUserSet.conn, gUserSet.sample_factor,gUserSet.buffer_len);
     gBufferProcessed = 1;
   }
 }
@@ -207,6 +208,22 @@ Order in Buffers :
 - from gNumStreams + gNumAnalog to gNumStreams + gNumAnalog + gNumAudio : audio
 */
 
+/**
+ * \fn     void initConnection()
+ * \brief  Auxiliary task that starts the websocket server.
+ */
+AuxiliaryTask gStartServerTask;
+void initConnection(void *arg)
+{
+	gUserSet.conn.init();
+}
+
+void signalHandler(int signum)
+{
+	cout << "Interrupt signal (" << signum << ") received.\n";
+	gUserSet.conn.setStop(true);
+	exit(signum);
+}
 /**
  * \fn     void initUserSet(ChSettings& gUserSet)
  * \brief  Initialize the global variables with the values contained in the
@@ -225,7 +242,7 @@ void initUserSet(ChSettings& gUserSet){
     gSampleFactor = gUserSet.sample_factor;
 
     p = gUserSet.proc;
-    gUserSet.conn.init();
+    
 }
 
 /**
@@ -250,6 +267,7 @@ void initBuffers(){
   // Initialize mix Buffer
   vector<float> mixbuffer(gTotalTracks, 1.0f);
   gMeanCorrel = mixbuffer;
+  cout << gProcessBuffer->getRow(0).size() << endl;
 
 }
 
@@ -305,9 +323,12 @@ bool initAuxiliaryTasks(){
   if (((gFillBuffersTask =
             Bela_createAuxiliaryTask(&fillBuffers, 80, "fill-buffer")) == 0) ||
       ((gProcessBufferTask = Bela_createAuxiliaryTask(
-            &processBuffer, 75, "process-buffer")) == 0) ||
+            &processBuffer, 70, "process-buffer")) == 0) ||
       ((gEffectTask =
-            Bela_createAuxiliaryTask(&processEffect, 85, "apply-effect")) == 0))
+            Bela_createAuxiliaryTask(&processEffect, 75, "apply-effect")) == 0) ||
+            ((gStartServerTask = 
+            		Bela_createAuxiliaryTask(&initConnection, 70, "start-server")) == 0)
+            )
     return false;
   return true;
 }
@@ -330,7 +351,11 @@ bool setup(BelaContext *context, void *userData) {
   initBuffers();
   initSampleStreams(gUserSet);
   printInfo();
-  return initAuxiliaryTasks();
+  signal(SIGINT,signalHandler);
+ 
+  bool b = initAuxiliaryTasks();
+  Bela_scheduleAuxiliaryTask(gStartServerTask);
+  return b;
 }
 
 /**
@@ -347,6 +372,9 @@ bool setup(BelaContext *context, void *userData) {
  */
 void render(BelaContext *context, void *userData) {
 
+   if(! gUserSet.conn.startRender()) return;
+   else{
+   //cout << gShouldStop << endl;
   // Check if buffers need filling
   if (fillless == 0) {
     Bela_scheduleAuxiliaryTask(gFillBuffersTask);
@@ -375,6 +403,7 @@ void render(BelaContext *context, void *userData) {
 
     if (gFillPosition == gBufferProLen - 1) {
       gProcessBufferCopy->swap(*gProcessBuffer); // O(1)
+      
       gFillPosition = -1;
       gBufferProcessed = 0;
       Bela_scheduleAuxiliaryTask(gProcessBufferTask);
@@ -382,11 +411,12 @@ void render(BelaContext *context, void *userData) {
 
     /******* EFFECT LOOP ********/
 
-    if (gUseEffects) {
+    if (/*gUseEffects*/false) {
       // Files
       for (int i = 0; i < gNumStreams; i++) {
         insample =
             (sampleStream[i]->getSample(0) + sampleStream[i]->getSample(1)) / 2;
+            
         gEffectBufferIn->setCase(i, gReadPointer, insample);
       }
 
@@ -420,7 +450,7 @@ void render(BelaContext *context, void *userData) {
         } else {
           gIndOut = (gLastSample + 1) % (2 * gEffSize);
         }
-        Bela_scheduleAuxiliaryTask(gEffectTask);
+        //Bela_scheduleAuxiliaryTask(gEffectTask);
       } else {
         gReadPointer++;
       }
@@ -428,6 +458,7 @@ void render(BelaContext *context, void *userData) {
       // Transfert informations from the effect buffer Out to the process buffer
       for (int s = 0; s < gNumStreams + gNumAnalog + gNumAudio; s++) {
         float outsample = gEffectBufferOut->getCase(s, gWritePointer);
+        
         gProcessBuffer->setCase(s, gFillPosition + 1, outsample);
         out += outsample;
       }
@@ -442,6 +473,7 @@ void render(BelaContext *context, void *userData) {
       for (int s = 0; s < gNumStreams; s++) {
         outsample = (sampleStream[s]->getSample(0) +
                      sampleStream[s]->getSample(1)) / 2;
+        
         gProcessBuffer->setCase(s, gFillPosition + 1, outsample);
         out += outsample*gMeanCorrel[s];
 	     }
@@ -480,6 +512,7 @@ void render(BelaContext *context, void *userData) {
   	    }
   	}
   }
+ }
 }
 
 /**
@@ -494,7 +527,9 @@ void render(BelaContext *context, void *userData) {
  * every samples stored in the sampleStrem array
  */
 void cleanup(BelaContext *context, void *userData) {
-  gUserSet.conn.end(); // end UDP connection
+	
+  gUserSet.conn.setStop(gShouldStop);
+  gUserSet.conn.end();// end UDP connection
   for (int i = 0; i < gNumStreams; i++) {
     delete sampleStream[i];
   }

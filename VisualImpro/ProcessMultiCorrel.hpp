@@ -5,8 +5,10 @@
 #include <queue>
 #include <string>
 #include <vector>
+#include<memory>
 #include <assert.h>
 #include <stdio.h>
+#include <JSON.h>
 #include "Connection.hpp"
 #include "Matrix.hpp"
 #include "RGB.hpp"
@@ -16,13 +18,16 @@
  * Standard C++ library
  */
 using namespace std;
-
+class AuxTaskRT;
 /**
  * \class ProcessMultiCorrel
  * \brief An object containing every processing function
  *
  * This class is used to process signals sent from render.cpp
+ *
  */
+
+
 class ProcessMultiCorrel{
 
 public:
@@ -44,7 +49,7 @@ public:
     * The constructor will set a pointer for every process function to its
     * class members variables.
     */
-  ProcessMultiCorrel(float (*coeffcorrel) (const vector<float>& s1,
+  ProcessMultiCorrel(vector<float> (*coeffcorrel) (const vector<float>& s1,
   const vector<float>& s2) = NULL, RGB (*colorscale) (float coeff) = NULL,
   Matrix<float>(*preproc) (const Matrix<float>& buff) = NULL,
   vector<float>(*mixLevel) (const Matrix<float>& correlMatrix) = NULL);
@@ -59,7 +64,7 @@ public:
    * \param conn The object to send data to a Firefox web page.
    */
   void process(const Matrix<float>& buffer,
-               vector<float>& meanCorrelations, Connection conn);
+               vector<float>& meanCorrelations, Connection conn, int factor, int frameSize);
 
   /**
    * \fn    void setColor(RGB (*colorscale) (float coeff))
@@ -91,7 +96,7 @@ public:
    * \param coeffcorrel The correlation function that will replace the actual
    *                    one.
    */
-  void setCoeff(float (*coeffcorrel) (const vector<float>& s1,
+  void setCoeff(vector<float> (*coeffcorrel) (const vector<float>& s1,
                                       const vector<float>& s2)){
     _coeffcorrel = coeffcorrel;
   }
@@ -135,7 +140,7 @@ public:
    *
    * \return The actual correlation function.
    */
-  float (*getCoeff()) (const vector<float>& s1,
+	vector<float> (*getCoeff()) (const vector<float>& s1,
                        const vector<float>& s2){
     return _coeffcorrel;
   }
@@ -159,16 +164,22 @@ public:
   virtual ~ProcessMultiCorrel();
 
 private :
-  float (*_coeffcorrel) (const vector<float>& s1,
+ vector<float> (*_coeffcorrel) (const vector<float>& s1,
                          const vector<float>& s2);
   RGB (*_colorscale) (float coeff);
   Matrix<float> (* _preprocess) (const Matrix<float>& buff);
   vector<float> (*_mixLevel)(const Matrix<float>& correlMatrix);
-  Matrix<float> calcul_correl(const Matrix<float>& buffer);
+  Matrix<vector<float>> calcul_correl(const Matrix<float>& buffer);
   void process_volume(const Matrix<float>& correlMatrix,
                       vector<float>& meanCorrelations);
+  vector<vector<float>> calcul(Matrix<vector<float>> correlMatrix);
   Matrix<RGB> color_matrix(const Matrix<float>& correlMatrix);
+  void timeDelay(vector<float> c, float* delay, float * max);
+  std::unique_ptr<AuxTaskRT> sendTask;
   ofstream matrixfile;
+  int samplerate;
+  int frameSize;
+
 };
 
 #endif //SIMPLECORREL_HPP

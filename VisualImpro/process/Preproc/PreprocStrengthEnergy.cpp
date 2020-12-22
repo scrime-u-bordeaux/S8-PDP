@@ -46,7 +46,7 @@ Matrix<float> PreprocStrengthEnergy(const Matrix<float>& input){
   int size = input.getSize();
 	Matrix<float> buffer(size, vector<float>(input.getRow(0).size(), 0.0f));
 	for (int i=0 ; i<size; i++){
-		buffer.setRow(i, strengthenergyenvelope(input.getRow(i), 1024));
+		buffer.setRow(i, strengthenergyenvelope(input.getRow(i), 64));
 	}
 	return buffer;
 }

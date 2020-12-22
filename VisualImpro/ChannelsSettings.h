@@ -90,6 +90,7 @@ struct ChSettings{
   /**
    * \var proc Process to use (polymorphisme)
    */
+   
   ProcessMultiCorrel * proc;
 
   /**

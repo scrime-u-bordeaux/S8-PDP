@@ -15,7 +15,7 @@
 #include "Matrix.hpp"
 
 /**
- * Constructs a squared matrix with size equals to sizeMatix.
+ * Constructor of an empty matrix
  */
 template<class T>
 Matrix<T>::Matrix(){
@@ -154,7 +154,11 @@ string Matrix<RGB>::toString(){
   }
   return str;
 }
-
+template<>
+string Matrix<vector<float>>::toString()
+{
+	return NULL;
+}
 /**
  * Destrucs the matrix and free the memory by swapping our matrix by another
  * empty matrix.
@@ -167,4 +171,5 @@ Matrix<T>::~Matrix(){
 
 template class Matrix<int>;
 template class Matrix<float>;
+template class Matrix<vector<float>>;
 template class Matrix<RGB>;

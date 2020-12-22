@@ -1,5 +1,5 @@
 CXX = g++
-CXXFLAGS = -shared -O3 -std=c++11 -Wl,--no-undefined -fPIC
+CXXFLAGS = -shared -O3 -std=c++11 -Wl,--no-undefined -fPIC -lfftw3
 SRC = $(wildcard Preproc/*.cpp) $(wildcard Color/*.cpp) $(wildcard Coeff/*.cpp)\
 $(wildcard Mix/*.cpp)
 INC = ../Matrix.cpp ../RGB.cpp

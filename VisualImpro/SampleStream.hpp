@@ -8,7 +8,7 @@
 #include <string>
 #include <Bela.h>
 #include <SampleData.h>
-#include <sndfile.h>	// to load audio files
+#include <libraries/sndfile/sndfile.h>	// to load audio files
 
 /**
  * \namespace std

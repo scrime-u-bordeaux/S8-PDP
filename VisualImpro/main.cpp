@@ -31,7 +31,7 @@ The Bela software is distributed under the GNU Lesser General Public License
 #include <getopt.h>
 #include <libgen.h>
 #include <signal.h>
-#include <sndfile.h>
+#include <libraries/sndfile/sndfile.h>
 #include <string.h>
 #include <sys/stat.h>
 #include <sys/time.h>
@@ -74,7 +74,7 @@ typedef RGB (*colorScale)(float coeff);
                                  const vector<float>& s2)
  * \brief   defines a coeffCorrel type as a function pointer
  */
-typedef float (*coeffCorrel)(const vector<float>& s1, const vector<float>& s2);
+typedef vector<float> (*coeffCorrel)(const vector<float>& s1, const vector<float>& s2);
 
 /**
  * \typedef Matrix<float> (*preProcess)(const Matrix<float>&)
@@ -122,14 +122,14 @@ static void usage(const char *processName) {
  *
  * \return  elapsed time in (fractional) seconds.
  */
-static double getCurrentTime(void) {
+/*static double getCurrentTime(void) {
   unsigned long long result;
   struct timeval tv;
   gettimeofday(&tv, NULL);
   result = (tv.tv_sec - gFirstSeconds) * 1000000ULL +
            (tv.tv_usec - gFirstMicroseconds);
   return (double)result / 1000000.0;
-}
+}*/
 
 /**
  * \fn      static double getCurrentTime(void)
@@ -282,7 +282,7 @@ static void parseLengths(ChSettings& gChSettings, const Parser& config){
 static void parseTracks(ChSettings& gChSettings, const Parser& config){
   list<string> files;
   files = config.getTracks();
-
+cout <<" config.getTracks().front()" <<endl;
   gChSettings.nb_audio = config.getAudio();
   gChSettings.nb_analog = config.getAnalog();
 
@@ -406,7 +406,9 @@ config, char* argv[]){
   BelaInitSettings settings;
 
   Bela_defaultSettings(&settings);
-
+  settings.setup = setup;
+  settings.render = render;
+  settings.cleanup = cleanup;
   struct option customOptions[] = {{"help", 0, NULL, 'h'}, {NULL, 0, NULL, 0}};
 
   // Set the settings manually, simulating a "false" argv command line

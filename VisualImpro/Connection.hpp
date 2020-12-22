@@ -20,6 +20,7 @@
 #include <sys/time.h>
 #include <sys/types.h>
 
+#include "mongoose.h"
 //#include "UdpClient.h"
 
 /**
@@ -37,24 +38,30 @@ using namespace std;
 class Connection{
 
 private :
-  int sockfd;
+  //int sockfd;
   //Struct sockaddr_in serv_addr; //UDP
   bool _isConnected; //TCP
   int _port;
   string _addr;
-
+  struct mg_mgr mgr;
+ 
+  bool stop;
+  
 public :
   //Fefault settings
-	Connection() : _port(12345), _addr("192.168.7.1") {}
+	Connection() : _port(9090), _addr("127.0.0.1") {}
 	Connection(int port, string addr) : _port(port), _addr(addr){}
-  bool isConnected();
+
   //Initialize TCP connection
   int init();
-  int send(const string& msg);
+  int send( string& msg);
   //Stops TCP connection
   int end();
+  bool getIsConnected(){return _isConnected;};
+  bool startRender();
+  void setIsConnected(bool b){_isConnected = b;};
+  void setStop(bool b){cout << "Bravo" << endl; stop = b;};
+  
 };
-
-
 
 #endif //CONNECT_HPP
